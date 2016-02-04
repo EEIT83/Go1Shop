@@ -19,7 +19,7 @@ public class MessageDAO {
 	public MessageDAO() {
 		try {
 			Context context = new InitialContext();
-			ds = (DataSource) context.lookup("java:comp/env/jdbc/GoEshopDB");
+			ds = (DataSource) context.lookup("java:comp/env/jdbc/Go1ShopDB");
 		} catch (NamingException ne) {
 			ne.printStackTrace();
 		}
