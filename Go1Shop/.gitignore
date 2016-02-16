@@ -1,4 +1,11 @@
 /build/
+<<<<<<< HEAD
 /.settings/
 /.classpath
 /.project
+=======
+/.classpath
+/.project
+/.settings/
+>>>>>>> branch 'master' of https://github.com/EEIT83/Go1Shop.git
+/bin/
