@@ -38,7 +38,7 @@ function clearForm() {
 </tr>
 </table>
 
-<form action="<c:url value="/pages/productproject.controller" />" method="post">
+<form action="<c:url value="/g03_product/productproject.controller" />" method="post">
 
 <table>
 	

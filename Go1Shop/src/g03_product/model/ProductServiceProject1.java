@@ -3,8 +3,6 @@ package g03_product.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.dao.ProductDAOJdbcProject1;
-
 public class ProductServiceProject1 {
 	private ProductDAOProject1 productDao = new ProductDAOJdbcProject1();
 

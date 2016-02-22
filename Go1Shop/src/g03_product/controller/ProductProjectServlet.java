@@ -1,11 +1,7 @@
 package g03_product.controller;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,17 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.ProductBean;
-import model.ProductProject1Bean;
-import model.ProductService;
-import model.ProductServiceProject1;
+import g03_product.model.ProductProject1Bean;
+import g03_product.model.ProductServiceProject1;
 
 @WebServlet(
 		urlPatterns={"/g03_product/productproject.controller"}
 )
 public class ProductProjectServlet extends HttpServlet {
 	
-	private g03_product.model.ProductServiceProject1 productService = new g03_product.model.ProductServiceProject1();
+	private ProductServiceProject1 productService = new ProductServiceProject1();
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -148,7 +142,7 @@ public class ProductProjectServlet extends HttpServlet {
 			result = productService.select(bean,SQLprice,SQLorder,SQLgender);//把SQL傳入select做查詢
 			request.setAttribute("select", result);
 			request.getRequestDispatcher(
-					"/pages/productproject.jsp").forward(request, response);
+					"/g03_product/productproject.jsp").forward(request, response);
 		} 
 		
 		
@@ -159,7 +153,7 @@ public class ProductProjectServlet extends HttpServlet {
 			result = productService.selectAll(bean, x);			   
 			request.setAttribute("select", result);		
 			request.getRequestDispatcher(
-					"/pages/productproject.jsp").forward(request, response);
+					"/g03_product/productproject.jsp").forward(request, response);
      
 //		} else if("Update".equals(prodaction)) {
 //			ProductBean result = productService.update(bean);

@@ -1,7 +1,6 @@
 package g03_product.model;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,10 +11,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
-
-import model.ProductBean;
-import model.ProductDAOProject1;
-import model.ProductProject1Bean;
 
 public class ProductDAOJdbcProject1 implements ProductDAOProject1 {
 	// private static final String URL = "jdbc:sqlserver://localhost:1433;database=project";
