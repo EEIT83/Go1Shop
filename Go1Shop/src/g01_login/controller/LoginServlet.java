@@ -74,6 +74,7 @@ public class LoginServlet extends HttpServlet {
 				error.put("loginError", e.getMessage());
 				request.getRequestDispatcher("/g01_login/Login.jsp").forward(request, response);
 			}
+			request.getSession().setAttribute("LoginOK", memBean);
 			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		}
 

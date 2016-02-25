@@ -8,10 +8,12 @@ public class ProdOrderBean {
 	private Set<OrdDetailBean> detailBean = new HashSet<>();
 	private int mem_id;
 	private String addressee;
+	private int zip_code;
 	private String address;
 	private int phone;
 	private String sender;
 	private String sender_address;
+	private int zip_code_sen;
 	private int sender_phone;
 	private String payment;
 	//private String payment_status;
@@ -129,4 +131,21 @@ public class ProdOrderBean {
 		this.total_point = total_point;
 	}
 
+	public int getZip_code() {
+		return zip_code;
+	}
+
+	public void setZip_code(int zip_code) {
+		this.zip_code = zip_code;
+	}
+
+	public int getZip_code_sen() {
+		return zip_code_sen;
+	}
+
+	public void setZip_code_sen(int zip_code_sen) {
+		this.zip_code_sen = zip_code_sen;
+	}
+	
+	
 }

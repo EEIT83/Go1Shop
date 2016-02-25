@@ -15,7 +15,7 @@ public class ShoppingCarDAO {
 	private DataSource ds = ConnDB.getConnDB();
 	
 
-	private static final String select="select * from  shopping_car where mem_id = ?";
+	private static final String select="select * from  shopping_cart where mem_id = ?";
 	public ShoppingCarBean select(int mem_Id){
 			
 		try ( 	Connection conn = ds.getConnection();
@@ -37,7 +37,7 @@ public class ShoppingCarDAO {
 	}
 	
 	
-	private static final String insert = "insert into shopping_car(mem_id,ord_date,total) values(?,?,?)";
+	private static final String insert = "insert into shopping_cart(mem_id,ord_date,total) values(?,?,?)";
 	public int insert(ShoppingCarBean bean ,  Connection conn) {
 		
 		PreparedStatement pstms = null; 
@@ -82,7 +82,7 @@ public class ShoppingCarDAO {
 		return 0;
 	}
 	
-	private static final String update="update shopping_car set total=? where mem_id=?";
+	private static final String update="update shopping_cart set total=? where mem_id=?";
 	public void update(ShoppingCarBean bean){
 		
 		try (
@@ -100,7 +100,7 @@ public class ShoppingCarDAO {
 		
 	}
 	
-	private static final String delete="delete from shopping_car where mem_id=?";
+	private static final String delete="delete from shopping_cart where mem_id=?";
 
 	public void delete(int mem_id){
 		

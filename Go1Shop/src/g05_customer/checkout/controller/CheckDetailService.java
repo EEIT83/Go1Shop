@@ -2,7 +2,6 @@ package g05_customer.checkout.controller;
 
 import java.util.Map;
 
-
 import g01_login.controller.MemberBean;
 import g05_customer.checkout.model.OrdDetailDAO;
 import g05_customer.checkout.model.ProdOrderDAO;
@@ -23,10 +22,12 @@ public class CheckDetailService {
 		ProdOrderBean ordBean = new ProdOrderBean();
 		ordBean.setMem_id(memBean.getMem_id());
 		ordBean.setAddress(orderBean.getAddress());
+		ordBean.setZip_code(orderBean.getZip_code());
 		ordBean.setAddressee(orderBean.getAddressee());
 		ordBean.setPhone(orderBean.getPhone());
 		ordBean.setSender(orderBean.getSender());
 		ordBean.setSender_address(orderBean.getSender_address());
+		ordBean.setZip_code_sen(orderBean.getZip_code_sen());
 		ordBean.setSender_phone(orderBean.getSender_phone());
 		ordBean.setPayment(orderBean.getPayment());
 		ordBean.setTotal(carBean.getTotal());
@@ -39,6 +40,7 @@ public class CheckDetailService {
 		OrdDetailDAO prDetailDAO = new OrdDetailDAO();
 		OrdDetailBean ordDetailBean = new OrdDetailBean();
 		ShowProDAO proDAO = new ShowProDAO();
+
 		for (Object key : carmap.keySet()) {
 			CarDetailBean sellerBean = new CarDetailBean();
 			sellerBean = carmap.get(key);		
@@ -53,7 +55,6 @@ public class CheckDetailService {
 			ordDetailBean.setSubtotal(sellerBean.getSubtotal());
 			prDetailDAO.insert(ordDetailBean);
 			proDAO.update(sellerBean.getProd_Id(), sellerBean.getCount());
-
             //System.out.println(key + " : " + carmap.get(key));
 			//System.out.println(ordDetailBean);
         }

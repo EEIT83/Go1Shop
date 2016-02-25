@@ -4,7 +4,7 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 
-	<package name="xxx" namespace="/" extends="struts-default" >
+	<package name="aaa" namespace="/" extends="struts-default" >
 		<action name="checkDetail" class="g05_customer.checkout.controller.CheckDetailServlet">
 			<result name="xxx">/g05_customer/checkout/success.jsp</result>
 			<result name="input" >/g05_customer/checkout/checkDetail.jsp</result>

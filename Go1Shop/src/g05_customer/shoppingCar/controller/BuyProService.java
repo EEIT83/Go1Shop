@@ -133,10 +133,11 @@ public class BuyProService {
 	
 	
 	public void deleteCar(int mem_id){
-		ShoppingCarDAO carDAO = new ShoppingCarDAO();
-		carDAO.delete(mem_id);
 		CarDetailDAO carDetail = new CarDetailDAO();
 		carDetail.delete(mem_id);
+		ShoppingCarDAO carDAO = new ShoppingCarDAO();
+		carDAO.delete(mem_id);
+	
 	}
 
 	

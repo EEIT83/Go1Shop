@@ -25,6 +25,9 @@
         <property name="addressee" type="java.lang.String">
             <column name="ADDRESSEE" />
         </property>
+        <property name="zip_code" type="int">
+            <column name="zip_code" />
+        </property>
         <property name="address" type="java.lang.String">
             <column name="ADDRESS" />
         </property>
@@ -36,6 +39,9 @@
         </property>
         <property name="sender_address" type="java.lang.String">
             <column name="SENDER_ADDRESS" />
+        </property>
+        <property name="zip_code_sen" type="int">
+            <column name="zip_code_sen" />
         </property>
         <property name="sender_phone" type="int">
             <column name="SENDER_PHONE" />
