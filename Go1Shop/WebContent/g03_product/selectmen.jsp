@@ -30,13 +30,20 @@ function clearForm() {
 <h3>Men</h3>
 <table>
 <tr>
-<td>
-<h3><a href="<c:url value="/pages/productproject.jsp" />">Product Table</a></h3>
-<h3><a href="<c:url value="/pages/selectwomen.jsp" />">Women</a></h3>
-</td>
+<td><h3><a href="<c:url value="/g03_product/productproject.jsp" />">Product Table</a></h3></td>
+<td><h3><a href="<c:url value="/g03_product/ProductGenderServlet.controller?gender=F&change=true" />">Women</a></h3></td>
 </tr>
 </table>
-<form action="<c:url value="/pages/ProductGenderServlet.controller?gender=M"/>" method="post">
+<table>
+<tr><td><a href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=M&part=T-Shirt'/>">T-Shirt</a></td></tr>
+<tr><td><a href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=M&part=毛衣'/>">毛衣</a></td></tr>
+<tr><td><a href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=M&part=帽T'/>">帽T</a></td></tr>
+<tr><td><a href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=M&part=Polo衫'/>">Polo衫</a></td></tr>
+<tr><td><a href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=M&part=背心'/>">背心</a></td></tr>
+<tr><td><a href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=M&part=長袖上衣'/>">長袖上衣</a></td></tr>
+</table>
+
+<form action="<c:url value="/g03_product/ProductGenderServlet.controller?gender=M"/>" method="post">
 
 <table>
 	
@@ -95,8 +102,8 @@ function clearForm() {
 <script type="text/javascript">clearForm();</script>
 
 ------------------------------------------------------------------------------------------
-<a href="<c:url value='/pages/productproject.controller?gender=M'/>">男裝</a>
-<a href="<c:url value='/pages/productproject.controller?gender=F'/>">女裝</a>
+<a href="<c:url value='/g03_product/productproject.controller?gender=M'/>">男裝</a>
+<a href="<c:url value='/g03_product/productproject.controller?gender=F'/>">女裝</a>
 
 <h3>Select Product Table Result : ${fn:length(select)} row(s) selected</h3>
 <c:if test="${not empty select}">
@@ -117,7 +124,7 @@ function clearForm() {
 	</thead>
 	<tbody>
 	<c:forEach var="bean" items="${select}">
-		<c:url value="/pages/selectmen.jsp" var="path">			
+		<c:url value="/g03_product/selectmen.jsp" var="path">			
 			<c:param name="prod_name" value="${bean.prod_name}" />
 			<c:param name="size" value="${bean.size}" />
 			<c:param name="color" value="${bean.color}" />

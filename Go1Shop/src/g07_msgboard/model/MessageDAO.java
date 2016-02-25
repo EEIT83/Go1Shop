@@ -75,11 +75,27 @@ public class MessageDAO {
 		return mvo;
 	}
 	
+	private final String UPDATE = "update message set message_state='report' where message_id=?";
+	public int update(int msgId){
+		
+		try (
+				Connection conn = ds.getConnection();
+				PreparedStatement ps = conn.prepareStatement(UPDATE);
+				){
+			ps.setInt(1,msgId);
+			return ps.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
 	
-//	private final String SELECT = "select * from message";
+	
+	
 	private final String SELECT = "select * from message order by message_date desc";
-
-	
 	public List<MessageVO> select(){
 		
 		ResultSet rs = null;

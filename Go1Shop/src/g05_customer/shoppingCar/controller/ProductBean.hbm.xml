@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016/2/22 ?W?? 10:12:09 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="_06_shoppingcar.controller.ProductBean" table="PRODUCT">
+        <id name="prodId" type="int">
+            <column name="PROD_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="memId" type="int">
+            <column name="MEM_ID" />
+        </property>
+        <property name="productName" type="java.lang.String">
+            <column name="PROD_NAME" />
+        </property>
+        <property name="size" type="java.lang.String">
+            <column name="SIZE" />
+        </property>
+        <property name="color" type="java.lang.String">
+            <column name="COLOR" />
+        </property>
+        <property name="count" type="int">
+            <column name="COUNT" />
+        </property>
+        <property name="price" type="int">
+            <column name="PRICE" />
+        </property>
+        <property name="brand" type="java.lang.String">
+            <column name="BRAND" />
+        </property>
+        <property name="gender" type="java.lang.String">
+            <column name="GENDER" />
+        </property>
+        <property name="part" type="java.lang.String">
+            <column name="PART" />
+        </property>
+        <property name="lanchDate" type="java.util.Date">
+            <column name="launch_date" />
+        </property>
+        <property name="note" type="java.lang.String">
+            <column name="NOTE" />
+        </property>
+    </class>
+</hibernate-mapping>

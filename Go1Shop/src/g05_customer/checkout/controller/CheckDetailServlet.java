@@ -6,6 +6,8 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+
+import g01_login.controller.MemberBean;
 import g05_customer.shoppingCar.controller.ShoppingCar;
 
 public class CheckDetailServlet extends ActionSupport implements SessionAware{
@@ -65,20 +67,20 @@ public class CheckDetailServlet extends ActionSupport implements SessionAware{
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
-//	@Override
-//	public String execute() throws Exception {
-//		//System.out.println("asdsads=" + radio);
-//		//System.out.println("address=" + address);
-//		CheckDetailService service = new CheckDetailService();
-//		MemberBean memBean = (MemberBean)session.get("LoginOK");
-//		ShoppingCar shopcar= (ShoppingCar)session.get("shopcar");
-//		orderBean.setPayment(payment);
-//		orderBean.setAddress(address);
-//		//System.out.println("CheckDetailServlet:before");
-//		service.insertOrder(memBean , shopcar , orderBean);
-//		//System.out.println("CheckDetailServlet:after");
-//		return "xxx";
-//	}
+	@Override
+	public String execute() throws Exception {
+		//System.out.println("asdsads=" + radio);
+		//System.out.println("address=" + address);
+		CheckDetailService service = new CheckDetailService();
+		MemberBean memBean = (MemberBean)session.get("LoginOK");
+		ShoppingCar shopcar= (ShoppingCar)session.get("shopcar");
+		orderBean.setPayment(payment);
+		orderBean.setAddress(address);
+		//System.out.println("CheckDetailServlet:before");
+		service.insertOrder(memBean , shopcar , orderBean);
+		//System.out.println("CheckDetailServlet:after");
+		return "xxx";
+	}
 
 	
 	

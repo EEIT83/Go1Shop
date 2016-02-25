@@ -15,5 +15,6 @@
 		<property name="hibernate.current_session_context_class">thread</property>
 		<mapping resource="g05_customer/checkout/controller/OrdDetailBean.hbm.xml" />
 		<mapping resource="g05_customer/checkout/controller/ProdOrderBean.hbm.xml" />
+		<mapping resource="g05_customer/shoppingCar/controller/ProductBean.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

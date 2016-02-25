@@ -9,11 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import g03_product.model.ProductProject1Bean;
-import g03_product.model.ProductServiceProject1;
-
 @WebServlet(
-		urlPatterns={"/g03_product/productproject.controller"}
+		urlPatterns={"/pages/productproject.controller"}
 )
 public class ProductProjectServlet extends HttpServlet {
 	
@@ -95,7 +92,8 @@ public class ProductProjectServlet extends HttpServlet {
 		String SQLorder="";
 		String SQLprice="" ;
 		String SQLgender="" ;
-		String x="";
+		String SQLpart="" ;
+		
 		
 		
 	
@@ -139,7 +137,7 @@ public class ProductProjectServlet extends HttpServlet {
 				if(selectorder.equals("OrderByDateDesc"))
 					SQLorder=" order by launch_date desc ";
 			}
-			result = productService.select(bean,SQLprice,SQLorder,SQLgender);//把SQL傳入select做查詢
+			result = productService.select(bean,SQLprice,SQLorder,SQLgender,SQLpart);//把SQL傳入select做查詢
 			request.setAttribute("select", result);
 			request.getRequestDispatcher(
 					"/g03_product/productproject.jsp").forward(request, response);
@@ -150,11 +148,12 @@ public class ProductProjectServlet extends HttpServlet {
 		
 	
 		if(gender!=null) {			
-			result = productService.selectAll(bean, x);			   
+			result = productService.selectAll(bean);			   
 			request.setAttribute("select", result);		
 			request.getRequestDispatcher(
 					"/g03_product/productproject.jsp").forward(request, response);
-     
+	    }
+		
 //		} else if("Update".equals(prodaction)) {
 //			ProductBean result = productService.update(bean);
 //			if(result==null) {
@@ -177,7 +176,7 @@ public class ProductProjectServlet extends HttpServlet {
 //			error.put("action", "Unknown action: "+prodaction);
 //			request.getRequestDispatcher(
 //					"/pages/product.jsp").forward(request, response);
-		}
+		
 	}
 	@Override
 	protected void doPost(HttpServletRequest req,

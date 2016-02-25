@@ -15,7 +15,8 @@ import g99_Connection.ConnDB;
 public class CarDetailDAO {
 	private DataSource ds = ConnDB.getConnDB();
 
-	private static final String select = "select * from car_detailTest where prod_id = ? and mem_id=?";
+
+	private static final String select = "select * from car_detail where prod_id = ? and mem_id=?";
 
 	public CarDetailBean select(int prod_id, int mem_id) {
 		try (Connection conn = ds.getConnection(); PreparedStatement pstmt = conn.prepareStatement(select);) {
@@ -45,7 +46,7 @@ public class CarDetailDAO {
 		return null;
 	}
 
-	private static final String selectCheck = "select * from car_detailTest where shoppingcart_id = ? ";
+	private static final String selectCheck = "select * from car_detail where shoppingcart_id = ? ";
 
 	public List<CarDetailBean> selectCar(int shoppingcar_id) {
 
@@ -77,7 +78,7 @@ public class CarDetailDAO {
 		return null;
 	}
 
-	private static final String insert = "insert car_detailTest values(?,?,?,?,?,?,?,?,?,?,?)";
+	private static final String insert = "insert car_detail values(?,?,?,?,?,?,?,?,?,?,?)";
 
 	public void insert(CarDetailBean bean, Connection conn) {
 		PreparedStatement pstmt = null;
@@ -110,7 +111,7 @@ public class CarDetailDAO {
 		}
 	}
 
-	private static final String update = "update car_detailTest set ord_date=?, count=?, subtotal=? where prod_id=? and mem_id=?";
+	private static final String update = "update car_detail set ord_date=?, count=?, subtotal=? where prod_id=? and mem_id=?";
 
 	public void update(CarDetailBean bean) {
 		try (Connection conn = ds.getConnection(); PreparedStatement pstmt = conn.prepareStatement(update);) {
@@ -126,7 +127,7 @@ public class CarDetailDAO {
 		}
 	}
 
-	private static final String delete = "delete from car_detailTest where mem_id=? and prod_id=?";
+	private static final String delete = "delete from car_detail where mem_id=? and prod_id=?";
 
 	public void delete(int mem_id, int prod_id) {
 		
@@ -140,7 +141,7 @@ public class CarDetailDAO {
 		
 	}
 	
-	private static final String deleteCar = "delete from car_detailTest where mem_id=?";
+	private static final String deleteCar = "delete from car_detail where mem_id=?";
 	public void delete(int mem_id) {
 
 		try (Connection conn = ds.getConnection(); PreparedStatement pstmt = conn.prepareStatement(deleteCar);) {

@@ -5,7 +5,8 @@
 <hibernate-mapping>
 
 	<class name="g05_customer.checkout.controller.OrdDetailBeann"
-		table="ord_detail_Test">
+
+		table="ord_detail">
 		<id name="detail_id" type="int">
 			<column name="detail_id" />
 			<generator class="native" />

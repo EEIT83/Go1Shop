@@ -3,7 +3,9 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2016/2/1 ?W?? 09:41:09 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="g05_customer.checkout.controller.ProdOrderBean" table="prod_order_Test">
+
+    <class name="g05_customer.checkout.controller.ProdOrderBean" table="prod_order">
+
         <id name="ord_id" type="int">
             <column name="ord_id" />
             <generator class="identity" />

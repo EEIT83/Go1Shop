@@ -9,12 +9,29 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import g05_customer.checkout.hibernate.HibernateUtil;
 import g05_customer.shoppingCar.controller.ProductBean;
 import g99_Connection.ConnDB;
 
 
 
 public class ShowProDAO {
+	
+	private SessionFactory sessionfactory;
+	public ShowProDAO() {
+		sessionfactory = HibernateUtil.getSessionFactory();
+	}
+
+	public Session getSession() {
+		if (sessionfactory != null) {
+			return sessionfactory.getCurrentSession();
+		}
+		return null;
+	}
 	
 	private DataSource ds = ConnDB.getConnDB();
 	
@@ -87,7 +104,11 @@ public class ShowProDAO {
 		return null;
 	}
 	
-	
-	
+	public void update(int prod_id, int count){
+		ProductBean oldPro = (ProductBean)getSession().get(ProductBean.class, prod_id);
+		oldPro.setCount(oldPro.getCount()-count);
+		getSession().update(oldPro);
+		
+	}
 
 }

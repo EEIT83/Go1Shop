@@ -31,14 +31,15 @@ function clearForm() {
 <table>
 <tr>
 <td>
-<h3><a href="<c:url value="/pages/productproject.jsp" />">Product Table</a></h3>
-<h3><a href="<c:url value="/pages/selectmen.jsp" />">Men</a></h3>
-<h3><a href="<c:url value="/pages/selectwomen.jsp" />">Women</a></h3>
+
+<h3><a href="<c:url value="/g03_product/productproject.jsp" />">Product Table</a></h3>
+<h3><a href="<c:url value="/g03_product/selectmen.jsp" />">Men</a></h3>
+<h3><a href="<c:url value="/g03_product/selectwomen.jsp" />">Women</a></h3>
 </td>
 </tr>
 </table>
 
-<form action="<c:url value="/g03_product/productproject.controller" />" method="post">
+<form action="<c:url value="/pages/productproject.controller" />" method="post">
 
 <table>
 	
