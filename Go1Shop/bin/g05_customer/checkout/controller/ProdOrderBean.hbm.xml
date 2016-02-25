@@ -14,7 +14,7 @@
             <key>
                 <column name="ord_id" />
             </key>
-            <one-to-many class="g05_customer/checkout/controller/OrdDetailBean" />
+            <one-to-many class="g05_customer.checkout.controller.OrdDetailBean" />
         </set>
         
         <property name="mem_id" >

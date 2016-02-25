@@ -35,7 +35,7 @@ public class ShowProDAO {
 	
 	private DataSource ds = ConnDB.getConnDB();
 	
-	private final String select = "select * from productTest";
+	private final String select = "select * from product";
 	public List<ProductBean> select(){
 		List<ProductBean> result = null;
 		try (Connection conn = ds.getConnection();
@@ -69,7 +69,7 @@ public class ShowProDAO {
 	}
 	
 	
-	private final String selectId = "select * from productTest where prod_id=?";
+	private final String selectId = "select * from product where prod_id=?";
 	public ProductBean selectId(int id){
 		
 		try (Connection conn = ds.getConnection();

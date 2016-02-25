@@ -3,19 +3,14 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2016/2/1 ?W?? 09:41:09 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-
-	<class name="g05_customer.checkout.controller.OrdDetailBeann"
-
-		table="ord_detail">
+	<class name="g05_customer.checkout.controller.OrdDetailBean" table="ord_detail">
 		<id name="detail_id" type="int">
 			<column name="detail_id" />
 			<generator class="native" />
 		</id>
-		<many-to-one name="prodBean"
-			class="/g05_customer.checkout.controller.ProdOrderBean" fetch="join">
+		<many-to-one name="prodBean" class="g05_customer.checkout.controller.ProdOrderBean" fetch="join">
 			<column name="ord_id" />
 		</many-to-one>
-
 		<property name="mem_id" type="int">
 			<column name="mem_id" />
 		</property>

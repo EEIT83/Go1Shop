@@ -11,8 +11,8 @@
 <h3>商品頁</h3>
 <table>
 	<tr>
-		
-		<th>product</th>		<th>price</th>
+		<th>price</th>
+		<th>product</th>		
 		<th>count</th>
 		<th>subtotal</th>
 	</tr>
@@ -23,7 +23,7 @@
 		<td>${result.brand}</td>
 		<td>${result.price}</td>		
 		<td>${result.note}</td>
-	<td>
+	<td>						
 	<form action='<c:url value="/g05_customer/shoppingCar/controller/BuyProServlet.con"/>' method="post">
 		<input type="hidden" name="id" value="${result.prodId}">
 		<input type="hidden" name="product" value="${result.productName}">
@@ -37,9 +37,8 @@
 	</td>
 	</tr>
 	</c:forEach>
-	
 </table>
-<a href="<c:url value="/g05_customer/shoppingCar/show.jsp" />">購物車</a><br>
+<a href="<c:url value="/g05_customer/shoppingCar/car.jsp" />">購物車</a><br>
 <a href="<c:url value="/index.jsp" />">回首頁</a>
 </body>
 </html>

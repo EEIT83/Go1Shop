@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 2016/2/22 ?W?? 10:12:09 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="_06_shoppingcar.controller.ProductBean" table="PRODUCT">
+    <class name="g05_customer.shoppingCar.controller.ProductBean" table="PRODUCT">
         <id name="prodId" type="int">
             <column name="PROD_ID" />
             <generator class="assigned" />

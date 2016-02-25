@@ -40,7 +40,7 @@ public class BuyProServlet extends HttpServlet {
 		if (mb == null) {
 
 			respone.sendRedirect(getServletContext().getContextPath()
-					+ "/_01_login/login.jsp");
+					+ "/g01_login/login.jsp");
 			// request.getRequestDispatcher("/_01_login/login.jsp").forward(request,
 			// respone);
 			return;

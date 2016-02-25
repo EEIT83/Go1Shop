@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(
-		urlPatterns=("/g05_customer/shoppingCar/controller/ShowProServlet.con")
+		urlPatterns=("/g05_customer/ShowProServlet.con")
 		)
 public class ShowProServlet extends HttpServlet {
 
