@@ -10,10 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import g07_msgboard.model.CommentsDAO;
 import g07_msgboard.model.CommentsService;
 import g07_msgboard.model.CommentsVO;
-import g07_msgboard.model.MessageService;
 
 @WebServlet(urlPatterns={"/g07_msgboard/comments.do"})
 public class CommentsServlet extends HttpServlet {

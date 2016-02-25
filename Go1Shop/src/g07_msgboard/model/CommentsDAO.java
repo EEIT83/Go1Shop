@@ -79,7 +79,7 @@ public class CommentsDAO {
 	}
 	
 	
-	private final String INSERT="insert into comments(userName,comment) values(?,?)";
+	private final String INSERT="insert into comments(mem_id,comment,prod_id) values(?,?,?)";
 	public int insert(String userName, String comment){
 		int i=0;
 		try (

@@ -47,9 +47,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <h3><a href="/Go1Shop/g07_msgboard/comments.do">jQuery之家留言板</a></h3>
 <h3><a href="/Go1Shop/g07_msgboard/comments.do?manage=1">jQuery之家留言板管理</a></h3>
-<h3><a href="ad.html">廣告輪播</a></h3>
-<h3><a href="adManage.jsp">廣告輪播管理</a></h3>
+<h3><a href="/Go1Shop/gb04_marketing/ad.html">廣告輪播</a></h3>
+<h3><a href="/Go1Shop/gb04_marketing/adManage.jsp">廣告輪播管理</a></h3>
 
+<hr>
+<a href='/Go1Shop/gb05_mail/send.jsp'>ch07_寫信</a><p/>
+<a href='/Go1Shop/gb05_mail/mail.jsp'>ch07_收信</a><p/>
 
 <hr>
 <h3><a href="/g01_login">會員登入</a></h3>
