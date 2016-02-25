@@ -77,7 +77,7 @@ public class FilterLogin implements Filter {
 	private boolean mustLogin(String servletPath){
 		boolean login = false;
 		for(String sURL:url){
-			System.out.println("sURL="+sURL.endsWith("*"));
+			//System.out.println("sURL="+sURL.endsWith("*"));
 			if(sURL.endsWith("*")){
 				sURL = sURL.substring(0,sURL.length()-1);
 				if(servletPath.startsWith(sURL)){
