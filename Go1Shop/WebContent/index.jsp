@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="org.apache.commons.lang3.StringUtils"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import="org.apache.commons.lang3.StringUtils"%>    
 <%@page import="java.util.*"%>  
 <%
 String path = request.getContextPath();
@@ -40,6 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <hr>
 <h3>	<a href='<c:url value="/g03_product/addNewProduct.jsp" />'>新增產品</a><br></h3>
 <h3>	<a href='<c:url value="/g03_product/selectProductByMemId.jsp" />'>查詢產品</a><br></h3>
+<h3>	<a href='<c:url value="/g03_product/updateProductByProductId.jsp" />'>修改產品</a><br></h3>
 <h3>	<a href='<c:url value="/g03_product/uploadImg.jsp" />'>上傳圖片</a><br></h3>
 <hr>
 <h3>	<a href='<c:url value="/g03_product/productproject.jsp" />'>篩選產品</a><br></h3>

@@ -29,8 +29,7 @@ public class ProdimgServlet extends HttpServlet {
 		if("addImg".equals(action)){
 			
 		
-			int prodId = Integer.parseInt(req.getParameter("prodId"));
-			//int imgId =  Integer.parseInt(req.getParameter("imgId"));
+			int prodId = Integer.parseInt(req.getParameter("prodId"));	
 			
 			Part part = req.getPart("img");
 			InputStream inputStream = part.getInputStream();
@@ -38,8 +37,7 @@ public class ProdimgServlet extends HttpServlet {
 			inputStream.read(data);
 			
 			Prodimg prodimg = new Prodimg();
-			prodimg.setProdId(prodId);
-			//prodimg.setImgId(imgId);
+			prodimg.setProdId(prodId);			
 			prodimg.setImg(data);		
 			
 			ProdimgService prodimgService = new ProdimgService();

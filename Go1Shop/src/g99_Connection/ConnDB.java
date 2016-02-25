@@ -12,7 +12,7 @@ public class ConnDB {
 	private static DataSource ds = null;
 	static{
 		try {
-			Context context = new InitialContext();
+			Context context = new InitialContext();			
 			ds = (DataSource) context.lookup("java:comp/env/jdbc/Go1ShopDB");
 		} catch (NamingException e) {
 			e.printStackTrace();

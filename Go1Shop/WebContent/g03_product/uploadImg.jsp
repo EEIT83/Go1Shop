@@ -8,11 +8,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width initial-scale =1">
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/_css/normalize.css">
+	href="<%=request.getContextPath()%>/css/normalize.css">
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/_css/bootstrap.min.css">
-<script src="<%=request.getContextPath()%>/_js/jquery-1.11.3.min.js"></script>
-<script src="<%=request.getContextPath()%>/_js/bootstrap.min.js"></script>
+	href="<%=request.getContextPath()%>/css/bootstrap.min.css">
+<script src="<%=request.getContextPath()%>/js/jquery-1.11.3.min.js"></script>
+<script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
 
 <title>Insert title here</title>
 </head>
@@ -39,11 +39,7 @@
 						<div class="form-group">
 							<label for="prodId">prodId</label> <input type="text" name="prodId"
 								class="form-control" id="prodId" placeholder="prodId" />
-						</div>
-						<div class="form-group">
-							<label for="imgId">imgId</label> <input type="text" name="imgId"
-								class="form-control" id="imgId" placeholder="imgId" />
-						</div>						
+						</div>										
 						<div class="form-group">
 							<label for="img">note</label> <input type="file" name="img"
 								class="form-control" id="img" placeholder="img" />

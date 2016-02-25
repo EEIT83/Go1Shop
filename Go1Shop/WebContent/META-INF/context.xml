@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?> 
 <Context displayName="JSP Servlet Example" docBase="example" path="/example" reloadable="true">
-  <!--                  SQLServer                  -->
+  <!--                  SQLServer                  -->	
   <Resource name="jdbc/Go1ShopDB" type="javax.sql.DataSource"
       username="sa" password="sa123456"
       driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"

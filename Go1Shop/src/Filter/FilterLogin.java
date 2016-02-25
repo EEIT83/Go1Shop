@@ -23,9 +23,10 @@ import g01_login.controller.MemberBean;
  * Servlet Filter implementation class FilterLogin
  */
 @WebFilter(
-		urlPatterns = { "/*" }, 
+		urlPatterns = { "/g05_customer/checkout/checkDetail.jsp","/g05_customer/checkout/success.jsp" }, 
 		initParams = { 
-		@WebInitParam(name = "url_5", value = "/g05_customer/*") 
+		@WebInitParam(name = "url_checkDetail", value = "/g05_customer/checkout/checkDetail.jsp"),
+		@WebInitParam(name = "url_success", value = "/g05_customer/checkout/success.jsp") 
 		}
 		)
 public class FilterLogin implements Filter {
@@ -46,6 +47,7 @@ public class FilterLogin implements Filter {
 		contextPath = req.getContextPath();
 		//System.out.println("contextPath="+contextPath);
 		String servletPath = req.getServletPath();
+		//System.out.println("servletPath=" + servletPath);
 		if (mustLogin(servletPath)) {
 			if (checkLogin(req)) {
 				chain.doFilter(request, response);
@@ -67,6 +69,7 @@ public class FilterLogin implements Filter {
 		Enumeration<String> e = fConfig.getInitParameterNames();
 		while (e.hasMoreElements()) {
 			String name = e.nextElement();
+			//System.out.println(fConfig.getInitParameter(name));
 			url.add(fConfig.getInitParameter(name));
 		}
 	}
@@ -74,6 +77,7 @@ public class FilterLogin implements Filter {
 	private boolean mustLogin(String servletPath){
 		boolean login = false;
 		for(String sURL:url){
+			System.out.println("sURL="+sURL.endsWith("*"));
 			if(sURL.endsWith("*")){
 				sURL = sURL.substring(0,sURL.length()-1);
 				if(servletPath.startsWith(sURL)){

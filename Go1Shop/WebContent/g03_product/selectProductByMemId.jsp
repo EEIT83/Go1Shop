@@ -52,7 +52,8 @@
 			<td>${productVO.part}</td>
 			<td>${productVO.launchDate}</td>
 			<td>${productVO.note}</td>
-			<td><a href="ProductServlet?action=deleteByProdId&prodId=${productVO.prodId}&memId=${productVO.memId}">§R°£</a></td>                  
+			<td><a href="<%=request.getContextPath()%>/ProductServlet?action=deleteByProdId&prodId=${productVO.prodId}&memId=${productVO.memId}">§R°£</a></td>
+			<td><a href="<%=request.getContextPath()%>/ProductServlet?action=goToUpdatePage&prodId=${productVO.prodId}&memId=${productVO.memId}">­×§ï</a></td>                  
 		</tr>
 	</c:forEach>
 </table>

@@ -17,11 +17,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
-	<%@ include file="../_files/nav.file" %>
 
-	<div class="container-fluid">		
-		<%@ include file="../_files/sideBar.file" %>
+<%-- 	<%@ include file="../_files/nav.file"%> --%>
+
+	<div class="container-fluid">
+<%-- 		<%@ include file="../_files/sideBar.file"%> --%>
 		<div class="row">
 			<div class="col-md-offset-2">
 				<%-- 錯誤表列 --%>
@@ -35,65 +35,77 @@
 					</font>
 				</c:if>
 				<div class="col-md-8">
-				
-					<form action="<c:url value='/ProductServlet' />" method="get" class="form-horizontal">
-						<div class="form-group">
-							<label for="memId" class="col-sm-2 control-label">memId</label>
-							<div class="col-sm-2">
-								<input type="text" name="memId" class="form-control" id="memId"
-									placeholder="memId" />
+					<form action="<c:url value='/ProductServlet'/>" method="GET" class="form-horizontal" enctype="multipart/form-data">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="img">note</label> <input type="file" name="img"
+									class="form-control" id="img" placeholder="img" />
 							</div>
 						</div>
+						<div class="col-md-6">
 
-						<div class="form-group">
-							<label for="prodName">prodName</label> <input type="text" name="prodName"
-								class="form-control" id="prodName" placeholder="prodName" />
+							<div class="form-group">
+								<label for="memId" class="col-sm-2 control-label">memId</label>
+								<div class="col-sm-2"> 
+									<input type="text" name="memId" class="form-control" id="memId"
+										placeholder="memId" />
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="prodName">prodName</label> <input type="text"
+									name="prodName" class="form-control" id="prodName"
+									placeholder="prodName" />
+							</div>
+
+							<div class="form-group">
+								<label for="size">size</label> <input type="text" name="size"
+									class="form-control" id="size" placeholder="size" />
+							</div>
+
+							<div class="form-group">
+								<label for="color">color</label> <input type="text" name="color"
+									class="form-control" id="color" placeholder="color" />
+							</div>
+
+							<div class="form-group">
+								<label for="Count">Count</label> <input type="text" name="count"
+									class="form-control" id="Count" placeholder="Count" />
+							</div>
+
+							<div class="form-group">
+								<label for="price">price</label> <input type="text" name="price"
+									class="form-control" id="price" placeholder="price" />
+							</div>
+
+							<div class="form-group">
+								<label for="brand">brand</label> <input type="text" name="brand"
+									class="form-control" id="brand" placeholder="brand" />
+							</div>
+
+							<div class="form-group">
+								<label for="gender">gender</label> <input type="text"
+									name="gender" class="form-control" id="gender"
+									placeholder="gender" />
+							</div>
+
+							<div class="form-group">
+								<label for="part">part</label> <input type="text" name="part"
+									class="form-control" id="part" placeholder="part" />
+							</div>
+
+							<div class="form-group">
+								<label for="note">note</label> <input type="text" name="note"
+									class="form-control" id="note" placeholder="note" />
+							</div>
+							<input type="hidden" name="action" value="insert" /><br />
+
+							<button type="submit" class="btn btn-default">Submit</button>
+
 						</div>
-
-						<div class="form-group">
-							<label for="size">size</label> <input type="text" name="size"
-								class="form-control" id="size" placeholder="size" />
-						</div>
-
-						<div class="form-group">
-							<label for="color">color</label> <input type="text" name="color"
-								class="form-control" id="color" placeholder="color" />
-						</div>
-
-						<div class="form-group">
-							<label for="Count">Count</label> <input type="text" name="count"
-								class="form-control" id="Count" placeholder="Count" />
-						</div>
-
-						<div class="form-group">
-							<label for="price">price</label> <input type="text" name="price"
-								class="form-control" id="price" placeholder="price" />
-						</div>
-
-						<div class="form-group">
-							<label for="brand">brand</label> <input type="text" name="brand"
-								class="form-control" id="brand" placeholder="brand" />
-						</div>
-
-						<div class="form-group">
-							<label for="gender">gender</label> <input type="text" name="gender"
-								class="form-control" id="gender" placeholder="gender" />
-						</div>
-
-						<div class="form-group">
-							<label for="part">part</label> <input type="text" name="part"
-								class="form-control" id="part" placeholder="part" />
-						</div>
-
-						<div class="form-group">
-							<label for="note">note</label> <input type="text" name="note"
-								class="form-control" id="note" placeholder="note" />
-						</div>
-						<input type="hidden" name="action" value="insert" /><br />
-
-						<button type="submit" class="btn btn-default">Submit</button>
 					</form>
 				</div>
+
 			</div>
 		</div>
 	</div>
