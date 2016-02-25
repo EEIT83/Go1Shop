@@ -8,11 +8,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width initial-scale =1">
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/normalize.css">
+	href="<%=request.getContextPath()%>/_css/normalize.css">
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/bootstrap.min.css">
-<script src="<%=request.getContextPath()%>/js/jquery-1.11.3.min.js"></script>
-<script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
+	href="<%=request.getContextPath()%>/_css/bootstrap.min.css">
+<script src="<%=request.getContextPath()%>/_js/jquery-1.11.3.min.js"></script>
+<script src="<%=request.getContextPath()%>/_js/bootstrap.min.js"></script>
 
 <title>Insert title here</title>
 </head>
@@ -35,7 +35,7 @@
 					</font>
 				</c:if>
 				<div class="col-md-8">
-					<form action="<%=request.getContextPath()%>/ProdimgServlet" method="post" class="form-horizontal" enctype="multipart/form-data">
+					<form action="<%=request.getContextPath()%>/ProdimgServlet.do" method="post" class="form-horizontal" enctype="multipart/form-data">
 						<div class="form-group">
 							<label for="prodId">prodId</label> <input type="text" name="prodId"
 								class="form-control" id="prodId" placeholder="prodId" />

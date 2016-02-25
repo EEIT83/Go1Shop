@@ -17,7 +17,7 @@ import javax.servlet.http.Part;
 import g03_product.controller.img.Prodimg;
 import g03_product.controller.img.ProdimgService;
 
-@WebServlet("/ProductServlet")
+@WebServlet("/ProductServlet.do")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 5 * 1024 * 1024, maxRequestSize = 5 * 5 * 1024 * 1024)
 public class ProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

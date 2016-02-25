@@ -18,10 +18,10 @@
 </head>
 <body>
 
-<%-- 	<%@ include file="../_files/nav.file"%> --%>
+	<%@ include file="../_files/nav.file"%>
 
 	<div class="container-fluid">
-<%-- 		<%@ include file="../_files/sideBar.file"%> --%>
+		<%@ include file="../_files/sideBar.file"%>
 		<div class="row">
 			<div class="col-md-offset-2">
 				<%-- 錯誤表列 --%>
@@ -35,7 +35,7 @@
 					</font>
 				</c:if>
 				<div class="col-md-8">
-					<form action="<c:url value='/ProductServlet'/>" method="GET" class="form-horizontal" enctype="multipart/form-data">
+					<form action="<c:url value='/ProductServlet.do'/>" method="post" class="form-horizontal" enctype="multipart/form-data">
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="img">note</label> <input type="file" name="img"

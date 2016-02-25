@@ -52,13 +52,13 @@
 			<td>${productVO.part}</td>
 			<td>${productVO.launchDate}</td>
 			<td>${productVO.note}</td>
-			<td><a href="<%=request.getContextPath()%>/ProductServlet?action=deleteByProdId&prodId=${productVO.prodId}&memId=${productVO.memId}">刪除</a></td>
-			<td><a href="<%=request.getContextPath()%>/ProductServlet?action=goToUpdatePage&prodId=${productVO.prodId}&memId=${productVO.memId}">修改</a></td>                  
+			<td><a href="<%=request.getContextPath()%>/ProductServlet.do?action=deleteByProdId&prodId=${productVO.prodId}&memId=${productVO.memId}">刪除</a></td>
+			<td><a href="<%=request.getContextPath()%>/ProductServlet.do?action=goToUpdatePage&prodId=${productVO.prodId}&memId=${productVO.memId}">修改</a></td>                  
 		</tr>
 	</c:forEach>
 </table>
 </c:if>
-<form action="ProductServlet" method="get" >
+<form action="<c:url value='/ProductServlet.do'/>" method="get" >
 	memId:<input type="text" name="memId"/> <br/>
 	<input type="hidden" name="action" value="getOneByMemId" /><br/>
 	<button type="submit">送出</button>
