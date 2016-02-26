@@ -38,12 +38,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</c:if>
 
 <hr>
-<h3>	<a href='<c:url value="/g03_product/addNewProduct.jsp" />'>新增產品</a><br></h3>
-<h3>	<a href='<c:url value="/g03_product/selectProductByMemId.jsp" />'>查詢產品</a><br></h3>
-<h3>	<a href='<c:url value="/g03_product/updateProductByProductId.jsp" />'>修改產品</a><br></h3>
-<h3>	<a href='<c:url value="/g03_product/uploadImg.jsp" />'>上傳圖片</a><br></h3>
+<h3>	<a href='<c:url value="/g03_product/addNewProduct_M.jsp" />'>新增產品</a><br></h3>
+<h3>	<a href='<c:url value="/g03_product/selectProductByMemId_M.jsp" />'>查詢產品</a><br></h3>
+<h3>	<a href='<c:url value="/g03_product/updateProductByProductId_M.jsp" />'>修改產品</a><br></h3>
+<h3>	<a href='<c:url value="/g03_product/uploadImg.jsp_M" />'>上傳圖片</a><br></h3>
 <hr>
-<h3>	<a href='<c:url value="/g03_product/productproject.jsp" />'>篩選產品</a><br></h3>
+<h3>	<a href='<c:url value="/g03_product/productproject_Y.jsp" />'>篩選產品</a><br></h3>
 <hr>
 
 <h3><a href="/Go1Shop/g07_msgboard/comments.do">jQuery之家留言板</a></h3>

@@ -102,8 +102,8 @@ function clearForm() {
 <script type="text/javascript">clearForm();</script>
 
 ------------------------------------------------------------------------------------------
-<a href="<c:url value='/g03_product/productproject.controller?gender=M'/>">男裝</a>
-<a href="<c:url value='/g03_product/productproject.controller?gender=F'/>">女裝</a>
+<a href="<c:url value='/pages/productproject.controller?gender=M'/>">男裝</a>
+<a href="<c:url value='/pages/productproject.controller?gender=F'/>">女裝</a>
 
 <h3>Select Product Table Result : ${fn:length(select)} row(s) selected</h3>
 <c:if test="${not empty select}">

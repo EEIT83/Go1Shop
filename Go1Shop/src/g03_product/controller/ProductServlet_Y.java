@@ -143,7 +143,7 @@ public class ProductServlet_Y extends HttpServlet {
 			result = productService.select(bean,SQLprice,SQLorder,SQLgender,SQLpart);//把SQL傳入select做查詢
 			request.setAttribute("select", result);
 			request.getRequestDispatcher(
-					"/g03_product/productproject.jsp").forward(request, response);
+					"/g03_product/productproject_Y.jsp").forward(request, response);
 		} 
 		
 		
@@ -154,7 +154,7 @@ public class ProductServlet_Y extends HttpServlet {
 			result = productService.selectAll(bean);			   
 			request.setAttribute("select", result);		
 			request.getRequestDispatcher(
-					"/g03_product/productproject.jsp").forward(request, response);
+					"/g03_product/productproject_Y.jsp").forward(request, response);
 	    }
 		
 //		} else if("Update".equals(prodaction)) {

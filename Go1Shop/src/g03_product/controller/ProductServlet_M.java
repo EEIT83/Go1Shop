@@ -124,7 +124,7 @@ public class ProductServlet_M extends HttpServlet {
 				if (!errorMsgs.isEmpty()) {					
 					req.setAttribute("ProductVO", productVO); // 資料庫取出的empVO物件,存入req
 					System.out.println(132);
-					RequestDispatcher failureView = req.getRequestDispatcher("/g03_product/addNewProduct.jsp");
+					RequestDispatcher failureView = req.getRequestDispatcher("/g03_product/addNewProduct_M.jsp");
 					failureView.forward(req, resp);
 					return;
 				}
@@ -140,7 +140,7 @@ public class ProductServlet_M extends HttpServlet {
 //				int count2 = prodImgSvc.addImg(prodimg);
 
 				// 3.轉交資料
-				String url = "/g03_product/addNewProduct.jsp";
+				String url = "/g03_product/addNewProduct_M.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交
 																				// listAllEmp.jsp
 				successView.forward(req, resp);
@@ -148,7 +148,7 @@ public class ProductServlet_M extends HttpServlet {
 				// 其他可能的錯誤處理
 			} catch (Exception e) {
 				errorMsgs.add(e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/g03_product/addNewProduct.jsp");
+				RequestDispatcher failureView = req.getRequestDispatcher("/g03_product/addNewProduct_M.jsp");
 				failureView.forward(req, resp);
 			}
 		}
@@ -174,14 +174,14 @@ public class ProductServlet_M extends HttpServlet {
 
 				// 3.結果傳送到顯示的View
 				req.setAttribute("productVOList", list);
-				String url = "/g03_product/selectProductByMemId.jsp";
+				String url = "/g03_product/selectProductByMemId_M.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url);// 成功轉交
 																				// update_emp_input.jsp
 				successView.forward(req, resp);
 
 			} catch (Exception e) {
 				errorMsgs.add(e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/g03_product/selectProductByMemId.jsp");
+				RequestDispatcher failureView = req.getRequestDispatcher("/g03_product/selectProductByMemId_M.jsp");
 				failureView.forward(req, resp);
 
 			}
@@ -212,14 +212,14 @@ public class ProductServlet_M extends HttpServlet {
 
 				// 3.結果傳送到顯示的View
 				req.setAttribute("productVOList", list);
-				String url = "/g03_product/selectProductByMemId.jsp";
+				String url = "/g03_product/selectProductByMemId_M.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url);// 成功轉交
 																				// update_emp_input.jsp
 				successView.forward(req, resp);
 
 			} catch (Exception e) {
 				errorMsgs.add(e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/g03_product/selectProductByMemId.jsp");
+				RequestDispatcher failureView = req.getRequestDispatcher("/g03_product/selectProductByMemId_M.jsp");
 				failureView.forward(req, resp);
 
 			}
@@ -253,7 +253,7 @@ public class ProductServlet_M extends HttpServlet {
 				// 3.查詢完成,準備轉交(Send the Success view)
 
 				req.setAttribute("productVO", productVO); // 資料庫取出的empVO物件,存入req
-				String url = "/g03_product/updateProductByProductId.jsp";
+				String url = "/g03_product/updateProductByProductId_M.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url);// 成功轉交
 																				// update_emp_input.jsp
 				successView.forward(req, resp);
@@ -261,7 +261,7 @@ public class ProductServlet_M extends HttpServlet {
 				// 其他可能的錯誤處理
 			} catch (Exception e) {
 				errorMsgs.add(e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/g03_product/updateProductByProductId.jsp");
+				RequestDispatcher failureView = req.getRequestDispatcher("/g03_product/updateProductByProductId_M.jsp");
 				failureView.forward(req, resp);
 			}
 		}
@@ -341,7 +341,7 @@ public class ProductServlet_M extends HttpServlet {
 
 				if (!errorMsgs.isEmpty()) {					
 					req.setAttribute("ProductVO", productVO); // 資料庫取出的empVO物件,存入req
-					RequestDispatcher failureView = req.getRequestDispatcher("/g03_product/updateProductByProductId.jsp");
+					RequestDispatcher failureView = req.getRequestDispatcher("/g03_product/updateProductByProductId_M.jsp");
 					failureView.forward(req, resp);
 					return;
 				}
@@ -355,7 +355,7 @@ public class ProductServlet_M extends HttpServlet {
 
 				// 3.結果傳送到顯示的View
 				req.setAttribute("productVOList", list);
-				String url = "/g03_product/selectProductByMemId.jsp";
+				String url = "/g03_product/selectProductByMemId_M.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url);// 成功轉交
 																				// update_emp_input.jsp
 				successView.forward(req, resp);				
@@ -363,7 +363,7 @@ public class ProductServlet_M extends HttpServlet {
 				// 其他可能的錯誤處理
 			} catch (Exception e) {
 				errorMsgs.add(e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/g03_product/updateProductByProductId.jsp");
+				RequestDispatcher failureView = req.getRequestDispatcher("/g03_product/updateProductByProductId_M.jsp");
 				failureView.forward(req, resp);
 			}
 		}

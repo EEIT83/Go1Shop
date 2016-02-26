@@ -32,9 +32,9 @@ function clearForm() {
 <tr>
 <td>
 
-<h3><a href="<c:url value="/g03_product/productproject.jsp" />">Product Table</a></h3>
-<h3><a href="<c:url value="/g03_product/selectmen.jsp" />">Men</a></h3>
-<h3><a href="<c:url value="/g03_product/selectwomen.jsp" />">Women</a></h3>
+<h3><a href="<c:url value="/g03_product/productproject_Y.jsp" />">Product Table</a></h3>
+<h3><a href="<c:url value="/g03_product/selectmen_Y.jsp" />">Men</a></h3>
+<h3><a href="<c:url value="/g03_product/selectwomen_Y.jsp" />">Women</a></h3>
 </td>
 </tr>
 </table>
@@ -120,7 +120,7 @@ function clearForm() {
 	</thead>
 	<tbody>
 	<c:forEach var="bean" items="${select}">
-		<c:url value="/pages/productproject.jsp" var="path">			
+		<c:url value="/g03_product/productproject_Y.jsp" var="path">			
 			<c:param name="prod_name" value="${bean.prod_name}" />
 			<c:param name="size" value="${bean.size}" />
 			<c:param name="color" value="${bean.color}" />

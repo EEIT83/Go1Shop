@@ -85,9 +85,9 @@ public class ProductGenderServlet_Y extends HttpServlet {
 			result = productService.select(bean, SQLprice, SQLorder, SQLgender, SQLpart);// 把SQL傳入select做查詢
 			request.setAttribute("select", result);
 			if (gender.equals("M"))
-				request.getRequestDispatcher("/g03_product/selectmen.jsp").forward(request, response);
+				request.getRequestDispatcher("/g03_product/selectmen_Y.jsp").forward(request, response);
 			if (gender.equals("F"))
-				request.getRequestDispatcher("/g03_product/selectwomen.jsp").forward(request, response);
+				request.getRequestDispatcher("/g03_product/selectwomen_Y.jsp").forward(request, response);
 			return;
 		}//結束
 		
@@ -108,9 +108,9 @@ public class ProductGenderServlet_Y extends HttpServlet {
 			request.setAttribute("select", result);
 			
 			if (gender.equals("M"))
-				request.getRequestDispatcher("/g03_product/selectmen.jsp").forward(request, response);
+				request.getRequestDispatcher("/g03_product/selectmen_Y.jsp").forward(request, response);
 			if (gender.equals("F"))
-				request.getRequestDispatcher("/g03_product/selectwomen.jsp").forward(request, response);
+				request.getRequestDispatcher("/g03_product/selectwomen_Y.jsp").forward(request, response);
 			return;
 		
 		}//結束
@@ -194,9 +194,9 @@ public class ProductGenderServlet_Y extends HttpServlet {
 			// System.out.println("result="+result);	
 			
 			if (gender.equals("M"))
-				request.getRequestDispatcher("/g03_product/selectmen.jsp").forward(request, response);
+				request.getRequestDispatcher("/g03_product/selectmen_Y.jsp").forward(request, response);
 			if (gender.equals("F"))
-				request.getRequestDispatcher("/g03_product/selectwomen.jsp").forward(request, response);
+				request.getRequestDispatcher("/g03_product/selectwomen_Y.jsp").forward(request, response);
 			
 			System.out.println("SQLpart=" + SQLpart);
 			System.out.println("gender=" + gender);
@@ -214,9 +214,9 @@ public class ProductGenderServlet_Y extends HttpServlet {
 		
 		//最後
 		if (gender.equals("M"))
-			request.getRequestDispatcher("/g03_product/selectmen.jsp").forward(request, response);
+			request.getRequestDispatcher("/g03_product/selectmen_Y.jsp").forward(request, response);
 		if (gender.equals("F"))
-			request.getRequestDispatcher("/g03_product/selectwomen.jsp").forward(request, response);		
+			request.getRequestDispatcher("/g03_product/selectwomen_Y.jsp").forward(request, response);		
 		
 	}
 	// if(gender!=null) {
