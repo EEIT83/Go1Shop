@@ -188,11 +188,6 @@
 			document.getElementById("twzipcode1").onchange = choice_sen;
 			document.getElementById("sender_address").onblur = choice_sen;
 			
-			
-			
-			
-			
-			
 			document.getElementById("addressee").onblur = checkAddressee;
 			document.getElementById("address").onblur = checkAddress;
 			document.getElementById("phone").onblur = checkPhone;
@@ -201,10 +196,10 @@
 			document.getElementById("sender_address").onblur = checkAddressSen;
 			document.getElementById("sender_phone").onblur = checkPhoneSen;
 			
-			
-			
 			document.getElementById("button").onclick = click;
 			document.getElementById("previous").onclick = previous;
+			
+			
 		}
 		
 		var county;
@@ -257,9 +252,7 @@
 					tag = i;
 				}
 			}
-			
-			alert(tag);
-			
+			//alert(tag);
 			if (tag == 0)
 				str += "貨到付款\n";
 			if (tag == 1)
@@ -316,7 +309,7 @@
 			var theAddress=document.getElementById("address").value;
 			var re=/^[\u4E00-\u9FFF]{2,}$/;
 			console.log("district=" + district +"  county="+county +"  zipcode="+zipcode);
-			if(re.test(theAddress) && district!="" && county!="" && zipcode!=""){
+			if(re.test(theAddress) & district != null & county != null & zipcode != null){
 				//alert("成功");
 				var x = document.getElementById("address");
 				x.parentNode.removeChild(x.nextSibling);				
@@ -330,9 +323,9 @@
 				document.getElementById("address").parentNode.parentNode.parentNode.parentNode.parentNode.className="form-group has-error has-feedback";
 				document.getElementById("address").parentNode.parentNode.parentNode.parentNode.parentNode.style.height ="105px";
 			}
-			
+				
 		}
-
+		
 		
 		function checkSender(){
 			var theAddressee=document.getElementById("sender").value;
@@ -350,12 +343,12 @@
 				x.parentNode.removeChild(x.nextSibling);	
 				$('#sender').after("<span class='glyphicon glyphicon-remove form-control-feedback' class='sr-only'></span>");
 				document.getElementById("sender").parentNode.className="form-group has-error has-feedback";
-				alert(1);
 				document.getElementById("sender").parentNode.style.height ="79px";
 			}
 			
 		}
-
+		
+		
 		function checkPhoneSen(){
 			var theAddress=document.getElementById("sender_phone").value;
 			var re=/^\d{10}$/;
@@ -370,6 +363,7 @@
 				x.parentNode.removeChild(x.nextSibling);	
 				$('#sender_phone').after("<span class='glyphicon glyphicon-remove form-control-feedback'></span>");
 				document.getElementById("sender_phone").parentNode.className="form-group has-error has-feedback";
+				//console.log(document.getElementById("sender_phonee").parentNode);
 				document.getElementById("sender_phone").parentNode.style.height ="79px";
 			}
 		}
@@ -377,7 +371,8 @@
 		function checkAddressSen(){
 			var theAddress=document.getElementById("sender_address").value;
 			var re=/^[\u4E00-\u9FFF]{2,}$/;
-			if(re.test(theAddress)  && district_sen != "" && county_sen != "" && zipcode_sen != ""){
+			console.log("district=" + district_sen + "  county=" + county_sen +"  zipcode=" + zipcode_sen);
+			if(re.test(theAddress) & district_sen != null & county_sen != null & zipcode_sen != null){
 				//alert("成功");
 				var x = document.getElementById("sender_address");
 				x.parentNode.removeChild(x.nextSibling);				
@@ -393,6 +388,8 @@
 			}
 			
 		}
+		
+		
 		
 		
 	</SCRIPT>
