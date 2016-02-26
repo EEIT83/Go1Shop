@@ -31,7 +31,7 @@ function clearForm() {
 
 <table>
 <tr>
-<td><h3><a href="<c:url value="/g03_product/productproject.jsp" />">Product Table</a></h3></td>
+<td><h3><a href="<c:url value="/g03_product/productproject_Y.jsp" />">Product Table</a></h3></td>
 <td><h3><a href="<c:url value="/g03_product/ProductGenderServlet.controller?gender=M&change=true" />">Men</a></h3></td>
 </tr>
 </table>
