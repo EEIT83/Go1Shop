@@ -9,15 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import g03_product.model.ProductProject1Bean;
-import g03_product.model.ProductServiceProject1;
+import g03_product.model.ProductBean_Y;
+import g03_product.model.ProductService_Y;
 
 @WebServlet(
 		urlPatterns={"/pages/productproject.controller"}
 )
-public class ProductProjectServlet extends HttpServlet {
+public class ProductServlet_Y extends HttpServlet {
 	
-	private ProductServiceProject1 productService = new ProductServiceProject1();
+	private ProductService_Y productService = new ProductService_Y();
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -88,7 +88,7 @@ public class ProductProjectServlet extends HttpServlet {
 
 		//呼叫model(DAO)
 		
-		ProductProject1Bean bean = new ProductProject1Bean();	
+		ProductBean_Y bean = new ProductBean_Y();	
 		bean.setProd_name(prod_name);
 		bean.setGender(gender);
 		
@@ -118,7 +118,7 @@ public class ProductProjectServlet extends HttpServlet {
 		
 //根據model執行結果顯示view
 		
-		List<ProductProject1Bean> result;
+		List<ProductBean_Y> result;
 		
 		if("Select".equals(prodaction)) {			
 			//price range

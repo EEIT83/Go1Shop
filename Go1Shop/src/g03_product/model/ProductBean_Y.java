@@ -1,6 +1,6 @@
 package g03_product.model;
 
-public class ProductProject1Bean {	
+public class ProductBean_Y {	
 
 	private int mem_id;
     private String prod_name;

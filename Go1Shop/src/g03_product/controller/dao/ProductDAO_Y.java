@@ -12,19 +12,19 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import g03_product.model.ProductDAOProject1;
-import g03_product.model.ProductProject1Bean;
+import g03_product.model.ProductDAOI_Y;
+import g03_product.model.ProductBean_Y;
 
-public class ProductDAOJdbcProject1 implements ProductDAOProject1 {
+public class ProductDAO_Y implements ProductDAOI_Y {
 	// private static final String URL =
 	// "jdbc:sqlserver://localhost:1433;database=project";
 	// private static final String USERNAME = "sa";
 	// private static final String PASSWORD = "sa123456";
 
 	private DataSource dataSource = null;
-	private List<ProductProject1Bean> result = null;
+	private List<ProductBean_Y> result = null;
 
-	public ProductDAOJdbcProject1() {
+	public ProductDAO_Y() {
 		try {
 			Context ctx = new InitialContext();
 			dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/Go1ShopDB");
@@ -43,7 +43,7 @@ public class ProductDAOJdbcProject1 implements ProductDAOProject1 {
 	// private static final String SELECT_BY_PROD_NAME = "select * from product
 	// where prod_name =?";
 	@Override
-	public List<ProductProject1Bean> select(String prod_name, String SQLprice, String SQLorder, String SQLgender,
+	public List<ProductBean_Y> select(String prod_name, String SQLprice, String SQLorder, String SQLgender,
 			String SQLpart) {
 		// List<ProductProject1Bean> result = null;
 		try (// Connection conn = DriverManager.getConnection(URL,
@@ -71,9 +71,9 @@ public class ProductDAOJdbcProject1 implements ProductDAOProject1 {
 				stmt.setString(1, prod_name);
 			}
 			ResultSet rset = stmt.executeQuery();
-			result = new ArrayList<ProductProject1Bean>();
+			result = new ArrayList<ProductBean_Y>();
 			while (rset.next()) {
-				ProductProject1Bean bean = new ProductProject1Bean();
+				ProductBean_Y bean = new ProductBean_Y();
 				bean.setMem_id(rset.getInt("mem_id"));
 				bean.setProd_name(rset.getString("prod_name"));
 				bean.setSize(rset.getString("size"));
@@ -94,7 +94,7 @@ public class ProductDAOJdbcProject1 implements ProductDAOProject1 {
 	}
 
 	@Override
-	public List<ProductProject1Bean> selectAll(String gender) {
+	public List<ProductBean_Y> selectAll(String gender) {
 		// List<ProductProject1Bean> result = null;
 		try (// Connection conn = DriverManager.getConnection(URL, USERNAME,
 				// PASSWORD);
@@ -107,9 +107,9 @@ public class ProductDAOJdbcProject1 implements ProductDAOProject1 {
 			PreparedStatement stmt = conn.prepareStatement(SELECT_ALL.toString());
 			stmt.setString(1, gender);
 			ResultSet rset = stmt.executeQuery();
-			result = new ArrayList<ProductProject1Bean>();
+			result = new ArrayList<ProductBean_Y>();
 			while (rset.next()) {
-				ProductProject1Bean bean = new ProductProject1Bean();
+				ProductBean_Y bean = new ProductBean_Y();
 				bean.setMem_id(rset.getInt("mem_id"));
 				bean.setProd_name(rset.getString("prod_name"));
 				bean.setSize(rset.getString("size"));
@@ -130,7 +130,7 @@ public class ProductDAOJdbcProject1 implements ProductDAOProject1 {
 	}
 
 	public static void main(String[] args) {
-		ProductDAOProject1 dao = new ProductDAOJdbcProject1();
+		ProductDAO_Y dao = new ProductDAO_Y();
 		// List<ProductProject1Bean> beans = dao.select();
 		// System.out.println(beans);
 

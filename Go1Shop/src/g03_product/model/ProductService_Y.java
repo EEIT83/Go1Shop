@@ -3,30 +3,30 @@ package g03_product.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import g03_product.controller.dao.ProductDAOJdbcProject1;
+import g03_product.controller.dao.ProductDAO_Y;
 
-public class ProductServiceProject1 {
-	private ProductDAOProject1 productDao = new ProductDAOJdbcProject1();
+public class ProductService_Y {
+	private ProductDAO_Y productDao = new ProductDAO_Y();
 
 	// private List<ProductProject1Bean> result=null;
 	// 單一select
-	public List<ProductProject1Bean> select(ProductProject1Bean bean, String SQLprice, String SQLorder,
+	public List<ProductBean_Y> select(ProductBean_Y bean, String SQLprice, String SQLorder,
 			String SQLgender, String SQLpart) {// priceSQL的值會傳進query
-		List<ProductProject1Bean> result = null;
+		List<ProductBean_Y> result = null;
 		if (bean != null && bean.getProd_name() != null) {
 //			System.out.println(bean);
-			List<ProductProject1Bean> temp = productDao.select(bean.getProd_name(), SQLprice, SQLorder, SQLgender,
+			List<ProductBean_Y> temp = productDao.select(bean.getProd_name(), SQLprice, SQLorder, SQLgender,
 					SQLpart);// 取得prod_name
 			if (temp != null) {
-				result = new ArrayList<ProductProject1Bean>();
+				result = new ArrayList<ProductBean_Y>();
 				result.addAll(temp);
 				
 			}
 		} else if(SQLpart!=null){
-			List<ProductProject1Bean> temp = productDao.select(bean.getProd_name(), SQLprice, SQLorder, SQLgender,
+			List<ProductBean_Y> temp = productDao.select(bean.getProd_name(), SQLprice, SQLorder, SQLgender,
 					SQLpart);
 			if (temp != null) {
-				result = new ArrayList<ProductProject1Bean>();
+				result = new ArrayList<ProductBean_Y>();
 				result.addAll(temp);
 				
 			
@@ -36,13 +36,13 @@ public class ProductServiceProject1 {
 	}
 
 	// selectAll(prod_name)
-	public List<ProductProject1Bean> selectAll(ProductProject1Bean bean) {
-		List<ProductProject1Bean> result = null;
+	public List<ProductBean_Y> selectAll(ProductBean_Y bean) {
+		List<ProductBean_Y> result = null;
 		System.out.println(bean);
 		if (bean != null && bean.getGender() != null) {
-			List<ProductProject1Bean> temp = productDao.selectAll(bean.getGender());// 取得prod_name
+			List<ProductBean_Y> temp = productDao.selectAll(bean.getGender());// 取得prod_name
 			if (temp != null) {
-				result = new ArrayList<ProductProject1Bean>();
+				result = new ArrayList<ProductBean_Y>();
 				result.addAll(temp);
 			}
 		} else {
@@ -52,8 +52,8 @@ public class ProductServiceProject1 {
 	}
 
 	public static void main(String[] args) {
-		ProductServiceProject1 service = new ProductServiceProject1();
-		ProductProject1Bean beantest = new ProductProject1Bean();
+		ProductService_Y service = new ProductService_Y();
+		ProductBean_Y beantest = new ProductBean_Y();
 		beantest.setProd_name("jeans");
 		// List<ProductProject1Bean> beans = service.select(beantest);
 		// System.out.println("beans="+beans);

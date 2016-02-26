@@ -16,12 +16,12 @@ import javax.servlet.http.Part;
 
 import g03_product.controller.img.Prodimg;
 import g03_product.controller.img.ProdimgService;
-import g03_product.model.ProductService;
-import g03_product.model.ProductVO;
+import g03_product.model.ProductService_M;
+import g03_product.model.ProductVO_M;
 
 @WebServlet("/ProductServlet.do")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 5 * 1024 * 1024, maxRequestSize = 5 * 5 * 1024 * 1024)
-public class ProductServlet extends HttpServlet {
+public class ProductServlet_M extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -104,7 +104,7 @@ public class ProductServlet extends HttpServlet {
 				}
 
 				//商品物件
-				ProductVO productVO = new ProductVO();
+				ProductVO_M productVO = new ProductVO_M();
 				productVO.setMemId(memId);
 				productVO.setProdName(prodName);
 				productVO.setSize(size);
@@ -131,7 +131,7 @@ public class ProductServlet extends HttpServlet {
 
 				// 2.開始新增資料
 				//新增product
-				ProductService prodsvc = new ProductService();
+				ProductService_M prodsvc = new ProductService_M();
 				int count1 = prodsvc.addProd(productVO);
 				
 				//新增product img
@@ -169,8 +169,8 @@ public class ProductServlet extends HttpServlet {
 					errorMsgs.add("會員ID請勿空白");
 				}
 				// 2.查詢資料(透過svc進行資料處理)
-				ProductService srv = new ProductService();
-				List<ProductVO> list = srv.getOneByMemId(memId);
+				ProductService_M srv = new ProductService_M();
+				List<ProductVO_M> list = srv.getOneByMemId(memId);
 
 				// 3.結果傳送到顯示的View
 				req.setAttribute("productVOList", list);
@@ -206,9 +206,9 @@ public class ProductServlet extends HttpServlet {
 					errorMsgs.add("會員ID請勿空白");
 				}
 				// 2.查詢資料(透過svc進行資料處理)
-				ProductService srv = new ProductService();
+				ProductService_M srv = new ProductService_M();
 				srv.delete(prodId); // 刪除
-				List<ProductVO> list = srv.getOneByMemId(memId); // 再次查詢該會員
+				List<ProductVO_M> list = srv.getOneByMemId(memId); // 再次查詢該會員
 
 				// 3.結果傳送到顯示的View
 				req.setAttribute("productVOList", list);
@@ -247,8 +247,8 @@ public class ProductServlet extends HttpServlet {
 				
 				// 2.開始查詢資料
 
-				ProductService srv = new ProductService();
-				ProductVO productVO = srv.getOne(prodId);
+				ProductService_M srv = new ProductService_M();
+				ProductVO_M productVO = srv.getOne(prodId);
 
 				// 3.查詢完成,準備轉交(Send the Success view)
 
@@ -326,7 +326,7 @@ public class ProductServlet extends HttpServlet {
 					errorMsgs.add("註解請勿空白");
 				}
 
-				ProductVO productVO = new ProductVO();
+				ProductVO_M productVO = new ProductVO_M();
 				productVO.setProdId(prodId);
 				productVO.setMemId(memId);				
 				productVO.setProdName(prodName);
@@ -348,10 +348,10 @@ public class ProductServlet extends HttpServlet {
 
 				// 2.開始新增資料
 
-				ProductService prodsvc = new ProductService();
+				ProductService_M prodsvc = new ProductService_M();
 				int count1 = prodsvc.update(productVO);
 				
-				List<ProductVO> list = prodsvc.getOneByMemId(memId);
+				List<ProductVO_M> list = prodsvc.getOneByMemId(memId);
 
 				// 3.結果傳送到顯示的View
 				req.setAttribute("productVOList", list);

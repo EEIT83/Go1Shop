@@ -11,7 +11,7 @@ import javax.sql.DataSource;
 
 import g99_Connection.ConnDB;
 
-public class ProductDAOImpl implements ProductDAO {
+public class ProductDAOImpl_M implements ProductDAO_M {
 
 //	private static final String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 //	private static final String URL = "jdbc:sqlserver://localhost:1433;DatabaseName=Project";
@@ -27,7 +27,7 @@ public class ProductDAOImpl implements ProductDAO {
 	
 	@Override
 
-	public int insert(ProductVO productVO) {
+	public int insert(ProductVO_M productVO) {
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -66,7 +66,7 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public int update(ProductVO product) {
+	public int update(ProductVO_M product) {
 
 		int updateCount = 0;
 		Connection con = null;
@@ -138,11 +138,11 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public ProductVO getOne(Integer prodId) {
+	public ProductVO_M getOne(Integer prodId) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		ProductVO product = new ProductVO();
+		ProductVO_M product = new ProductVO_M();
 		try {
 //			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 //			con = DriverManager.getConnection(URL, USER, PASSWARD);
@@ -180,9 +180,9 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public List<ProductVO> getAll() {
-		List<ProductVO> list = new ArrayList<ProductVO>();
-		ProductVO product = null;
+	public List<ProductVO_M> getAll() {
+		List<ProductVO_M> list = new ArrayList<ProductVO_M>();
+		ProductVO_M product = null;
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -196,7 +196,7 @@ public class ProductDAOImpl implements ProductDAO {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				product = new ProductVO();
+				product = new ProductVO_M();
 				product.setProdId(rs.getInt(1));
 				product.setMemId(rs.getInt(2));
 				product.setProdName(rs.getString(3));
@@ -229,7 +229,7 @@ public class ProductDAOImpl implements ProductDAO {
 
 	public static void main(String[] args) {
 
-		ProductDAOImpl dao = new ProductDAOImpl();
+		ProductDAOImpl_M dao = new ProductDAOImpl_M();
 		// query
 		// ProductVO productVO = dao.getOne(1);
 		// System.out.print(productVO.getProdName()+" ");
@@ -300,8 +300,8 @@ public class ProductDAOImpl implements ProductDAO {
 //		}
 		
 		///get_all_by_memid
-		List<ProductVO> list2 = dao.getAllByMemId(1);
-		for (ProductVO p : list2) {
+		List<ProductVO_M> list2 = dao.getAllByMemId(1);
+		for (ProductVO_M p : list2) {
 			System.out.print(p.getProdId()+ " ");
 			System.out.print(p.getMemId()+ " ");
 			System.out.print(p.getProdName() + " ");
@@ -320,10 +320,10 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public List<ProductVO> getAllByMemId(Integer memId) {
+	public List<ProductVO_M> getAllByMemId(Integer memId) {
 		
-		List<ProductVO> list = new ArrayList<ProductVO>();
-		ProductVO product = null;
+		List<ProductVO_M> list = new ArrayList<ProductVO_M>();
+		ProductVO_M product = null;
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -340,7 +340,7 @@ public class ProductDAOImpl implements ProductDAO {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				product = new ProductVO();
+				product = new ProductVO_M();
 				product.setProdId(rs.getInt(1));
 				product.setMemId(rs.getInt(2));
 				product.setProdName(rs.getString(3));

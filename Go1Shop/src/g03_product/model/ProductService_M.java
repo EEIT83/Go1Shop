@@ -2,16 +2,16 @@ package g03_product.model;
 
 import java.util.List;
 
-public class ProductService {
+public class ProductService_M {
 	
-	private ProductDAO dao;
+	private ProductDAO_M dao;
 	
-	public ProductService(){
-		dao = new ProductDAOImpl();
+	public ProductService_M(){
+		dao = new ProductDAOImpl_M();
 	}
 
 	public int addProd(Integer memId,String prodName,String size,String color,int count,int price,String brand,String gender,String part,String note){
-		ProductVO productVO  = new ProductVO();
+		ProductVO_M productVO  = new ProductVO_M();
 		
 		productVO.setMemId(memId);		
 		productVO.setProdName(prodName);
@@ -28,11 +28,11 @@ public class ProductService {
 		return dao.insert(productVO);
 	}
 	
-	public int addProd(ProductVO productVO){		
+	public int addProd(ProductVO_M productVO){		
 		return dao.insert(productVO);
 	}
 	
-	public List<ProductVO> getOneByMemId(Integer memId){
+	public List<ProductVO_M> getOneByMemId(Integer memId){
 		return dao.getAllByMemId(memId);
 	} 
 	
@@ -41,7 +41,7 @@ public class ProductService {
 	}
 	
 	public int updateProdByProdId(Integer prodId,Integer memId,String prodName,String size,String color,int count,int price,String brand,String gender,String part,String note){
-		ProductVO productVO  = new ProductVO();
+		ProductVO_M productVO  = new ProductVO_M();
 		
 		productVO.setMemId(memId);		
 		productVO.setProdName(prodName);
@@ -58,11 +58,11 @@ public class ProductService {
 		return dao.update(productVO);  
 	}
 		
-	public int update(ProductVO productVO){		
+	public int update(ProductVO_M productVO){		
 		return dao.update(productVO);
 	}
 
-	public  ProductVO getOne(Integer prodId) {
+	public  ProductVO_M getOne(Integer prodId) {
 		// TODO Auto-generated method stub
 		return dao.getOne(prodId);
 	}

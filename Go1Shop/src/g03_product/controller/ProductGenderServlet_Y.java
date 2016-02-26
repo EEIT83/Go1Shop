@@ -10,13 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import g03_product.model.ProductProject1Bean;
-import g03_product.model.ProductServiceProject1;
+import g03_product.model.ProductBean_Y;
+import g03_product.model.ProductService_Y;
 
 @WebServlet(urlPatterns = { "/g03_product/ProductGenderServlet.controller" })
-public class ProductGenderServlet extends HttpServlet {
+public class ProductGenderServlet_Y extends HttpServlet {
 
-	private ProductServiceProject1 productService = new ProductServiceProject1();
+	private ProductService_Y productService = new ProductService_Y();
 	
 	private String a= "T-Shirt";
 	private String b= "Polo衫";
@@ -48,7 +48,7 @@ public class ProductGenderServlet extends HttpServlet {
 		
 		// 呼叫model(DAO)
 
-		ProductProject1Bean bean = new ProductProject1Bean();
+		ProductBean_Y bean = new ProductBean_Y();
 		bean.setProd_name(prod_name);		
 		bean.setGender(gender);
 		bean.setPart(part);
@@ -60,7 +60,7 @@ public class ProductGenderServlet extends HttpServlet {
 
 		// 根據model執行結果顯示view
 
-		List<ProductProject1Bean> result;//new一個接收回傳結果資料的
+		List<ProductBean_Y> result;//new一個接收回傳結果資料的
 		
 		//如果已經先選了部位 就直接針對部位做篩選排序
 		String sessionpart = (String) session.getAttribute("PART");

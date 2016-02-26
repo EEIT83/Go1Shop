@@ -3,7 +3,7 @@ package g03_product.model;
 import java.io.Serializable;
 import java.sql.Date;
 
-public class ProductVO implements Serializable {
+public class ProductVO_M implements Serializable {
 	private Integer prodId;
 	private Integer memId;
 	
