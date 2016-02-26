@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import g03_product.model.ProductProject1Bean;
+import g03_product.model.ProductServiceProject1;
+
 @WebServlet(
 		urlPatterns={"/pages/productproject.controller"}
 )

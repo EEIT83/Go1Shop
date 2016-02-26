@@ -1,26 +1,26 @@
 package g03_product.model;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import g03_product.controller.ProductDAO;
-import g03_product.controller.ProductVO;
+import javax.sql.DataSource;
+
+import g99_Connection.ConnDB;
 
 public class ProductDAOImpl implements ProductDAO {
 
-	private static final String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-	private static final String URL = "jdbc:sqlserver://localhost:1433;DatabaseName=Project";
-	private static final String USER = "sa";
-	private static final String PASSWARD = "sa123456";
-
+//	private static final String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+//	private static final String URL = "jdbc:sqlserver://localhost:1433;DatabaseName=Project";
+//	private static final String USER = "sa";
+//	private static final String PASSWARD = "sa123456";
+	private DataSource ds = ConnDB.getConnDB();
 	private static final String GET_ONE = "select * from product where prod_id = ?";
 	private static final String INSERT_STMT = "INSERT INTO product (mem_id,prod_name,size,color,count,price,brand,gender,part,launch_date,note) VALUES(?,?,?,?,?,?,?,?,?,GETDATE(),?)";
-	private static final String UPDATE = "UPDATE product set mem_id=?,prod_name=?,size=?,color=?,count=?,price=?,brand=?,gender=?,part=?,launch_date=?,note=? where prod_id=?";
+	private static final String UPDATE = "UPDATE product set mem_id=?,prod_name=?,size=?,color=?,count=?,price=?,brand=?,gender=?,part=?,note=? where prod_id=?";
 	private static final String GET_ALL = "select * from product order by prod_id";
     private static final String DELETE = "DELETE from product where prod_id = ?";
 	private static final String GET_ALL_BY_MEMID = "select * from product where mem_id = ?";
@@ -35,8 +35,9 @@ public class ProductDAOImpl implements ProductDAO {
 
 		int updateCount = 0;
 		try {
-			Class.forName(DRIVER);
-			con = DriverManager.getConnection(URL, USER, PASSWARD);
+//			Class.forName(DRIVER);
+//			con = DriverManager.getConnection(URL, USER, PASSWARD);
+			con = ds.getConnection();
 			pstmt = con.prepareStatement(INSERT_STMT);
 			
 			pstmt.setInt(1, productVO.getMemId());
@@ -50,9 +51,6 @@ public class ProductDAOImpl implements ProductDAO {
 			pstmt.setString(9, productVO.getPart());
 			pstmt.setString(10, productVO.getNote());
 			updateCount = pstmt.executeUpdate();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();			
-			
 		} catch (SQLException se) {
 			se.printStackTrace();
 		} finally {
@@ -75,8 +73,9 @@ public class ProductDAOImpl implements ProductDAO {
 		PreparedStatement pstmt = null;
 
 		try {
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			con = DriverManager.getConnection(URL, USER, PASSWARD);
+//			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+//			con = DriverManager.getConnection(URL, USER, PASSWARD);
+			con = ds.getConnection();
 			pstmt = con.prepareStatement(UPDATE);
 			pstmt.setInt(1, product.getMemId());
 			pstmt.setString(2, product.getProdName());
@@ -86,15 +85,11 @@ public class ProductDAOImpl implements ProductDAO {
 			pstmt.setInt(6, product.getPrice());
 			pstmt.setString(7, product.getBrand());
 			pstmt.setString(8, product.getGender());
-			pstmt.setString(9, product.getPart());
-			pstmt.setDate(10, product.getLaunchDate());
-			pstmt.setString(11, product.getNote());
-			pstmt.setInt(12, product.getProdId());
-
+			pstmt.setString(9, product.getPart());		
+			pstmt.setString(10, product.getNote());
+			pstmt.setInt(11, product.getProdId());			
 			updateCount = pstmt.executeUpdate();
 
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
 		} catch (SQLException se) {
 			se.printStackTrace();
 		} finally {
@@ -118,17 +113,16 @@ public class ProductDAOImpl implements ProductDAO {
 		
 
 			try {
-				Class.forName(DRIVER);
-                con = DriverManager.getConnection(URL, USER, PASSWARD);
+//				Class.forName(DRIVER);
+//                con = DriverManager.getConnection(URL, USER, PASSWARD);
+				con = ds.getConnection();
                 pstmt = con.prepareStatement(DELETE);
                 
 				pstmt.setInt(1, prodId);
 				
 				updateCount = pstmt.executeUpdate();
                 
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			}catch (SQLException se){
+			} catch (SQLException se){
 				se.printStackTrace();
 			}finally{
 				if(con!=null){
@@ -150,8 +144,9 @@ public class ProductDAOImpl implements ProductDAO {
 		ResultSet rs = null;
 		ProductVO product = new ProductVO();
 		try {
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			con = DriverManager.getConnection(URL, USER, PASSWARD);
+//			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+//			con = DriverManager.getConnection(URL, USER, PASSWARD);
+			con = ds.getConnection();
 			pstmt = con.prepareStatement(GET_ONE);
 			
 			pstmt.setInt(1, prodId);
@@ -170,8 +165,6 @@ public class ProductDAOImpl implements ProductDAO {
 				product.setLaunchDate(rs.getDate(11));
 				product.setNote(rs.getString(12));
 			}
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
 		} catch (SQLException se) {
 			se.printStackTrace();
 		} finally {
@@ -196,8 +189,9 @@ public class ProductDAOImpl implements ProductDAO {
 		ResultSet rs = null;
 
 		try {
-			Class.forName(DRIVER);
-			con = DriverManager.getConnection(URL, USER, PASSWARD);
+//			Class.forName(DRIVER);
+//			con = DriverManager.getConnection(URL, USER, PASSWARD);
+			con = ds.getConnection();
 			pstmt = con.prepareStatement(GET_ALL);
 			rs = pstmt.executeQuery();
 
@@ -218,8 +212,6 @@ public class ProductDAOImpl implements ProductDAO {
 				list.add(product);
 			}
 
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
 		} catch (SQLException se) {
 			se.printStackTrace();
 		} finally {
@@ -315,7 +307,7 @@ public class ProductDAOImpl implements ProductDAO {
 			System.out.print(p.getProdName() + " ");
 			System.out.print(p.getSize() + " ");
 			System.out.print(p.getColor() + " ");
-			System.out.print(p.getCount() + "��蕭 ");
+			System.out.print(p.getCount() + " 件");
 			System.out.print(p.getPrice() + " ");
 			System.out.print(p.getBrand() + " ");
 			System.out.print(p.getGender() + " ");
@@ -338,8 +330,9 @@ public class ProductDAOImpl implements ProductDAO {
 		ResultSet rs = null;
 
 		try {
-			Class.forName(DRIVER);
-			con = DriverManager.getConnection(URL, USER, PASSWARD);
+//			Class.forName(DRIVER);
+//			con = DriverManager.getConnection(URL, USER, PASSWARD);
+			con = ds.getConnection();
 			pstmt = con.prepareStatement(GET_ALL_BY_MEMID);
 			
 			
@@ -363,8 +356,6 @@ public class ProductDAOImpl implements ProductDAO {
 				list.add(product);
 			}
 
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
 		} catch (SQLException se) {
 			se.printStackTrace();
 		} finally {

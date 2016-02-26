@@ -23,10 +23,6 @@
 	margin:auto;
 	width: 500px;
 }
-#tb{
-	
-}
-
 
 /* --------------------------------- */
 
@@ -34,7 +30,7 @@
 .col-fixed{
 
 	  margin:0px auto;
-	  background: #CCC;
+	
 }
 
 .form-control{
@@ -101,9 +97,15 @@
 	<div class="form">
 		<div class="col-fixed">
 			<form name="my_form" method=POST class="form-group"  >
+				<fieldset>
+				<legend></legend>
 				<div class="form-group">
 					<label class="control-label" for="addressee">收件人:</label>
 					<input type="text" name="orderBean.addressee" id=addressee class="form-control">${errors.addressee}<br>
+				</div>
+				<div class="form-group">
+					<label class="control-label">手機:</label>
+					<input type="text" name="orderBean.phone" id="phone" class="form-control">${errors.phone}<br>
 				</div>
 				<div class="form-group">
 					<label class="control-label">收件人地址:</label>
@@ -120,13 +122,16 @@
 						</tr>
 					</table>
 				</div>
-				<div class="form-group">
-					<label class="control-label">手機:</label>
-					<input type="text" name="orderBean.phone" id="phone" class="form-control">${errors.phone}<br>
-				</div>
+				</fieldset>
+				<fieldset>
+				<legend></legend>
 				<div class="form-group">
 					<label class="control-label">寄件人:</label>
-					<input type="text" name="orderBean.sender" class="form-control">${errors.sender}<br>
+					<input type="text" name="orderBean.sender" id="sender" class="form-control">${errors.sender}<br>
+				</div>
+				<div class="form-group">
+					<label class="control-label">手機:</label>
+					<input type="text" name="orderBean.sender_phone" id="sender_phone" class="form-control">${errors.sender_phone}<br>
 				</div>
 				<div class="form-group">
 					<label class="control-label">寄件人地址:</label>
@@ -137,17 +142,15 @@
 							</td>
 						</tr>
 						<tr>
-							<td>				
+							<td>
 								<input type="text"  id="sender_address" class="form-control">${errors.sender_address}<br>
 							</td>
 						</tr>
 					</table>				
 				</div>
-				<div class="form-group">
-					<label class="control-label">手機:</label>
-					<input type="text" name="orderBean.sender_phone" class="form-control">${errors.sender_phone}<br>
-				</div>
-				
+				</fieldset>
+				<fieldset>
+				<legend></legend>
 					<label class="control-label">付款方式:</label>
 				<div class="radio">
 					<label class="radio-inline">
@@ -160,11 +163,12 @@
 					<input type="radio" name="radio" value="3">3.ATM轉帳
 					</label>
 					${errors.payment} 
+				</div>
+				</fieldset>
 					<div id = "bt">
 						<button id="previous" class="btn btn-primary" >上一頁</button>
 						<button id="button"  class="btn btn-primary" >送出</button>
 					</div>
-				</div>
 			</form>
 		</div>
 	</div>
@@ -179,9 +183,9 @@
 			'css' : [ 'county', 'district', 'zipcode' ]
 		});
 		window.onload = function() {
-			document.getElementById("twzipcode").onclick = choice;
+			document.getElementById("twzipcode").onchange = choice;
 			document.getElementById("address").onblur = choice;
-			document.getElementById("twzipcode1").onclick = choice_sen;
+			document.getElementById("twzipcode1").onchange = choice_sen;
 			document.getElementById("sender_address").onblur = choice_sen;
 			
 			
@@ -192,6 +196,12 @@
 			document.getElementById("addressee").onblur = checkAddressee;
 			document.getElementById("address").onblur = checkAddress;
 			document.getElementById("phone").onblur = checkPhone;
+			
+			document.getElementById("sender").onblur = checkSender;
+			document.getElementById("sender_address").onblur = checkAddressSen;
+			document.getElementById("sender_phone").onblur = checkPhoneSen;
+			
+			
 			
 			document.getElementById("button").onclick = click;
 			document.getElementById("previous").onclick = previous;
@@ -209,16 +219,10 @@
 				county = $(el.county).val();
 				district = $(el.district).val();
 				zipcode = $(el.zipcode).val();
-				if(county==""){
-					var x = document.getElementById("twzipcode");
-					x.parentNode.removeChild(x.nextSibling);				
-					$('#twzipcode').after("<span class='glyphicon glyphicon-remove form-control-feedback'></span>");
-					document.getElementById("twzipcode").parentNode.className="has-error has-feedback";
-				}
 				var add = document.getElementById("address").value;
 				address=county+district+add;
 				//console.log(address);
-				console.log(address);
+				checkAddress();
 			});
 		}
 		var county_sen;
@@ -235,8 +239,8 @@
 				zipcode_sen = $(el.zipcode).val();
 				var add = document.getElementById("sender_address").value;
 				address_sen=county_sen+district_sen+add;
-				console.log("sen:"+address_sen);
 				//console.log(address);
+				checkAddressSen();
 			});
 		}
 		function previous(){
@@ -262,14 +266,7 @@
 				str += "信用卡付款\n";
 			if (tag == 2)
 				str += "ATM轉帳\n";
-			
-			//console.log("str="+str);
-			alert("zipcode="+zipcode);
-			alert("zipcode_sen="+zipcode_sen);
-				
-			
 			document.forms[0].action="<c:url value='/checkDetail.action?payment=" + str + "&address=" + address + "&zip_code=" + zipcode + "&sender_address=" + address_sen + "&zip_code_sen=" + zipcode_sen + "'/>";	
-			//document.forms[0].action="<c:url value='/checkDetail.action?payment=" + str + "&address=" + address + "&zip_code=" + zipcode + "&sender_address=" + address_sen  + "'/>";	
 			document.forms[0].method = "POST";
 			document.forms[0].submit();
 		}
@@ -288,33 +285,13 @@
 				//alert("失敗");
 				var x = document.getElementById("addressee");
 				x.parentNode.removeChild(x.nextSibling);	
-				$('#addressee').after("<span class='glyphicon glyphicon-remove form-control-feedback' class='sr-only'><h6>必填</h6></span>");
+				$('#addressee').after("<span class='glyphicon glyphicon-remove form-control-feedback' class='sr-only'></span>");
 				document.getElementById("addressee").parentNode.className="form-group has-error has-feedback";
 				document.getElementById("addressee").parentNode.style.height ="79px";
 			}
 			
 		}
 		
-		function checkAddress(){
-			var theAddress=document.getElementById("address").value;
-			var re=/^[\u4E00-\u9FFF]{2,}$/;
-			if(re.test(theAddress)){
-				//alert("成功");
-				var x = document.getElementById("address");
-				x.parentNode.removeChild(x.nextSibling);				
-				$('#address').after("<span class='glyphicon glyphicon-ok form-control-feedback'></span>");
-				document.getElementById("address").parentNode.className="form-group has-success has-feedback";
-			}
-			else {
-				var x = document.getElementById("address");
-				x.parentNode.removeChild(x.nextSibling);	
-				$('#address').after("<span class='glyphicon glyphicon-remove form-control-feedback'></span>");
-				document.getElementById("address").parentNode.className="form-group has-error has-feedback";
-				console.log(document.getElementById("address").parentNode.parentNode.parentNode.parentNode);
-				document.getElementById("address").parentNode.style.height ="105px";
-			}
-			
-		}
 		
 		function checkPhone(){
 			var theAddress=document.getElementById("phone").value;
@@ -330,12 +307,93 @@
 				x.parentNode.removeChild(x.nextSibling);	
 				$('#phone').after("<span class='glyphicon glyphicon-remove form-control-feedback'></span>");
 				document.getElementById("phone").parentNode.className="form-group has-error has-feedback";
+				console.log(document.getElementById("phone").parentNode);
 				document.getElementById("phone").parentNode.style.height ="79px";
 			}
 		}
-		function checkName(){
+		
+		function checkAddress(){
+			var theAddress=document.getElementById("address").value;
+			var re=/^[\u4E00-\u9FFF]{2,}$/;
+			console.log("district=" + district +"  county="+county +"  zipcode="+zipcode);
+			if(re.test(theAddress) && district!="" && county!="" && zipcode!=""){
+				//alert("成功");
+				var x = document.getElementById("address");
+				x.parentNode.removeChild(x.nextSibling);				
+				$('#address').after("<span class='glyphicon glyphicon-ok form-control-feedback' style='margin-top:50px'></span>");
+				document.getElementById("address").parentNode.parentNode.parentNode.parentNode.parentNode.className="form-group has-success has-feedback";
+			}
+			else {
+				var x = document.getElementById("address");
+				x.parentNode.removeChild(x.nextSibling);	
+				$('#address').after("<span class='glyphicon glyphicon-remove form-control-feedback' style='margin-top:50px'></span>");
+				document.getElementById("address").parentNode.parentNode.parentNode.parentNode.parentNode.className="form-group has-error has-feedback";
+				document.getElementById("address").parentNode.parentNode.parentNode.parentNode.parentNode.style.height ="105px";
+			}
 			
-		}	
+		}
+
+		
+		function checkSender(){
+			var theAddressee=document.getElementById("sender").value;
+			var re=/^[\u4E00-\u9FFF]{2,}$/;
+			if(re.test(theAddressee)){
+				//alert("成功");
+				var x = document.getElementById("sender");
+				x.parentNode.removeChild(x.nextSibling);				
+				$('#sender').after("<span class='glyphicon glyphicon-ok form-control-feedback'></span>");
+				document.getElementById("sender").parentNode.className="form-group has-success has-feedback";
+			}
+			else {
+				//alert("失敗");
+				var x = document.getElementById("sender");
+				x.parentNode.removeChild(x.nextSibling);	
+				$('#sender').after("<span class='glyphicon glyphicon-remove form-control-feedback' class='sr-only'></span>");
+				document.getElementById("sender").parentNode.className="form-group has-error has-feedback";
+				alert(1);
+				document.getElementById("sender").parentNode.style.height ="79px";
+			}
+			
+		}
+
+		function checkPhoneSen(){
+			var theAddress=document.getElementById("sender_phone").value;
+			var re=/^\d{10}$/;
+			if(re.test(theAddress)){
+				var x = document.getElementById("sender_phone");
+				x.parentNode.removeChild(x.nextSibling);				
+				$('#sender_phone').after("<span class='glyphicon glyphicon-ok form-control-feedback'></span>");
+				document.getElementById("sender_phone").parentNode.className="form-group has-success has-feedback";
+			}
+			else{
+				var x = document.getElementById("sender_phone");
+				x.parentNode.removeChild(x.nextSibling);	
+				$('#sender_phone').after("<span class='glyphicon glyphicon-remove form-control-feedback'></span>");
+				document.getElementById("sender_phone").parentNode.className="form-group has-error has-feedback";
+				document.getElementById("sender_phone").parentNode.style.height ="79px";
+			}
+		}
+		
+		function checkAddressSen(){
+			var theAddress=document.getElementById("sender_address").value;
+			var re=/^[\u4E00-\u9FFF]{2,}$/;
+			if(re.test(theAddress)  && district_sen != "" && county_sen != "" && zipcode_sen != ""){
+				//alert("成功");
+				var x = document.getElementById("sender_address");
+				x.parentNode.removeChild(x.nextSibling);				
+				$('#sender_address').after("<span class='glyphicon glyphicon-ok form-control-feedback' style='margin-top:50px'></span>");
+				document.getElementById("sender_address").parentNode.parentNode.parentNode.parentNode.parentNode.className="form-group has-success has-feedback";
+			}
+			else {
+				var x = document.getElementById("sender_address");
+				x.parentNode.removeChild(x.nextSibling);	
+				$('#sender_address').after("<span class='glyphicon glyphicon-remove form-control-feedback' style='margin-top:50px'></span>");
+				document.getElementById("sender_address").parentNode.parentNode.parentNode.parentNode.parentNode.className="form-group has-error has-feedback";
+				document.getElementById("sender_address").parentNode.parentNode.parentNode.parentNode.parentNode.style.height ="105px";
+			}
+			
+		}
+		
 		
 	</SCRIPT>
 

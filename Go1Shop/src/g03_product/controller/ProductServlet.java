@@ -16,6 +16,8 @@ import javax.servlet.http.Part;
 
 import g03_product.controller.img.Prodimg;
 import g03_product.controller.img.ProdimgService;
+import g03_product.model.ProductService;
+import g03_product.model.ProductVO;
 
 @WebServlet("/ProductServlet.do")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 5 * 1024 * 1024, maxRequestSize = 5 * 5 * 1024 * 1024)

@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import g03_product.model.ProductProject1Bean;
+import g03_product.model.ProductServiceProject1;
+
 @WebServlet(urlPatterns = { "/g03_product/ProductGenderServlet.controller" })
 public class ProductGenderServlet extends HttpServlet {
 

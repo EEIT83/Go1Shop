@@ -1,4 +1,4 @@
-package g03_product.controller;
+package g03_product.model;
 
 public class ProductProject1Bean {	
 

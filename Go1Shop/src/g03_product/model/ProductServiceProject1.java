@@ -1,4 +1,4 @@
-package g03_product.controller;
+package g03_product.model;
 
 import java.util.ArrayList;
 import java.util.List;

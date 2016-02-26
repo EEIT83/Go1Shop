@@ -12,8 +12,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import g03_product.controller.ProductDAOProject1;
-import g03_product.controller.ProductProject1Bean;
+import g03_product.model.ProductDAOProject1;
+import g03_product.model.ProductProject1Bean;
 
 public class ProductDAOJdbcProject1 implements ProductDAOProject1 {
 	// private static final String URL =
