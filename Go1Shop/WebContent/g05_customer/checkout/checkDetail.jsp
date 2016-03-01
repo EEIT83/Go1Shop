@@ -196,7 +196,7 @@
 			document.getElementById("sender_address").onblur = checkAddressSen;
 			document.getElementById("sender_phone").onblur = checkPhoneSen;
 			
-			document.getElementById("button").onclick = click;
+			document.getElementById("button").onclick =check();
 			document.getElementById("previous").onclick = previous;
 			
 			
@@ -242,28 +242,43 @@
 			window.location.href='<c:url value="/g05_customer/shoppingCar/show.jsp" />';
 		}
 
-		function click() {
-			var tag;
-			var str = "";
-			
-			for (var i = 0; i < my_form.radio.length; i++) {
-				var x = document.forms[0].radio[i].checked;
-				if (x) {
-					tag = i;
+		function click(){
+
+				var tag;
+				var str = "";
+				
+				for (var i = 0; i < my_form.radio.length; i++) {
+					var x = document.forms[0].radio[i].checked;
+					if (x) {
+						tag = i;
+					}
 				}
-			}
-			//alert(tag);
-			if (tag == 0)
-				str += "貨到付款\n";
-			if (tag == 1)
-				str += "信用卡付款\n";
-			if (tag == 2)
-				str += "ATM轉帳\n";
-			document.forms[0].action="<c:url value='/checkDetail.action?payment=" + str + "&address=" + address + "&zip_code=" + zipcode + "&sender_address=" + address_sen + "&zip_code_sen=" + zipcode_sen + "'/>";	
-			document.forms[0].method = "POST";
-			document.forms[0].submit();
+				//alert(tag);
+				if (tag == 0)
+					str += "貨到付款\n";
+				if (tag == 1)
+					str += "信用卡付款\n";
+				if (tag == 2)
+					str += "ATM轉帳\n";
+				document.forms[0].action="<c:url value='/checkDetail.action?payment=" + str + "&address=" + address + "&zip_code=" + zipcode + "&sender_address=" + address_sen + "&zip_code_sen=" + zipcode_sen + "'/>";	
+				document.forms[0].method = "POST";
+				document.forms[0].submit();
+			
 		}
-		
+		function check(){
+			check();
+			checkAddressee();
+			checkPhone();
+			choice();
+			checkSender();
+			checkPhoneSen();
+			choice_sen();
+			if(!$('span').hasClass('glyphicon-remove')){
+				click();
+			}else{
+				return false;
+			}
+		}
 		function checkAddressee(){
 			var theAddressee=document.getElementById("addressee").value;
 			var re=/^[\u4E00-\u9FFF]{2,}$/;
@@ -308,7 +323,7 @@
 		function checkAddress(){
 			var theAddress=document.getElementById("address").value;
 			var re=/^[\u4E00-\u9FFF]{2,}$/;
-			console.log("district=" + district +"  county="+county +"  zipcode="+zipcode);
+			console.log("district=" + district +"  county="+county +"  zipcode="+zipcode +"theAddress=" + theAddress);
 			if(re.test(theAddress) & district != null & county != null & zipcode != null){
 				//alert("成功");
 				var x = document.getElementById("address");
@@ -371,7 +386,7 @@
 		function checkAddressSen(){
 			var theAddress=document.getElementById("sender_address").value;
 			var re=/^[\u4E00-\u9FFF]{2,}$/;
-			console.log("district=" + district_sen + "  county=" + county_sen +"  zipcode=" + zipcode_sen);
+			console.log("district=" + district_sen + "  county=" + county_sen +"  zipcode=" + zipcode_sen + +"theAddress=" + theAddress);
 			if(re.test(theAddress) & district_sen != null & county_sen != null & zipcode_sen != null){
 				//alert("成功");
 				var x = document.getElementById("sender_address");

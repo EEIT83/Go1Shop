@@ -42,7 +42,7 @@
 					<h4 class="modal-title">Modal title</h4>
 				</div>
 				<div class="modal-body" style="text-align: center;">
-					<img id="imgContainer"  style="width: 400px;"/>
+					<img id="imgContainer"  style="width: 100%;"/>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
