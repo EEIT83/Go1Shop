@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import g01_login.controller.MemberBean;
 import g01_login.model.MemberDAO;
 
 @WebServlet(urlPatterns = "/Account/Register.controller")
@@ -22,7 +21,7 @@ public class RegisterServlet extends HttpServlet {
 	private MemberDAO dao;
 	private MemberBean bean = new MemberBean();
 	private String pageStatus = null;
-	private int returnStatus;
+	//private int returnStatus;
 
 	@Override
 	public void init() throws ServletException {
@@ -46,6 +45,7 @@ public class RegisterServlet extends HttpServlet {
 				bean.setMail(request.getParameter("mail"));
 				bean.setPwd(request.getParameter("pwd"));
 				bean.setMem_name(request.getParameter("mem_name"));
+				bean.setNickName(request.getParameter("nickName"));
 				bean.setGender(request.getParameter("gender"));
 				bean.setBdate(Date.valueOf(request.getParameter("bdate")));
 				dao.insert(bean);

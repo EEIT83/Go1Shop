@@ -48,6 +48,7 @@ public class ModifyServlet extends HttpServlet {
 				if ("save".equals(pageStatus)) {
 					bean.setMail(request.getParameter("mail"));
 					bean.setMem_name(request.getParameter("mem_name"));
+					bean.setNickName(request.getParameter("nickName"));
 					bean.setGender(request.getParameter("gender"));
 					bean.setBdate(Date.valueOf(request.getParameter("bdate")));
 					dao.update(bean);

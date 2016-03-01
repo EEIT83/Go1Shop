@@ -20,9 +20,9 @@
    <input type="radio" name="gender" value="1" ${account.gender != 2 ? "checked" : ""}> Male
    <input type="radio" name="gender" value="2" ${account.gender == 2 ? "checked" : ""}> Female
    <br>
-   <label>Identification</label>
-   <input type="text" name="identification" id="identification" value="${account.identification}">
-   <span id="errorIdentification">${error.identification }</span>
+   <label>NickName</label>
+   <input type="text" name="nickName" id="nickName" value="${account.nickName}">
+   <span id="errorNickname">${error.nickName }</span>
    <br>
    <label>Birthday</label>
    <input type="text" name="bdate" id="bdate" value="${account.bdate}">

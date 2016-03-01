@@ -15,7 +15,7 @@ import g01_login.controller.MemberFace;
 public class MemberDAO implements MemberFace {
 	private String SELECT_ID = "select * from member where mail=?";
 	private String SELECT_ALL = "select * from member ";
-	private String INSERT = "insert into member (mail, pwd, mem_name, gender, bdate) values (?, ?, ?, ?, ?)";
+	private String INSERT = "insert into member (mail, pwd, mem_name, nickname, gender, bdate) values (?, ?, ?, ?, ?, ?)";
 	private StringBuilder UPDATE;
 	SQLserver db;
 	QueryRunner runner;
@@ -62,7 +62,7 @@ public class MemberDAO implements MemberFace {
 		try {
 			if (memVo != null) {
 				Object params[] = { memVo.getMail(), memVo.getPwd(),
-						memVo.getMem_name(),
+						memVo.getMem_name(), memVo.getNickName(),
 						memVo.getGender(), memVo.getBdate() };
 				runner.update(db.getConn(), INSERT, params);
 			}
@@ -83,7 +83,10 @@ public class MemberDAO implements MemberFace {
 			UPDATE.append("pwd=?, ");
 			pList.add(memVo.getPwd());
 		}
-
+		if (StringUtils.isNoneEmpty(memVo.getNickName())) {
+			UPDATE.append("nickname=?, ");
+			pList.add(memVo.getNickName());
+		}
 		if (StringUtils.isNoneEmpty(memVo.getGender())) {
 			UPDATE.append("gender=?, ");
 			pList.add(memVo.getGender());
@@ -142,6 +145,10 @@ public class MemberDAO implements MemberFace {
 			sb.append(" AND Mem_name Like ?");
 			params.add("%" + memVo.getMem_name() + "%");
 		}
+		if (StringUtils.isNotEmpty(memVo.getNickName())) {
+			sb.append("AND nickname = ?");
+			params.add(memVo.getNickName());
+		}
 		if (StringUtils.isNotEmpty(memVo.getGender())) {
 			sb.append(" AND gender = ?");
 			params.add(memVo.getGender());
@@ -167,13 +174,13 @@ public class MemberDAO implements MemberFace {
 		//vo.setMail("eeit000@gmail.com");
 		//vo.setMem_name("Marry");
 		//vo.setPwd("Marry123");
-		vo.setStatus("S");
+		//vo.setStatus("S");
 		// vo.setMem_id(7);
 		// dao.update(vo);
 		// dao.delete(vo);
 		// dao.insert(vo);
 		//List<MemberBean> results = dao.selectAll();
-		List<MemberBean> results = dao.getByProperty(vo);
+		List<MemberBean> results = dao.selectAll();
 		for (MemberBean result : results) {
 			System.out.println(result);
 		}

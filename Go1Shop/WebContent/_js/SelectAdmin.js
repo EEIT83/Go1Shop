@@ -1,4 +1,5 @@
 var btn = document.getElementById("buttonLoad"), xhr = null;
+var resultCount = document.getElementById("resultCount");
 var displayResult = document.getElementById("displayResult");
 btn.addEventListener("click", load);
 
@@ -49,6 +50,11 @@ function callback() {
 				resultCount.innerHTML = "共" + dataResult.length + "筆";
 			} else {
 				alert(datas.returnMessage);
+				var rowCount = tbody.rows.length;
+				for (var i = (rowCount - 1); i >= 0; i--) {
+					tbody.deleteRow(i);
+				}
+				resultCount.innerHTML="";
 			}
 		} else {
 			alert(xhr.status + ":" + xhr.statusText);

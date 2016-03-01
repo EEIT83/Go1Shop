@@ -27,8 +27,7 @@ public class AdminRegisterServlet extends HttpServlet {
 			if ((adminDAO.selectById((String) session.getAttribute("mail")).getCompetence()) == 1) {
 				if ("insert".equals(pageStatus)) {
 					String ad_mail = request.getParameter("ad_mail").trim();
-					String ad_name = request.getParameter("ad_name").trim();
-					if (StringUtils.isNotEmpty(ad_name) && StringUtils.isNotEmpty(ad_name)) {
+					if (StringUtils.isNotEmpty(ad_mail)) {
 						AdminBean bean = new AdminBean();
 						bean.setAd_mail(ad_mail);
 						bean.setAd_pwd(ad_mail);

@@ -4,18 +4,7 @@
 <html>
 <head>
 <title>ChangePwd</title>
-<script type="text/javascript">
 
-<%  
-	int status = Integer.parseInt(request.getAttribute("status").toString());
-	String message = request.getAttribute("message").toString();
-	if(status == -1){
-%>
-		alert(message);
-<%		
-	}
-%>
-</script>
 </head>
 <body>
 	<form action="<c:url value="/Account/ChangePwd.controller"/>?pageStatus=available" method="post">
@@ -32,8 +21,8 @@
 		<span id="errorCheckNewPwd"></span>
 		<br>
 		<input type="submit" value="Submit" id="submit">
-		<br><br>
-		<span>${status == 0 ? message : ""}</span>
+		
+		<span>${message }</span>
 	</form>
 <script src="../js/ChangPwd.js"></script>
 </body>

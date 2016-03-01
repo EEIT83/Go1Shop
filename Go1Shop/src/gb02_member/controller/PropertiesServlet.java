@@ -54,12 +54,14 @@ public class PropertiesServlet extends HttpServlet {
 
 				String mail = request.getParameter("mail").trim();
 				String name = request.getParameter("mem_name").trim();
+				String nickName = request.getParameter("nickName").trim();
 				String gender = request.getParameter("gender").trim();
 				String status = request.getParameter("status").trim();
 
 				MemberBean bean = new MemberBean();
 				bean.setMail(mail);
 				bean.setMem_name(name);
+				bean.setNickName(nickName);
 				bean.setGender(gender);
 				bean.setStatus(status);
 				if ("change".equals(pageStatus)) {
@@ -88,6 +90,7 @@ public class PropertiesServlet extends HttpServlet {
 			MemberDAO memberDAO = new MemberDAO();
 			if (StringUtils.isEmpty(bean.getMail())
 					&& StringUtils.isEmpty(bean.getMem_name())
+					&& StringUtils.isEmpty(bean.getNickName())
 					&& StringUtils.isEmpty(bean.getGender())
 					&& StringUtils.isEmpty(bean.getStatus())) {
 				results = memberDAO.selectAll();
@@ -101,6 +104,7 @@ public class PropertiesServlet extends HttpServlet {
 					JSONObject json = new JSONObject();
 					json.put("mail", result.getMail().toString());
 					json.put("name", result.getMem_name().toString());
+					json.put("nickName",result.getNickName().toString());
 					json.put("gender", result.getGender().toString());
 					json.put("status", result.getStatus().toString());
 					JSONResults.add(json);

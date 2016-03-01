@@ -1,6 +1,7 @@
 package g03_product.controller.img;
 
 
+import java.sql.Connection;
 import java.util.List;
 
 public interface ProdimgDAO {
@@ -14,8 +15,8 @@ public interface ProdimgDAO {
 
 	public List<Prodimg> getAll();
 
-	List<Prodimg> getAllByImgId(Integer imgId);
+	List<Prodimg> getAllByProdId(Integer prodId);
 
-	
+	public int insertWithConnection(Prodimg prodimg,Connection con);
 	
 }

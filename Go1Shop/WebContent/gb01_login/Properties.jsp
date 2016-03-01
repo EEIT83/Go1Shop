@@ -25,8 +25,8 @@ th, td {
     <input type="text" name="mail" id="mail">
     <label>Name</label>
     <input type="text" name="mem_name" id="mem_name" >
-    <label>Identification</label>
-    <input type="text" name="identification" id="identification">
+    <label>NickName</label>
+    <input type="text" name="nickName" id="nickName">
     <label>Gender</label>
     <select name="gender" id="gender">
     	<option value="">請選擇</option>

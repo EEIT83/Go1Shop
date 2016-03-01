@@ -2,6 +2,7 @@ package g03_product.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import g03_product.controller.img.Prodimg;
-import g03_product.controller.img.ProdimgService;
 import g03_product.model.ProductService_M;
 import g03_product.model.ProductVO_M;
 
@@ -117,13 +117,13 @@ public class ProductServlet_M extends HttpServlet {
 				productVO.setNote(note);
 				
 				//圖片物件
+				List<Prodimg> prodimgList = new ArrayList<Prodimg>();
 				Prodimg prodimg = new Prodimg();
-//				prodimg.setProdId(prodId);
 				prodimg.setImg(data);
+				prodimgList.add(prodimg);
 
 				if (!errorMsgs.isEmpty()) {					
-					req.setAttribute("ProductVO", productVO); // 資料庫取出的empVO物件,存入req
-					System.out.println(132);
+					req.setAttribute("ProductVO", productVO); // 資料庫取出的empVO物件,存入req					
 					RequestDispatcher failureView = req.getRequestDispatcher("/g03_product/addNewProduct_M.jsp");
 					failureView.forward(req, resp);
 					return;
@@ -132,12 +132,8 @@ public class ProductServlet_M extends HttpServlet {
 				// 2.開始新增資料
 				//新增product
 				ProductService_M prodsvc = new ProductService_M();
-				int count1 = prodsvc.addProd(productVO);
-				
-				//新增product img
-				ProdimgService prodImgSvc = new ProdimgService();
-				
-//				int count2 = prodImgSvc.addImg(prodimg);
+				int count1 = prodsvc.addProd(productVO, prodimgList);
+
 
 				// 3.轉交資料
 				String url = "/g03_product/addNewProduct_M.jsp";

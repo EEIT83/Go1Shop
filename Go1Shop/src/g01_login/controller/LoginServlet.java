@@ -66,16 +66,18 @@ public class LoginServlet extends HttpServlet {
 					session.setAttribute("mail", adBean.getAd_mail());
 					// request.setAttribute("account", adBean);
 				} else {
-					error.put("loginError", "無此帳號密碼");
-					request.getRequestDispatcher("/g01_login/Login.jsp").forward(request, response);
+					throw new Exception("無此帳號密碼");
+//					error.put("loginError", "無此帳號密碼");
+//					request.getRequestDispatcher("/g01_login/Login.jsp").forward(request, response);
 				}
+				request.getRequestDispatcher("/index.jsp").forward(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 				error.put("loginError", e.getMessage());
 				request.getRequestDispatcher("/g01_login/Login.jsp").forward(request, response);
 			}
 			request.getSession().setAttribute("LoginOK", memBean);
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
+			//request.getRequestDispatcher("/index.jsp").forward(request, response);
 		}
 
 	}

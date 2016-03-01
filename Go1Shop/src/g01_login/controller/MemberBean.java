@@ -3,7 +3,7 @@ package g01_login.controller;
 public class MemberBean {
 
 	private int mem_id;
-	private String nickname;
+	private String nickName;
 	private String mail;
 	private String pwd;
 	private String mem_name;
@@ -86,12 +86,12 @@ public class MemberBean {
 		this.pwd = pwd;
 	}
 	
-	public String getNickname() {
-		return nickname;
+	public String getNickName() {
+		return nickName;
 	}
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 
 	@Override

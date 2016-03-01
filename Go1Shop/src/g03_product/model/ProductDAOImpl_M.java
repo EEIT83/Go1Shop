@@ -9,6 +9,9 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import g03_product.controller.img.Prodimg;
+import g03_product.controller.img.ProdimgDAO;
+import g03_product.controller.img.ProdimgDAOImpl;
 import g99_Connection.ConnDB;
 
 public class ProductDAOImpl_M implements ProductDAO_M {
@@ -370,5 +373,66 @@ public class ProductDAOImpl_M implements ProductDAO_M {
 
 		return list;
 		
+	}
+
+	@Override
+	public int insertWithImg(ProductVO_M productVO, List<Prodimg> prodimgList) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ProdimgDAO prodimgDAO = new ProdimgDAOImpl();
+
+		int updateCount = 0;
+		try {
+			con = ds.getConnection();
+			
+			con.setAutoCommit(false);
+			String cols[] = {"ProdId"};
+			pstmt = con.prepareStatement(INSERT_STMT , cols);				
+			
+			pstmt.setInt(1, productVO.getMemId());
+			pstmt.setString(2, productVO.getProdName());
+			pstmt.setString(3, productVO.getSize());
+			pstmt.setString(4, productVO.getColor());
+			pstmt.setInt(5, productVO.getCount());
+			pstmt.setInt(6, productVO.getPrice());
+			pstmt.setString(7, productVO.getBrand());
+			pstmt.setString(8, productVO.getGender());
+			pstmt.setString(9, productVO.getPart());
+			pstmt.setString(10, productVO.getNote());
+			updateCount = pstmt.executeUpdate();
+			
+			Integer next_prod_id = null;
+			ResultSet rs = pstmt.getGeneratedKeys();
+			
+			if (rs.next()) {
+				next_prod_id = rs.getInt(1);			
+			}
+			
+			for(Prodimg prodimg : prodimgList){
+				prodimg.setProdId(next_prod_id.intValue());
+				prodimgDAO.insertWithConnection(prodimg, con);
+			}
+			
+			con.commit();
+			con.setAutoCommit(true);
+		} catch (Exception e) {
+			if (con != null) {
+				try {
+					con.rollback();
+				} catch (SQLException e1) {					
+					e1.printStackTrace();
+				}
+			}
+			e.printStackTrace();
+		} finally {
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException se) {
+					se.printStackTrace();
+				}
+			}
+		}
+		return updateCount;
 	}
 }

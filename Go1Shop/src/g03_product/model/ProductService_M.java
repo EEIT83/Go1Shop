@@ -1,5 +1,7 @@
 package g03_product.model;
 
+import g03_product.controller.img.Prodimg;
+
 import java.util.List;
 
 public class ProductService_M {
@@ -30,6 +32,10 @@ public class ProductService_M {
 	
 	public int addProd(ProductVO_M productVO){		
 		return dao.insert(productVO);
+	}
+	
+	public int addProd(ProductVO_M productVO,List<Prodimg> prodimgList){		
+		return dao.insertWithImg(productVO, prodimgList);
 	}
 	
 	public List<ProductVO_M> getOneByMemId(Integer memId){

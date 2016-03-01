@@ -17,9 +17,6 @@
 		<label>Mail</label> 
 		<input type="text" name="ad_mail" id="ad_mail" value="${param.ad_mail }"> 
 			<br> 
-			<label>Name</label> 
-			<input type="text" name="ad_name" id="ad_name" value="${param.ad_name }"> 
-		<br> 
 		<input type="submit" value="submit" ><span id="successMessage"></span>
 	</form>
 <script type="text/javascript">		
@@ -30,7 +27,6 @@ System.out.println(status);
 		alert("${returnMessage}");
 <%}else if(status==1){%>
 		 document.getElementById("ad_mail").removeAttribute("value");
-		document.getElementById("ad_name").removeAttribute("value");
 		document.getElementById("successMessage").innerHTML="${returnMessage}";
 		
 <%}%>
