@@ -150,8 +150,7 @@
 				</div>
 				</fieldset>
 				<fieldset>
-				<legend></legend>
-					<label class="control-label">付款方式:</label>
+					<label class="control-label" id="radio">付款方式:</label>
 				<div class="radio">
 					<label class="radio-inline">
 					<input type="radio" name="radio" value="1">1.貨到付款
@@ -165,6 +164,8 @@
 					${errors.payment} 
 				</div>
 				</fieldset>
+				<br>
+				<br>
 					<div id = "bt">
 						<button id="previous" class="btn btn-primary" >上一頁</button>
 						<button id="button"  class="btn btn-primary" >送出</button>
@@ -196,7 +197,12 @@
 			document.getElementById("sender_address").onblur = checkAddressSen;
 			document.getElementById("sender_phone").onblur = checkPhoneSen;
 			
-			document.getElementById("button").onclick =check();
+			var r  = document.getElementsByName("radio");
+			for(var i = 0 ; i<r.length ; i++){
+				r[i].onchange = radio;
+			}
+			
+			document.getElementById("button").onclick =check;
 			document.getElementById("previous").onclick = previous;
 			
 			
@@ -242,39 +248,51 @@
 			window.location.href='<c:url value="/g05_customer/shoppingCar/show.jsp" />';
 		}
 
-		function click(){
-
-				var tag;
-				var str = "";
-				
+		var tag="";
+		var str = "";
+		function radio(){
 				for (var i = 0; i < my_form.radio.length; i++) {
 					var x = document.forms[0].radio[i].checked;
 					if (x) {
 						tag = i;
 					}
 				}
+				if(tag==""){
+					var v = document.getElementById("radio");	
+					$('#radio').after("<span class='glyphicon glyphicon-remove form-control-feedback'></span>");
+					document.getElementById("radio").parentNode.className="form-group has-error has-feedback";
+				}else{
+					var v = document.getElementById("radio");
+					v.parentNode.removeChild(v.nextSibling);				
+					$('#radio').after("<span class='glyphicon glyphicon-ok form-control-feedback'></span>");
+					document.getElementById("radio").parentNode.className="form-group has-success has-feedback";
+				}
 				//alert(tag);
-				if (tag == 0)
-					str += "貨到付款\n";
-				if (tag == 1)
-					str += "信用卡付款\n";
-				if (tag == 2)
-					str += "ATM轉帳\n";
-				document.forms[0].action="<c:url value='/checkDetail.action?payment=" + str + "&address=" + address + "&zip_code=" + zipcode + "&sender_address=" + address_sen + "&zip_code_sen=" + zipcode_sen + "'/>";	
-				document.forms[0].method = "POST";
-				document.forms[0].submit();
-			
 		}
+		
+		function ok(){
+			if (tag == 0)
+				str += "貨到付款\n";
+			if (tag == 1)
+				str += "信用卡付款\n";
+			if (tag == 2)
+				str += "ATM轉帳\n";
+			document.forms[0].action="<c:url value='/checkDetail.action?payment=" + str + "&address=" + address + "&zip_code=" + zipcode + "&sender_address=" + address_sen + "&zip_code_sen=" + zipcode_sen + "'/>";	
+			document.forms[0].method = "POST";
+			document.forms[0].submit();
+		}
+		
+		
 		function check(){
-			check();
 			checkAddressee();
 			checkPhone();
 			choice();
 			checkSender();
 			checkPhoneSen();
 			choice_sen();
+			radio();
 			if(!$('span').hasClass('glyphicon-remove')){
-				click();
+				ok();
 			}else{
 				return false;
 			}

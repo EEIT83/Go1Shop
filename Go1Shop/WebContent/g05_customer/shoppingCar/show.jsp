@@ -6,30 +6,143 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="<%=request.getContextPath()%>/_js/car/jquery.fly.min.js"></script>
 <title>Insert title here</title>
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+<link href="<%=request.getContextPath()%>/_css/app.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/_css/bootstrap.min.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/_css/business-casual1.css" rel="stylesheet">
+<script src="<%=request.getContextPath()%>/_js/bootstrap.min.js"></script>
+
+<style>
+#p1 a {
+	font-size: 20px;
+	text-decoration: none;
+	color: #5B5B5B;
+	
+}
+#me {
+background-color:#DDDDDD;
+border-radius:20px 20px 0 0;
+
+}
+.active{ 
+border-radius:10px 10px 10px 10px;
+}
+.active ul li{
+border-radius:10px 10px 10px 10px;
+}
+body{
+font-family:微軟正黑體; 
+}
 
 
-<style type="text/css">
-
-.box{float:left; width:198px; height:320px; margin-left:5px; border:1px solid #e0e0e0; text-align:center} 
-.box p{line-height:20px; padding:4px 4px 10px 4px; text-align:left} 
-.box:hover{border:1px solid #f90} 
-.box h4{line-height:32px; font-size:14px; color:#f30;font-weight:500} 
-.box h4 span{font-size:20px}
-.u-flyer{display: block;width: 50px;height: 50px;border-radius: 50px;position: fixed;z-index: 9999;} 
-
-.m-sidebar{position: fixed;top: 0;right: 0;background: #000;z-index: 2000;width: 35px;height: 100%;font-size: 12px;color: #fff;} 
-.cart{color: #fff;text-align:center;line-height: 20px;padding: 200px 0 0 0px;} 
-.cart span{display:block;width:20px;margin:0 auto;} 
-.cart i{width:35px;height:35px;display:block; background:url(car.png) no-repeat;} 
-#msg{position:fixed; top:300px; right:35px; z-index:10000; width:1px; height:52px; line-height:52px; font-size:20px; text-align:center; color:#fff; background:#360; display:none}  
 </style>
 
 </head>
 <body>
-<h3>商品頁</h3>
+<nav class="navbar navbar-default" role="navigation">
+		<div class="container"  style="width:100%;border-radius:0 0 20px 20px;background-color:#DDDDDD">
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
+				<div style="float:left;">
+				<a href="women.html" style="text-decoration: none; color: black; text-shadow:5px 5px 5px #5B5B5B;font-size:45px" >Go.E-Shopping</a>
+				<div class="address-bar" style="color:black;text-shadow:5px 5px 5px #5B5B5B;font-size:8px;">Enjoy Your Life&nbsp;●&nbsp;Chase Love．Brave Dream</div>
+				</div>
+				<ul class="nav navbar-nav"  >
+					<li><a href="women.html">WOMEN</a></li>
+					<li><a href="men.html">MEN</a></li>
+					<li><a href="kids.html">KIDS</a></li>
+					<li><a href="soprts.html">SOPRTS</a></li>
+					<li><a href="babies.html">BABIES</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+		<div id="contentLeft">
+			<ul id="leftNavigation">
+				<li><a href="login.html" style="text-decoration: none">
+				<i class="glyphicon glyphicon-user leftNavIcon"></i>會員登入</a></li>
+				
+				<li><a href="login.html" style="text-decoration: none">
+				<i class="glyphicon glyphicon-search leftNavIcon"></i>查詢</a></li>
+			
+				<li class="active1"><a href="#" style="text-decoration: none">
+				<i class="glyphicon glyphicon-triangle-right leftNavIcon"></i>上衣專區</a>
+					<ul>
+						<li><a href="#">短袖</a></li>
+						<li><a href="#">長袖</a></li>
+						<li><a href="#">背心</a></li>
+						<li><a href="#">襯衫</a></li>
+						<li><a href="#">毛衣</a></li>
+						<li><a href="#">外套</a></li>
+					</ul></li>
+				<li class="active1"><a href="#" style="text-decoration: none">
+				<i 	class="glyphicon glyphicon-triangle-right leftNavIcon"></i>褲子專區</a>
+					<ul>
+						<li><a href="#">短褲</a></li>
+						<li><a href="#">長褲</a></li>
+						<li><a href="#">牛仔褲</a></li>
+						<li><a href="#">休閒褲</a></li>
+						<li><a href="#">工作褲</a></li>
+						<li><a href="#">飛鼠褲</a></li>
+						<li><a href="#">海灘褲</a></li>
+						<li><a href="#">運動褲</a></li>
+					</ul></li>
+				<li class="active1"><a href="#" style="text-decoration: none">
+				<i 	class="glyphicon glyphicon-triangle-right leftNavIcon"></i>配件專區</a>
+				<ul>
+					<li><a href="#">圍巾</a></li>
+					<li><a href="#">帽子</a></li>
+					<li><a href="#">眼鏡</a></li>
+					<li><a href="#">項鍊</a></li>
+					<li><a href="#">髮圈</a></li>
+					<li><a href="#">皮帶</a></li>
+				</ul></li>
+
+			</ul>
+		</div>
+		
+	<div style="border: 1px solid red; width:1100px;margin-left:26%">
+	<h1>1213212132121321</h1>
+	<h1>1213212132121321</h1>
+	<h1>1213212132121321</h1>
+	<h1>1213212132121321</h1>
+	<h1>1213212132121321</h1>
+	<h1>1213212132121321</h1>
+	<h1>1213212132121321</h1>
+	<img alt="" src="<c:url value='/g05_customer/showProdImg.do'/> ">
+	<img alt="" src="<c:url value='/g05_customer/showProdImg.do'/> ">
+	<img alt="" src="<c:url value='/g05_customer/showProdImg.do'/> ">
+	<img alt="" src="<c:url value='/g05_customer/showProdImg.do'/> ">
+	<img alt="" src="<c:url value='/g05_customer/showProdImg.do'/> ">
+	<img alt="" src="<c:url value='/g05_customer/showProdImg.do'/> ">
+	</div>
+
+<div id="me">
+<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<p id="p1">
+						<a href=""><i class="glyphicon glyphicon-envelope leftNavIcon"></i>聯絡
+							Go.E</a>&nbsp;●&nbsp;<a href="">購物指南</a>&nbsp;●&nbsp;<a
+							href="">品牌日誌</a>&nbsp;●&nbsp;<a href="">最新消息</a>&nbsp;●&nbsp;<a
+							href="">使用條款</a>&nbsp;●&nbsp;<a href="">隱私政策</a>&nbsp;●&nbsp;<a href="index.html">Go.E-Shopping<i
+							class="glyphicon glyphicon-home leftNavIcon"></i>
+						</a>
+					</p>
+				</div>
+			</div>
+		</div>
+</footer>
+</div>
+<script src="<%=request.getContextPath()%>/_js/jquery.ssd-vertical-navigation.js"></script>
+<script src="<%=request.getContextPath()%>/_js/app.js"></script>
+
+
+
 <table>
 	<tr>
 		<th>price</th>
@@ -39,14 +152,12 @@
 	</tr>
 	<c:forEach var="result" items="${result}">
 		<tr>
-		<div class="box">
-			
 			<td>${result.productName}</td>
 			<td>${result.brand}</td>
 			<td>${result.price}</td>		
 			<td>${result.note}</td>
 		<td>						
-		<form action='<c:url value="/g05_customer/shoppingCar/controller/BuyProServlet.con"/>' method="post">
+		<form action='<c:url value="/g05_customer/shoppingCar/controller/BuyProServlet.con"/>' method="post" >
 			<input type="hidden" name="id" value="${result.prodId}">
 			<input type="hidden" name="product" value="${result.productName}">
 			<input type="hidden" name="brand" value="${result.brand}">
@@ -54,10 +165,8 @@
 			<input type="hidden" name="count" value="1">
 			<input type="submit" name="car" class="button orange addcar" value="加入購物車">
 			${error.exist}
-			
 		</form>
 		</td>
-		</div>
 		</tr>
 
 	</c:forEach>
@@ -65,41 +174,7 @@
 <a href="<c:url value="/g05_customer/shoppingCar/car.jsp" />">購物車</a><br>
 <a href="<c:url value="/index.jsp" />">回首頁</a>
 
-<div class="m-sidebar"> 
-    <div class="cart"> 
-        <i id="end"></i> 
-        <span>购物车</span> 
-    </div> 
-</div> 
-<div id="msg">已成功加入购物车！</div> 
-<script type="text/javascript">
-$(function() { 
-    var offset = $("#end").offset(); 
-    $(".addcar").click(function(event){ 
-        var addcar = $(this); 
-        var img = addcar.parent().find('img').attr('src'); 
-        var flyer = $('<img class="u-flyer" src="'+img+'">'); 
-        flyer.fly({ 
-            start: { 
-                left: event.pageX, //开始位置（必填）#fly元素会被设置成position: fixed 
-                top: event.pageY //开始位置（必填） 
-            }, 
-            end: { 
-                left: offset.left+10, //结束位置（必填） 
-                top: offset.top+10, //结束位置（必填） 
-                width: 0, //结束时宽度 
-                height: 0 //结束时高度 
-            }, 
-            onEnd: function(){ //结束回调 
-                $("#msg").show().animate({width: '250px'}, 200).fadeOut(1000); //提示信息 
-                addcar.css("cursor","default").removeClass('orange').unbind('click'); 
-                this.destory(); //移除dom 
-            } 
-        }); 
-    }); 
-}); 
 
-</script>
 </body>
 
 
