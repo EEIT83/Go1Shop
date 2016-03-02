@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,9 +9,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="<%=request.getContextPath()%>/_js/jquery-1.12.0.min.js"></script>
 <script src="<%=request.getContextPath()%>/_js/car/jquery.fly.min.js"></script>
 <title>Insert title here</title>
-<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <link href="<%=request.getContextPath()%>/_css/app.css" rel="stylesheet" type="text/css">
 <link href="<%=request.getContextPath()%>/_css/bootstrap.min.css" rel="stylesheet">
 <link href="<%=request.getContextPath()%>/_css/business-casual1.css" rel="stylesheet">
@@ -100,24 +101,65 @@ font-family:微軟正黑體;
 					<li><a href="#">髮圈</a></li>
 					<li><a href="#">皮帶</a></li>
 				</ul></li>
-
 			</ul>
 		</div>
 		
-	<div style="border: 1px solid red; width:1100px;margin-left:26%">
-	<h1>1213212132121321</h1>
-	<h1>1213212132121321</h1>
-	<h1>1213212132121321</h1>
-	<h1>1213212132121321</h1>
-	<h1>1213212132121321</h1>
-	<h1>1213212132121321</h1>
-	<h1>1213212132121321</h1>
-	<img alt="" src="<c:url value='/g05_customer/showProdImg.do'/> ">
-	<img alt="" src="<c:url value='/g05_customer/showProdImg.do'/> ">
-	<img alt="" src="<c:url value='/g05_customer/showProdImg.do'/> ">
-	<img alt="" src="<c:url value='/g05_customer/showProdImg.do'/> ">
-	<img alt="" src="<c:url value='/g05_customer/showProdImg.do'/> ">
-	<img alt="" src="<c:url value='/g05_customer/showProdImg.do'/> ">
+	<div style="width:1100px;margin-left:26%">
+	<div id = "title">
+		<div id="PtitleImg" style="border: 1px solid red;float: left; width: 70%"></div>
+		<div id="Pname" style="border: 1px solid green; text-align: center;"></div>
+		<div id="Pcount" style="border: 1px solid blue;"></div>
+		
+	</div>
+	<div id = "content">
+		
+	</div>
+	<div id = "bottom">
+		
+	</div>
+	<script>
+	$(function(){
+		$.ajax({
+			'type':'POST',
+			'url':"<c:url value='/showProdImg.con'/>",
+			'dataType':'json',
+			'data':{prodId:'2'},
+			'success':function(data){								
+				content(data);
+				console.log(data.imgid[0]);
+			}
+		});
+	});
+	
+	
+	function content(data){
+		$.ajax({
+			'type':'GET',
+			'url':"<c:url value='/g05_customer/ShowProServlet.con'/>",
+			'dataType':'json',
+			'data':{prod_id:'10'},
+			'success':function(Prod){								
+			console.log(Prod);
+				
+		$('#PtitleImg').append("<img id='img1' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[0]+"'/>' style='width: 70%' />");
+		$('#Pname').append("<h2>"+Prod.productName+"</h2>");
+		$('#Pcount').append("<p>"+Prod.count+"</p>");
+		$('#content').append("<img id='img2' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[1]+"'/>' style='width: 40%' />");
+		$('#content').append("<img id='img3' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[2]+"'/>' style='width: 40%' />");
+		$('#content').append("<img id='img4' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[3]+"'/>' style='width: 40%' />");
+		$('#content').append("<img id='img5' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[4]+"'/>' style='width: 40%' />");
+		
+			}
+		});
+		
+	}
+	
+	</script>
+<%-- 	<c:forEach var="imgid" begin="1" end="${fn:length(imgId)}" varStatus="r"> --%>
+<%-- 		<c:set var='x' value="${imgid}" /> --%>
+<%-- 		<img  src="<c:url value='/g05_customer/ShowProdImg.con?imgId=${x}'/>" style="width: 40%"> --%>
+<%-- 	</c:forEach> --%>
+	
 	</div>
 
 <div id="me">

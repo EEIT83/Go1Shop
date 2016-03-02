@@ -40,7 +40,7 @@ public class RegisterServlet extends HttpServlet {
 		pageStatus = request.getParameter("pageStatus");
 		try {
 			if ("register".equals(pageStatus)) {
-				request.getRequestDispatcher("/gb01_login/Register.jsp").forward(request, response);
+				request.getRequestDispatcher("/g01_login/Register.jsp").forward(request, response);
 			} else if ("save".equals(pageStatus)) {
 				bean.setMail(request.getParameter("mail"));
 				bean.setPwd(request.getParameter("pwd"));

@@ -25,7 +25,7 @@
    <input type="radio" name="gender" value="1"> Male
    <input type="radio" name="gender" value="2"> Female
    <br>
-   <label>Identification</label>
+   <label>NickName</label>
    <input type="text" name="nickName" id="nickName" />
    <span id="errorNickName">${error.nickName }</span>
    <br>

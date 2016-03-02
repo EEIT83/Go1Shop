@@ -17,7 +17,9 @@ public class ShowProService {
 		return result;
 	}
 
-	
+	public ProductBean selectById(int prod_id){
+		return DAO.selectId(prod_id);
+	}
 	
 	
 }

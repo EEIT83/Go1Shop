@@ -1,14 +1,13 @@
 package g05_customer.shoppingCar.controller;
 
+import g05_customer.shoppingCar.model.ShopProImgDAO;
+
 public class ShowProdImgService {
+	private ShopProImgDAO service = new ShopProImgDAO();
 	
-	public void selectImgId(){
-		
+	public byte[] selectImg(int imgId){
+		return service.selectImg(imgId);
 	}
 	
-	public void selectImg(){
-				
-	}
-	
-	
+
 }
