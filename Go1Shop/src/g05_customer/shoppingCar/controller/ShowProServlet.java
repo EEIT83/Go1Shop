@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.JSONObject;
-
 import com.google.gson.Gson;
 
 @WebServlet(
@@ -23,19 +21,19 @@ public class ShowProServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse respone)
 			throws ServletException, IOException {
-		String prodId =  request.getParameter("prod_id").trim();
 		respone.setCharacterEncoding("UTF-8");
-		System.out.println("prodId=" + prodId);
-		if(prodId==null || prodId==""){
+		//System.out.println("prodId=" + prodId);
+		if(request.getParameter("prod_id").trim()==null || request.getParameter("prod_id").trim()==""){
 			List<ProductBean> result= new ArrayList<ProductBean>();
 			result = service.select();
 			request.setAttribute("result", result);	
-			request.getRequestDispatcher("/g05_customer/shoppingCar/show.jsp").forward(request, respone);			
+			request.getRequestDispatcher("/g05_customer/shoppingCar/show2.jsp").forward(request, respone);			
 		}else{
+			String prodId =  request.getParameter("prod_id").trim();
 			ProductBean bean = new ProductBean();
 			bean = service.selectById(Integer.parseInt(prodId));
 			Gson gson = new Gson();
-			System.out.println(gson.toJson(bean));
+			//System.out.println(gson.toJson(bean));
 			respone.getWriter().write(gson.toJson(bean));
 		}
 	}
