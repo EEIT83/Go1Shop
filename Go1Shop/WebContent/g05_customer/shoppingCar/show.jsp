@@ -46,6 +46,9 @@ font-family:微軟正黑體;
 .titleClass:after{
    clear:both;   
 }
+
+
+
 </style>
 
 </head>
@@ -117,74 +120,30 @@ font-family:微軟正黑體;
 		</ul>
 	</div>
 <!-- 右邊	----------------------------------------------------------------------------------->
-	<div id="rigth"style="float: left;margin-right:2%;margin-left:1%;margin-bottom:0.5%;width: 85%;">
+	<div id="rigth"style="float: left;margin-right:2%;margin-left:1%;margin-bottom:0.5%;width: 85%;  height: 100%;">
 <!----------------------------------------------------------------------------------------->	
-		<div id = "title" style="width:100%;height:100%;margin-bottom: 10px;border:1px solid blue;clear: both;" class="titleClass">
-			<div id="PtitleImg" style="width:45%;margin:5% 0 0 3%;float:left; border:1px solid red;"></div>
-			<div style="border:1px solid orange;margin:5% 0 0 3%;width:40%; float: left;">
-				<div id="Pname" style="width:100%;margin:4% 0 0 4%;font-size:40px;text-align:left;border:1px solid green;"></div>
-	<!-- 			<div id="Pbrand" style="width:45%;margin:1 0 0 3%;text-align:right;border:1px solid yellow;"></div><br> -->
-					<div style="width:40%;margin:3% 0 0 4%;font-size:18px;font-weight: bold;text-align:right;float:left;border:1px solid black; "><p style='font-size:30px;'>尺寸 ：</p></div>
-				<div id="Psize" style="width:10%;margin:3% 0 0 1%;font-weight: bold;text-align:left;float:left;;border:1px solid red; " ></div>
-	<!-- 				<div style="width:50%;"></div> -->
-					
-					<div style="width:15%;margin:5% 0 0 45%;font-size:30px;text-align:right;color:red;float:left;border:1px solid blue;">NT＄</div>
-				<div id="Pprice" style="width:23%;font-size:50px;color:red;margin:5% 0 0 0%;float:left;border:1px solid green;"></div>
-					<div style="width:10%;margin:8% 0 0 0;text-align:right;float:left;border:1px solid blue;"><p  style='color:red;font-size:50px;'>元</p></div>
-	<!-- 				<div style="margin:2% 0 0 3%;width:49%;height:5%; background-color:#BEBEBE;height: 2px;border:1px solid orange;"></div> -->
-				<div style="width:50%;margin:2% 0 0 23%;text-align:center;"><button style="width:160px;height: 40px;" type="submit" class="btn btn-primary">加入購物車</button></div>
-			</div>
-		</div>
-		
-		
-		<div style='display:block;margin-top:20px;padding-top:2px;background-color:#BEBEBE;height: 2px;clear: both;'></div>
-		<br>
-		<div id="content" style="width: 90%;margin:0 5% 0 5%;"></div>
-	</div>
-	<script>
-	$(function(){
-		$.ajax({
-			'type':'POST',
-			'url':"<c:url value='/showProdImg.con'/>",
-			'dataType':'json',
-			'data':{prodId:'2'},
-			'success':function(data){								
-				content(data);
-				console.log(data.imgid[0]);
-			}
-		});
-	});
-	
-	
-	function content(data){
-		$.ajax({
-			'type':'GET',
-			'url':"<c:url value='/g05_customer/ShowProServlet.con'/>",
-			'dataType':'json',
-			'data':{prod_id:'10'},
-			'success':function(Prod){								
-			console.log(Prod);
-				
-		$('#PtitleImg').append("<img id='img1' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[0]+"'/>'  style='width: 90%' />");
-		$('#Pname').append("<p>"+Prod.productName+"</p>");
-		$('#Psize').append("<p style='font-size:35px;'>"+Prod.size+"</p>");
-		$('#Pprice').append("<p style='color:red'>"+Prod.price+"</p>");
-		$('#Pbrand').append("<h3 style='font-size:20px;'>"+Prod.brand+"</h3>");
-		$('#content').append("<img id='img2' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[1]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
-		$('#content').append("<img id='img3' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[2]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
-		$('#content').append("<img id='img4' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[3]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
-		$('#content').append("<img id='img5' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[4]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
-			}
-		});
-	}
-	
-	</script>
 <%-- 	<c:forEach var="imgid" begin="1" end="${fn:length(imgId)}" varStatus="r"> --%>
 <%-- 		<c:set var='x' value="${imgid}" /> --%>
 <%-- 		<img  src="<c:url value='/g05_customer/ShowProdImg.con?imgId=${x}'/>" style="width: 40%"> --%>
 <%-- 	</c:forEach> --%>
+	<iframe src="<%=request.getContextPath()%>/NewFile.jsp" allowTransparency="true" width="100%" marginwidth="0" marginheight="0" scrolling="No" frameborder="0" name="mainframe" id="mainframe" onload="Javascript:SetCwinHeight()"></iframe>
+	<script>
+	function SetCwinHeight(){
+		var iframeid=document.getElementById("mainframe"); //iframe id
+		if (document.getElementById){   
+		if (iframeid && !window.opera) {   
+				if (iframeid.contentDocument && iframeid.contentDocument.body.offsetHeight) {   
+					iframeid.height = iframeid.contentDocument.body.offsetHeight;
+				}
+				else if(iframeid.Document && iframeid.Document.body.scrollHeight) {   
+					iframeid.height = iframeid.Document.body.scrollHeight;   
+				}
+			}
+		}
+	};
 	
-
+	</script>
+	</div>
 <!-- 下邊	--------------------------------------------------------------------------------- -->	
 	<div id="bottom" style="clear:left;">
 <!-------------------------------------------------------------------------------------- -->
