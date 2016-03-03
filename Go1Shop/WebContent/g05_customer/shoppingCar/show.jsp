@@ -35,9 +35,9 @@ border-radius:10px 10px 10px 10px;
 .active ul li{
 border-radius:10px 10px 10px 10px;
 }
-body{
-font-family:微軟正黑體; 
-}
+body{ 
+font-family:微軟正黑體;
+} 
 
 
 </style>
@@ -104,11 +104,19 @@ font-family:微軟正黑體;
 			</ul>
 		</div>
 		
-	<div style="width:1100px;margin-left:26%">
-	<div id = "title">
-		<div id="PtitleImg" style="border: 1px solid red;float: left; width: 70%"></div>
-		<div id="Pname" style="border: 1px solid green; text-align: center;"></div>
-		<div id="Pcount" style="border: 1px solid blue;"></div>
+	<div style="width:1100px;margin-left:26%" >
+	<div id = "title" style="height:100%">
+		<div id="PtitleImg" style="width:60%;float: left;" class="container"></div>
+		<div id="Pname" style="height:50px;font-size:60px" class="container"></div><br><br><br>
+		<div id="Pbrand" style="height:30px;text-align:right;width:650px;" class="container"></div><br>
+		<div id="Pcount" style="height:50px;text-align:right;font-size:40px;" class="container"></div><br>
+		<div id="Pcolor" style="height:50px;text-align:right;font-size:30px;width:1100px;" class="container"></div><br>
+		<div id="Psize" style="height:50px;text-align:right;font-size:30px;width:1090px;" class="container"></div><br>
+		<div style="height:50px;text-align:center"><button type="submit" style=";width:150px;height:50px;font-size:20px">加入購物車</button></div>
+		<div style='font-size:20px'>───────────────────────────────────────────────────────────────────────────────────</div>
+		
+		
+		
 		
 	</div>
 	<div id = "content">
@@ -123,7 +131,7 @@ font-family:微軟正黑體;
 			'type':'POST',
 			'url':"<c:url value='/showProdImg.con'/>",
 			'dataType':'json',
-			'data':{prodId:'2'},
+			'data':{prodId:'9'},
 			'success':function(data){								
 				content(data);
 				console.log(data.imgid[0]);
@@ -137,17 +145,20 @@ font-family:微軟正黑體;
 			'type':'GET',
 			'url':"<c:url value='/g05_customer/ShowProServlet.con'/>",
 			'dataType':'json',
-			'data':{prod_id:'10'},
+			'data':{prod_id:'9'},
 			'success':function(Prod){								
 			console.log(Prod);
 				
-		$('#PtitleImg').append("<img id='img1' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[0]+"'/>' style='width: 70%' />");
-		$('#Pname').append("<h2>"+Prod.productName+"</h2>");
-		$('#Pcount').append("<p>"+Prod.count+"</p>");
-		$('#content').append("<img id='img2' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[1]+"'/>' style='width: 40%' />");
-		$('#content').append("<img id='img3' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[2]+"'/>' style='width: 40%' />");
-		$('#content').append("<img id='img4' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[3]+"'/>' style='width: 40%' />");
-		$('#content').append("<img id='img5' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[4]+"'/>' style='width: 40%' />");
+		$('#PtitleImg').append("<img id='img1' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[0]+"'/>'  style='width: 90%' />");
+		$('#Pname').append("<p>"+Prod.productName+"</p>");
+		$('#Pcount').append("<p style='color:red'>＄"+Prod.count+"元</p>");
+		$('#Pcolor').append("<p>"+Prod.color+"</p>");
+		$('#Pbrand').append("<p>"+Prod.brand+"</p>");
+		$('#Psize').append("<p>"+Prod.size+"</p>");
+		$('#content').append("<img id='img2' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[1]+"'/>' style='width: 100%;padding-left:90px' /><div style='font-size:20px'>───────────────────────────────────────────────────────────────────────────────────</div>");
+		$('#content').append("<img id='img3' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[2]+"'/>' style='width: 100%;padding-left:90px' /><div style='font-size:20px'>───────────────────────────────────────────────────────────────────────────────────</div>");
+		$('#content').append("<img id='img4' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[3]+"'/>' style='width: 100%;padding-left:90px' /><div style='font-size:20px'>───────────────────────────────────────────────────────────────────────────────────</div>");
+		$('#content').append("<img id='img5' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[4]+"'/>' style='width: 100%;padding-left:90px' /><div style='font-size:20px'>───────────────────────────────────────────────────────────────────────────────────</div>");
 		
 			}
 		});
