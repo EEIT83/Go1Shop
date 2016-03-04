@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+
 import g01_login.controller.MemberBean;
 
 @WebServlet(urlPatterns = { "/g05_customer/shoppingCar/controller/BuyProServlet.con" })
@@ -25,22 +27,25 @@ public class BuyProServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse respone)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String id = request.getParameter("id");
-		String product = request.getParameter("product");
-		String brand = request.getParameter("brand");
-		String price = request.getParameter("price");
-		String count = request.getParameter("count");
-
+		String id = request.getParameter("prodId");
+		System.out.println("Buy Prod id= "  + id);
+//		String product = request.getParameter("product");
+//		String brand = request.getParameter("brand");
+//		String price = request.getParameter("price");
+//		String count = request.getParameter("count");
+		String count = "1";
+		
 		// System.out.println("id=" +id +"product=" + product + "price="+price
 		// +"count="+count);
 		HttpSession session = request.getSession();
 		MemberBean mb = (MemberBean) session.getAttribute("LoginOK");
 		// System.out.println(mb);
+		System.out.println("member=" + mb);
 		if (mb == null) {
-
-			respone.sendRedirect(getServletContext().getContextPath() + "/g01_login/Login.jsp");
-			// request.getRequestDispatcher("/_01_login/login.jsp").forward(request,
-			// respone);
+			JSONObject json = new JSONObject();
+			json.put("error", "error");
+			respone.getWriter().write(json.toJSONString());
+//			respone.sendRedirect(getServletContext().getContextPath() + "/g01_login/Login.jsp");
 			return;
 		}
 		BuyProService service = new BuyProService();
@@ -55,9 +60,7 @@ public class BuyProServlet extends HttpServlet {
 		ProductBean proBean = service.findPro(Integer.parseInt(id));
 		if (Integer.parseInt(count) > proBean.getCount()) {
 			error.put("count", "數量不足");
-			request.getRequestDispatcher("/g05_customer/ShowProServlet.con?prod_id=2").forward(request,
-					respone);
-//			request.getRequestDispatcher("/g05_customer/ShowProServlet.con?prod_id=").forward(request,
+//			request.getRequestDispatcher("/g05_customer/ShowProServlet.con?").forward(request,
 //					respone);
 			return;
 		}
@@ -92,9 +95,7 @@ public class BuyProServlet extends HttpServlet {
 		} else {
 			error.put("exist", "已加入購物車");
 		}
-		request.getRequestDispatcher("/g05_customer/ShowProServlet.con?prod_id=2").forward(request,
-				respone);
-//		request.getRequestDispatcher("/g05_customer/ShowProServlet.con?prod_id=").forward(request,
+//		request.getRequestDispatcher("/g05_customer/shoppingCar/show.jsp").forward(request,
 //				respone);
 	}
 
