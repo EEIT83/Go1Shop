@@ -20,13 +20,13 @@
 
 <body>
 <h3>商品頁</h3>
-<table>
+<table class="table table-condensed">
 	<tr>
-		
-		<th>product</th>
-		<th>price</th>
-		<th>count</th>
-		<th>subtotal</th>
+		<th>商品名稱</th>
+		<th>價錢</th>
+		<th>數量</th>
+		<th>小計</th>
+		<th>刪除</th>
 	</tr>
 <!-- 	<tr> -->
 <%-- 	<td>${shopcar.car.value.id}</td> --%>
@@ -39,21 +39,27 @@
 	<tr>
 	<td>${cars.value.prod_Name}</td>
 	<td>${cars.value.price}</td>
-	<td>${cars.value.count}</td>
-	<td>${cars.value.subtotal}</td>
-	
 	<td>
 		<form action="<c:url value='/g05_customer/shoppingCar/controller/carEdit/UpdateCarServlet.do'/>" method="get">
-			<input type="text" name="count" value="${cars.value.count}">
+			<input type="submit" name="status" value="-" class="btn btn-primary" style="text-align: center;">
+			<input type="text" name="count" value="${cars.value.count}" style="width:30px; text-align: center;">
 			<input type="hidden" name="id" value="${cars.value.prod_Id}">
-			<input type="submit" name="status" value="-">
-			<input type="submit" name="status" value="+">
-			<input type="submit" name="status" value="刪除"> 
+			<input type="submit" name="status" value="+" class="btn btn-primary" style="text-align: center;">
 		</form>
 	</td>
+	<td>${cars.value.subtotal}</td>
 	
 	
-	<td>${cars.value.price*cars.value.count}</td>
+	
+	<td
+	>
+		<form>
+		<input type="hidden" name="id" value="${cars.value.prod_Id}">
+		<input type="hidden" name="status" value="刪除">
+		<li class="glyphicon glyphicon-trash" id="delete"></li>
+		</form>
+	 </td>
+
 	</tr>
 	</c:forEach>
 	
@@ -62,6 +68,18 @@
 ${countError.count}
 <a href="<c:url value="/index.jsp" />">回首頁</a>
 <a href="<c:url value="/g05_customer/checkout/checkDetail.jsp" />">結帳</a>
+<script>
+	window.onload = function () {
+		document.getElementById("delete").onclick=dsubmit;
+	}
 
+	function dsubmit(){
+		document.forms[1].action="<c:url value='/g05_customer/shoppingCar/controller/carEdit/UpdateCarServlet.do'/>";
+		document.forms[1].method="get";
+		document.forms[1].submit();		
+	}
+	
+
+</script>
 </body>
 </html>

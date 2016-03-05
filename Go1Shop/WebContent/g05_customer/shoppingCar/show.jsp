@@ -24,7 +24,7 @@
 	color: #5B5B5B;
 	
 }
-#me {
+#bottom {
 background-color:#DDDDDD;
 border-radius:20px 20px 0 0;
 
@@ -39,142 +39,115 @@ body{
 font-family:微軟正黑體;
 } 
 
+.titleClass:after, .titleClass:before{
+  content:"";
+  display:table;
+}
+.titleClass:after{
+   clear:both;   
+}
+
+
 
 </style>
 
 </head>
 <body>
-<nav class="navbar navbar-default" role="navigation">
-		<div class="container"  style="width:100%;border-radius:0 0 20px 20px;background-color:#DDDDDD">
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
-				<div style="float:left;">
-				<a href="women.html" style="text-decoration: none; color: black; text-shadow:5px 5px 5px #5B5B5B;font-size:45px" >Go.E-Shopping</a>
-				<div class="address-bar" style="color:black;text-shadow:5px 5px 5px #5B5B5B;font-size:8px;">Enjoy Your Life&nbsp;●&nbsp;Chase Love．Brave Dream</div>
+<div style="border:2px solid red;width: 100%;height: 100%;">
+<!-- 上邊	--------------------------------------------------------------------------------- -->
+	<div style="margin-bottom:0.5%;">
+<!-------------------------------------------------------------------------------------- -->
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="container"  style="width:100%;border-radius:0 0 20px 20px;background-color:#DDDDDD">
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
+					<div style="float:left;">
+					<a href="women.html" style="text-decoration: none; color: black; text-shadow:5px 5px 5px #5B5B5B;font-size:45px" >Go.E-Shopping</a>
+					<div class="address-bar" style="color:black;text-shadow:5px 5px 5px #5B5B5B;font-size:8px;">Enjoy Your Life&nbsp;●&nbsp;Chase Love．Brave Dream</div>
+					</div>
+					<ul class="nav navbar-nav"  >
+						<li><a href="women.html">WOMEN</a></li>
+						<li><a href="men.html">MEN</a></li>
+						<li><a href="kids.html">KIDS</a></li>
+						<li><a href="soprts.html">SOPRTS</a></li>
+						<li><a href="babies.html">BABIES</a></li>
+					</ul>
 				</div>
-				<ul class="nav navbar-nav"  >
-					<li><a href="women.html">WOMEN</a></li>
-					<li><a href="men.html">MEN</a></li>
-					<li><a href="kids.html">KIDS</a></li>
-					<li><a href="soprts.html">SOPRTS</a></li>
-					<li><a href="babies.html">BABIES</a></li>
-				</ul>
 			</div>
-		</div>
-	</nav>
-		<div id="contentLeft">
-			<ul id="leftNavigation">
-				<li><a href="login.html" style="text-decoration: none">
-				<i class="glyphicon glyphicon-user leftNavIcon"></i>會員登入</a></li>
-				
-				<li><a href="login.html" style="text-decoration: none">
-				<i class="glyphicon glyphicon-search leftNavIcon"></i>查詢</a></li>
+		</nav>
+	</div>
+<!-- 左邊	--------------------------------------------------------------------------------- -->
+	<div id="left" style="float: left;margin-left:2%;width: 10%;">
+<!-------------------------------------------------------------------------------------- -->
+		<ul id="leftNavigation">
+			<li><a href="login.html" style="text-decoration: none">
+			<i class="glyphicon glyphicon-user leftNavIcon"></i>會員登入</a></li>
 			
-				<li class="active1"><a href="#" style="text-decoration: none">
-				<i class="glyphicon glyphicon-triangle-right leftNavIcon"></i>上衣專區</a>
-					<ul>
-						<li><a href="#">短袖</a></li>
-						<li><a href="#">長袖</a></li>
-						<li><a href="#">背心</a></li>
-						<li><a href="#">襯衫</a></li>
-						<li><a href="#">毛衣</a></li>
-						<li><a href="#">外套</a></li>
-					</ul></li>
-				<li class="active1"><a href="#" style="text-decoration: none">
-				<i 	class="glyphicon glyphicon-triangle-right leftNavIcon"></i>褲子專區</a>
-					<ul>
-						<li><a href="#">短褲</a></li>
-						<li><a href="#">長褲</a></li>
-						<li><a href="#">牛仔褲</a></li>
-						<li><a href="#">休閒褲</a></li>
-						<li><a href="#">工作褲</a></li>
-						<li><a href="#">飛鼠褲</a></li>
-						<li><a href="#">海灘褲</a></li>
-						<li><a href="#">運動褲</a></li>
-					</ul></li>
-				<li class="active1"><a href="#" style="text-decoration: none">
-				<i 	class="glyphicon glyphicon-triangle-right leftNavIcon"></i>配件專區</a>
+			<li><a href="login.html" style="text-decoration: none">
+			<i class="glyphicon glyphicon-search leftNavIcon"></i>查詢</a></li>
+		
+			<li class="active1"><a href="#" style="text-decoration: none">
+			<i class="glyphicon glyphicon-triangle-right leftNavIcon"></i>上衣專區</a>
 				<ul>
-					<li><a href="#">圍巾</a></li>
-					<li><a href="#">帽子</a></li>
-					<li><a href="#">眼鏡</a></li>
-					<li><a href="#">項鍊</a></li>
-					<li><a href="#">髮圈</a></li>
-					<li><a href="#">皮帶</a></li>
+					<li><a href="#">短袖</a></li>
+					<li><a href="#">長袖</a></li>
+					<li><a href="#">背心</a></li>
+					<li><a href="#">襯衫</a></li>
+					<li><a href="#">毛衣</a></li>
+					<li><a href="#">外套</a></li>
 				</ul></li>
-			</ul>
-		</div>
-		
-	<div style="width:1100px;margin-left:26%" >
-	<div id = "title" style="height:100%">
-		<div id="PtitleImg" style="width:60%;float: left;" class="container"></div>
-		<div id="Pname" style="height:50px;font-size:60px" class="container"></div><br><br><br>
-		<div id="Pbrand" style="height:30px;text-align:right;width:650px;" class="container"></div><br>
-		<div id="Pcount" style="height:50px;text-align:right;font-size:40px;" class="container"></div><br>
-		<div id="Pcolor" style="height:50px;text-align:right;font-size:30px;width:1100px;" class="container"></div><br>
-		<div id="Psize" style="height:50px;text-align:right;font-size:30px;width:1090px;" class="container"></div><br>
-		<div style="height:50px;text-align:center"><button type="submit" style=";width:150px;height:50px;font-size:20px">加入購物車</button></div>
-		<div style='font-size:20px'>───────────────────────────────────────────────────────────────────────────────────</div>
-		
-		
-		
-		
+			<li class="active1"><a href="#" style="text-decoration: none">
+			<i 	class="glyphicon glyphicon-triangle-right leftNavIcon"></i>褲子專區</a>
+				<ul>
+					<li><a href="#">短褲</a></li>
+					<li><a href="#">長褲</a></li>
+					<li><a href="#">牛仔褲</a></li>
+					<li><a href="#">休閒褲</a></li>
+					<li><a href="#">工作褲</a></li>
+					<li><a href="#">飛鼠褲</a></li>
+					<li><a href="#">海灘褲</a></li>
+					<li><a href="#">運動褲</a></li>
+				</ul></li>
+			<li class="active1"><a href="#" style="text-decoration: none">
+			<i 	class="glyphicon glyphicon-triangle-right leftNavIcon"></i>配件專區</a>
+			<ul>
+				<li><a href="#">圍巾</a></li>
+				<li><a href="#">帽子</a></li>
+				<li><a href="#">眼鏡</a></li>
+				<li><a href="#">項鍊</a></li>
+				<li><a href="#">髮圈</a></li>
+				<li><a href="#">皮帶</a></li>
+			</ul></li>
+		</ul>
 	</div>
-	<div id = "content">
-		
-	</div>
-	<div id = "bottom">
-		
-	</div>
-	<script>
-	$(function(){
-		$.ajax({
-			'type':'POST',
-			'url':"<c:url value='/showProdImg.con'/>",
-			'dataType':'json',
-			'data':{prodId:'9'},
-			'success':function(data){								
-				content(data);
-				console.log(data.imgid[0]);
-			}
-		});
-	});
-	
-	
-	function content(data){
-		$.ajax({
-			'type':'GET',
-			'url':"<c:url value='/g05_customer/ShowProServlet.con'/>",
-			'dataType':'json',
-			'data':{prod_id:'9'},
-			'success':function(Prod){								
-			console.log(Prod);
-				
-		$('#PtitleImg').append("<img id='img1' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[0]+"'/>'  style='width: 90%' />");
-		$('#Pname').append("<p>"+Prod.productName+"</p>");
-		$('#Pcount').append("<p style='color:red'>＄"+Prod.count+"元</p>");
-		$('#Pcolor').append("<p>"+Prod.color+"</p>");
-		$('#Pbrand').append("<p>"+Prod.brand+"</p>");
-		$('#Psize').append("<p>"+Prod.size+"</p>");
-		$('#content').append("<img id='img2' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[1]+"'/>' style='width: 100%;padding-left:90px' /><div style='font-size:20px'>───────────────────────────────────────────────────────────────────────────────────</div>");
-		$('#content').append("<img id='img3' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[2]+"'/>' style='width: 100%;padding-left:90px' /><div style='font-size:20px'>───────────────────────────────────────────────────────────────────────────────────</div>");
-		$('#content').append("<img id='img4' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[3]+"'/>' style='width: 100%;padding-left:90px' /><div style='font-size:20px'>───────────────────────────────────────────────────────────────────────────────────</div>");
-		$('#content').append("<img id='img5' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[4]+"'/>' style='width: 100%;padding-left:90px' /><div style='font-size:20px'>───────────────────────────────────────────────────────────────────────────────────</div>");
-		
-			}
-		});
-		
-	}
-	
-	</script>
+<!-- 右邊	----------------------------------------------------------------------------------->
+	<div id="rigth"style="float: left;margin-right:2%;margin-left:1%;margin-bottom:0.5%;width: 85%;  height: 100%;">
+<!----------------------------------------------------------------------------------------->	
 <%-- 	<c:forEach var="imgid" begin="1" end="${fn:length(imgId)}" varStatus="r"> --%>
 <%-- 		<c:set var='x' value="${imgid}" /> --%>
 <%-- 		<img  src="<c:url value='/g05_customer/ShowProdImg.con?imgId=${x}'/>" style="width: 40%"> --%>
 <%-- 	</c:forEach> --%>
+	<iframe src="<%=request.getContextPath()%>/NewFile.jsp" allowTransparency="true" width="100%" marginwidth="0" marginheight="0" scrolling="No" frameborder="0" name="mainframe" id="mainframe" onload="Javascript:SetCwinHeight()"></iframe>
+	<script>
+	function SetCwinHeight(){
+		var iframeid=document.getElementById("mainframe"); //iframe id
+		if (document.getElementById){   
+		if (iframeid && !window.opera) {   
+				if (iframeid.contentDocument && iframeid.contentDocument.body.offsetHeight) {   
+					iframeid.height = iframeid.contentDocument.body.offsetHeight;
+				}
+				else if(iframeid.Document && iframeid.Document.body.scrollHeight) {   
+					iframeid.height = iframeid.Document.body.scrollHeight;   
+				}
+			}
+		}
+	};
 	
+	</script>
 	</div>
-
-<div id="me">
-<footer>
+<!-- 下邊	--------------------------------------------------------------------------------- -->	
+	<div id="bottom" style="clear:left;">
+<!-------------------------------------------------------------------------------------- -->
+	<footer>
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
@@ -189,13 +162,10 @@ font-family:微軟正黑體;
 				</div>
 			</div>
 		</div>
-</footer>
+	</footer>
 </div>
 <script src="<%=request.getContextPath()%>/_js/jquery.ssd-vertical-navigation.js"></script>
 <script src="<%=request.getContextPath()%>/_js/app.js"></script>
-
-
-
 <table>
 	<tr>
 		<th>price</th>
@@ -210,26 +180,22 @@ font-family:微軟正黑體;
 			<td>${result.price}</td>		
 			<td>${result.note}</td>
 		<td>						
-		<form action='<c:url value="/g05_customer/shoppingCar/controller/BuyProServlet.con"/>' method="post" >
-			<input type="hidden" name="id" value="${result.prodId}">
-			<input type="hidden" name="product" value="${result.productName}">
-			<input type="hidden" name="brand" value="${result.brand}">
-			<input type="hidden" name="price" value="${result.price}">
-			<input type="hidden" name="count" value="1">
-			<input type="submit" name="car" class="button orange addcar" value="加入購物車">
-			${error.exist}
-		</form>
+			<form action='<c:url value="/g05_customer/shoppingCar/controller/BuyProServlet.con"/>' method="post" >
+				<input type="hidden" name="id" value="${result.prodId}">
+				<input type="hidden" name="product" value="${result.productName}">
+				<input type="hidden" name="brand" value="${result.brand}">
+				<input type="hidden" name="price" value="${result.price}">
+				<input type="hidden" name="count" value="1">
+				<input type="submit" name="car" class="button orange addcar" value="加入購物車">
+				${error.exist}
+			</form>
 		</td>
 		</tr>
-
 	</c:forEach>
 </table>
 <a href="<c:url value="/g05_customer/shoppingCar/car.jsp" />">購物車</a><br>
 <a href="<c:url value="/index.jsp" />">回首頁</a>
-
-
+	
+</div>
 </body>
-
-
-
 </html>

@@ -35,7 +35,7 @@ public class ShowProDAO {
 	
 	private DataSource ds = ConnDB.getConnDB();
 	
-	private final String select = "select * from product where prod_id=2";
+	private final String select = "select * from product";
 	public List<ProductBean> select(){
 		List<ProductBean> result = null;
 		try (Connection conn = ds.getConnection();

@@ -26,6 +26,7 @@ public class UpdateCarServlet extends HttpServlet {
 
 		String id = request.getParameter("id");
 		String status = request.getParameter("status");
+		//System.out.println("status=" + status);
 		HttpSession session = request.getSession();
 		ShoppingCar shopcar = (ShoppingCar) session.getAttribute("shopcar");
 		MemberBean mb = (MemberBean)session.getAttribute("LoginOK");

@@ -56,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <a href='/Go1Shop/gb05_mail/mail.jsp'>ch07_收信</a><p/>
 
 <hr>
-<a href="<c:url value="/g05_customer/ShowProServlet.con" />">商品頁</a>
+<a href="<c:url value="/g05_customer/ShowProServlet.con?prod_id=2" />">商品頁</a>
 <a href="<c:url value="/g05_customer/shoppingCar/show.jsp" />">商品頁</a>
 <hr>
 <h3><a href="/g01_login">會員登入</a></h3>

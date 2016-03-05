@@ -55,8 +55,10 @@ public class BuyProServlet extends HttpServlet {
 		ProductBean proBean = service.findPro(Integer.parseInt(id));
 		if (Integer.parseInt(count) > proBean.getCount()) {
 			error.put("count", "數量不足");
-			request.getRequestDispatcher("/g05_customer/ShowProServlet.con").forward(request,
+			request.getRequestDispatcher("/g05_customer/ShowProServlet.con?prod_id=2").forward(request,
 					respone);
+//			request.getRequestDispatcher("/g05_customer/ShowProServlet.con?prod_id=").forward(request,
+//					respone);
 			return;
 		}
 
@@ -90,8 +92,10 @@ public class BuyProServlet extends HttpServlet {
 		} else {
 			error.put("exist", "已加入購物車");
 		}
-		request.getRequestDispatcher("/g05_customer/ShowProServlet.con").forward(request,
+		request.getRequestDispatcher("/g05_customer/ShowProServlet.con?prod_id=2").forward(request,
 				respone);
+//		request.getRequestDispatcher("/g05_customer/ShowProServlet.con?prod_id=").forward(request,
+//				respone);
 	}
 
 }
