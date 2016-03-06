@@ -13,27 +13,8 @@
 <script src="<%=request.getContextPath()%>/_js/car/jquery.fly.min.js"></script>
 <script src="<%=request.getContextPath()%>/_js/jquery.fly.min.js"></script> 
 <title>Insert title here</title>
+<link href="<%=request.getContextPath()%>/_css/page.css" rel="stylesheet">
 <style>
-#p1 a {
-	font-size: 20px;
-	text-decoration: none;
-	color: #5B5B5B;
-	
-}
-#bottom {
-background-color:#DDDDDD;
-border-radius:20px 20px 0 0;
-
-}
-.active{ 
-border-radius:10px 10px 10px 10px;
-}
-.active ul li{
-border-radius:10px 10px 10px 10px;
-}
-body{ 
-font-family:微軟正黑體;
-} 
 /* -------------------商品頁-------------------------- */
 .titleClass:after, .titleClass:before{
   content:"";
@@ -100,12 +81,10 @@ font-family:微軟正黑體;
 <!------------------送出---------------- -->
 				<form>
 				<div style="width:100%;margin:100% 0 0 0;text-align:center;" id="box"><input type="button" class="button addcar btn btn-primary" value="加入購物車" /></div>
-				<input type="hidden" value="16" name="prodId">
+				<input type="hidden" value="15" name="prodId">
 				</form>
 			</div>
 		</div>
-		
-		
 		<div style='display:block;margin-top:20px;padding-top:2px;background-color:#BEBEBE;height: 2px;clear: both;'></div>
 		<br>
 		<div id="content" style="width: 90%;margin:0 5% 0 5%;"></div>
@@ -224,10 +203,10 @@ font-family:微軟正黑體;
 $(function() { 
 	//加入購物車
 		$(".addcar").click(function(event){
-			
+			alert(123);
 			$.ajax({
 				'type':'POST',
-				'url':"<c:url value='/g05_customer/shoppingCar/controller/BuyProServlet.con'/>",
+				'url':"<c:url value='/BuyProServlet.con'/>",
 				'dataType':'json',
 				'data':{prodId:'15'},
 				'success':function(data){		

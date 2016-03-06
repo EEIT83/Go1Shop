@@ -11,7 +11,7 @@
 </head>
 <body>
 <nav class="navbar navbar-default" role="navigation">
-	<div class="container"  style="width:100%;border-radius:0 0 20px 20px;background-color:#DDDDDD">
+	<div class="container"  style="width:100%;background-color:#DDDDDD">
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
 			<div style="float:left;">
 			<a href="<%=request.getContextPath()%>/index.jsp" style="text-decoration: none; color: black; text-shadow:5px 5px 5px #5B5B5B;font-size:45px" >Go.E-Shopping</a>
