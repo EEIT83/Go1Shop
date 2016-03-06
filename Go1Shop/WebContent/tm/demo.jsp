@@ -10,8 +10,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-<script src="<%=request.getContextPath()%>/_js/car/jquery.fly.min.js"></script>
-<script src="<%=request.getContextPath()%>/_js/jquery.fly.min.js"></script> 
 <title>Insert title here</title>
 <style>
 #p1 a {
@@ -32,7 +30,7 @@ border-radius:10px 10px 10px 10px;
 border-radius:10px 10px 10px 10px;
 }
 body{ 
-font-family:微軟正黑體;
+font-family:"Arial","微軟正黑體";
 } 
 /* ------------------------------------------------ */
 </style>

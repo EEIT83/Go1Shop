@@ -10,30 +10,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-<script src="<%=request.getContextPath()%>/_js/car/jquery.fly.min.js"></script>
-<script src="<%=request.getContextPath()%>/_js/jquery.fly.min.js"></script> 
+<link href="<%=request.getContextPath()%>/_css/page.css" rel="stylesheet">
 <title>KIDS-最新品-Go1Shop</title>
 <style>
-#p1 a {
-	font-size: 20px;
-	text-decoration: none;
-	color: #5B5B5B;
-	
-}
-#bottom {
-background-color:#DDDDDD;
-border-radius:20px 20px 0 0;
-
-}
-.active{ 
-border-radius:10px 10px 10px 10px;
-}
-.active ul li{
-border-radius:10px 10px 10px 10px;
-}
-body{ 
-font-family:微軟正黑體;
-} 
 /* ------------------------------------------------ */
 </style>
 
