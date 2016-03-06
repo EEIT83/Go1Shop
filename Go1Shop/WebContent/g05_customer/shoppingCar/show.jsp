@@ -119,19 +119,16 @@ font-family:微軟正黑體;
 <!-- 右邊	----------------------------------------------------------------------------------->
 	<div id="rigth"style="float: left;margin-right:2%;margin-left:1%;margin-bottom:0.5%;width: 85%;">
 <!----------------------------------------------------------------------------------------->	
-		<div id = "title" style="width:100%;height:100%;margin-bottom: 10px;border:1px solid blue;clear: both;" class="titleClass">
-			<div id="PtitleImg" style="width:45%;margin:5% 0 0 3%;float:left; border:1px solid red;"></div>
-			<div style="border:1px solid orange;margin:5% 0 0 3%;width:40%; float: left;">
-				<div id="Pname" style="width:100%;margin:4% 0 0 4%;font-size:40px;text-align:left;border:1px solid green;"></div>
-	<!-- 			<div id="Pbrand" style="width:45%;margin:1 0 0 3%;text-align:right;border:1px solid yellow;"></div><br> -->
-					<div style="width:40%;margin:3% 0 0 4%;font-size:18px;font-weight: bold;text-align:right;float:left;border:1px solid black; "><p style='font-size:30px;'>尺寸 ：</p></div>
-				<div id="Psize" style="width:10%;margin:3% 0 0 1%;font-weight: bold;text-align:left;float:left;;border:1px solid red; " ></div>
-	<!-- 				<div style="width:50%;"></div> -->
+		<div id = "title" style="width:100%;height:100%;margin-bottom: 10px;clear: both;" class="titleClass">
+			<div id="PtitleImg" style="width:45%;margin:5% 0 0 3%;float:left;"></div>
+			<div style="margin:5% 0 0 3%;width:40%; float: left;">
+				<div id="Pname" style="width:100%;margin:4% 0 0 4%;font-size:40px;text-align:left;"></div>
+					<div style="width:40%;margin:3% 0 0 4%;font-size:18px;font-weight: bold;text-align:right;float:left;"><p style='font-size:30px;'>尺寸 ：</p></div>
+				<div id="Psize" style="width:10%;margin:2.5% 0 0 1%;font-weight: bold;text-align:left;float:left;" ></div>
 					
-					<div style="width:15%;margin:5% 0 0 45%;font-size:30px;text-align:right;color:red;float:left;border:1px solid blue;">NT＄</div>
-				<div id="Pprice" style="width:23%;font-size:50px;color:red;margin:5% 0 0 0%;float:left;border:1px solid green;"></div>
-					<div style="width:10%;margin:8% 0 0 0;text-align:right;float:left;border:1px solid blue;"><p  style='color:red;font-size:50px;'>元</p></div>
-	<!-- 				<div style="margin:2% 0 0 3%;width:49%;height:5%; background-color:#BEBEBE;height: 2px;border:1px solid orange;"></div> -->
+					<div style="width:15%;margin:5% 0 0 45%;font-size:30px;text-align:right;color:red;float:left;">NT＄</div>
+				<div id="Pprice" style="width:23%;font-size:50px;color:red;margin:5% 0 0 0%;float:left;"></div>
+					<div style="width:10%;margin:7% 0 0 0;text-align:right;float:left;"><p  style='color:red;font-size:50px;'>元</p></div>
 				<div style="width:50%;margin:2% 0 0 23%;text-align:center;"><button style="width:160px;height: 40px;" type="submit" class="btn btn-primary">加入購物車</button></div>
 			</div>
 		</div>
