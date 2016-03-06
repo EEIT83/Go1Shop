@@ -12,7 +12,7 @@
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="<%=request.getContextPath()%>/_js/car/jquery.fly.min.js"></script>
 <script src="<%=request.getContextPath()%>/_js/jquery.fly.min.js"></script> 
-<title>Insert title here</title>
+<title>KIDS-最新品-Go1Shop</title>
 <style>
 #p1 a {
 	font-size: 20px;

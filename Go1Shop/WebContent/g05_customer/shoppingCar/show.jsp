@@ -90,13 +90,13 @@ font-family:微軟正黑體;
 				<div id="Pname" style="width:100%;height:50%;margin:4% 0 0 4%;font-size:20px;text-align:left;"></div>
 <!------------------大小---------------- -->
 					<div style="width:28%;margin:5% 0 0 4%;font-weight: bold;float:left;"><p style='font-size:25px;'>尺寸 ：</p></div>
-				<div id="Psize" style="width:11%;margin:1% 0 0 0%;font-weight: bold;text-align:left;float:left;" ></div>
+				<div id="Psize" style="width:11%;margin:3% 0 0 0%;font-weight: bold;text-align:left;float:left;" ></div>
 <!-------------------------------------				 -->
 				<div style="clear: both;"></div>
 <!------------------價錢---------------- -->
 					<div style="width:23%;margin:40% 0 0 25%;font-size:30px;color:red;float:left; ">NT＄</div>
 				<div id="Pprice" style="width:30%;font-size:45px;color:red;margin:40% 0 0 0%;float:left; "></div>
-					<div style="width:8%;margin:42% 0 0 0;text-align:right;float:left;"><p  style='color:red;font-size:50px; '>元</p></div>
+<!-- 					<div style="width:8%;margin:42% 0 0 0;text-align:right;float:left;"><p  style='color:red;font-size:50px; '>元</p></div> -->
 <!------------------送出---------------- -->
 				<form>
 				<div style="width:100%;margin:100% 0 0 0;text-align:center;" id="box"><input type="button" class="button addcar btn btn-primary" value="加入購物車" /></div>
@@ -229,7 +229,7 @@ $(function() {
 				'type':'POST',
 				'url':"<c:url value='/g05_customer/shoppingCar/controller/BuyProServlet.con'/>",
 				'dataType':'json',
-				'data':{prodId:'16'},
+				'data':{prodId:'15'},
 				'success':function(data){		
 
 					if(data.error=='error'){
@@ -281,7 +281,7 @@ $(function() {
 		'type':'POST',
 		'url':"<c:url value='/showProdImg.con'/>",
 		'dataType':'json',
-		'data':{prodId:'16'},
+		'data':{prodId:'15'},
 		'success':function(data){								
 			content(data);
 			console.log(data.imgid[0]);
@@ -296,7 +296,7 @@ $(function() {
 			'type':'GET',
 			'url':"<c:url value='/g05_customer/ShowProServlet.con'/>",
 			'dataType':'json',
-			'data':{prod_id:'16'},
+			'data':{prod_id:'15'},
 			'success':function(Prod){								
 			console.log(Prod);
 		$('#PtitleImg').append("<img id='img1' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[0]+"'/>'  style='width: 100%' />");
