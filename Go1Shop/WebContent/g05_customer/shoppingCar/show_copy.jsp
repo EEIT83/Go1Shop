@@ -11,6 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="<%=request.getContextPath()%>/_js/jquery-1.12.0.min.js"></script>
 <script src="<%=request.getContextPath()%>/_js/car/jquery.fly.min.js"></script>
+<script src="<%=request.getContextPath()%>/_js/jquery.fly.min.js"></script> 
 <title>Insert title here</title>
 <link href="<%=request.getContextPath()%>/_css/app.css" rel="stylesheet" type="text/css">
 <link href="<%=request.getContextPath()%>/_css/bootstrap.min.css" rel="stylesheet">
@@ -38,7 +39,7 @@ border-radius:10px 10px 10px 10px;
 body{ 
 font-family:微軟正黑體;
 } 
-
+/* -------------------商品頁-------------------------- */
 .titleClass:after, .titleClass:before{
   content:"";
   display:table;
@@ -46,11 +47,34 @@ font-family:微軟正黑體;
 .titleClass:after{
    clear:both;   
 }
+
+
+/* -------------------購物車-------------------------- */
+.box{float:left; width:198px; height:320px; margin-left:5px; border:1px solid #e0e0e0; text-align:center} 
+.box p{line-height:20px; padding:4px 4px 10px 4px; text-align:left} 
+.box:hover{border:1px solid #f90} 
+.box h4{line-height:32px; font-size:14px; color:#f30;font-weight:500} 
+.box h4 span{font-size:20px} 
+.u-flyer{display: block;width: 50px;height: 50px;border-radius: 50px;position: fixed;z-index: 9999;} 
+ 
+.m-sidebar{position: fixed;top: 0;right: 0;background: #000;z-index: 2000;width: 35px;height: 100%;font-size: 12px;color: #fff;} 
+.cart{color: #fff;text-align:center;line-height: 20px;padding: 200px 0 0 0px;} 
+.cart span{display:block;width:20px;margin:0 auto;} 
+.cart i{width:35px;height:35px;display:block; background:url(/Go1Shop/_img/car.png) no-repeat;} 
+#msg{position:fixed; top:300px; right:35px; z-index:10000; width:1px; height:52px; line-height:52px; font-size:20px; text-align:center; color:#fff; background:#360; display:none} 
+
+
+
+.cart a{
+	text-decoration: none;
+	color:white;
+}
+
 </style>
 
 </head>
 <body>
-<div style="border:2px solid red;width: 100%;height: 100%;">
+<div style="width: 100%;height: 100%;">
 <!-- 上邊	--------------------------------------------------------------------------------- -->
 	<div style="margin-bottom:0.5%;">
 <!-------------------------------------------------------------------------------------- -->
@@ -73,7 +97,7 @@ font-family:微軟正黑體;
 		</nav>
 	</div>
 <!-- 左邊	--------------------------------------------------------------------------------- -->
-	<div id="left" style="float: left;margin-left:2%;width: 10%;">
+	<div id="left" style="float: left;margin-left:2%;width: 11%;">
 <!-------------------------------------------------------------------------------------- -->
 		<ul id="leftNavigation">
 			<li><a href="login.html" style="text-decoration: none">
@@ -117,24 +141,27 @@ font-family:微軟正黑體;
 		</ul>
 	</div>
 <!-- 右邊	----------------------------------------------------------------------------------->
-	<div id="rigth"style="float: left;margin-right:2%;margin-left:1%;margin-bottom:0.5%;width: 85%;">
+	<div id="right"style="float: left;margin-right:2%;margin-left:1%;margin-bottom:0.5%;width: 82%;">
 <!----------------------------------------------------------------------------------------->	
 		<div id = "title" style="width:100%;height:100%;margin-bottom: 10px;clear: both;" class="titleClass">
 			<div id="PtitleImg" style="width:60%;margin:5% 0 0 3%;float:left;"></div>
 			<div style="margin:8% 0 0 3%;width:30%; float: left;">
-<!------------------品名------------------>
+<!------------------品名---------------- -->
 				<div id="Pname" style="width:100%;height:50%;margin:4% 0 0 4%;font-size:20px;text-align:left;"></div>
-<!------------------大小------------------>
+<!------------------大小---------------- -->
 					<div style="width:28%;margin:5% 0 0 4%;font-weight: bold;float:left;"><p style='font-size:25px;'>尺寸 ：</p></div>
-				<div id="Psize" style="width:11%;margin:2% 0 0 0%;font-weight: bold;text-align:left;float:left;" ></div>
-<!--------------------------------------->				
+				<div id="Psize" style="width:11%;margin:1% 0 0 0%;font-weight: bold;text-align:left;float:left;" ></div>
+<!-------------------------------------				 -->
 				<div style="clear: both;"></div>
-<!------------------價錢------------------>
+<!------------------價錢---------------- -->
 					<div style="width:23%;margin:40% 0 0 25%;font-size:30px;color:red;float:left; ">NT＄</div>
 				<div id="Pprice" style="width:30%;font-size:45px;color:red;margin:40% 0 0 0%;float:left; "></div>
 					<div style="width:8%;margin:42% 0 0 0;text-align:right;float:left;"><p  style='color:red;font-size:50px; '>元</p></div>
-<!------------------送出------------------>
-				<div style="width:100%;margin:100% 0 0 0;text-align:center;"><button style="width:160px;height: 60px;" type="submit" class="btn btn-primary">加入購物車</button></div>
+<!------------------送出---------------- -->
+				<form>
+				<div style="width:100%;margin:100% 0 0 0;text-align:center;" id="box"><input type="button" class="button addcar btn btn-primary" value="加入購物車" /></div>
+				<input type="hidden" value="16" name="prodId">
+				</form>
 			</div>
 		</div>
 		
@@ -145,6 +172,9 @@ font-family:微軟正黑體;
 	</div>
 	<script>
 	$(function(){
+		var prID;
+		
+		//找出產品圖片
 		$.ajax({
 			'type':'POST',
 			'url':"<c:url value='/showProdImg.con'/>",
@@ -153,11 +183,32 @@ font-family:微軟正黑體;
 			'success':function(data){								
 				content(data);
 				console.log(data.imgid[0]);
+				console.log(data.imgid[0]);
+				prID = data.imgid[0];
 			}
 		});
+		
+		
+		$(".addcar").click(function(event){
+			$.ajax({
+				'type':'POST',
+				'url':"<c:url value='/g05_customer/shoppingCar/controller/BuyProServlet.con'/>",
+				'dataType':'json',
+				'data':{prodId:'16'},
+				'success':function(data){								
+					console.log("error=" + data.error);
+					if(data!=null){
+						document.location.href="/Go1Shop/g01_login/Login.jsp";
+					}
+				}
+			});
+			
+			
+		});
+		
+		
 	});
-	
-	
+	//找出產品
 	function content(data){
 		$.ajax({
 			'type':'GET',
@@ -166,7 +217,6 @@ font-family:微軟正黑體;
 			'data':{prod_id:'16'},
 			'success':function(Prod){								
 			console.log(Prod);
-				
 		$('#PtitleImg').append("<img id='img1' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[0]+"'/>'  style='width: 100%' />");
 		$('#Pname').append("<p>"+Prod.productName+"</p>");
 		$('#Psize').append("<p style='font-size:35px;'>"+Prod.size+"</p>");
@@ -180,6 +230,7 @@ font-family:微軟正黑體;
 		});
 	}
 	
+	
 	</script>
 <%-- 	<c:forEach var="imgid" begin="1" end="${fn:length(imgId)}" varStatus="r"> --%>
 <%-- 		<c:set var='x' value="${imgid}" /> --%>
@@ -188,9 +239,8 @@ font-family:微軟正黑體;
 	
 
 <!-- 下邊	--------------------------------------------------------------------------------- -->	
-	<div id="bottom" style="clear:left;">
+	<div id="bottom" style="clear:left;width:100%;position:fixed;bottom:0;left:0;">
 <!-------------------------------------------------------------------------------------- -->
-	<footer>
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
@@ -205,40 +255,73 @@ font-family:微軟正黑體;
 				</div>
 			</div>
 		</div>
-	</footer>
+	<script src="<%=request.getContextPath()%>/_js/jquery.ssd-vertical-navigation.js"></script>
+	<script src="<%=request.getContextPath()%>/_js/app.js"></script>
 </div>
-<script src="<%=request.getContextPath()%>/_js/jquery.ssd-vertical-navigation.js"></script>
-<script src="<%=request.getContextPath()%>/_js/app.js"></script>
-<table>
-	<tr>
-		<th>price</th>
-		<th>product</th>		
-		<th>count</th>
-		<th>subtotal</th>
-	</tr>
-	<c:forEach var="result" items="${result}">
-		<tr>
-			<td>${result.productName}</td>
-			<td>${result.brand}</td>
-			<td>${result.price}</td>		
-			<td>${result.note}</td>
-		<td>						
-			<form action='<c:url value="/g05_customer/shoppingCar/controller/BuyProServlet.con"/>' method="post" >
-				<input type="hidden" name="id" value="${result.prodId}">
-				<input type="hidden" name="product" value="${result.productName}">
-				<input type="hidden" name="brand" value="${result.brand}">
-				<input type="hidden" name="price" value="${result.price}">
-				<input type="hidden" name="count" value="1">
-				<input type="submit" name="car" class="button orange addcar" value="加入購物車">
-				${error.exist}
-			</form>
-		</td>
-		</tr>
-	</c:forEach>
-</table>
-<a href="<c:url value="/g05_customer/shoppingCar/car.jsp" />">購物車</a><br>
-<a href="<c:url value="/index.jsp" />">回首頁</a>
-	
+<%-- <script src="<%=request.getContextPath()%>/_js/jquery.ssd-vertical-navigation.js"></script> --%>
+<%-- <script src="<%=request.getContextPath()%>/_js/app.js"></script> --%>
+<!-- <table> -->
+<!-- 	<tr> -->
+<!-- 		<th>price</th> -->
+<!-- 		<th>product</th>		 -->
+<!-- 		<th>count</th> -->
+<!-- 		<th>subtotal</th> -->
+<!-- 	</tr> -->
+<%-- 	<c:forEach var="result" items="${result}"> --%>
+<!-- 		<tr> -->
+<%-- 			<td>${result.productName}</td> --%>
+<%-- 			<td>${result.brand}</td> --%>
+<%-- 			<td>${result.price}</td>		 --%>
+<%-- 			<td>${result.note}</td> --%>
+<!-- 		<td>						 -->
+<%-- 			<form action='<c:url value="/g05_customer/shoppingCar/controller/BuyProServlet.con"/>' method="post" > --%>
+<%-- 				<input type="hidden" name="id" value="${result.prodId}"> --%>
+<%-- 				<input type="hidden" name="product" value="${result.productName}"> --%>
+<%-- 				<input type="hidden" name="brand" value="${result.brand}"> --%>
+<%-- 				<input type="hidden" name="price" value="${result.price}"> --%>
+<!-- 				<input type="hidden" name="count" value="1"> -->
+<!-- 				<input type="submit" name="car" class="button orange addcar" value="加入購物車"> -->
+<%-- 				${error.exist} --%>
+<!-- 			</form> -->
+<!-- 		</td> -->
+<!-- 		</tr> -->
+<%-- 	</c:forEach> --%>
+<!-- </table> -->
+<div class="m-sidebar"> 
+    <div class="cart"> 
+        <i id="end"></i> 
+        <span><a style="" id="carurl" href="<c:url value="/g05_customer/shoppingCar/car.jsp" />">購物車</a></span> 
+    </div> 
+</div> 
+<div id="msg">已成功加入購物車！</div> 
+<script type="text/javascript">
+$(function() { 
+    var offset = $("#end").offset(); 
+    $(".addcar").click(function(event){ 
+        var addcar = $(this); 
+        var img = $('#PtitleImg').find('img').attr('src'); 
+        var flyer = $('<img class="u-flyer" src="'+img+'">'); 
+        flyer.fly({ 
+            start: { 
+                left: event.pageX, //开始位置（必填）#fly元素会被设置成position: fixed 
+                top: event.pageY //开始位置（必填） 
+            }, 
+            end: { 
+                left: offset.left+10, //结束位置（必填） 
+                top: offset.top+10, //结束位置（必填） 
+                width: 0, //结束时宽度 
+                height: 0 //结束时高度 
+            }, 
+            onEnd: function(){ //结束回调 
+                $("#msg").show().animate({width: '250px'}, 200).fadeOut(1000); //提示信息 
+                addcar.css("cursor","default").removeClass('btn-primary').unbind('click'); 
+                this.destory(); //移除dom 
+            } 
+        });
+        
+    }); 
+}); 
+</script>
 </div>
 </body>
 </html>
