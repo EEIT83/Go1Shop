@@ -13,27 +13,8 @@
 <script src="<%=request.getContextPath()%>/_js/car/jquery.fly.min.js"></script>
 <script src="<%=request.getContextPath()%>/_js/jquery.fly.min.js"></script> 
 <title>Insert title here</title>
+<link href="<%=request.getContextPath()%>/_css/page.css" rel="stylesheet">
 <style>
-#p1 a {
-	font-size: 20px;
-	text-decoration: none;
-	color: #5B5B5B;
-	
-}
-#bottom {
-background-color:#DDDDDD;
-border-radius:20px 20px 0 0;
-
-}
-.active{ 
-border-radius:10px 10px 10px 10px;
-}
-.active ul li{
-border-radius:10px 10px 10px 10px;
-}
-body{ 
-font-family:微軟正黑體;
-} 
 /* -------------------商品頁-------------------------- */
 .titleClass:after, .titleClass:before{
   content:"";
@@ -90,22 +71,20 @@ font-family:微軟正黑體;
 				<div id="Pname" style="width:100%;height:50%;margin:4% 0 0 4%;font-size:20px;text-align:left;"></div>
 <!------------------大小---------------- -->
 					<div style="width:28%;margin:5% 0 0 4%;font-weight: bold;float:left;"><p style='font-size:25px;'>尺寸 ：</p></div>
-				<div id="Psize" style="width:11%;margin:1% 0 0 0%;font-weight: bold;text-align:left;float:left;" ></div>
+				<div id="Psize" style="width:11%;margin:3% 0 0 0%;font-weight: bold;text-align:left;float:left;" ></div>
 <!-------------------------------------				 -->
 				<div style="clear: both;"></div>
 <!------------------價錢---------------- -->
 					<div style="width:23%;margin:40% 0 0 25%;font-size:30px;color:red;float:left; ">NT＄</div>
 				<div id="Pprice" style="width:30%;font-size:45px;color:red;margin:40% 0 0 0%;float:left; "></div>
-					<div style="width:8%;margin:42% 0 0 0;text-align:right;float:left;"><p  style='color:red;font-size:50px; '>元</p></div>
+<!-- 					<div style="width:8%;margin:42% 0 0 0;text-align:right;float:left;"><p  style='color:red;font-size:50px; '>元</p></div> -->
 <!------------------送出---------------- -->
 				<form>
 				<div style="width:100%;margin:100% 0 0 0;text-align:center;" id="box"><input type="button" class="button addcar btn btn-primary" value="加入購物車" /></div>
-				<input type="hidden" value="16" name="prodId">
+				<input type="hidden" value="15" name="prodId">
 				</form>
 			</div>
 		</div>
-		
-		
 		<div style='display:block;margin-top:20px;padding-top:2px;background-color:#BEBEBE;height: 2px;clear: both;'></div>
 		<br>
 		<div id="content" style="width: 90%;margin:0 5% 0 5%;"></div>
@@ -224,12 +203,12 @@ font-family:微軟正黑體;
 $(function() { 
 	//加入購物車
 		$(".addcar").click(function(event){
-			
+			alert(123);
 			$.ajax({
 				'type':'POST',
-				'url':"<c:url value='/g05_customer/shoppingCar/controller/BuyProServlet.con'/>",
+				'url':"<c:url value='/BuyProServlet.con'/>",
 				'dataType':'json',
-				'data':{prodId:'16'},
+				'data':{prodId:'15'},
 				'success':function(data){		
 
 					if(data.error=='error'){
@@ -281,7 +260,7 @@ $(function() {
 		'type':'POST',
 		'url':"<c:url value='/showProdImg.con'/>",
 		'dataType':'json',
-		'data':{prodId:'16'},
+		'data':{prodId:'15'},
 		'success':function(data){								
 			content(data);
 			console.log(data.imgid[0]);
@@ -296,7 +275,7 @@ $(function() {
 			'type':'GET',
 			'url':"<c:url value='/g05_customer/ShowProServlet.con'/>",
 			'dataType':'json',
-			'data':{prod_id:'16'},
+			'data':{prod_id:'15'},
 			'success':function(Prod){								
 			console.log(Prod);
 		$('#PtitleImg').append("<img id='img1' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[0]+"'/>'  style='width: 100%' />");

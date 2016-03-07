@@ -10,28 +10,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-<title>Insert title here</title>
+<link href="<%=request.getContextPath()%>/_css/page.css" rel="stylesheet">
+<title>WOMEN-最新品-Go1Shop</title>
 <style>
-#p1 a {
-	font-size: 20px;
-	text-decoration: none;
-	color: #5B5B5B;
-	
-}
-#bottom {
-background-color:#DDDDDD;
-border-radius:20px 20px 0 0;
 
-}
-.active{ 
-border-radius:10px 10px 10px 10px;
-}
-.active ul li{
-border-radius:10px 10px 10px 10px;
-}
-body{ 
-font-family:"Arial","微軟正黑體";
-} 
 /* ------------------------------------------------ */
 </style>
 
@@ -48,7 +30,6 @@ font-family:"Arial","微軟正黑體";
 	</div>
 <!-- 右邊	----------------------------------------------------------------------------------->
 	<div id="right"style="float: left;margin-right:2%;margin-left:1%;margin-bottom:0.5%;width: 82%;">
-		
 	</div>
 <!-- 下邊	--------------------------------------------------------------------------------- -->	
 	<div id="bottom" style="clear:left;width:100%;position:relative;bottom:0;left:0;">
