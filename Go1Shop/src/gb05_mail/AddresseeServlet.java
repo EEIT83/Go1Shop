@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import g01_login.controller.MemberBean;
+
 @WebServlet(urlPatterns={"/mail.do"})
 public class AddresseeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -18,14 +20,15 @@ public class AddresseeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		//receive data
-		String addressee = req.getParameter("addressee");
+		MemberBean mb = (MemberBean)req.getSession().getAttribute("LoginOK");
+		
 		//System.out.println(addressee);
 		
 		//transform data
 		//validate data
 		//call model
 		MailDAO mdao = new MailDAO();
-		List<MailVO> list = mdao.select(addressee);
+		List<MailVO> list = mdao.select(mb.getMail());
 		//System.out.println(list);
 		
 		HttpSession session = req.getSession();
