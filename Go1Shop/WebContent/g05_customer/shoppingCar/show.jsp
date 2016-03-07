@@ -90,67 +90,7 @@
 		<div id="content" style="width: 90%;margin:0 5% 0 5%;"></div>
 	</div>
 	<script>
-// 	$(function(){
-// 		var prID;
-		
-// 		//找出產品圖片
-// 		$.ajax({
-// 			'type':'POST',
-// 			'url':"<c:url value='/showProdImg.con'/>",
-// 			'dataType':'json',
-// 			'data':{prodId:'16'},
-// 			'success':function(data){								
-// 				content(data);
-// 				console.log(data.imgid[0]);
-// 				console.log(data.imgid[0]);
-// 				prID = data.imgid[0];
-// 			}
-// 		});
-		
-		//加入購物車
-// 		$(".addcar").click(function(event){
-// 			$.ajax({
-// 				'type':'POST',
-// 				'url':"<c:url value='/g05_customer/shoppingCar/controller/BuyProServlet.con'/>",
-// 				'dataType':'json',
-// 				'data':{prodId:'16'},
-// 				'success':function(data){								
-// 				alert(123);
-// 					console.log("error=" + data.error);
-// 					if(data!=null){
-// 						document.location.href="/Go1Shop/g01_login/Login.jsp";
-// 					}
-// 				}
-// 			});
-			
-			
-// 		});
-		
-		
-// 	});
-// 	//找出產品
-// 	function content(data){
-// 		$.ajax({
-// 			'type':'GET',
-// 			'url':"<c:url value='/g05_customer/ShowProServlet.con'/>",
-// 			'dataType':'json',
-// 			'data':{prod_id:'16'},
-// 			'success':function(Prod){								
-// 			console.log(Prod);
-// 		$('#PtitleImg').append("<img id='img1' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[0]+"'/>'  style='width: 100%' />");
-// 		$('#Pname').append("<p>"+Prod.productName+"</p>");
-// 		$('#Psize').append("<p style='font-size:35px;'>"+Prod.size+"</p>");
-// 		$('#Pprice').append("<p style='color:red'>"+Prod.price+"</p>");
-// 		$('#Pbrand').append("<h3 style='font-size:20px;'>"+Prod.brand+"</h3>");
-// 		$('#content').append("<img id='img2' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[1]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
-// 		$('#content').append("<img id='img3' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[2]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
-// 		$('#content').append("<img id='img4' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[3]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
-// 		$('#content').append("<img id='img5' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[4]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
-// 			}
-// 		});
-// 	}
-	
-	
+
 	</script>
 <%-- 	<c:forEach var="imgid" begin="1" end="${fn:length(imgId)}" varStatus="r"> --%>
 <%-- 		<c:set var='x' value="${imgid}" /> --%>
@@ -203,12 +143,12 @@
 $(function() { 
 	//加入購物車
 		$(".addcar").click(function(event){
-			alert(123);
+			
 			$.ajax({
 				'type':'POST',
 				'url':"<c:url value='/BuyProServlet.con'/>",
 				'dataType':'json',
-				'data':{prodId:'15'},
+				'data':{prodId:'16'},
 				'success':function(data){		
 
 					if(data.error=='error'){
@@ -260,7 +200,7 @@ $(function() {
 		'type':'POST',
 		'url':"<c:url value='/showProdImg.con'/>",
 		'dataType':'json',
-		'data':{prodId:'15'},
+		'data':{prodId:'16'},
 		'success':function(data){								
 			content(data);
 			console.log(data.imgid[0]);
@@ -275,7 +215,7 @@ $(function() {
 			'type':'GET',
 			'url':"<c:url value='/g05_customer/ShowProServlet.con'/>",
 			'dataType':'json',
-			'data':{prod_id:'15'},
+			'data':{prod_id:'16'},
 			'success':function(Prod){								
 			console.log(Prod);
 		$('#PtitleImg').append("<img id='img1' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[0]+"'/>'  style='width: 100%' />");
