@@ -16,14 +16,9 @@
 </head>
 <body>
 <ul id="leftNavigation">
-<<<<<<< HEAD
-			<c:if test="${empty LoginOK}">
 
-			</c:if>
-=======
 			<li><a rel="leanModal" name="signup" href="#signup" id="login">
 			<i class="glyphicon glyphicon-user leftNavIcon"></i>會員登入</a></li>
->>>>>>> branch 'master' of https://github.com/EEIT83/Go1Shop.git
 <!-- 			<li><a href="login.html" style="text-decoration: none"> -->
 <!-- 			<i class="glyphicon glyphicon-search leftNavIcon"></i>查詢</a></li> -->
 			<c:if test="${!empty LoginOK}">
