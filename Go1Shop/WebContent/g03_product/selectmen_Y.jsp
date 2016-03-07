@@ -6,155 +6,163 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+<link href="<%=request.getContextPath()%>/_css/app.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/_css/bootstrap.min.css" rel="stylesheet">
+<link href="<%=request.getContextPath()%>/_css/business-casual1.css" rel="stylesheet">
+<script src="<%=request.getContextPath()%>/_js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="<%=request.getContextPath()%>/_css/page.css" rel="stylesheet">
+<title>Insert title here</title>
+<!-- yoga -->
+<style type="text/css">
+/*  input {padding:5px 15px; background:#ccc; border:0 none; */
+/* cursor:pointer; */
+/* -webkit-border-radius: 5px; */
+/* border-radius: 5px; } */
+/*  input[type="submit"]{padding:5px 15px; background:#ccc; border:0 none; */
+/* cursor:pointer; */
+/* -webkit-border-radius: 5px; */
+/* border-radius: 5px; } */
+/* input[type="text"]{padding:5px 15px; border:2px black solid; */
+/* cursor:pointer; */
+/* -webkit-border-radius: 5px; */
+/* border-radius: 5px; } */
+/* #B{ */
+/* font-size:20px; */
+/* } */
+/* #B span{ */
+/* /* margin-left:50px; */ */
+/*  padding-left:70px; */
+/* } */
 
-<link rel="stylesheet" type="text/css" href="../css/main.css" />
+/* #header5{ */
+/* margin:0 21%; */
+/* } */
 
-<title>Product project</title>
-<script type="text/javascript">
-function clearForm() {
-	var inputs = document.getElementsByTagName("input");
-	for(var i=0; i<inputs.length; i++) {
-		if(inputs[i].type=="text") {
-			inputs[i].value="";
-		}
-	}
-}
-</script>
+
+/* #div{ */
+/* width:100%; */
+/* overflow: auto; */
+/* } */
+/* #img1 { */
+/*  border: 2px solid #292929; */
+/*  padding: 1px; */
+/* } */
+/* #h3txt{ */
+/*     color: #337ab7; */
+/*     text-align: center; */
+/*     } */
+/* #div_out {     */
+/*     padding:10px; */
+/*     border:2px; */
+/*     margin:15px; */
+/*     display:inline-block; */
+/*  	float:left; */
+/*     padding-right: 15px; */
+/*     padding-left: 15px;  */
+/*  }  */
+/* #div_out:nth-child(3n+1){ */
+/*  clear: both; */
+/*  } */
+  
+  
+/*  #header { */
+/* 	margin: 0 auto; */
+/* 	padding: 44px 0 50px; */
+/* 	text-align: center; */
+/* 	width: 960px; */
+/* } */
+/* #header a.logo { */
+/* 	display: block; */
+/* 	margin: 0 auto; */
+/* 	padding: 0; */
+/* 	width: 340px; */
+/* } */
+/* #header a.logo img { */
+/* 	border: 0; */
+/* 	display: block; */
+/* 	margin: 0; */
+/* 	padding: 0; */
+/* } */
+/* #header ul { */
+/* 	margin: 0; */
+/* 	padding: 56px 0 0; */
+/* } */
+/* #header ul li { */
+/* 	display: inline; */
+/* 	list-style: none; */
+/* 	margin: 0; */
+/* 	padding: 0 19px; */
+/* } */
+/* #header ul li a { */
+/* 	color: #252525; */
+/* 	display: inline-block; */
+/* 	font-family: "Arial Black", Gadget, sans-serif; */
+/* 	font-size: 14px; */
+/* 	font-weight: normal; */
+/* 	margin: 0; */
+/* 	padding: 0 0 3px; */
+/* 	text-decoration: none; */
+/* 	text-transform: uppercase; */
+/* } */
+
+/* #header ul li a:hover, #header ul li.selected a { */
+/* 	color: #0ba39c; */
+/* } */
+</style> 
 </head>
 <body>
+<div style="width: 100%;height: 100%;">
+	<!-- 上邊	--------------------------------------------------------------------------------- -->
+	<div style="margin-bottom:0.5%;">
+		<jsp:include page="/tm/top.jsp" />
+	</div>
 
-
-<h3>Welcome ${user.custid}</h3>
-
-<h3>Men</h3>
-<table>
-<tr>
-<td><h3><a href="<c:url value="/g03_product/productproject.jsp" />">Product Table</a></h3></td>
-<td><h3><a href="<c:url value="/g03_product/ProductGenderServlet.controller?gender=F&change=true" />">Women</a></h3></td>
-</tr>
-</table>
-<table>
-<tr><td><a href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=M&part=T-Shirt'/>">T-Shirt</a></td></tr>
-<tr><td><a href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=M&part=毛衣'/>">毛衣</a></td></tr>
-<tr><td><a href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=M&part=帽T'/>">帽T</a></td></tr>
-<tr><td><a href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=M&part=Polo衫'/>">Polo衫</a></td></tr>
-<tr><td><a href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=M&part=背心'/>">背心</a></td></tr>
-<tr><td><a href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=M&part=長袖上衣'/>">長袖上衣</a></td></tr>
-</table>
-
-<form action="<c:url value="/g03_product/ProductGenderServlet.controller?gender=M"/>" method="post">
-
-<table>
-	
-	<tr>
-		<td>
-		product name :<input type="text" name="prod_name" value="${param.prod_name}"><br>		
-		</td>		
-	</tr>
-	<tr>
-		<td>
-		    價錢範圍從
-			<input type="text" name="lowprice" value="${param.lowprice}">
-			到<input type="text" name="highprice" value="${param.highprice}">		
-		</td>
-	</tr>
-	
-	<tr>		
-		<td>			
-			<input type="submit" name="prodaction" value="Select">
-			<input type="submit" name="prodaction" value="SelectAll">		
-			<input type="button" value="Clear" onclick="clearForm()">
-		</td>
-	</tr>	
-	<tr>
-		<td>
-			<input type="radio" name="selectorder" value="OrderByPrice"> 價錢低到高<br>
-			<input type="radio" name="selectorder" value="OrderByPriceDesc"> 價錢高到低<br>
-			<input type="radio" name="selectorder" value="OrderByDate"> 日期舊到新<br>
-			<input type="radio" name="selectorder" value="OrderByDateDesc"> 日期新到舊<br>
-		</td>				
-	</tr>
-	<tr>
-		<td>	
-			
-<!-- 
-			<a href="#" onclick="clickselect()"/>女裝</a>
-
-		<script>
- 		function clickselect(){
-  			document.forms[0].action="<c:url value='/pages/productproject.controller?gender=F'/>";
-  			document.forms[0].method="GET";
-  			document.forms[0].submit();
-  		}
- 		</script>		
- -->
-		</td>				
-	</tr>
-	
-</table>
-
-</form>
-
-<h3><span class="error">${error.action}</span></h3>
-
-
-<script type="text/javascript">clearForm();</script>
-
-------------------------------------------------------------------------------------------
-<a href="<c:url value='/pages/productproject.controller?gender=M'/>">男裝</a>
-<a href="<c:url value='/pages/productproject.controller?gender=F'/>">女裝</a>
-
-<h3>Select Product Table Result : ${fn:length(select)} row(s) selected</h3>
-<c:if test="${not empty select}">
-<table>
-	<thead>
-	<tr>
-		<th>product name</th>
-		<th>size</th>
-		<th>color</th>
-		<th>count</th>
-		<th>price</th>
-		<th>brand</th>
-		<th>gender</th>
-		<th>part</th>
-		<th>launch_date</th>
-		<th>note</th>
-	</tr>
-	</thead>
-	<tbody>
-	<c:forEach var="bean" items="${select}">
-		<c:url value="/g03_product/selectmen.jsp" var="path">			
-			<c:param name="prod_name" value="${bean.prod_name}" />
-			<c:param name="size" value="${bean.size}" />
-			<c:param name="color" value="${bean.color}" />
-			<c:param name="price" value="${bean.price}" />
-			<c:param name="brand" value="${bean.brand}" />
-			<c:param name="gender" value="${bean.gender}" />
-			<c:param name="part" value="${bean.part}" />
-			<c:param name="launch_date" value="${bean.launch_date}" />
-			<c:param name="note" value="${bean.note}" />
-		</c:url>
-	<tr>
-<%-- 		<td><a href="${path}">${bean.id}</a></td> --%>
-		<td>${bean.prod_name}</td>
-		<td>${bean.size}</td>
-		<td>${bean.color}</td>
-		<td>${bean.count}</td>
-		<td>${bean.price}</td>
-		<td>${bean.brand}</td>
-		<td>${bean.gender}</td>
-		<td>${bean.part}</td>
-		<td>${bean.launch_date}</td>
-		<td>${bean.note}</td>
-<%-- 		<td><fmt:formatDate value="${bean.make}" pattern="yyyy-MM-dd EEEE"/></td> --%>
-<%-- 		<td>${bean.expire}</td> --%>
-	</tr>
-	</c:forEach>	
-	</tbody>
-</table>
-</c:if>
-
-
+	<!-- 左邊	--------------------------------------------------------------------------------- -->
+	<div id="left" style="float: left;margin-left:2%;width: 11%;">
+		<jsp:include page="/tm/left.jsp" />
+	</div>
+	<!-- 右邊	----------------------------------------------------------------------------------->
+	<div id="right"style="float: left;margin-right:2%;margin-left:1%;margin-bottom:0.5%;width: 82%;">
+		<div style="float: left;margin:5% 0 0 0;width: 100%;border:1px solid black; ">
+			<div style="width:100%;margin-left:5%">
+				<form action="<c:url value="/g03_product/ProductGenderServlet.controller?gender=M"/>" method="post">
+					<div id="B">
+						<span>產品名稱：</span> <input type="text" name="prod_name"	value="${param.prod_name}" style="width: 70%;"><br>
+						<span>價錢範圍從：</span><input type="text" name="lowprice" value="${param.lowprice}" style="width:10%;">
+						&nbsp;&nbsp;到&nbsp;&nbsp;
+						<input type="text" name="highprice" value="${param.highprice}" style="width:10%;" >
+						<span><input type="submit" name="prodaction" value="Select" style="width:10%"class="btn btn-primary"></span>
+						<button type="submit" name="selectorder" value="OrderByPrice" class="btn btn-primary">依金額低至高</button>
+						<button type="submit" name="selectorder" value="OrderByPriceDesc" class="btn btn-primary">依金額高至低</button>
+						<button type="submit" name="selectorder" value="OrderByDate" class="btn btn-primary">依刊登日期舊至新</button>
+						<button type="submit" name="selectorder" value="OrderByDateDesc" class="btn btn-primary">依刊登日期新至舊</button>
+						<br>
+						<br>
+					
+					</div>
+				</form>
+				<div id="div">
+					<c:forEach var="bean" items="${select}">
+						<div id="div_out">
+							<a href="#">
+							<img id="img1" class="img-responsive" style="width:300px;height:300px" src='<c:url value="/pages/showImg.controller?prod_id="/>${bean.prod_id}'>
+							</a>
+							<h3 id="h3txt">						
+								<a>${bean.prod_name}</a><br>
+								<a>金額:${bean.price}</a>						
+							</h3>
+						</div>
+					</c:forEach>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- 下邊	--------------------------------------------------------------------------------- -->	
+	<div id="bottom" style="clear:left;width:100%;position:relative;bottom:0;left:0;">
+		<jsp:include page="/tm/bottom.jsp" />	
+	</div>
+</div>
 </body>
 </html>

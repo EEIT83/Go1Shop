@@ -23,7 +23,10 @@ import g01_login.controller.MemberBean;
  * Servlet Filter implementation class FilterLogin
  */
 @WebFilter(
+
 		urlPatterns = { "/*"}, 
+		
+
 		initParams = { 
 		@WebInitParam(name = "url_checkDetail", value = "/g05_customer/checkout/checkDetail.jsp"),
 		@WebInitParam(name = "url_success", value = "/g05_customer/checkout/success.jsp"),
@@ -46,6 +49,9 @@ public class FilterLogin implements Filter {
 			FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
+		
+		//System.out.println(123);
+		
 		contextPath = req.getContextPath();
 		//System.out.println("contextPath="+contextPath);
 		String servletPath = req.getServletPath();
