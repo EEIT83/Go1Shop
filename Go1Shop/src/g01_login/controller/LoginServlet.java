@@ -59,6 +59,7 @@ public class LoginServlet extends HttpServlet {
 				AdminService adService = new AdminService();
 				if (memService.Login(mail, pwd) != null) {
 					memBean = memService.Login(mail, pwd);
+					session.setAttribute("LoginOK", memBean);
 					session.setAttribute("mail", memBean.getMail());
 					// request.setAttribute("account", memBean);
 				} else if (adService.Login(mail, pwd) != null) {
@@ -76,7 +77,7 @@ public class LoginServlet extends HttpServlet {
 				error.put("loginError", e.getMessage());
 				request.getRequestDispatcher("/g01_login/Login.jsp").forward(request, response);
 			}
-			request.getSession().setAttribute("LoginOK", memBean);
+			
 			//request.getRequestDispatcher("/index.jsp").forward(request, response);
 		}
 

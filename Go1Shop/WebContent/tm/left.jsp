@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,13 +9,21 @@
 <title>Insert title here</title>
 </head>
 <body>
-<ul id="leftNavigation">
-			<li><a href="login.html" style="text-decoration: none">
+	<ul id="leftNavigation">
+			<li><a href="<%=request.getContextPath()%>/g01_login/Login.jsp" style="text-decoration: none">
 			<i class="glyphicon glyphicon-user leftNavIcon"></i>會員登入</a></li>
 			
-			<li><a href="login.html" style="text-decoration: none">
-			<i class="glyphicon glyphicon-search leftNavIcon"></i>查詢</a></li>
-		
+<!-- 			<li><a href="login.html" style="text-decoration: none"> -->
+<!-- 			<i class="glyphicon glyphicon-search leftNavIcon"></i>查詢</a></li> -->
+			<c:if test="${!empty LoginOK}">
+				<li class="active1"><a href="#" style="text-decoration: none" target="_blank">
+				<i class="glyphicon glyphicon-comment leftNavIcon"></i>訊息</a>
+				<ul>
+					<li><a href='<c:url value='/mail.do'/>'>信箱</a></li>
+					<li><a href="<%=request.getContextPath()%>/gb05_mail/send.jsp">寫信</a></li>
+				</ul>
+			</li>
+			</c:if>
 			<li class="active1"><a href="#" style="text-decoration: none">
 			<i class="glyphicon glyphicon-triangle-right leftNavIcon"></i>上衣專區</a>
 				<ul>
@@ -23,7 +33,8 @@
 					<li><a href="#">襯衫</a></li>
 					<li><a href="#">毛衣</a></li>
 					<li><a href="#">外套</a></li>
-				</ul></li>
+				</ul>
+			</li>
 			<li class="active1"><a href="#" style="text-decoration: none">
 			<i 	class="glyphicon glyphicon-triangle-right leftNavIcon"></i>褲子專區</a>
 				<ul>
@@ -46,6 +57,7 @@
 				<li><a href="#">髮圈</a></li>
 				<li><a href="#">皮帶</a></li>
 			</ul></li>
-		</ul>
+		
+	</ul>
 </body>
 </html>

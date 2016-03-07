@@ -100,7 +100,7 @@
 		</div>
 	</div>
 <!-- 下邊	--------------------------------------------------------------------------------- -->	
-	<div id="bottom" style="clear:left;width:100%;position:relative;bottom:0;left:0;">
+	<div id="bottom" style="clear:left;width:100%;bottom:0;left:0;position:relative;">
 		<jsp:include page="/tm/bottom.jsp" />	
 	</div>
 <!-------------------------------------------------------------------------------------- -->
