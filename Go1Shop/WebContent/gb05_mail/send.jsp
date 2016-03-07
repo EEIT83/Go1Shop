@@ -29,7 +29,7 @@
 </head>
 <body>
 	<div style="text-align: center; margin: 6% 0 0 3% ;">
-		<div style="margin: 0 0 0 400px;width: 32%;background-color: rgba(0,0,0,0.1);width: 560px;">
+		<div style="margin: 0 0 0 200px;width: 32%;background-color: rgba(0,0,0,0.1);width: 560px;">
 			<form action='<c:url value='/ch07_mail/send.do'/>' style="margin: 0 0 0 5%;width: 600px;" >
 				<table>
 					<tr >

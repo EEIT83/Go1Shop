@@ -56,11 +56,11 @@
 		<jsp:include page="/tm/top.jsp" />
 	</div>
 <!-- 左邊	--------------------------------------------------------------------------------- -->
-	<div id="left" style="float: left;margin-left:2%;width: 11%;">
+	<div id="left" style="float: left;margin-left:2%;width: 15%;">
 		<jsp:include page="/tm/left.jsp" />
 	</div>
 <!-- 右邊	----------------------------------------------------------------------------------->
-	<div id="right"style="float: left;margin-right:2%;margin-left:1%;margin-bottom:0.5%;width: 82%;">
+	<div id="right"style="float: left;margin-right:2%;margin-left:1%;margin-bottom:0.5%;width: 80%;">
 <!----------------------------------------------------------------------------------------->	
 		<div id = "title" style="width:100%;height:100%;margin-bottom: 10px;clear: both;" class="titleClass">
 			<div id="PtitleImg" style="width:60%;margin:5% 0 0 3%;float:left;"></div>
@@ -77,11 +77,17 @@
 				<div id="Pprice" style="width:30%;font-size:45px;color:red;margin:40% 0 0 0%;float:left; "></div>
 <!-- 					<div style="width:8%;margin:42% 0 0 0;text-align:right;float:left;"><p  style='color:red;font-size:50px; '>元</p></div> -->
 <!------------------送出---------------- -->
-				<form>
-				<div style="width:100%;margin:100% 0 0 0;text-align:center;" id="box"><input type="button" class="button addcar btn btn-primary" value="加入購物車" /></div>
-				<input type="hidden" value="15" name="prodId">
-				</form>
-			</div>
+				<c:if test="${empty LoginOK}">
+					<div style="width:100%;margin:100% 0 0 0;text-align:center;" id="box"><input type="button" class="button addcar btn btn-primary" value="加入購物車" /></div>
+					<input type="hidden" value="15" name="prodId">
+				</c:if>
+				<c:if test="${!empty LoginOK}">
+					<form>
+					<div style="width:100%;margin:100% 0 0 0;text-align:center;" id="box"><input type="button" class="button addcar btn btn-primary" value="加入購物車" /></div>
+					<input type="hidden" value="15" name="prodId">
+					</form>
+				</c:if>
+			</div>	
 		</div>
 		<div style='display:block;margin-top:20px;padding-top:2px;background-color:#BEBEBE;height: 2px;clear: both;'></div>
 		<br>
@@ -94,6 +100,15 @@
 		<div id="content" style="width: 90%;margin:0 5% 0 5%;"></div>
 
 	</div>
+	
+	<!-- 驗證登入帳號 -->
+	<script type="text/javascript">
+			
+	</script>
+	
+	
+	
+	
 	<script>
 
 	function content2(data){
