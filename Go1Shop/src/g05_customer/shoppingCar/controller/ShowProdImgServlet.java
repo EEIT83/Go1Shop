@@ -19,7 +19,7 @@ public class ShowProdImgServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String imgId = request.getParameter("imgId").trim();
-		System.out.println("imgId="+imgId);
+		//System.out.println("imgId="+imgId);
 		InputStream in = null;
 		OutputStream out = null;
 		String imgType = "image/jpeg";

@@ -14,35 +14,11 @@
 <!-- 最新編譯和最佳化的 JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script src="<%=request.getContextPath()%>/_js/jQuery-TWzipcode-master/jQuery-TWzipcode-master/jquery.twzipcode.js"></script>
-<link href="<%=request.getContextPath()%>/_css/app.css" rel="stylesheet" type="text/css">
-<link href="<%=request.getContextPath()%>/_css/bootstrap.min.css" rel="stylesheet">
-<link href="<%=request.getContextPath()%>/_css/business-casual1.css" rel="stylesheet">
-<script src="<%=request.getContextPath()%>/_js/bootstrap.min.js"></script>
-
+<link href="<%=request.getContextPath()%>/_css/page.css" rel="stylesheet">
 
 
 
 <style>
-#p1 a {
-	font-size: 20px;
-	text-decoration: none;
-	color: #5B5B5B;
-	
-}
-#bottom {
-background-color:#DDDDDD;
-border-radius:20px 20px 0 0;
-
-}
-.active{ 
-border-radius:10px 10px 10px 10px;
-}
-.active ul li{
-border-radius:10px 10px 10px 10px;
-}
-body{ 
-font-family:微軟正黑體;
-} 
 
 
 
@@ -86,21 +62,21 @@ font-family:微軟正黑體;
 }
 
 .zipcode {
-	background-color: #4E92E6;
-	color: #fff;
+	background-color: #FFFFFF;
+	color: #000;
 	height: 22px;
 	
 }
 
 .county {
-	background-color: #4E92E6;
-	color: #fff;
+	background-color: #FFFFFF;
+	color: #000;
 	
 }
 
 .district {
-	background-color: #4E92E6;
-	color: #fff;
+	background-color: #FFFFFF;
+	color: #000;
 }
 </style>
 <title>Check Detail</title>
@@ -109,173 +85,117 @@ font-family:微軟正黑體;
 <div style="width: 100%;height: 100%;">
 <!-- 上邊	--------------------------------------------------------------------------------- -->
 	<div style="margin-bottom:0.5%;">
-<!-------------------------------------------------------------------------------------- -->
-		<nav class="navbar navbar-default" role="navigation">
-			<div class="container"  style="width:100%;border-radius:0 0 20px 20px;background-color:#DDDDDD">
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
-					<div style="float:left;">
-					<a href="women.html" style="text-decoration: none; color: black; text-shadow:5px 5px 5px #5B5B5B;font-size:45px" >Go.E-Shopping</a>
-					<div class="address-bar" style="color:black;text-shadow:5px 5px 5px #5B5B5B;font-size:8px;">Enjoy Your Life&nbsp;●&nbsp;Chase Love．Brave Dream</div>
-					</div>
-					<ul class="nav navbar-nav"  >
-						<li><a href="women.html">WOMEN</a></li>
-						<li><a href="men.html">MEN</a></li>
-						<li><a href="kids.html">KIDS</a></li>
-						<li><a href="soprts.html">SOPRTS</a></li>
-						<li><a href="babies.html">BABIES</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
+		<jsp:include page="/tm/top.jsp" />
 	</div>
 <!-- 左邊	--------------------------------------------------------------------------------- -->
 	<div id="left" style="float: left;margin-left:2%;width: 11%;">
-<!-------------------------------------------------------------------------------------- -->
-		<ul id="leftNavigation">
-			<li><a href="login.html" style="text-decoration: none">
-			<i class="glyphicon glyphicon-user leftNavIcon"></i>會員登入</a></li>
-			
-			<li><a href="login.html" style="text-decoration: none">
-			<i class="glyphicon glyphicon-search leftNavIcon"></i>查詢</a></li>
-		
-			<li class="active1"><a href="#" style="text-decoration: none">
-			<i class="glyphicon glyphicon-triangle-right leftNavIcon"></i>上衣專區</a>
-				<ul>
-					<li><a href="#">短袖</a></li>
-					<li><a href="#">長袖</a></li>
-					<li><a href="#">背心</a></li>
-					<li><a href="#">襯衫</a></li>
-					<li><a href="#">毛衣</a></li>
-					<li><a href="#">外套</a></li>
-				</ul></li>
-			<li class="active1"><a href="#" style="text-decoration: none">
-			<i 	class="glyphicon glyphicon-triangle-right leftNavIcon"></i>褲子專區</a>
-				<ul>
-					<li><a href="#">短褲</a></li>
-					<li><a href="#">長褲</a></li>
-					<li><a href="#">牛仔褲</a></li>
-					<li><a href="#">休閒褲</a></li>
-					<li><a href="#">工作褲</a></li>
-					<li><a href="#">飛鼠褲</a></li>
-					<li><a href="#">海灘褲</a></li>
-					<li><a href="#">運動褲</a></li>
-				</ul></li>
-			<li class="active1"><a href="#" style="text-decoration: none">
-			<i 	class="glyphicon glyphicon-triangle-right leftNavIcon"></i>配件專區</a>
-			<ul>
-				<li><a href="#">圍巾</a></li>
-				<li><a href="#">帽子</a></li>
-				<li><a href="#">眼鏡</a></li>
-				<li><a href="#">項鍊</a></li>
-				<li><a href="#">髮圈</a></li>
-				<li><a href="#">皮帶</a></li>
-			</ul></li>
-		</ul>
+		<jsp:include page="/tm/left.jsp" />
 	</div>
 <!-- 右邊	----------------------------------------------------------------------------------->
 	<div id="right"style="float: left;margin-right:2%;margin-left:1%;margin-bottom:0.5%;width: 82%;">
 <!----------------------------------------------------------------------------------------->	
-	</div>
-<div id="all">
-	<div id="tb">
-		<table class="table table-striped">
-				<tr>
-					<th>product</th>
-					<th>price</th>
-					<th>count</th>
-					<th>subtotal</th>
-				</tr>
-				<c:forEach var="cars" items="${shopcar.car}">
-		
-					<tr>
-						<td>${cars.value.prod_Name}</td>
-						<td>${cars.value.price}</td>
-						<td>${cars.value.count}</td>
-						<td>${cars.value.subtotal}</td>
-					</tr>
-				</c:forEach>
-			</table>
-	</div>
-	<div class="form">
-		<div class="col-fixed">
-			<form name="my_form" method=POST class="form-group"  >
-				<fieldset>
-				<legend></legend>
-				<div class="form-group">
-					<label class="control-label" for="addressee">收件人:</label>
-					<input type="text" name="orderBean.addressee" id=addressee class="form-control">${errors.addressee}<br>
-				</div>
-				<div class="form-group">
-					<label class="control-label">手機:</label>
-					<input type="text" name="orderBean.phone" id="phone" class="form-control">${errors.phone}<br>
-				</div>
-				<div class="form-group">
-					<label class="control-label">收件人地址:</label>
-					<table class="tw">
+	
+		<div id="all">
+			<div id="tb">
+				<table class="table table-striped">
 						<tr>
-							<td>
-								<div id="twzipcode"></div>
-							</td>
+							<th>product</th>
+							<th>price</th>
+							<th>count</th>
+							<th>subtotal</th>
 						</tr>
-						<tr>
-							<td>
-								<input type="text"  id="address" class="form-control">${errors.address}<br>
-							</td>
-						</tr>
+						<c:forEach var="cars" items="${shopcar.car}">
+				
+							<tr>
+								<td>${cars.value.prod_Name}</td>
+								<td>${cars.value.price}</td>
+								<td>${cars.value.count}</td>
+								<td>${cars.value.subtotal}</td>
+							</tr>
+						</c:forEach>
 					</table>
+			</div>
+			<div class="form">
+				<div class="col-fixed">
+					<form name="my_form" method=POST class="form-group"  >
+						<fieldset>
+						<legend></legend>
+						<div class="form-group">
+							<label class="control-label" for="addressee">收件人:</label>
+							<input type="text" name="orderBean.addressee" id=addressee class="form-control">${errors.addressee}<br>
+						</div>
+						<div class="form-group">
+							<label class="control-label">手機:</label>
+							<input type="text" name="orderBean.phone" id="phone" class="form-control">${errors.phone}<br>
+						</div>
+						<div class="form-group">
+							<label class="control-label">收件人地址:</label>
+							<table class="tw">
+								<tr>
+									<td>
+										<div id="twzipcode"></div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input type="text" style="width: 500px;" id="address" class="form-control">${errors.address}<br>
+									</td>
+								</tr>
+							</table>
+						</div>
+						</fieldset>
+						<fieldset>
+						<legend></legend>
+						<div class="form-group">
+							<label class="control-label">寄件人:</label>
+							<input type="text" name="orderBean.sender" id="sender" class="form-control">${errors.sender}<br>
+						</div>
+						<div class="form-group">
+							<label class="control-label">手機:</label>
+							<input type="text" name="orderBean.sender_phone" id="sender_phone" class="form-control">${errors.sender_phone}<br>
+						</div>
+						<div class="form-group">
+							<label class="control-label">寄件人地址:</label>
+							<table class="tw">
+								<tr>
+									<td>													
+										<div id="twzipcode1"></div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input type="text" style="width: 500px;"  id="sender_address" class="form-control">${errors.sender_address}<br>
+									</td>
+								</tr>
+							</table>				
+						</div>
+						</fieldset>
+						<fieldset>
+							<label class="control-label" id="radio">付款方式:</label>
+						<div class="radio">
+							<label class="radio-inline">
+							<input type="radio" name="radio" value="1">1.貨到付款
+							</label>
+							<label class="radio-inline">
+							<input type="radio" name="radio" value="2">2.信用卡付款 
+							</label>
+							<label class="radio-inline">
+							<input type="radio" name="radio" value="3">3.ATM轉帳
+							</label>
+							${errors.payment} 
+						</div>
+						</fieldset>
+						<br>
+						<br>
+							<div id = "bt">
+								<button id="previous" class="btn btn-primary" >上一頁</button>
+								<button id="button"  class="btn btn-primary" >送出</button>
+							</div>
+					</form>
 				</div>
-				</fieldset>
-				<fieldset>
-				<legend></legend>
-				<div class="form-group">
-					<label class="control-label">寄件人:</label>
-					<input type="text" name="orderBean.sender" id="sender" class="form-control">${errors.sender}<br>
-				</div>
-				<div class="form-group">
-					<label class="control-label">手機:</label>
-					<input type="text" name="orderBean.sender_phone" id="sender_phone" class="form-control">${errors.sender_phone}<br>
-				</div>
-				<div class="form-group">
-					<label class="control-label">寄件人地址:</label>
-					<table class="tw">
-						<tr>
-							<td>													
-								<div id="twzipcode1"></div>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<input type="text"  id="sender_address" class="form-control">${errors.sender_address}<br>
-							</td>
-						</tr>
-					</table>				
-				</div>
-				</fieldset>
-				<fieldset>
-					<label class="control-label" id="radio">付款方式:</label>
-				<div class="radio">
-					<label class="radio-inline">
-					<input type="radio" name="radio" value="1">1.貨到付款
-					</label>
-					<label class="radio-inline">
-					<input type="radio" name="radio" value="2">2.信用卡付款 
-					</label>
-					<label class="radio-inline">
-					<input type="radio" name="radio" value="3">3.ATM轉帳
-					</label>
-					${errors.payment} 
-				</div>
-				</fieldset>
-				<br>
-				<br>
-					<div id = "bt">
-						<button id="previous" class="btn btn-primary" >上一頁</button>
-						<button id="button"  class="btn btn-primary" >送出</button>
-					</div>
-			</form>
+			</div>
 		</div>
 	</div>
-</div>
 	<SCRIPT>
 		$('#twzipcode').twzipcode({
 			// 依序套用至縣市、鄉鎮市區及郵遞區號框
@@ -530,23 +450,9 @@ font-family:微軟正黑體;
 	</SCRIPT>
 <!-- 下邊	--------------------------------------------------------------------------------- -->	
 	<div id="bottom" style="clear:left;width:100%;position:relative;bottom:0;left:0;">
+		<jsp:include page="/tm/bottom.jsp" />	
+	</div>
 <!-------------------------------------------------------------------------------------- -->
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 text-center">
-					<p id="p1">
-						<a href=""><i class="glyphicon glyphicon-envelope leftNavIcon"></i>聯絡
-							Go.E</a>&nbsp;●&nbsp;<a href="">購物指南</a>&nbsp;●&nbsp;<a
-							href="">品牌日誌</a>&nbsp;●&nbsp;<a href="">最新消息</a>&nbsp;●&nbsp;<a
-							href="">使用條款</a>&nbsp;●&nbsp;<a href="">隱私政策</a>&nbsp;●&nbsp;<a href="index.html">Go.E-Shopping<i
-							class="glyphicon glyphicon-home leftNavIcon"></i>
-						</a>
-					</p>
-				</div>
-			</div>
-		</div>
-	<script src="<%=request.getContextPath()%>/_js/jquery.ssd-vertical-navigation.js"></script>
-	<script src="<%=request.getContextPath()%>/_js/app.js"></script>
 </div>
 </body>
 </html>

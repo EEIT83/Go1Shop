@@ -20,7 +20,7 @@ public class ShowProdImgIdServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String prodId = request.getParameter("prodId").trim();
-		System.out.println("prodId=" + prodId);
+		//System.out.println("prodId=" + prodId);
 		Collection<Integer> imgId = new ArrayList<>();
 		imgId = service.selectImgId(Integer.parseInt(prodId));
 		

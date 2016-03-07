@@ -15,7 +15,7 @@ import org.json.simple.JSONObject;
 
 import g01_login.controller.MemberBean;
 
-@WebServlet(urlPatterns = { "/g05_customer/shoppingCar/controller/BuyProServlet.con" })
+@WebServlet(urlPatterns = { "/BuyProServlet.con" })
 public class BuyProServlet extends HttpServlet {
 
 	@Override

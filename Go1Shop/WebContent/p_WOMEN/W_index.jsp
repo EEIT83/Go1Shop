@@ -11,14 +11,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <link href="<%=request.getContextPath()%>/_css/page.css" rel="stylesheet">
-<title>Insert title here</title>
+<title>WOMEN-最新品-Go1Shop</title>
 <style>
 
 /* ------------------------------------------------ */
 </style>
-
-
-
 
 </head>
 <body>
@@ -27,45 +24,12 @@
 	<div style="margin-bottom:0.5%;">
 	<jsp:include page="/tm/top.jsp" />
 	</div>
-	<div style="width:100%;height:90%;merge:0 5% 0 5%;border:1px solid red; " >
-		<iframe src="<%=request.getContextPath()%>/gb04_marketing/ad.jsp" scrolling="no" frameborder="0" height="100%" id="mainFrame" width="100%" onload='IFrameReSize("mainFrame");IFrameReSizeWidth("mainFrame");'></iframe>
-	</div>
-	<script type="text/javascript">
-
-		//iframe高度自适应
-		function IFrameReSize(iframename) {
-			var pTar = document.getElementByIdx_x_x(iframename);
-			if (pTar) { //ff
-				if (pTar.contentDocument && pTar.contentDocument.body.offsetHeight) {
-					pTar.height = pTar.contentDocument.body.offsetHeight;
-				} //ie
-				else if (pTar.Document && pTar.Document.body.scrollHeight) {
-				pTar.height = pTar.Document.body.scrollHeight;
-				}
-			}
-		}
-		//iframe宽度自适应
-		function IFrameReSizeWidth(iframename) {
-			var pTar = document.getElementByIdx_x_x(iframename);
-			if (pTar) { //ff
-				if (pTar.contentDocument && pTar.contentDocument.body.offsetWidth) {
-					pTar.width = pTar.contentDocument.body.offsetWidth;
-				} //ie
-				else if (pTar.Document && pTar.Document.body.scrollWidth) {
-			pTar.width = pTar.Document.body.scrollWidth;
-				}
-			}
-		}
-	</script>
 <!-- 左邊	--------------------------------------------------------------------------------- -->
 	<div id="left" style="float: left;margin-left:2%;width: 11%;">
 	<jsp:include page="/tm/left.jsp" />
 	</div>
 <!-- 右邊	----------------------------------------------------------------------------------->
 	<div id="right"style="float: left;margin-right:2%;margin-left:1%;margin-bottom:0.5%;width: 82%;">
-	
-	
-	
 	</div>
 <!-- 下邊	--------------------------------------------------------------------------------- -->	
 	<div id="bottom" style="clear:left;width:100%;position:relative;bottom:0;left:0;">
