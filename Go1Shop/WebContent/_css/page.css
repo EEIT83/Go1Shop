@@ -1,0 +1,19 @@
+#p1 a {
+	font-size: 20px;
+	text-decoration: none;
+	color: #5B5B5B;
+	
+}
+#bottom {
+background-color:#DDDDDD;
+
+}
+.active{ 
+border-radius:10px 10px 10px 10px;
+}
+.active ul li{
+border-radius:10px 10px 10px 10px;
+}
+body{ 
+font-family:"Arial","微軟正黑體";
+} 

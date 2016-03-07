@@ -9,36 +9,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="<%=request.getContextPath()%>/_js/jquery-1.12.0.min.js"></script>
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="<%=request.getContextPath()%>/_js/car/jquery.fly.min.js"></script>
 <script src="<%=request.getContextPath()%>/_js/jquery.fly.min.js"></script> 
 <title>Insert title here</title>
-<link href="<%=request.getContextPath()%>/_css/app.css" rel="stylesheet" type="text/css">
-<link href="<%=request.getContextPath()%>/_css/bootstrap.min.css" rel="stylesheet">
-<link href="<%=request.getContextPath()%>/_css/business-casual1.css" rel="stylesheet">
-<script src="<%=request.getContextPath()%>/_js/bootstrap.min.js"></script>
-
+<link href="<%=request.getContextPath()%>/_css/page.css" rel="stylesheet">
 <style>
-#p1 a {
-	font-size: 20px;
-	text-decoration: none;
-	color: #5B5B5B;
-	
-}
-#bottom {
-background-color:#DDDDDD;
-border-radius:20px 20px 0 0;
-
-}
-.active{ 
-border-radius:10px 10px 10px 10px;
-}
-.active ul li{
-border-radius:10px 10px 10px 10px;
-}
-body{ 
-font-family:微軟正黑體;
-} 
 /* -------------------商品頁-------------------------- */
 .titleClass:after, .titleClass:before{
   content:"";
@@ -78,67 +54,12 @@ font-family:微軟正黑體;
 <!-- 上邊	--------------------------------------------------------------------------------- -->
 	<div style="margin-bottom:0.5%;">
 <!-------------------------------------------------------------------------------------- -->
-		<nav class="navbar navbar-default" role="navigation">
-			<div class="container"  style="width:100%;border-radius:0 0 20px 20px;background-color:#DDDDDD">
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
-					<div style="float:left;">
-					<a href="women.html" style="text-decoration: none; color: black; text-shadow:5px 5px 5px #5B5B5B;font-size:45px" >Go.E-Shopping</a>
-					<div class="address-bar" style="color:black;text-shadow:5px 5px 5px #5B5B5B;font-size:8px;">Enjoy Your Life&nbsp;●&nbsp;Chase Love．Brave Dream</div>
-					</div>
-					<ul class="nav navbar-nav"  >
-						<li><a href="women.html">WOMEN</a></li>
-						<li><a href="men.html">MEN</a></li>
-						<li><a href="kids.html">KIDS</a></li>
-						<li><a href="soprts.html">SOPRTS</a></li>
-						<li><a href="babies.html">BABIES</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
+	<jsp:include page="/tm/top.jsp" />
 	</div>
 <!-- 左邊	--------------------------------------------------------------------------------- -->
 	<div id="left" style="float: left;margin-left:2%;width: 11%;">
 <!-------------------------------------------------------------------------------------- -->
-		<ul id="leftNavigation">
-			<li><a href="login.html" style="text-decoration: none">
-			<i class="glyphicon glyphicon-user leftNavIcon"></i>會員登入</a></li>
-			
-			<li><a href="login.html" style="text-decoration: none">
-			<i class="glyphicon glyphicon-search leftNavIcon"></i>查詢</a></li>
-		
-			<li class="active1"><a href="#" style="text-decoration: none">
-			<i class="glyphicon glyphicon-triangle-right leftNavIcon"></i>上衣專區</a>
-				<ul>
-					<li><a href="#">短袖</a></li>
-					<li><a href="#">長袖</a></li>
-					<li><a href="#">背心</a></li>
-					<li><a href="#">襯衫</a></li>
-					<li><a href="#">毛衣</a></li>
-					<li><a href="#">外套</a></li>
-				</ul></li>
-			<li class="active1"><a href="#" style="text-decoration: none">
-			<i 	class="glyphicon glyphicon-triangle-right leftNavIcon"></i>褲子專區</a>
-				<ul>
-					<li><a href="#">短褲</a></li>
-					<li><a href="#">長褲</a></li>
-					<li><a href="#">牛仔褲</a></li>
-					<li><a href="#">休閒褲</a></li>
-					<li><a href="#">工作褲</a></li>
-					<li><a href="#">飛鼠褲</a></li>
-					<li><a href="#">海灘褲</a></li>
-					<li><a href="#">運動褲</a></li>
-				</ul></li>
-			<li class="active1"><a href="#" style="text-decoration: none">
-			<i 	class="glyphicon glyphicon-triangle-right leftNavIcon"></i>配件專區</a>
-			<ul>
-				<li><a href="#">圍巾</a></li>
-				<li><a href="#">帽子</a></li>
-				<li><a href="#">眼鏡</a></li>
-				<li><a href="#">項鍊</a></li>
-				<li><a href="#">髮圈</a></li>
-				<li><a href="#">皮帶</a></li>
-			</ul></li>
-		</ul>
+	<jsp:include page="/tm/left.jsp" />
 	</div>
 <!-- 右邊	----------------------------------------------------------------------------------->
 	<div id="right"style="float: left;margin-right:2%;margin-left:1%;margin-bottom:0.5%;width: 82%;">
@@ -150,22 +71,20 @@ font-family:微軟正黑體;
 				<div id="Pname" style="width:100%;height:50%;margin:4% 0 0 4%;font-size:20px;text-align:left;"></div>
 <!------------------大小---------------- -->
 					<div style="width:28%;margin:5% 0 0 4%;font-weight: bold;float:left;"><p style='font-size:25px;'>尺寸 ：</p></div>
-				<div id="Psize" style="width:11%;margin:1% 0 0 0%;font-weight: bold;text-align:left;float:left;" ></div>
+				<div id="Psize" style="width:11%;margin:3% 0 0 0%;font-weight: bold;text-align:left;float:left;" ></div>
 <!-------------------------------------				 -->
 				<div style="clear: both;"></div>
 <!------------------價錢---------------- -->
 					<div style="width:23%;margin:40% 0 0 25%;font-size:30px;color:red;float:left; ">NT＄</div>
 				<div id="Pprice" style="width:30%;font-size:45px;color:red;margin:40% 0 0 0%;float:left; "></div>
-					<div style="width:8%;margin:42% 0 0 0;text-align:right;float:left;"><p  style='color:red;font-size:50px; '>元</p></div>
+<!-- 					<div style="width:8%;margin:42% 0 0 0;text-align:right;float:left;"><p  style='color:red;font-size:50px; '>元</p></div> -->
 <!------------------送出---------------- -->
 				<form>
 				<div style="width:100%;margin:100% 0 0 0;text-align:center;" id="box"><input type="button" class="button addcar btn btn-primary" value="加入購物車" /></div>
-				<input type="hidden" value="16" name="prodId">
+				<input type="hidden" value="15" name="prodId">
 				</form>
 			</div>
 		</div>
-		
-		
 		<div style='display:block;margin-top:20px;padding-top:2px;background-color:#BEBEBE;height: 2px;clear: both;'></div>
 		<br>
 		<div>
@@ -179,67 +98,65 @@ font-family:微軟正黑體;
 
 	</div>
 	<script>
-	$(function(){
-		var prID;
+// 	$(function(){
+// 		var prID;
 		
-		//找出產品圖片
-		$.ajax({
-			'type':'POST',
-			'url':"<c:url value='/showProdImg.con'/>",
-			'dataType':'json',
-			'data':{prodId:'16'},
-			'success':function(data){								
-				content(data);
-				console.log(data.imgid[0]);
-				console.log(data.imgid[0]);
-				prID = data.imgid[0];
-			}
-		});
+// 		//找出產品圖片
+// 		$.ajax({
+// 			'type':'POST',
+// 			'url':"<c:url value='/showProdImg.con'/>",
+// 			'dataType':'json',
+// 			'data':{prodId:'16'},
+// 			'success':function(data){								
+// 				content(data);
+// 				console.log(data.imgid[0]);
+// 				console.log(data.imgid[0]);
+// 				prID = data.imgid[0];
+// 			}
+// 		});
 		
-		
-		$(".addcar").click(function(event){
-			$.ajax({
-				'type':'POST',
-				'url':"<c:url value='/g05_customer/shoppingCar/controller/BuyProServlet.con'/>",
-				'dataType':'json',
-				'data':{prodId:'16'},
-				'success':function(data){								
-					console.log("error=" + data.error);
-					if(data!=null){
-						document.location.href="/Go1Shop/g01_login/Login.jsp";
-					}
-				}
-			});
+		//加入購物車
+// 		$(".addcar").click(function(event){
+// 			$.ajax({
+// 				'type':'POST',
+// 				'url':"<c:url value='/g05_customer/shoppingCar/controller/BuyProServlet.con'/>",
+// 				'dataType':'json',
+// 				'data':{prodId:'16'},
+// 				'success':function(data){								
+// 				alert(123);
+// 					console.log("error=" + data.error);
+// 					if(data!=null){
+// 						document.location.href="/Go1Shop/g01_login/Login.jsp";
+// 					}
+// 				}
+// 			});
 			
 			
-		});
+// 		});
 		
 		
-	});
-	//找出產品
-	function content(data){
-		$.ajax({
-			'type':'GET',
-			'url':"<c:url value='/g05_customer/ShowProServlet.con'/>",
-			'dataType':'json',
-			'data':{prod_id:'16'},
-			'success':function(Prod){								
-			console.log(Prod);
-		$('#PtitleImg').append("<img id='img1' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[0]+"'/>'  style='width: 100%' />");
-		$('#Pname').append("<p>"+Prod.productName+"</p>");
-		$('#Psize').append("<p style='font-size:35px;'>"+Prod.size+"</p>");
-		$('#Pprice').append("<p style='color:red'>"+Prod.price+"</p>");
-		$('#Pbrand').append("<h3 style='font-size:20px;'>"+Prod.brand+"</h3>");
-		
-		//$('#content').append("<iframe width='100%' height='1000 px' src='/Go1Shop/t11111.jsp'></iframe>");
-		
-		$('#content').append("<img id='img2' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[1]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
-		$('#content').append("<img id='img3' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[2]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
-		$('#content').append("<img id='img4' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[3]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
-		$('#content').append("<img id='img5' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[4]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
-			}
-		});
-	}
+// 	});
+// 	//找出產品
+// 	function content(data){
+// 		$.ajax({
+// 			'type':'GET',
+// 			'url':"<c:url value='/g05_customer/ShowProServlet.con'/>",
+// 			'dataType':'json',
+// 			'data':{prod_id:'16'},
+// 			'success':function(Prod){								
+// 			console.log(Prod);
+// 		$('#PtitleImg').append("<img id='img1' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[0]+"'/>'  style='width: 100%' />");
+// 		$('#Pname').append("<p>"+Prod.productName+"</p>");
+// 		$('#Psize').append("<p style='font-size:35px;'>"+Prod.size+"</p>");
+// 		$('#Pprice').append("<p style='color:red'>"+Prod.price+"</p>");
+// 		$('#Pbrand').append("<h3 style='font-size:20px;'>"+Prod.brand+"</h3>");
+// 		$('#content').append("<img id='img2' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[1]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
+// 		$('#content').append("<img id='img3' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[2]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
+// 		$('#content').append("<img id='img4' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[3]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
+// 		$('#content').append("<img id='img5' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[4]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
+// 			}
+// 		});
+// 	}
 	
 	function content2(data){
 		
@@ -299,24 +216,9 @@ font-family:微軟正黑體;
 	
 
 <!-- 下邊	--------------------------------------------------------------------------------- -->	
-	<div id="bottom" style="clear:left;width:100%;position:fixed;bottom:0;left:0;">
+	<div id="bottom" style="clear:left;width:100%;position:relative;bottom:0;left:0;">
 <!-------------------------------------------------------------------------------------- -->
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 text-center">
-					<p id="p1">
-						<a href=""><i class="glyphicon glyphicon-envelope leftNavIcon"></i>聯絡
-							Go.E</a>&nbsp;●&nbsp;<a href="">購物指南</a>&nbsp;●&nbsp;<a
-							href="">品牌日誌</a>&nbsp;●&nbsp;<a href="">最新消息</a>&nbsp;●&nbsp;<a
-							href="">使用條款</a>&nbsp;●&nbsp;<a href="">隱私政策</a>&nbsp;●&nbsp;<a href="index.html">Go.E-Shopping<i
-							class="glyphicon glyphicon-home leftNavIcon"></i>
-						</a>
-					</p>
-				</div>
-			</div>
-		</div>
-	<script src="<%=request.getContextPath()%>/_js/jquery.ssd-vertical-navigation.js"></script>
-	<script src="<%=request.getContextPath()%>/_js/app.js"></script>
+	<jsp:include page="/tm/bottom.jsp" />	
 </div>
 <%-- <script src="<%=request.getContextPath()%>/_js/jquery.ssd-vertical-navigation.js"></script> --%>
 <%-- <script src="<%=request.getContextPath()%>/_js/app.js"></script> --%>
@@ -356,30 +258,98 @@ font-family:微軟正黑體;
 <div id="msg">已成功加入購物車！</div> 
 <script type="text/javascript">
 $(function() { 
-    var offset = $("#end").offset(); 
-    $(".addcar").click(function(event){ 
-        var addcar = $(this); 
-        var img = $('#PtitleImg').find('img').attr('src'); 
-        var flyer = $('<img class="u-flyer" src="'+img+'">'); 
-        flyer.fly({ 
-            start: { 
-                left: event.pageX, //开始位置（必填）#fly元素会被设置成position: fixed 
-                top: event.pageY //开始位置（必填） 
-            }, 
-            end: { 
-                left: offset.left+10, //结束位置（必填） 
-                top: offset.top+10, //结束位置（必填） 
-                width: 0, //结束时宽度 
-                height: 0 //结束时高度 
-            }, 
-            onEnd: function(){ //结束回调 
-                $("#msg").show().animate({width: '250px'}, 200).fadeOut(1000); //提示信息 
-                addcar.css("cursor","default").removeClass('btn-primary').unbind('click'); 
-                this.destory(); //移除dom 
-            } 
-        });
-        
-    }); 
+	//加入購物車
+		$(".addcar").click(function(event){
+			alert(123);
+			$.ajax({
+				'type':'POST',
+				'url':"<c:url value='/BuyProServlet.con'/>",
+				'dataType':'json',
+				'data':{prodId:'15'},
+				'success':function(data){		
+
+					if(data.error=='error'){
+						document.location.href="/Go1Shop/g01_login/Login.jsp";
+						return;
+					}
+				//------------------------------------購物車動畫-----------------------------
+			
+				}
+				
+			});
+			var offset = $("#end").offset(); 
+	        var addcar = $(this); 
+	        var img = $('#PtitleImg').find('img').attr('src'); 
+	        var flyer = $('<img class="u-flyer" src="'+img+'">'); 
+	        flyer.fly({ 
+	            start: { 
+	                left: event.pageX, //开始位置（必填）#fly元素会被设置成position: fixed 
+	                top: event.pageY //开始位置（必填） 
+	            }, 
+	            end: { 
+	                left: offset.left+10, //结束位置（必填） 
+	                top: offset.top+10, //结束位置（必填） 
+	                width: 0, //结束时宽度 
+	                height: 0 //结束时高度 
+	            }, 
+	            onEnd: function(){ //结束回调 
+	                $("#msg").show().animate({width: '250px'}, 200).fadeOut(1000); //提示信息 
+	                addcar.css("cursor","default").removeClass('btn-primary').unbind('click'); 
+	                this.destory(); //移除dom 
+	            } 
+	        });
+			
+		});
+
+	
+	
+	
+	
+
+	
+    
+    
+    
+    
+    var prID;
+	//找出產品圖片
+	$.ajax({
+		'type':'POST',
+		'url':"<c:url value='/showProdImg.con'/>",
+		'dataType':'json',
+		'data':{prodId:'15'},
+		'success':function(data){								
+			content(data);
+			console.log(data.imgid[0]);
+			console.log(data.imgid[0]);
+			prID = data.imgid[0];
+		}
+	});
+	
+	//找出產品
+	function content(data){
+		$.ajax({
+			'type':'GET',
+			'url':"<c:url value='/g05_customer/ShowProServlet.con'/>",
+			'dataType':'json',
+			'data':{prod_id:'15'},
+			'success':function(Prod){								
+			console.log(Prod);
+		$('#PtitleImg').append("<img id='img1' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[0]+"'/>'  style='width: 100%' />");
+		$('#Pname').append("<p>"+Prod.productName+"</p>");
+		$('#Psize').append("<p style='font-size:35px;'>"+Prod.size+"</p>");
+		$('#Pprice').append("<p style='color:red'>"+Prod.price+"</p>");
+		$('#Pbrand').append("<h3 style='font-size:20px;'>"+Prod.brand+"</h3>");
+		$('#content').append("<img id='img2' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[1]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
+		$('#content').append("<img id='img3' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[2]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
+		$('#content').append("<img id='img4' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[3]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
+		$('#content').append("<img id='img5' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[4]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
+			}
+		});
+	}
+    
+    
+    
 }); 
 </script>
 </div>

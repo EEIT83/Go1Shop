@@ -23,18 +23,17 @@ import g01_login.controller.MemberBean;
  * Servlet Filter implementation class FilterLogin
  */
 @WebFilter(
-		urlPatterns = { "/g05_customer/checkout/checkDetail.jsp",
-				"/g05_customer/checkout/success.jsp",
-			//	"/g07_msgboard/comments.do" 
-				}, 
+
+		urlPatterns = { "/*"}, 
+		
+
 		initParams = { 
 		@WebInitParam(name = "url_checkDetail", value = "/g05_customer/checkout/checkDetail.jsp"),
-		@WebInitParam(name = "url_success", value = "/g05_customer/checkout/success.jsp"), 
-		//@WebInitParam(name = "url_msgboard", value = "/g07_msgboard/comments.do") 
-		
+		@WebInitParam(name = "url_success", value = "/g05_customer/checkout/success.jsp"),
+		@WebInitParam(name = "url_buyProd", value = "/g05_customer/shoppingCar/controller/BuyProServlet.con")
 		
 		}
-		)
+)
 public class FilterLogin implements Filter {
 	String contextPath;
 	Collection<String> url = new ArrayList<>();
@@ -77,6 +76,7 @@ public class FilterLogin implements Filter {
 	public void init(FilterConfig fConfig) throws ServletException {				
 		Enumeration<String> e = fConfig.getInitParameterNames();
 		while (e.hasMoreElements()) {
+			System.out.println("123");
 			String name = e.nextElement();
 			//System.out.println(fConfig.getInitParameter(name));
 			url.add(fConfig.getInitParameter(name));

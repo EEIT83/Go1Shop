@@ -15,7 +15,7 @@ import org.json.simple.JSONObject;
 
 import g01_login.controller.MemberBean;
 
-@WebServlet(urlPatterns = { "/g05_customer/shoppingCar/controller/BuyProServlet.con" })
+@WebServlet(urlPatterns = { "/BuyProServlet.con" })
 public class BuyProServlet extends HttpServlet {
 
 	@Override
@@ -41,13 +41,14 @@ public class BuyProServlet extends HttpServlet {
 		MemberBean mb = (MemberBean) session.getAttribute("LoginOK");
 		// System.out.println(mb);
 		System.out.println("member=" + mb);
+		JSONObject json = new JSONObject();
 		if (mb == null) {
-			JSONObject json = new JSONObject();
 			json.put("error", "error");
 			respone.getWriter().write(json.toJSONString());
 //			respone.sendRedirect(getServletContext().getContextPath() + "/g01_login/Login.jsp");
 			return;
 		}
+		respone.getWriter().write(json.toJSONString());
 		BuyProService service = new BuyProService();
 		ShoppingCar car = (ShoppingCar) session.getAttribute("shopcar");
 		if (car == null) {

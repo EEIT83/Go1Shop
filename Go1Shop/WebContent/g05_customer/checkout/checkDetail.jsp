@@ -14,11 +14,17 @@
 <!-- 最新編譯和最佳化的 JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script src="<%=request.getContextPath()%>/_js/jQuery-TWzipcode-master/jQuery-TWzipcode-master/jquery.twzipcode.js"></script>
-
+<link href="<%=request.getContextPath()%>/_css/page.css" rel="stylesheet">
 
 
 
 <style>
+
+
+
+
+/*-------------------------------------*/
+
 #all{
 	margin:auto;
 	width: 500px;
@@ -56,124 +62,140 @@
 }
 
 .zipcode {
-	background-color: #c00;
-	color: #fff;
+	background-color: #FFFFFF;
+	color: #000;
+	height: 22px;
 	
 }
 
 .county {
-	background-color: #4169E1;
-	color: #fff;
+	background-color: #FFFFFF;
+	color: #000;
+	
 }
 
 .district {
-	background-color: #008000;
-	color: #fff;
+	background-color: #FFFFFF;
+	color: #000;
 }
 </style>
 <title>Check Detail</title>
 </head>
 <body>
-<div id="all">
-	<div id="tb">
-		<table class="table table-striped">
-				<tr>
-					<th>product</th>
-					<th>price</th>
-					<th>count</th>
-					<th>subtotal</th>
-				</tr>
-				<c:forEach var="cars" items="${shopcar.car}">
-		
-					<tr>
-						<td>${cars.value.prod_Name}</td>
-						<td>${cars.value.price}</td>
-						<td>${cars.value.count}</td>
-						<td>${cars.value.subtotal}</td>
-					</tr>
-				</c:forEach>
-			</table>
+<div style="width: 100%;height: 100%;">
+<!-- 上邊	--------------------------------------------------------------------------------- -->
+	<div style="margin-bottom:0.5%;">
+		<jsp:include page="/tm/top.jsp" />
 	</div>
-	<div class="form">
-		<div class="col-fixed">
-			<form name="my_form" method=POST class="form-group"  >
-				<fieldset>
-				<legend></legend>
-				<div class="form-group">
-					<label class="control-label" for="addressee">收件人:</label>
-					<input type="text" name="orderBean.addressee" id=addressee class="form-control">${errors.addressee}<br>
-				</div>
-				<div class="form-group">
-					<label class="control-label">手機:</label>
-					<input type="text" name="orderBean.phone" id="phone" class="form-control">${errors.phone}<br>
-				</div>
-				<div class="form-group">
-					<label class="control-label">收件人地址:</label>
-					<table class="tw">
+<!-- 左邊	--------------------------------------------------------------------------------- -->
+	<div id="left" style="float: left;margin-left:2%;width: 11%;">
+		<jsp:include page="/tm/left.jsp" />
+	</div>
+<!-- 右邊	----------------------------------------------------------------------------------->
+	<div id="right"style="float: left;margin-right:2%;margin-left:1%;margin-bottom:0.5%;width: 82%;">
+<!----------------------------------------------------------------------------------------->	
+	
+		<div id="all">
+			<div id="tb">
+				<table class="table table-striped">
 						<tr>
-							<td>
-								<div id="twzipcode"></div>
-							</td>
+							<th>product</th>
+							<th>price</th>
+							<th>count</th>
+							<th>subtotal</th>
 						</tr>
-						<tr>
-							<td>
-								<input type="text"  id="address" class="form-control">${errors.address}<br>
-							</td>
-						</tr>
+						<c:forEach var="cars" items="${shopcar.car}">
+				
+							<tr>
+								<td>${cars.value.prod_Name}</td>
+								<td>${cars.value.price}</td>
+								<td>${cars.value.count}</td>
+								<td>${cars.value.subtotal}</td>
+							</tr>
+						</c:forEach>
 					</table>
+			</div>
+			<div class="form">
+				<div class="col-fixed">
+					<form name="my_form" method=POST class="form-group"  >
+						<fieldset>
+						<legend></legend>
+						<div class="form-group">
+							<label class="control-label" for="addressee">收件人:</label>
+							<input type="text" name="orderBean.addressee" id=addressee class="form-control">${errors.addressee}<br>
+						</div>
+						<div class="form-group">
+							<label class="control-label">手機:</label>
+							<input type="text" name="orderBean.phone" id="phone" class="form-control">${errors.phone}<br>
+						</div>
+						<div class="form-group">
+							<label class="control-label">收件人地址:</label>
+							<table class="tw">
+								<tr>
+									<td>
+										<div id="twzipcode"></div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input type="text" style="width: 500px;" id="address" class="form-control">${errors.address}<br>
+									</td>
+								</tr>
+							</table>
+						</div>
+						</fieldset>
+						<fieldset>
+						<legend></legend>
+						<div class="form-group">
+							<label class="control-label">寄件人:</label>
+							<input type="text" name="orderBean.sender" id="sender" class="form-control">${errors.sender}<br>
+						</div>
+						<div class="form-group">
+							<label class="control-label">手機:</label>
+							<input type="text" name="orderBean.sender_phone" id="sender_phone" class="form-control">${errors.sender_phone}<br>
+						</div>
+						<div class="form-group">
+							<label class="control-label">寄件人地址:</label>
+							<table class="tw">
+								<tr>
+									<td>													
+										<div id="twzipcode1"></div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input type="text" style="width: 500px;"  id="sender_address" class="form-control">${errors.sender_address}<br>
+									</td>
+								</tr>
+							</table>				
+						</div>
+						</fieldset>
+						<fieldset>
+							<label class="control-label" id="radio">付款方式:</label>
+						<div class="radio">
+							<label class="radio-inline">
+							<input type="radio" name="radio" value="1">1.貨到付款
+							</label>
+							<label class="radio-inline">
+							<input type="radio" name="radio" value="2">2.信用卡付款 
+							</label>
+							<label class="radio-inline">
+							<input type="radio" name="radio" value="3">3.ATM轉帳
+							</label>
+							${errors.payment} 
+						</div>
+						</fieldset>
+						<br>
+						<br>
+							<div id = "bt">
+								<button id="previous" class="btn btn-primary" >上一頁</button>
+								<button id="button"  class="btn btn-primary" >送出</button>
+							</div>
+					</form>
 				</div>
-				</fieldset>
-				<fieldset>
-				<legend></legend>
-				<div class="form-group">
-					<label class="control-label">寄件人:</label>
-					<input type="text" name="orderBean.sender" id="sender" class="form-control">${errors.sender}<br>
-				</div>
-				<div class="form-group">
-					<label class="control-label">手機:</label>
-					<input type="text" name="orderBean.sender_phone" id="sender_phone" class="form-control">${errors.sender_phone}<br>
-				</div>
-				<div class="form-group">
-					<label class="control-label">寄件人地址:</label>
-					<table class="tw">
-						<tr>
-							<td>													
-								<div id="twzipcode1"></div>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<input type="text"  id="sender_address" class="form-control">${errors.sender_address}<br>
-							</td>
-						</tr>
-					</table>				
-				</div>
-				</fieldset>
-				<fieldset>
-					<label class="control-label" id="radio">付款方式:</label>
-				<div class="radio">
-					<label class="radio-inline">
-					<input type="radio" name="radio" value="1">1.貨到付款
-					</label>
-					<label class="radio-inline">
-					<input type="radio" name="radio" value="2">2.信用卡付款 
-					</label>
-					<label class="radio-inline">
-					<input type="radio" name="radio" value="3">3.ATM轉帳
-					</label>
-					${errors.payment} 
-				</div>
-				</fieldset>
-				<br>
-				<br>
-					<div id = "bt">
-						<button id="previous" class="btn btn-primary" >上一頁</button>
-						<button id="button"  class="btn btn-primary" >送出</button>
-					</div>
-			</form>
+			</div>
 		</div>
 	</div>
-</div>
 	<SCRIPT>
 		$('#twzipcode').twzipcode({
 			// 依序套用至縣市、鄉鎮市區及郵遞區號框
@@ -426,6 +448,11 @@
 		
 		
 	</SCRIPT>
-
+<!-- 下邊	--------------------------------------------------------------------------------- -->	
+	<div id="bottom" style="clear:left;width:100%;position:relative;bottom:0;left:0;">
+		<jsp:include page="/tm/bottom.jsp" />	
+	</div>
+<!-------------------------------------------------------------------------------------- -->
+</div>
 </body>
 </html>
