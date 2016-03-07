@@ -24,6 +24,14 @@
 				<li><a href="<%=request.getContextPath()%>/p_KIDS/K_index.jsp">KIDS</a></li>
 				<li><a href="<%=request.getContextPath()%>/p_SOPRTS/S_index.jsp">SOPRTS</a></li>
 				<li><a href="<%=request.getContextPath()%>/p_BABIES/B_index.jsp">BABIES</a></li>
+			<c:if test="${empty LoginOK}">
+				<li><a rel="leanModal" name="signup" href="#signup" id="login">			
+				<i class="glyphicon glyphicon-user leftNavIcon"></i>會員登入</a></li>
+			</c:if>
+			<c:if test="${!empty LoginOK}">
+			<li><a href='<c:url value="/Logout.do"></c:url>' id="logout">			
+				<i class="glyphicon glyphicon-user leftNavIcon"></i>登出</a></li>
+			</c:if>
 			</ul>
 		</div>
 	</div>
