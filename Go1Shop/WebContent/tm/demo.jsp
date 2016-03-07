@@ -32,6 +32,7 @@ border-radius:10px 10px 10px 10px;
 body{ 
 font-family:"Arial","微軟正黑體";
 } 
+
 /* ------------------------------------------------ */
 </style>
 
@@ -48,6 +49,7 @@ font-family:"Arial","微軟正黑體";
 	</div>
 <!-- 右邊	----------------------------------------------------------------------------------->
 	<div id="right"style="float: left;margin-right:2%;margin-left:1%;margin-bottom:0.5%;width: 82%;">
+		
 	</div>
 <!-- 下邊	--------------------------------------------------------------------------------- -->	
 	<div id="bottom" style="clear:left;width:100%;position:relative;bottom:0;left:0;">

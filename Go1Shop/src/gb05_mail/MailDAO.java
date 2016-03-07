@@ -7,31 +7,30 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import g99_Connection.ConnDB;
+
 public class MailDAO {
-	private DataSource ds;
-	public MailDAO(){
-		try {
-			Context context = new InitialContext();
-			ds = (DataSource) context.lookup("java:comp/env/jdbc/GoEshopDB");
-		} catch (NamingException e) {
-			e.printStackTrace();
-		}
-	}
+	private DataSource ds = ConnDB.getConnDB();
+//	public MailDAO(){
+//		try {
+//			Context context = new InitialContext();
+//			ds = (DataSource) context.lookup("java:comp/env/jdbc/GoEshopDB");
+//		} catch (NamingException e) {
+//			e.printStackTrace();
+//		}
+//	}
 	
-	private final String SELECT="select * from mail where addressee = ?";
-	public List<MailVO> select(String addressee){
+	private final String SELECT="select * from mail where mail = ?";
+	public List<MailVO> select(String mail){
 		List<MailVO> list = new ArrayList<>();
 		ResultSet rs=null;
 		try (
 				Connection conn = ds.getConnection();
 				PreparedStatement ps = conn.prepareStatement(SELECT);
 				){
-			ps.setString(1, addressee);
+			ps.setString(1, mail);
 			rs = ps.executeQuery();
 			
 			while(rs.next()){
@@ -60,18 +59,18 @@ public class MailDAO {
 		return list;
 	}
 	
-	private final String INSERT="insert into mail values(?,?,?,?,?)";
-	public int insert(int id, String sender, String addressee, String title, String content){
+	private final String INSERT="insert into mail values(?,?,?)";
+	public int insert(int sender,int addressee, String title, String content){
 		int i=0;
 		try (
 				Connection conn = ds.getConnection();
 				PreparedStatement ps = conn.prepareStatement(INSERT);
 				){
-			ps.setInt(1, id);
-			ps.setString(2, sender);
-			ps.setString(3, addressee);
-			ps.setString(4, title);
-			ps.setString(5, content);
+
+			ps.setInt(1, sender);
+			ps.setInt(2, addressee);
+			ps.setString(3, title);
+			ps.setString(4, content);
 			i=ps.executeUpdate();
 			
 		} catch (SQLException e) {

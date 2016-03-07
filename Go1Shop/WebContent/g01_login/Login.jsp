@@ -7,26 +7,37 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="../_css/bootstrap.min.css">
+<link
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet">
+<style type="text/css"></style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/_js/jquery-2.2.0.min.js"></script>
+<script src="${pageContext.request.contextPath}/_js/jPages.min.js"></script>
+<!-- -------------bootstrap彈跳視窗所需樣式、js END--------------- -->
 
+<!--     -------------分頁效果所需樣式------------- -->
+<link rel="stylesheet"	href="${pageContext.request.contextPath}/_css/jPages.css" />
 </head>
 <body>
-	<div class="col-sm-10">
+	<div>
 		<h4>登入</h4>
 		<form action="<c:url value="/Account/Login.controller?accountStatus=login" />" method="post" class="form-inline" style="width: 803px; height: 142px">
-			<div class="form-group">
+			<div>
 				<label for="mail">帳號:</label> 
-				<input type="text" name="mail" id="mail" class="form-control">
+				<input type="text" name="mail" id="mail" >
 				<span id="errorMail">${error.mail}</span>
 			</div>
 			<br>
-			<div class="form-group">
+			<div>
 				<label for="pwd">密碼:</label>
-				<input type="text" name="pwd" id="pwd" class="form-control">
+				<input type="text" name="pwd" id="pwd">
 				<span id="errorPwd">${error.pwd }</span>
 			</div>
 			<h5>${error.loginError }</h5>
 			<br>
-			<div class="form-group">
+			<div>
 			<input class="btn btn-default" type="submit" name="check" value="Login">
 			<input class="btn btn-default" type="submit" name="check" value="Forget">
 			<a class="btn btn-primary" href="<c:url value="/Account/Register.controller" />?pageStatus=register">註冊</a>
@@ -56,24 +67,6 @@
 				document.getElementById("errorPwd").innerHTML=" ";
 			}
 		});
-/*
-		function load(){
-			var xmlHttp = new XMLHttpRequest();
-			if (xmlHttp != null) {
-				xmlHttp.addEventListener("readyStatechange",returnData,false);
-				xmlHttp.open("post", "", true);
-				xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-				xmlHttp.send(checkMail.value,checkMail.value);
-			}
-		}
-		function returnData(){
-			if(xmlHttp.readyState==4){
-				if(xmlHttp.status==200){
-					
-				}
-			}
-		}
-*/
 </script>
 </body>
 </html>
