@@ -1,5 +1,7 @@
 package g03_product.controller.dao;
 
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,8 +14,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import g03_product.model.ProductDAOI_Y;
 import g03_product.model.ProductBean_Y;
+import g03_product.model.ProductDAOI_Y;
 
 public class ProductDAO_Y implements ProductDAOI_Y {
 	// private static final String URL =
@@ -27,21 +29,14 @@ public class ProductDAO_Y implements ProductDAOI_Y {
 	public ProductDAO_Y() {
 		try {
 			Context ctx = new InitialContext();
-			dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/Go1ShopDB");
+			dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/xxx");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
 	}
 
-	// private StringBuilder orderbydate = new StringBuilder("order by
-	// launch_date");
-	// private StringBuilder orderbyprice = new StringBuilder("order by price");
-	// private StringBuilder select = new StringBuilder("select * from product
-	// where prod_name =? ");
-	// private StringBuilder selectall = new StringBuilder("select * from
-	// product where prod_name like '%'+?+'%' ");
-	// private static final String SELECT_BY_PROD_NAME = "select * from product
-	// where prod_name =?";
+	
+	
 	@Override
 	public List<ProductBean_Y> select(String prod_name, String SQLprice, String SQLorder, String SQLgender,
 			String SQLpart) {
@@ -74,6 +69,7 @@ public class ProductDAO_Y implements ProductDAOI_Y {
 			result = new ArrayList<ProductBean_Y>();
 			while (rset.next()) {
 				ProductBean_Y bean = new ProductBean_Y();
+				bean.setProd_id(rset.getInt("prod_id"));
 				bean.setMem_id(rset.getInt("mem_id"));
 				bean.setProd_name(rset.getString("prod_name"));
 				bean.setSize(rset.getString("size"));
@@ -94,22 +90,42 @@ public class ProductDAO_Y implements ProductDAOI_Y {
 	}
 
 	@Override
-	public List<ProductBean_Y> selectAll(String gender) {
-		// List<ProductProject1Bean> result = null;
-		try (// Connection conn = DriverManager.getConnection(URL, USERNAME,
-				// PASSWORD);
+	public List<ProductBean_Y> selectimg(String prod_name, String SQLprice, String SQLorder, String SQLgender,
+			String SQLpart) {
+		
+		
+		OutputStream os = null;
+		InputStream is = null;
+		
+		try (// Connection conn = DriverManager.getConnection(URL,
+				// USERNAME,PASSWORD);
 				Connection conn = dataSource.getConnection();) {
 
-			StringBuilder SELECT_ALL = new StringBuilder(" select * from product ");
-			SELECT_ALL.append(" where gender = ? ");
-			System.out.println("SELECT_ALL= " + SELECT_ALL.toString());
+			StringBuilder SELECT = new StringBuilder("select * from product p join prodimg pimg on p.prod_id = pimg.prod_id where");
 
-			PreparedStatement stmt = conn.prepareStatement(SELECT_ALL.toString());
-			stmt.setString(1, gender);
+			if (prod_name != null) {
+				SELECT.append(" prod_name like '%'+?+'%' ");
+			} else {
+				SELECT.append(" prod_name like '%'+''+'%' ");
+			}
+
+			SELECT.append(SQLpart);// and part = 'x'
+			SELECT.append(SQLgender);// and gender = 'M/F'
+			SELECT.append(SQLprice);// and price between x and x / and price > x
+									// / and price < x
+			SELECT.append(SQLorder);// order by x
+
+			System.out.println("SELECT = " + SELECT.toString());
+
+			PreparedStatement stmt = conn.prepareStatement(SELECT.toString());
+			if (prod_name != null) {
+				stmt.setString(1, prod_name);
+			}
 			ResultSet rset = stmt.executeQuery();
 			result = new ArrayList<ProductBean_Y>();
 			while (rset.next()) {
 				ProductBean_Y bean = new ProductBean_Y();
+				bean.setProd_id(rset.getInt("prod_id"));
 				bean.setMem_id(rset.getInt("mem_id"));
 				bean.setProd_name(rset.getString("prod_name"));
 				bean.setSize(rset.getString("size"));
@@ -126,11 +142,11 @@ public class ProductDAO_Y implements ProductDAOI_Y {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return result;
+		return result;// 資料結果傳回service
 	}
 
 	public static void main(String[] args) {
-		ProductDAO_Y dao = new ProductDAO_Y();
+		ProductDAOI_Y dao = new ProductDAO_Y();
 		// List<ProductProject1Bean> beans = dao.select();
 		// System.out.println(beans);
 

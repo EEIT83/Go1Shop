@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link rel="stylesheet" type="text/css" href="../_css/main.css" />
+<link rel="stylesheet" type="text/css" href="../css/main.css" />
 
 <title>Product project</title>
 <script type="text/javascript">
@@ -24,23 +24,33 @@ function clearForm() {
 </head>
 <body>
 
+
 <h3>Welcome ${user.custid}</h3>
 
-<h3>產品列表</h3>
+<h3>Women</h3>
+
+<h3>Women</h3>
 
 <table>
 <tr>
-<td>
-
-<h3><a href="<c:url value="/g03_product/productproject_Y.jsp" />">Product Table</a></h3>
-<h3><a href="<c:url value="/g03_product/selectmen_Y.jsp" />">Men</a></h3>
-<h3><a href="<c:url value="/g03_product/selectwomen_Y.jsp" />">Women</a></h3>
-</td>
+<td><h3><a href="<c:url value="/g03_product/productproject_Y.jsp" />">Product Table</a></h3></td>
+<td><h3><a href="<c:url value="/g03_product/ProductGenderServlet.controller?gender=M&change=true" />">Men</a></h3></td>
 </tr>
 </table>
 
-<form action="<c:url value="/pages/productproject.controller" />" method="post">
+<table>
+<tr><td><a href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=F&part=T-Shirt'/>">T-Shirt</a></td></tr>
+<tr><td><a href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=F&part=毛衣'/>">毛衣</a></td></tr>
+<tr><td><a href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=F&part=帽T'/>">帽T</a></td></tr>
+<tr><td><a href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=F&part=Polo衫'/>">Polo衫</a></td></tr>
+<tr><td><a href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=F&part=背心'/>">背心</a></td></tr>
+<tr><td><a href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=F&part=長袖上衣'/>">長袖上衣</a></td></tr>
+</table>
 
+<input id="submit" type="submit" value="add" name="submit" onclick="goto()">
+<button>123</button>
+
+<form action="<c:url value="/g03_product/ProductGenderServlet.controller?gender=F"/>" method="post">
 <table>
 	
 	<tr>
@@ -59,23 +69,34 @@ function clearForm() {
 	<tr>		
 		<td>			
 			<input type="submit" name="prodaction" value="Select">
-			<input type="submit" name="prodaction" value="SelectAll">		
+			<input type="submit" name="prodaction" value="SelectAll">					
 			<input type="button" value="Clear" onclick="clearForm()">
+			<input type="submit" name="aaa" value="bbb" >
 		</td>
 	</tr>	
+	
+	<table>
 	<tr>
 		<td>
-			<input type="radio" name="selectorder" value="OrderByPrice"> 價錢低到高<br>
-			<input type="radio" name="selectorder" value="OrderByPriceDesc"> 價錢高到低<br>
-			<input type="radio" name="selectorder" value="OrderByDate"> 日期舊到新<br>
-			<input type="radio" name="selectorder" value="OrderByDateDesc"> 日期新到舊<br>
-		</td>				
+	<input type="submit" name="selectorder" value="OrderByPrice"> 
+	<input type="submit" name="selectorder" value="OrderByPriceDesc">
+	<input type="submit" name="selectorder" value="OrderByDate">
+	<input type="submit" name="selectorder" value="OrderByDateDesc"> 			
+	    </td>	    
 	</tr>
 	<tr>
-		<td>
-			<a href="<c:url value='/pages/productproject.controller?gender=M'/>">男裝</a>
-			<a href="<c:url value='/pages/productproject.controller?gender=F'/>">女裝</a>
-			<a href="<c:url value='/pages/productproject.controller?gender=F'/>">女裝</a>
+	    <td>
+	    <a>價錢低到高</a>
+	    <a>價錢高到低</a>
+	    <a>日期舊到新</a>
+	    <a>日期新到舊</a>
+	    </td>
+	</tr>
+	</table>
+	
+	
+	<tr>
+		<td>			
 <!-- 
 			<a href="#" onclick="clickselect()"/>女裝</a>
 
@@ -99,7 +120,9 @@ function clearForm() {
 
 <script type="text/javascript">clearForm();</script>
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------------------------------------------------------------------
+
+
 
 <h3>Select Product Table Result : ${fn:length(select)} row(s) selected</h3>
 <c:if test="${not empty select}">
@@ -120,7 +143,7 @@ function clearForm() {
 	</thead>
 	<tbody>
 	<c:forEach var="bean" items="${select}">
-		<c:url value="/g03_product/productproject_Y.jsp" var="path">			
+		<c:url value="/g03_product/selectwomen.jsp" var="path">			
 			<c:param name="prod_name" value="${bean.prod_name}" />
 			<c:param name="size" value="${bean.size}" />
 			<c:param name="color" value="${bean.color}" />
@@ -151,5 +174,7 @@ function clearForm() {
 </table>
 </c:if>
 
+
 </body>
 </html>
+
