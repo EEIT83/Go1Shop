@@ -6,8 +6,9 @@ import java.util.List;
 import g03_product.controller.dao.ProductDAO_Y;
 
 public class ProductService_Y {
+	
 	public ProductDAOI_Y productDao = new ProductDAO_Y();
-
+	//private ProductDAOI_Y productDao = new ProductDAO_Y();
 	// private List<ProductProject1Bean> result=null;
 	// 單一select
 	public List<ProductBean_Y> select(ProductBean_Y bean, String SQLprice, String SQLorder,
@@ -56,6 +57,7 @@ public class ProductService_Y {
 		ProductService_Y service = new ProductService_Y();
 		ProductBean_Y beantest = new ProductBean_Y();
 		beantest.setProd_name("jeans");
+		//service.productDao.select(bean, 212, 2, SQLgender, SQLpart);
 		// List<ProductProject1Bean> beans = service.select(beantest);
 		// System.out.println("beans="+beans);
 

@@ -68,7 +68,7 @@ public class ShowImgServlet_Y extends HttpServlet {
 					os.write(bytes, 0, count);
 				}
 				
-				System.out.println("showImgServlet Success");
+				//System.out.println("showImgServlet Success");
 			}
 		} catch (SQLException e) {
 			throw new ServletException(e);

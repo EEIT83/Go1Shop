@@ -26,6 +26,7 @@
 </head>
 <body>
 	<div class="container">
+		
 		<div class="masthead">
 			<div>
 			<span class="text-muted"; style="font-size:30px">Go1Shop後台管理系統</sapn>
@@ -39,8 +40,8 @@
 				<ul class="nav nav-justified">
 					<li><a href="../backLogin.jsp">管理員</a></li>
 					<li><a href="/Go1Shop/gb04_marketing/backMarketing.jsp">廣告管理</a></li>
- 					<li class="active"><a href="/Go1Shop/gb03_msgboard/backCommentsManage.jsp">留言板管理</a></li>
-					<li><a href="/Go1Shop/gb02_member/backMember.jsp">會員權限管理</a></li>
+ 					<li><a href="/Go1Shop/gb03_msgboard/backCommentsManage.jsp">留言板管理</a></li>
+					<li class="active"><a href="#">會員權限管理</a></li>
 <!-- 					<li><a href="AutoComplete.html">系統公告</a></li> -->
 <!-- 					<li><a href="#">優惠設定</a></li> -->
 				</ul>
@@ -52,7 +53,7 @@
 		<div class="jumbotron">
 			<div class="page-header">
 				<h3>
-					留言檢舉管理
+					
 					 <small></small>
 				</h3>
 			</div>
@@ -60,40 +61,53 @@
 			<!-- 每頁不同的內容從這裡開始 -->
 
 			
-	
-
-<%-- 	<form action='<c:url value="/gb04_marketing/insertImg.do" />' method="post" enctype="multipart/form-data"> --%>
-	
-<!-- 	<h3>~購衣蝦留言板管理~</h3> -->
-<!-- <a href="../index.jsp">回首頁</a> -->
-
-<table  class="table table-condensed">
-	<tr>	
-	   		<th>編號</th>
-			<th>姓名</th>
-			<th>留言</th>
-			<th>時間</th>
-			<th>狀態</th>
-			<th>處理</th>
-			
+  <div>  
+  <form  method="get">
+    <label>Mail</label>
+    <input type="text" name="mail" id="mail">
+    <label>Name</label>
+    <input type="text" name="mem_name" id="mem_name" >
+    <label>NickName</label>
+    <input type="text" name="nickName" id="nickName">
+    <label>Gender</label>
+    <select name="gender" id="gender">
+    	<option value="">請選擇</option>
+    	<option  value="1">Man</option>
+    	<option  value="2">Woman</option>
+    </select>
+    <label>狀態</label>
+    <select name="status" id="status">
+    	<option value="">請選擇</option>
+    	<option  value="N">正常</option>
+    	<option  value="S">停權</option>
+    </select>
+    <input type="button" value="search" id="buttonLoad">
+    <img src="../_img/ajax-loader.gif" id="img1" style="display:none">
+  	</form>
+  	</div>
+  	<div id="displayResult">
+  	<table class="table table-condensed" >
+  	 <thead>
+  	 	<tr>
+  	 	<th>帳號</th>
+  	 	<th>姓名</th>
+  	 	<th>身分證</th>
+  	 	<th>性別</th>
+  	 	<th>狀態</th>
+  	 	<th></th>
+  	 	</tr>
+  	 </thead>
+  	 <tbody id="tbody">
+  	 </tbody>
+  	 <tfoot>
+	<tr>
+	<td colspan="6" id="resultCount"></td>
 	</tr>
-	<c:forEach var="comment" items="${comments}">
-		<tr>
-			<td>${comment.commentId}</td>
-			<td>${comment.userName}</td>
-			<td>${comment.comment}</td>
-			<td>${comment.moment}</td>
-			<td>${comment.report}</td>
-			<td>
-				<a href="/Go1Shop/g07_msgboard/comments.do?manage=1&hideId=${comment.commentId}">隱藏</a>
-				<a href="/Go1Shop/g07_msgboard/comments.do?manage=1&recoverId=${comment.commentId}">復原</a>
-			</td>
-					
-		</tr>
-	</c:forEach>
-</table>
-			
-			
+  	 </tfoot>
+  	</table>
+  	</div>
+<script type="text/javascript" src="../_js/Properties.js"></script>
+
 
 			<!-- 每頁不同的內容到這裡結束 -->
 		</div>

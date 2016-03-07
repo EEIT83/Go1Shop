@@ -16,9 +16,14 @@
 </head>
 <body>
 <ul id="leftNavigation">
+<<<<<<< HEAD
 			<c:if test="${empty LoginOK}">
 
 			</c:if>
+=======
+			<li><a rel="leanModal" name="signup" href="#signup" id="login">
+			<i class="glyphicon glyphicon-user leftNavIcon"></i>會員登入</a></li>
+>>>>>>> branch 'master' of https://github.com/EEIT83/Go1Shop.git
 <!-- 			<li><a href="login.html" style="text-decoration: none"> -->
 <!-- 			<i class="glyphicon glyphicon-search leftNavIcon"></i>查詢</a></li> -->
 			<c:if test="${!empty LoginOK}">
@@ -68,28 +73,76 @@
 				<li><a href="#">皮帶</a></li>
 			</ul></li>
 		</ul>
+<!-- ---------------------彈跳視窗------------------------------- -->
 <div id="signup">
 	<div id="signup-ct">
+<!-- 登入 -->
+		<div id="loginForm" style="display: inline;">
 				<div id="signup-header">
 					<p>會員登入</p>
 					<a class="modal_close" href="#"></a>
 				</div>				
 				<form action="<c:url value="/Account/Login.controller?accountStatus=login" />" method="post">
 					  <div class="txt-fld">
-					    <label for="mail">帳號:</label> 
-						<input type="text" name="mail" id="mail" >
+					    <label for="mail" >帳號:</label> 
+						<input type="text" name="mail" id="mail" class="input" >
 						<span id="errorMail">${error.mail}</span>
 					  </div>
 					  <div class="txt-fld">
 					    <label for="pwd">密碼:</label>
-						<input type="text" name="pwd" id="pwd">
+						<input type="text" name="pwd" id="pwd" class="input">
 						<span id="errorPwd">${error.pwd }</span>
 					  </div>
 					  <h5>${error.loginError }</h5>
+<!-- 					  <div class="btn-fld"> -->
+					  <input type="submit" value="Sign Up &raquo;"  class="loginbutton">
+					    <input type="button" value="Sign In &raquo;"  class="registerbutton" id="register">
+
+<!-- 					</div> -->
+			    </form>
+		</div>
+<!-- 註冊 -->
+		<div id="registerForm" style="display: none;">
+				<div id="signup-header">
+					<p>會員註冊</p>
+					<a class="modal_close" href="#"></a>
+				</div>				
+				<form action="<c:url value="/Account/Register.controller" />" method="post">
+					  <div class="txt-fld">
+					   <label>Mail</label>
+					   <input type="text" name="mail" class="input"/>
+					   <span id="errorMail">${error.mail }</span>
+					  </div>
+					  <div class="txt-fld">
+					   <label>Password</label>
+					   <input type="text" name="pwd" class="input"/>  
+					   <span id="errorPwd">${error.pwd }</span> 
+					  </div>
+					  <div class="txt-fld">
+					     <label>Name</label>
+					   <input type="text" name="mem_name" id="mem_name" class="input"/>
+					   <span id="errorMem_name">${error.mem_name }</span>
+					  </div>
+					  <div class="txt-fld">
+					   <label>gender</label>
+					   <input type="radio" name="gender" value="1" class="gender"> Male
+					   <input type="radio" name="gender" value="2" class="gender"> Female					  
+					  </div>
+					  <div class="txt-fld">
+					  <label>NickName</label>
+					   <input type="text" name="nickName" id="nickName" class="input"/>
+					   <span id="errorNickName">${error.nickName }</span>
+					  </div>
+					  <div class="txt-fld">
+					   <label>Birthday</label>
+					   <input type="text" name="bdate" id="bdate" class="input"/>
+					   <span id="errorBdate">${error.bdate }</span>
+					  </div>
 					  <div class="btn-fld">
-					  <button type="submit">Sign Up &raquo;</button>
+					  <input type="submit" name="pageStatus" value="save" class="registerbutton">
 					</div>
 			    </form>
+		</div>		    		    
 	</div>
 </div>
 <script type="text/javascript">
@@ -110,14 +163,25 @@
 	})
 </script>
 <script type="text/javascript">
+var registerForm = document.getElementById("registerForm");
+var loginForm = document.getElementById("loginForm");
+document.getElementById("register").addEventListener("click", function() {
+	loginForm.style.display="none";
+	registerForm.style.display="inline";
+})
+document.getElementById("login").addEventListener("click", function() {
+	loginForm.style.display="inline";
+	registerForm.style.display="none";
+})
+</script>
+<!-- 驗證登入帳號 -->
+<script type="text/javascript">
 		var checkMail=document.getElementById("mail");
 		var checkPwd=document.getElementById("pwd");
 		checkMail.addEventListener("blur",function(){
 			var regExp = /^[^@^\s]+@[^\.@^\s]+(\.[^\.@^\s]+)+$/;
 			if(checkMail.value!=""){
-				if (regExp.test(checkMail.value)){
-					document.getElementById("errorMail").innerHTML="電子郵件正確";
-				}else{
+				if (!regExp.test(checkMail.value)){
 					document.getElementById("errorMail").innerHTML="電子郵件不正確";
 				}
 			}else{

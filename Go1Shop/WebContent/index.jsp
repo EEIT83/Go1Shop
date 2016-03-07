@@ -1,26 +1,33 @@
+<%@page import="com.sun.xml.internal.bind.v2.schemagen.xmlschema.Import"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<!-- 一進入首頁就搜尋 -->
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="g03_product.*"%>
 <%@ page import="g03_product.model.*"%>
 <%@ page import="g03_product.controller.*"%>
 <%@ page import="java.util.*"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- 一進入首頁就搜尋 -->
+<!DOCTYPE html>
 <html>
 <head>
 <%
-		ProductService_Y service = new ProductService_Y();
-		ProductBean_Y bean = new ProductBean_Y();
-		List<ProductBean_Y> result = null;
-		String SQLorder = "";
-		String SQLprice = "";
-		String SQLgender ="";
-		String SQLpart = "";
-		List<ProductBean_Y> temp =service.productDao.select(bean.getProd_name(), SQLprice, SQLorder, SQLgender, SQLpart);
-		result = new ArrayList<ProductBean_Y>();
-		result.addAll(temp);
-		request.setAttribute("select", result);
+ProductService_Y service = new ProductService_Y();
+ProductBean_Y bean = new ProductBean_Y();
+List<ProductBean_Y> result = null;
+
+String SQLorder = "";
+String SQLprice = "";
+String SQLgender ="";
+String SQLpart = "";
+List<ProductBean_Y> temp =service.productDao.select(bean.getProd_name(), SQLprice, SQLorder, SQLgender, SQLpart);
+result = new ArrayList<ProductBean_Y>();
+result.addAll(temp);
+request.setAttribute("select", result);
+%>
+
 
 %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -28,14 +35,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <link href="<%=request.getContextPath()%>/_css/page.css" rel="stylesheet">
-<title>Go1Shop Home</title>
+<title>Insert title here</title>
 <style>
 
 /* ------------------------------------------------ */
 </style>
+
+
 </head>
 <body>
-<%request.getSession().removeAttribute("index"); %>
 <div style="width: 100%;height: 100%;">
 <!-- 上邊	--------------------------------------------------------------------------------- -->
 	<div style="margin-bottom:0;">
@@ -43,7 +51,7 @@
 	</div>
 <!-- 	<div style="width:100%;height:50%;margin:5% 5% 5% 5%;border:1px solid red; " > -->
 	<div style="width:100%;height:100%;" >
-		<iframe src="<%=request.getContextPath()%>/gb04_marketing/ad.jsp" scrolling="no" frameborder="0" height="100%" id="mainFrame" width="100%" onload='IFrameReSize("mainFrame");IFrameReSizeWidth("mainFrame");' style="display:inline;"></iframe>
+		<iframe src="<%=request.getContextPath()%>/gb04_marketing/ad.jsp" scrolling="no" frameborder="0" height="100%" id="mainFrame" width="100%" onload='IFrameReSize("mainFrame");IFrameReSizeWidth("mainFrame");'></iframe>
 	</div>
 	<script type="text/javascript">
 
@@ -73,10 +81,11 @@
 		}
 	</script>
 <!-- 左邊	--------------------------------------------------------------------------------- -->
-	<div id="left" style="float: left;margin-left:2%;width: 15%;">
+	<div id="left" style="float: left;margin-left:2%;width: 11%;">
 		<jsp:include page="/tm/left.jsp" />
 	</div>
 <!-- 右邊	----------------------------------------------------------------------------------->
+
 	<div id="right"style="float: left;margin-right:2%;margin-left:1%;margin-bottom:0.5%;width: 80%;">
 <!-- 	<div style="width:100%;height:100%;" > -->
 <%-- 		<iframe src="<%=request.getContextPath()%>/g03_product/selectmen_Y.jsp" scrolling="no" frameborder="0" height="100%" id="selectFrame" width="100%" onload='IFrameReSize("selectFrame");IFrameReSizeWidth("selectFrame");' style="display:inline;"></iframe> --%>
@@ -97,7 +106,7 @@
 <!-- 						<button type="submit" name="selectorder" value="OrderByDateDesc" class="btn btn-primary">依刊登日期新至舊</button> -->
 <!-- 						<br> -->
 <!-- 						<br> -->
-					
+
 <!-- 					</div> -->
 <!-- 				</form> -->
 				<div id="div">
@@ -118,14 +127,18 @@
 	</div>
 	
 <!-- 下邊	--------------------------------------------------------------------------------- -->	
-	<div id="bottom" style="clear:left;width:100%;bottom:0;left:0;position:fixed;">
+	<div id="bottom" style="clear:left;width:100%;position:relative;bottom:0;left:0;">
 		<jsp:include page="/tm/bottom.jsp" />	
 	</div>
 <!-------------------------------------------------------------------------------------- -->
 </div>
 
-
+<%-- <c:if test="${init == '0'}"> --%>
+<%-- <jsp:forward page="/g03_product/ProductGenderServlet.controller?init=1" /> --%>
+<%-- <c:set var="init" value="0" scope="session"></c:set> --%>
+<%-- </c:if> --%>
 
 
 </body>
+
 </html>

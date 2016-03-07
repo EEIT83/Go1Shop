@@ -322,9 +322,25 @@ pre {
 	text-align: left;
 }
 
-#signup .txt-fld input {
-	width: 244px;
+#signup .txt-fld .input {
+	width: 200px;
 	padding: 8px;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	font-size: 1.2em;
+	color: #222;
+	background: #F7F7F7;
+	font-family: "Helvetica Neue";
+	outline: none;
+	border-top: 1px solid #CCC;
+	border-left: 1px solid #CCC;
+	border-right: 1px solid #E7E6E6;
+	border-bottom: 1px solid #E7E6E6;
+}
+#signup .txt-fld .gender{
+	width: 70px;
+	padding: 0px;
 	border-radius: 4px;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
@@ -374,8 +390,25 @@ p.error span {
 	background-color: #FAF9DC;
 }
 
-button {
-	float: right;
+.loginbutton {
+	margin:0 0 0 150px;
+	font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+	background: #3F9D4A;
+	border: none;
+	width: auto;
+	overflow: visible;
+	font-size: 1.4em;
+	color: #FFF;
+	padding: 7px 10px;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	font-weight: bold;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.registerbutton {
+	margin:0 50px 0 0;
 	font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 	background: #3F9D4A;
 	border: none;
