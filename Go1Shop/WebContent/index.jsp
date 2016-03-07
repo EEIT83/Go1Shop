@@ -24,11 +24,14 @@
 <body>
 <div style="width: 100%;height: 100%;">
 <!-- 上邊	--------------------------------------------------------------------------------- -->
-	<div style="margin-bottom:0.5%;">
+	<div style="margin-bottom:0;">
 	<jsp:include page="/tm/top.jsp" />
 	</div>
-	<div style="width:100%;height:80%;merge:0 5% 0 5%">
-	<iframe src="<%=request.getContextPath()%>/gb04_marketing/ad.jsp" scrolling="no" frameborder="0" height="100%" id="mainFrame" width="100%" onload='IFrameReSize("mainFrame");IFrameReSizeWidth("mainFrame");'></iframe>
+	
+<!-- 	<div style="width:100%;height:50%;margin:5% 5% 5% 5%;border:1px solid red; " > -->
+	<div style="width:100%;height:100%;" >
+	
+		<iframe src="<%=request.getContextPath()%>/gb04_marketing/ad.jsp" scrolling="no" frameborder="0" height="100%" id="mainFrame" width="100%" onload='IFrameReSize("mainFrame");IFrameReSizeWidth("mainFrame");'></iframe>
 	</div>
 	<script type="text/javascript">
 

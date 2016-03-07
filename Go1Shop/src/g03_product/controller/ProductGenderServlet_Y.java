@@ -13,8 +13,10 @@ import javax.servlet.http.HttpSession;
 import g03_product.model.ProductBean_Y;
 import g03_product.model.ProductService_Y;
 
-@WebServlet(urlPatterns = { "/g03_product/ProductGenderServlet.controller" })
+@WebServlet(urlPatterns = {"/g03_product/ProductGenderServlet.controller"})
+
 public class ProductGenderServlet_Y extends HttpServlet {
+
 
 	private ProductService_Y productService = new ProductService_Y();
 	
@@ -31,7 +33,9 @@ public class ProductGenderServlet_Y extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		HttpSession session = request.getSession(false);
+		System.out.println("執行GenderServlet");
+		
+		HttpSession session = request.getSession();
 		
 		System.out.println("執行GenderServlet");
 
@@ -79,17 +83,21 @@ public class ProductGenderServlet_Y extends HttpServlet {
 				SQLprice = " and price > " + lowprice;
 			}
 			
-			session.setAttribute("sessionSQLprice", SQLprice);
+			//搜尋時把使用者剛剛輸入的產品名稱條件和價格條件存入session，搜尋完後再點選排序會用到
+			session.setAttribute("PROD_NAME", prod_name);
+			session.setAttribute("PRICE_RANGE", SQLprice);	
 			
 			
 			result = productService.select(bean, SQLprice, SQLorder, SQLgender, SQLpart);// 把SQL傳入select做查詢
 			request.setAttribute("select", result);
+			
 			if (gender.equals("M"))
 				request.getRequestDispatcher("/g03_product/selectmen_Y.jsp").forward(request, response);
 			if (gender.equals("F"))
 				request.getRequestDispatcher("/g03_product/selectwomen_Y.jsp").forward(request, response);
 			return;
-		}//結束
+		}
+			//結束
 		
 
 		
@@ -104,25 +112,28 @@ public class ProductGenderServlet_Y extends HttpServlet {
 			if (selectorder.equals("OrderByDateDesc"))
 				SQLorder = " order by launch_date desc ";
 		
+			//如果使用者剛剛有輸入搜尋條件 這裡會沿用
+			
+			
+			String sessionprod_name = (String) session.getAttribute("PROD_NAME");
+			if (sessionprod_name !=null ){
+			bean.setProd_name(sessionprod_name);}
+			String sessionprice_range = (String) session.getAttribute("PRICE_RANGE");
+			if (sessionprice_range!=null){
+			SQLprice = sessionprice_range;}
+
 			result = productService.select(bean, SQLprice, SQLorder, SQLgender, SQLpart);// 把SQL傳入select做查詢
 			request.setAttribute("select", result);
-			
+
 			if (gender.equals("M"))
 				request.getRequestDispatcher("/g03_product/selectmen_Y.jsp").forward(request, response);
 			if (gender.equals("F"))
 				request.getRequestDispatcher("/g03_product/selectwomen_Y.jsp").forward(request, response);
 			return;
-		
-		}//結束
+		}
 
 
-//		if (gender.equals("M"))
-//			request.getRequestDispatcher("/pages/selectmen.jsp").forward(request, response);
-//		if (gender.equals("F"))
-//			request.getRequestDispatcher("/pages/selectwomen.jsp").forward(request, response);
-//		return;
 
-		//}
 		
 		/*
 		if ("Select".equals(prodaction)) {
@@ -198,8 +209,8 @@ public class ProductGenderServlet_Y extends HttpServlet {
 			if (gender.equals("F"))
 				request.getRequestDispatcher("/g03_product/selectwomen_Y.jsp").forward(request, response);
 			
-			System.out.println("SQLpart=" + SQLpart);
-			System.out.println("gender=" + gender);
+//			System.out.println("SQLpart=" + SQLpart);
+//			System.out.println("gender=" + gender);
 			System.out.println("result="+result);
 			return;
 		}//結束
@@ -208,6 +219,8 @@ public class ProductGenderServlet_Y extends HttpServlet {
 		String change = request.getParameter("change");//如果換到另一個jsp頁面就消除剛剛存進的session part
 		if(change!=null){
 			session.removeAttribute("PART");
+			session.removeAttribute("PROD_NAME");
+			session.removeAttribute("PRICE_RANGE");
 		}		
 		
 		

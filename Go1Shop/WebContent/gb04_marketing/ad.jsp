@@ -23,6 +23,7 @@
 </script>
 </head>
 <body>
+
 	<article class="htmleaf-container">
 <!-- 		<header class="htmleaf-header"> -->
 <!-- 			<h1>~歡迎光臨購衣蝦~ <span>最方便的網路交易平台</span></h1> -->
@@ -31,7 +32,12 @@
 <!-- 			</div> -->
 			
 <!-- 		</header> -->
-		<div class="htmleaf-content" style="height: 300px;">
+<!-- 		<div class="htmleaf-content" style="height: 480px;width: 100%;"> -->
+
+
+		<div class="htmleaf-content" style="height: 100 px;width: 100%;">
+<!-- 		<div class="htmleaf-content" style="height: 100 px"> -->
+		
 			<ul id="demo1">
 				<li><a href="#slide1"><img src="/Go1Shop/gb04_marketing/showImg.do?id=1" alt=""></a></li>
 				<li><a href="#slide2"><img src="/Go1Shop/gb04_marketing/showImg.do?id=2"  alt=""></a></li>

@@ -47,7 +47,7 @@ body, html { font-size: 100%; 	padding: 0; margin: 0;}
 }
 
 body{
-	background: #494A5F;
+	background: #ffffff;
 	color: #D5D6E2;
 	font-weight: 500;
 	font-size: 1.05em;
@@ -60,6 +60,24 @@ a:hover,a:focus{color:#74777b;}
 	margin: 0 auto;
 	overflow: hidden;
 }
+
+.htmleaf-content {
+	padding: 1em 15em;
+}
+@media only screen and (max-width: 1500px){
+	.htmleaf-content {
+		padding: 1em 5em;
+	}
+}
+@media only screen and (max-width: 768px){
+	.htmleaf-content {
+		padding: 1em 0;
+	}
+}
+
+
+
+/*
 .htmleaf-content {
 	padding: 1em 15em;
 }
@@ -73,6 +91,25 @@ a:hover,a:focus{color:#74777b;}
 		padding: 1em 0;
 	}
 }
+*/
+
+
+/*
+.htmleaf-content {
+	padding: 0 0;
+}
+@media only screen and (max-width: 10%){
+	.htmleaf-content {
+		padding: 0 0;
+	}
+}
+@media only screen and (max-width: 10%){
+	.htmleaf-content {
+		padding: 0 0;
+	}
+}
+
+*/
 .bgcolor-1 { background: #f0efee; }
 .bgcolor-2 { background: #f9f9f9; }
 .bgcolor-3 { background: #e8e8e8; }/*light grey*/
