@@ -6,7 +6,7 @@ import java.util.List;
 import g03_product.controller.dao.ProductDAO_Y;
 
 public class ProductService_Y {
-	private ProductDAOI_Y productDao = new ProductDAO_Y();
+	public ProductDAOI_Y productDao = new ProductDAO_Y();
 
 	// private List<ProductProject1Bean> result=null;
 	// 單一select

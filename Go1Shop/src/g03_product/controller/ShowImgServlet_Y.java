@@ -8,8 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,9 +16,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import g99_Connection.ConnDB;
+
 @WebServlet(urlPatterns={"/pages/showImg.controller"})
 public class ShowImgServlet_Y extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private DataSource ds = ConnDB.getConnDB();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -37,10 +38,9 @@ public class ShowImgServlet_Y extends HttpServlet {
 			// 分辨讀取哪個表格的圖片欄位
 			//String type = req.getParameter("type"); 
 			// 取得能夠執行JNDI的Context物件
-			Context context = new InitialContext();
+			//Context context = new InitialContext();
 			// 透過JNDI取得DataSource物件
-			DataSource ds = (DataSource) context
-					.lookup("java:comp/env/jdbc/xxx");
+			//DataSource ds = (DataSource) context.lookup("java:comp/env/jdbc/xxx");
 			conn = ds.getConnection();
 			PreparedStatement pstmt = null;
 
@@ -70,8 +70,6 @@ public class ShowImgServlet_Y extends HttpServlet {
 				
 				System.out.println("showImgServlet Success");
 			}
-		} catch (NamingException e) {
-			throw new ServletException(e);
 		} catch (SQLException e) {
 			throw new ServletException(e);
 		} finally {

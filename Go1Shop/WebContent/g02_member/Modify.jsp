@@ -18,10 +18,16 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-  </head>
+<style type="text/css">
+label{ 
+	height: 200px;
+}
+
+</style>
+</head>
   
   <body>
- <div style="margin: 0 auto;">
+ <div style="margin: 5% auto;">
   <form action="<c:url value="/Account/Modify.controller" />" method="post" style="text-align:center;">
    <label>Mail</label>
    <input type="text" name="mail" value="${account.mail}" disabled />

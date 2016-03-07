@@ -33,6 +33,7 @@ public class ProductGenderServlet_Y extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		
 		System.out.println("執行GenderServlet");
 		
 		HttpSession session = request.getSession();
@@ -48,7 +49,15 @@ public class ProductGenderServlet_Y extends HttpServlet {
 		String lowprice = request.getParameter("lowprice");
 		String gender = request.getParameter("gender");
 		String part = request.getParameter("part");
-		
+//		String index = request.getParameter("index").trim();
+		//
+//		System.out.println("index=" + index);
+//		if("1".equals(index)){
+//			request.getSession().setAttribute("index", "1");
+//			highprice ="";
+//			lowprice ="";
+//			
+//		}
 		
 		// 呼叫model(DAO)
 
