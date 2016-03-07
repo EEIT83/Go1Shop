@@ -5,30 +5,26 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-
-		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/_css/style.css" />
-		<script type="text/javascript" src="<%=request.getContextPath() %>/_js/jquery.min.js"></script>
-		<script type="text/javascript" src="<%=request.getContextPath() %>/_js/jquery.leanModal.min.js"></script>
-		<script type="text/javascript">
-			$(function() {
-    			$('a[rel*=leanModal]').leanModal({ top : 200, closeButton: ".modal_close" });		
-			});
-		</script>
+<title>Go1Shop Home</title>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/_css/style.css" />
+<script type="text/javascript" src="<%=request.getContextPath() %>/_js/jquery.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/_js/jquery.leanModal.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+  			$('a[rel*=leanModal]').leanModal({ top : 200, closeButton: ".modal_close" });		
+	});
+</script>
 </head>
 <body>
-
 <ul id="leftNavigation">
-			<li><a id="go" rel="leanModal" name="signup" href="#signup">
-
+			<li><a rel="leanModal" name="signup" href="#signup">
 			<i class="glyphicon glyphicon-user leftNavIcon"></i>會員登入</a></li>
-			
 <!-- 			<li><a href="login.html" style="text-decoration: none"> -->
 <!-- 			<i class="glyphicon glyphicon-search leftNavIcon"></i>查詢</a></li> -->
 			<c:if test="${!empty LoginOK}">
 				<li class="active1"><a href="#" style="text-decoration: none" target="_blank">
 				<i class="glyphicon glyphicon-comment leftNavIcon"></i>訊息</a>
-				<ul>
+			<ul>
 					<li><a href='<c:url value='/mail.do'/>'>信箱</a></li>
 					<li><a href="<%=request.getContextPath()%>/gb05_mail/send.jsp">寫信</a></li>
 				</ul>
@@ -68,7 +64,6 @@
 				<li><a href="#">皮帶</a></li>
 			</ul></li>
 		</ul>
->>>>>>> branch 'master' of https://github.com/EEIT83/Go1Shop.git
 <div id="signup">
 	<div id="signup-ct">
 				<div id="signup-header">
