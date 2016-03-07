@@ -29,7 +29,7 @@ public class ProductDAO_Y implements ProductDAOI_Y {
 	public ProductDAO_Y() {
 		try {
 			Context ctx = new InitialContext();
-			dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/xxx");
+			dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/Go1ShopDB");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
