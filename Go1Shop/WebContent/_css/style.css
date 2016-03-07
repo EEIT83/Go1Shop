@@ -15,7 +15,7 @@ html {
 	background-repeat: repeat;
 }
 
-body { background: url(img/grad.png) fixed center top no-repeat; font-size: 62.5%; font-family: "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", sans-serif;  } 
+body { background: fixed center top no-repeat; font-size: 62.5%; font-family: "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", sans-serif;  } 
 #banner {
 	position: fixed;
 	top: 0px;
