@@ -31,7 +31,7 @@
 <!-- 			</div> -->
 			
 <!-- 		</header> -->
-		<div class="htmleaf-content" style="height: 300px;">
+		<div class="htmleaf-content" style="height: 480px;width: 100%;">
 			<ul id="demo1">
 				<li><a href="#slide1"><img src="/Go1Shop/gb04_marketing/showImg.do?id=1" alt=""></a></li>
 				<li><a href="#slide2"><img src="/Go1Shop/gb04_marketing/showImg.do?id=2"  alt=""></a></li>
