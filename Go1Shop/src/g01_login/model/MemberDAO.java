@@ -4,8 +4,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.sql.DataSource;
-
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
@@ -13,23 +11,27 @@ import org.apache.commons.lang3.StringUtils;
 
 import g01_login.controller.MemberBean;
 import g01_login.controller.MemberFace;
-import g99_Connection.ConnDB;
 
 public class MemberDAO implements MemberFace {
 	private String SELECT_ID = "select * from member where mail=?";
 	private String SELECT_ALL = "select * from member ";
 	private String INSERT = "insert into member (mail, pwd, mem_name, nickname, gender, bdate) values (?, ?, ?, ?, ?, ?)";
 	private StringBuilder UPDATE;
-	private DataSource db = ConnDB.getConnDB();
+	//private DataSource db = ConnDB.getConnDB();
+	SQLserver ds;
 	QueryRunner runner;
 
+	public MemberDAO() throws Exception{
+		ds = new SQLserver();
+		runner = new QueryRunner();
+	}
 	
 	public MemberBean selectId(String mail) throws Exception {
 		try {
 			ResultSetHandler<List<MemberBean>> rsh = new BeanListHandler<MemberBean>(
 					MemberBean.class);
 			Object params[] = { mail };
-			List<MemberBean> result = runner.query(db.getConnection(), SELECT_ID,
+			List<MemberBean> result = runner.query(ds.getConn(), SELECT_ID,
 					rsh, params);
 			if (result.size() <= 0) {
 				return null;
@@ -45,7 +47,7 @@ public class MemberDAO implements MemberFace {
 		try {
 			ResultSetHandler<List<MemberBean>> rsh = new BeanListHandler<MemberBean>(
 					MemberBean.class);
-			List<MemberBean> result = runner.query(db.getConnection(), SELECT_ALL,
+			List<MemberBean> result = runner.query(ds.getConn(), SELECT_ALL,
 					rsh);
 			if (result.size() <= 0) {
 				return null;
@@ -63,7 +65,7 @@ public class MemberDAO implements MemberFace {
 				Object params[] = { memVo.getMail(), memVo.getPwd(),
 						memVo.getMem_name(), memVo.getNickName(),
 						memVo.getGender(), memVo.getBdate() };
-				runner.update(db.getConnection(), INSERT, params);
+				runner.update(ds.getConn(), INSERT, params);
 			}
 		} catch (SQLException e) {
 			throw new Exception("新增資料有誤:" + e.getMessage());
@@ -102,7 +104,7 @@ public class MemberDAO implements MemberFace {
 		UPDATE.append(" where mail=? ");
 		pList.add(memVo.getMail());
 
-		int count = runner.update(db.getConnection(), UPDATE.toString(),
+		int count = runner.update(ds.getConn(), UPDATE.toString(),
 				pList.toArray());
 		if (count <= 0) {
 			throw new Exception("Update 失敗");
@@ -124,7 +126,7 @@ public class MemberDAO implements MemberFace {
 			params.add(memVo.getMail());
 		}
 		try {
-			return runner.update(db.getConnection(), DEL_SQL.toString(),
+			return runner.update(ds.getConn(), DEL_SQL.toString(),
 					params.toArray());
 		} catch (SQLException e) {
 			throw new Exception("刪除資料有誤:" + e.getMessage());
@@ -157,7 +159,7 @@ public class MemberDAO implements MemberFace {
 			params.add(memVo.getStatus());
 		}
 		try {
-			return runner.query(db.getConnection(), sb.toString(), rsh,
+			return runner.query(ds.getConn(), sb.toString(), rsh,
 					params.toArray());
 		} catch (SQLException e) {
 			throw new Exception("查尋失敗" + e.getMessage());
