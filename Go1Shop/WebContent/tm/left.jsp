@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/_css/style.css" />
+
+		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/_css/style.css" />
 		<script type="text/javascript" src="<%=request.getContextPath() %>/_js/jquery.min.js"></script>
 		<script type="text/javascript" src="<%=request.getContextPath() %>/_js/jquery.leanModal.min.js"></script>
 		<script type="text/javascript">
@@ -16,8 +17,10 @@
 		</script>
 </head>
 <body>
-	<ul id="leftNavigation">
-			<li><a id="go" href="#signup" rel="leanModal" name="signup">
+
+<ul id="leftNavigation">
+			<li><a id="go" rel="leanModal" name="signup" href="#signup">
+
 			<i class="glyphicon glyphicon-user leftNavIcon"></i>會員登入</a></li>
 			
 <!-- 			<li><a href="login.html" style="text-decoration: none"> -->
@@ -64,11 +67,8 @@
 				<li><a href="#">髮圈</a></li>
 				<li><a href="#">皮帶</a></li>
 			</ul></li>
-		
-	</ul>
-
-
-<!-- ------------------------------------------------------------------------- -->
+		</ul>
+>>>>>>> branch 'master' of https://github.com/EEIT83/Go1Shop.git
 <div id="signup">
 	<div id="signup-ct">
 				<div id="signup-header">

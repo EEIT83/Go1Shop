@@ -21,6 +21,7 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = -595078994078999385L;
 
 	private String accountStatus = null;
+	private int windonStatus = 0;
 	private MemberBean memBean = new MemberBean();
 	private AdminBean adBean = new AdminBean();
 	private HttpSession session;
@@ -61,15 +62,11 @@ public class LoginServlet extends HttpServlet {
 					memBean = memService.Login(mail, pwd);
 					session.setAttribute("LoginOK", memBean);
 					session.setAttribute("mail", memBean.getMail());
-					// request.setAttribute("account", memBean);
 				} else if (adService.Login(mail, pwd) != null) {
 					adBean = adService.Login(mail, pwd);
 					session.setAttribute("mail", adBean.getAd_mail());
-					// request.setAttribute("account", adBean);
 				} else {
 					throw new Exception("無此帳號密碼");
-//					error.put("loginError", "無此帳號密碼");
-//					request.getRequestDispatcher("/g01_login/Login.jsp").forward(request, response);
 				}
 				request.getRequestDispatcher("/index.jsp").forward(request, response);
 			} catch (Exception e) {
@@ -77,8 +74,6 @@ public class LoginServlet extends HttpServlet {
 				error.put("loginError", e.getMessage());
 				request.getRequestDispatcher("/index.jsp").forward(request, response);
 			}
-			
-			//request.getRequestDispatcher("/index.jsp").forward(request, response);
 		}
 
 	}
