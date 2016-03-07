@@ -13,6 +13,8 @@
 <script src="<%=request.getContextPath()%>/_js/car/jquery.fly.min.js"></script>
 <title>Insert title here</title>
 <link href="<%=request.getContextPath()%>/_css/page.css" rel="stylesheet">
+<script src="<%=request.getContextPath()%>/_js/sweet-alert.js"></script>
+<link href="<%=request.getContextPath()%>/_css/sweet-alert.css" rel="stylesheet">
 <style>
 /* -------------------商品頁-------------------------- */
 .titleClass:after, .titleClass:before{
@@ -32,9 +34,9 @@
 .box h4 span{font-size:20px} 
 .u-flyer{display: block;width: 50px;height: 50px;border-radius: 50px;position: fixed;z-index: 9999;} 
  
-.m-sidebar{position: fixed;top: 0;right: 0;background: #000;z-index: 2000;width: 35px;height: 100%;font-size: 12px;color: #fff;} 
-.cart{color: #fff;text-align:center;line-height: 20px;padding: 200px 0 0 0px;} 
-.cart span{display:block;width:20px;margin:0 auto;} 
+.m-sidebar{position: fixed;top: 40%;right: 0;background: #000;z-index: 2000;width: 35px;height: 10%;font-size: 12px;color: #fff;} 
+.cart{color: #fff;text-align:center;} 
+.cart span{display:block;width:20px;margin:auto auto;} 
 .cart i{width:35px;height:35px;display:block; background:url(/Go1Shop/_img/car.png) no-repeat;} 
 #msg{position:fixed; top:300px; right:35px; z-index:10000; width:1px; height:52px; line-height:52px; font-size:20px; text-align:center; color:#fff; background:#360; display:none} 
 
@@ -77,7 +79,7 @@
 <!-- 					<div style="width:8%;margin:42% 0 0 0;text-align:right;float:left;"><p  style='color:red;font-size:50px; '>元</p></div> -->
 <!------------------送出---------------- -->
 				<c:if test="${empty LoginOK}">
-					<div style="width:100%;margin:100% 0 0 0;text-align:center;" id="box"><input type="button" class="button addcar btn btn-primary" value="加入購物車" /></div>
+					<div style="width:100%;margin:100% 0 0 0;text-align:center;"><input type="button" id="noLogin" class="button btn" value="加入購物車" /></div>
 					<input type="hidden" value="15" name="prodId">
 				</c:if>
 				<c:if test="${!empty LoginOK}">
@@ -197,6 +199,11 @@
 <div id="msg">已成功加入購物車！</div> 
 <script type="text/javascript">
 $(function() {
+		$("#noLogin").click(function(event){
+			swal("請先登入!");
+		})
+	
+	
 	
 	//加入購物車
 		$(".addcar").click(function(event){
