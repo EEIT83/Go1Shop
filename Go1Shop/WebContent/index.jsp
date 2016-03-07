@@ -64,7 +64,7 @@
 	</div>
 <!-- 右邊	----------------------------------------------------------------------------------->
 	<div id="right"style="float: left;margin-right:2%;margin-left:1%;margin-bottom:0.5%;width: 82%;">
-		<div style="float: left;margin:5% 0 0 0;width: 100%;border:1px solid black; ">
+		<div style="float: left;margin:5% 0 0 0;width: 100%; ">
 			<div style="width:100%;margin-left:5%">
 				<form action="<c:url value="/g03_product/ProductGenderServlet.controller"/>" method="post">
 					<div id="B">
