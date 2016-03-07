@@ -1,7 +1,7 @@
 package g03_product.model;
 
 public class ProductBean_Y {	
-
+    private int prod_id;
 	private int mem_id;
     private String prod_name;
     private String size;
@@ -17,11 +17,17 @@ public class ProductBean_Y {
 
 	@Override
 	public String toString() {
-		return "ProductProject1Bean [mem_id=" + mem_id + ", prod_name=" + prod_name + ", size=" + size + ", color="
-				+ color + ", count=" + count + ", price=" + price + ", brand=" + brand + ", gender=" + gender
-				+ ", part=" + part + ", launch_date=" + launch_date + ", note=" + note + "]";
+		return "ProductProject1Bean [prod_id=" + prod_id + ", mem_id=" + mem_id + ", prod_name=" + prod_name + ", size="
+				+ size + ", color=" + color + ", count=" + count + ", price=" + price + ", brand=" + brand + ", gender="
+				+ gender + ", part=" + part + ", launch_date=" + launch_date + ", note=" + note + "]";
 	}
-	
+	public int getProd_id() {
+		return prod_id;
+	}
+
+	public void setProd_id(int prod_id) {
+		this.prod_id = prod_id;
+	}
 	public int getMem_id() {
 		return mem_id;
 	}
