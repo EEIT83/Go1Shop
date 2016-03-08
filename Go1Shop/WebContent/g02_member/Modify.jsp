@@ -5,12 +5,26 @@
 <html>
   <head>
     <title>Modify</title>
+<script language="javascript">
+		function reSize(){
+		　　//parent.document.all.frameid.height=document.body.scrollHeight; 
+		　　parent.document.getElementById("modifyFrame").height=document.body.scrollHeight;
+		} 
+		window.onload=reSize;
+</script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   </head>
   
   <body>
-  <form action="<c:url value="/Account/Modify.controller" />" method="post">
+ <div style="margin: 0 auto;">
+  <form action="<c:url value="/Account/Modify.controller" />" method="post" style="text-align:center;">
    <label>Mail</label>
-   <input type="text" name="mail" value="${account.mail}" />
+   <input type="text" name="mail" value="${account.mail}" disabled />
    <br>
    <label>Name</label>
    <input type="text" name="mem_name" id="mem_name" value="${account.mem_name }" />
@@ -28,9 +42,10 @@
    <input type="text" name="bdate" id="bdate" value="${account.bdate}">
    <span id="errorBdate">${error.bdate }</span>
    <br>
-   <input type="submit" name="pageStatus" value="save">
+   <input type="submit" name="pageStatus" value="save" class="btn btn-primary btn-lg">
 
    </form>
+  </div>
  <!--<script src="../js/Modify.js"></script>  -->
 
   </body>
