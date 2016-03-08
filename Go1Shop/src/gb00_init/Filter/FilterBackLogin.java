@@ -31,6 +31,8 @@ import gb01_login.controller.AdminBean;
 		initParams = { 
 		@WebInitParam(name = "url_backMarketing", value = "/gb04_marketing/backMarketing.jsp"),
 		@WebInitParam(name = "url_backCommentsManage", value = "/gb03_msgboard/backCommentsManage.jsp"),
+		@WebInitParam(name = "url_backMember", value = "/gb02_member/backMember.jsp"),
+		
 		
 		}
 )

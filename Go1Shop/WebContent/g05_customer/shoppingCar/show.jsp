@@ -92,12 +92,10 @@
 			</ul>
 		</div>
 		<div id="content" style="width: 90%;margin:0 5% 0 5%;"></div>
-		<iframe>12313</iframe>
 
 	</div>
 	<script>
 
-	
 	function content2(data){
 		
 		$('#content').append("<iframe width='100%' height='1000 px' id='imgif'>");
@@ -124,7 +122,7 @@
 				'type':'POST',
 				'url':"<c:url value='/showProdImg.con'/>",
 				'dataType':'json',
-				'data':{prodId:'16'},
+				'data':{prodId:'${param.id}'},
 				'success':function(data){								
 					content2(data);
 					console.log(data.imgid[0]);
@@ -184,7 +182,8 @@
 </div> 
 <div id="msg">已成功加入購物車！</div> 
 <script type="text/javascript">
-$(function() { 
+$(function() {
+	
 	//加入購物車
 		$(".addcar").click(function(event){
 			
@@ -192,7 +191,7 @@ $(function() {
 				'type':'POST',
 				'url':"<c:url value='/BuyProServlet.con'/>",
 				'dataType':'json',
-				'data':{prodId:'16'},
+				'data':{prodId:'${param.id}'},
 				'success':function(data){		
 
 					if(data.error=='error'){
@@ -234,7 +233,7 @@ $(function() {
 		'type':'POST',
 		'url':"<c:url value='/showProdImg.con'/>",
 		'dataType':'json',
-		'data':{prodId:'16'},
+		'data':{prodId:'${param.id}'},
 		'success':function(data){								
 			content(data);
 			console.log(data.imgid[0]);
@@ -249,7 +248,7 @@ $(function() {
 			'type':'GET',
 			'url':"<c:url value='/g05_customer/ShowProServlet.con'/>",
 			'dataType':'json',
-			'data':{prod_id:'16'},
+			'data':{prod_id:'${param.id}'},
 			'success':function(Prod){								
 			console.log(Prod);
 		$('#PtitleImg').append("<img id='img1' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[0]+"'/>'  style='width: 100%' />");

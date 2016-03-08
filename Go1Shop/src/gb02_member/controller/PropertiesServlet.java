@@ -22,6 +22,8 @@ import gb01_login.model.AdminDAO;
 @WebServlet(urlPatterns = "/Admin/Properties.controller")
 public class PropertiesServlet extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
