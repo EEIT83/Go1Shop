@@ -23,7 +23,7 @@
 <!-- 			<i class="glyphicon glyphicon-search leftNavIcon"></i>查詢</a></li> -->
 			</c:if>
 			<c:if test="${!empty LoginOK}">
-				<li class="active1"><a href="/Go1Shop" id="logout" style="text-decoration: none" target="_blank">
+				<li class="active1"><a href="/Go1Shop/Logout.do" id="logout" style="text-decoration: none" target="_blank">
 				<i class="glyphicon glyphicon-comment leftNavIcon"></i>登出</a>
 				<li class="active1"><a href="" id="modify" style="text-decoration: none" target="_blank">
 				<i class="glyphicon glyphicon-comment leftNavIcon"></i>基本資料</a>
