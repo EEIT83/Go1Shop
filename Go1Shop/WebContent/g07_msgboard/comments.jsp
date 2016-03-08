@@ -5,26 +5,55 @@
 <!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+
+
+
+
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+<!-- 最新編譯和最佳化的 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<!-- 選擇性佈景主題 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+<!-- 最新編譯和最佳化的 JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <style type="text/css">
 body,div,h2,h3,ul,li,p{margin:0;padding:0;}
 a{text-decoration:none;}
 a:hover{text-decoration:underline;}
 ul{list-style-type:none;}
-body{color:#333;background:#a7ab8c;font:12px/1.5 \5b8b\4f53;}
-#msgBox{width:500px;background:#fff;border-radius:5px;margin:10px auto;padding-top:10px;}
+
+/* body{color:#333;background:#a7ab8c;font:12px/1.5 \5b8b\4f53;} */
+body{color:#333;background:#ffffff;font:12px/1.5 \5b8b\4f53;}
+
+
+/* #msgBox{width:500px;background:#fff;border-radius:5px;margin:10px auto;padding-top:10px;} */
+#msgBox{width:800px;background:#fff;border-radius:5px;margin-left:10px ;padding-top:10px;}
+
+
 #msgBox form h2{font-weight:400;font:400 18px/1.5 \5fae\8f6f\96c5\9ed1;}
 #msgBox form{background:url(../_img/boxBG.jpg) repeat-x 0 bottom;padding:0 20px 15px;}
 #userName,#conBox{color:#777;border:1px solid #d0d0d0;border-radius:6px;background:#fff url(../_img/inputBG.png) repeat-x;padding:3px 5px;font:14px/1.5 arial;}
 #userName.active,#conBox.active{border:1px solid #7abb2c;}
 #userName{height:20px;}
-#conBox{width:448px;resize:none;height:65px;overflow:auto;}
+
+/* #conBox{width:448px;resize:none;height:65px;overflow:auto;} */
+#conBox{width:770px;resize:none;height:65px;overflow:auto;}
+
 #msgBox form div{position:relative;color:#999;margin-top:10px;}
 #msgBox img{border-radius:3px;}
 #face{position:absolute;top:0;left:172px;}
 #face img{width:30px;height:30px;cursor:pointer;margin-right:6px;opacity:0.5;filter:alpha(opacity=50);}
 #face img.hover,#face img.current{width:28px;height:28px;border:1px solid #f60;opacity:1;filter:alpha(opacity=100);}
-#sendBtn{border:0;width:112px;height:30px;cursor:pointer;margin-left:10px;background:url(../_img/btn.png) no-repeat;}
+
+/* #sendBtn{border:0;width:112px;height:30px;cursor:pointer;margin-left:10px;background:url(../_img/btn.png) no-repeat;} */
+#sendBtn{border:0;cursor:pointer;margin-left:10px; no-repeat;}
+
+
 #sendBtn.hover{background-position:0 -30px;}
 #msgBox form .maxNum{font:26px/30px Georgia, Tahoma, Arial;padding:0 5px;}
 #msgBox .list{padding:10px;}
@@ -143,24 +172,26 @@ EventUtil.addLoadHandler(function ()
 		var conBox = document.getElementById("conBox").value;
 
 		var reg = /^\s*$/g;
+		
 		if(reg.test(oUserName.value))
 		{
-			alert("\u8bf7\u586b\u5199\u60a8\u7684\u59d3\u540d");
+			//alert("\u8bf7\u586b\u5199\u60a8\u7684\u59d3\u540d");
 			oUserName.focus()
 		}
+		
 		else if(!/^[u4e00-\u9fa5\w]{2,8}$/g.test(oUserName.value))
 		{
-			alert("\u59d3\u540d\u75312-8\u4f4d\u5b57\u6bcd\u3001\u6570\u5b57\u3001\u4e0b\u5212\u7ebf\u3001\u6c49\u5b57\u7ec4\u6210\uff01");
+			//alert("\u59d3\u540d\u75312-8\u4f4d\u5b57\u6bcd\u3001\u6570\u5b57\u3001\u4e0b\u5212\u7ebf\u3001\u6c49\u5b57\u7ec4\u6210\uff01");
 			oUserName.focus()
 		}
 		else if(reg.test(oConBox.value))
 		{
-			alert("\u968f\u4fbf\u8bf4\u70b9\u4ec0\u4e48\u5427\uff01");
+			//alert("\u968f\u4fbf\u8bf4\u70b9\u4ec0\u4e48\u5427\uff01");
 			oConBox.focus()
 		}
 		else if(!bSend)
 		{
-			alert("\u4f60\u8f93\u5165\u7684\u5185\u5bb9\u5df2\u8d85\u51fa\u9650\u5236\uff0c\u8bf7\u68c0\u67e5\uff01");
+			//alert("\u4f60\u8f93\u5165\u7684\u5185\u5bb9\u5df2\u8d85\u51fa\u9650\u5236\uff0c\u8bf7\u68c0\u67e5\uff01");
 			oConBox.focus()
 		}
 		else
@@ -237,6 +268,9 @@ EventUtil.addLoadHandler(function ()
 	EventUtil.addHandler(oSendBtn, "mouseout", function () {this.className = ""});
 	
 	//li鼠标划过/离开处理函数
+	
+	/* 刪除-----------------------------------------------------------------------------------------
+	
 	function liHover()
 	{
 		for (i = 0; i < aLi.length; i++)
@@ -249,8 +283,10 @@ EventUtil.addLoadHandler(function ()
 				var aA = get.byTagName("a", oTmp);
 				if (!aA.length)
 				{
-					var oA = document.createElement("a");					
-					oA.innerHTML = "删除";
+					var oA = document.createElement("a");
+					
+ 					oA.innerHTML = "删除";
+					
 					oA.className = "del";
 					oA.href = "javascript:;";
 					oTmp.appendChild(oA)
@@ -272,7 +308,11 @@ EventUtil.addLoadHandler(function ()
 	}
 	liHover();
 	
+	
+	
+	
 	//删除功能
+	
 	function delLi()
 	{
 		var aA = get.byClass("del", oUl);
@@ -304,7 +344,11 @@ EventUtil.addLoadHandler(function ()
 		}
 	}
 	delLi();
-	
+	 
+	-----------------------------------------------------------------------------------------*/
+
+	 
+	 
 	//输入框获取焦点时样式
 	for (i = 0; i < aFtxt.length; i++)
 	{
@@ -337,34 +381,49 @@ EventUtil.addLoadHandler(function ()
 	}
 });
 </script>
+
+
+
 </head>
 <body>
 
 <div id="msgBox">
 <!--     <form action="/Go1Shop/g07_msgboard/comments.do" > -->
     <form>
-        <h2>~購衣蝦留言版~</h2>
-		<a href="../index.jsp">回首頁</a>
-        <div>
-            <input id="userName"  class="f-text" value="" />
-            <p id="face"><img src="../_img/face1.gif" class="current" /><img src="../_img/face2.gif" /><img src="../_img/face3.gif" /><img src="../_img/face4.gif" /><img src="../_img/face5.gif" /><img src="../_img/face6.gif" /><img src="../_img/face7.gif" /><img src="../_img/face8.gif" /></p>
-        </div>
-        <div><textarea id="conBox"  class="f-text"></textarea></div>
-        <div class="tr">
-            <p>
-                <span class="countTxt"></span><strong class="maxNum">140</strong><span>個字</span>
+        <h2>商品留言版</h2>
+<!-- 		<a href="../index.jsp">回首頁</a> -->
+<!--         <div> -->
 
-                <input id="sendBtn" type="button" value="" title="快捷键 Ctrl+Enter" />
-            </p>
-        </div>
+<!-- --------------------------------------------------------------------------------------------------- -->
+		<c:if test="${LoginOK != null}">
+		
+	            <input id="userName" type="hidden"  class="f-text" value="${LoginOK.mail}" />
+	<!--             <p id="face"><img src="../_img/face1.gif" class="current" /><img src="../_img/face2.gif" /><img src="../_img/face3.gif" /><img src="../_img/face4.gif" /><img src="../_img/face5.gif" /><img src="../_img/face6.gif" /><img src="../_img/face7.gif" /><img src="../_img/face8.gif" /></p> -->
+	<!--         </div> -->
+	        <div><textarea id="conBox"  class="f-text"></textarea></div>
+	        <div class="tr">
+	            <p>
+	<!--                 <span class="countTxt"></span><strong class="maxNum">140</strong><span>個字</span> -->
+	
+	<!--                 <input id="sendBtn" type="button" value="" title="快捷键 Ctrl+Enter" /> -->
+	                <input id="sendBtn" type="button" value="送出" title="快捷键 Ctrl+Enter" class="btn btn-primary"  />
+	                
+	            </p>
+	        </div>
+		</c:if>
+        
+<!-- --------------------------------------------------------------------------------------------------- -->
+       
+        
+        
     </form>
     <div class="list">
-        <h3><span>大家在说</span></h3>
+        <h3><span>大家在說</span></h3>
         <ul>
 			
 			<c:forEach var="comment" items="${comments}">
 				<li>
-                <div class="userPic"><img src="../_img/face.gif" /></div>
+<!--                 <div class="userPic"><img src="../_img/face.gif" /></div> -->
                 <div class="content">
                     <div class="userName"><a href="javascript:;">${comment.userName}</a>:</div>
                     <div class="msgInfo">${comment.comment}</div>

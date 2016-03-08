@@ -11,7 +11,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="<%=request.getContextPath()%>/_js/car/jquery.fly.min.js"></script>
-<script src="<%=request.getContextPath()%>/_js/jquery.fly.min.js"></script> 
 <title>Insert title here</title>
 <link href="<%=request.getContextPath()%>/_css/page.css" rel="stylesheet">
 <style>
