@@ -29,15 +29,21 @@
 					<td><img height='280' width='700'
 						src='${pageContext.servletContext.contextPath}/gb04_marketing/showImg.do?id=1'>
 					</td>
-					<td><input style="background: #FFFFFF" class='InputClass'
+<!-- 					<td><input style="background: #FFFFFF" class='InputClass' -->
+<!-- 						type="file" name="1" size="40" /></td> -->
+					
+					<td><input onchange="changePic()" style="background: #FFFFFF" class='InputClass'
 						type="file" name="1" size="40" /></td>
+					
+						
+						
 				</tr>
 				<tr>
 					<td>2</td>
 					<td><img height='280' width='700'
 						src='${pageContext.servletContext.contextPath}/gb04_marketing/showImg.do?id=2'>
 					</td>
-					<td><input style="background: #FFFFFF" class='InputClass'
+					<td><input onchange="changePic()" style="background: #FFFFFF" class='InputClass'
 						type="file" name="2" size="40" /></td>
 				</tr>
 				<tr>
@@ -45,13 +51,24 @@
 					<td><img height='280' width='700'
 						src='${pageContext.servletContext.contextPath}/gb04_marketing/showImg.do?id=3'>
 					</td>
-					<td><input style='background: #FFFFFF' class='InputClass'
+					<td><input onchange="changePic()" style='background: #FFFFFF' class='InputClass'
 						type="file" name="3" size="40" /></td>
 				</tr>
 			</tbody>
 		</table>
 		<input type="submit" name="Submit" value="確認變更" />
 	</form>
-
+	
+	<script type="text/javascript">
+	
+		function changePic(){
+			document.forms[0].action="/Go1Shop/xxx.do";
+			document.forms[0].method="POST";
+			document.forms[0].submit();
+		}
+	
+	</script>
+	
+	
 </body>
 </html>
