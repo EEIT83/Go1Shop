@@ -79,7 +79,7 @@ public class CommentsDAO {
 	}
 	
 	
-	private final String INSERT="insert into comments(mem_id,comment,prod_id) values(?,?,?)";
+	private final String INSERT="insert into comments(mem_id,comment) values(?,?)";
 	public int insert(String userName, String comment){
 		int i=0;
 		try (
@@ -88,6 +88,7 @@ public class CommentsDAO {
 				){
 			ps.setString(1, userName);
 			ps.setString(2, comment);
+			//ps.setString(3, "2");
 			i = ps.executeUpdate();
 			
 		} catch (SQLException e) {
