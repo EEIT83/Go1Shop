@@ -16,11 +16,15 @@
 </head>
 <body>
 <ul id="leftNavigation">
+			<c:if test="${empty LoginOK}">
 			<li><a rel="leanModal" name="signup" href="#signup" id="login">
 			<i class="glyphicon glyphicon-user leftNavIcon"></i>會員登入</a></li>
 <!-- 			<li><a href="login.html" style="text-decoration: none"> -->
 <!-- 			<i class="glyphicon glyphicon-search leftNavIcon"></i>查詢</a></li> -->
+			</c:if>
 			<c:if test="${!empty LoginOK}">
+				<li class="active1"><a href="/Go1Shop" id="logout" style="text-decoration: none" target="_blank">
+				<i class="glyphicon glyphicon-comment leftNavIcon"></i>登出</a>
 				<li class="active1"><a href="" id="modify" style="text-decoration: none" target="_blank">
 				<i class="glyphicon glyphicon-comment leftNavIcon"></i>基本資料</a>
 				
@@ -145,6 +149,7 @@ modify.addEventListener("click", function() {
 	document.getElementById("right").innerHTML="<iframe src='<c:url value='/Account/Modify.controller'/>' scrolling='no' frameborder='0' height='100%' id='modifyFrame' width='100%' onload='IFrameReSize('modifyFrame');IFrameReSizeWidth('modifyFrame');'></iframe>";
 })
 </script>
+<!-- 彈跳視窗 -->
 <script type="text/javascript">
 var registerForm = document.getElementById("registerForm");
 var loginForm = document.getElementById("loginForm");
