@@ -428,7 +428,7 @@ EventUtil.addLoadHandler(function ()
                     <div class="userName"><a href="javascript:;">${comment.userName}</a>:</div>
                     <div class="msgInfo">${comment.comment}</div>
                     <div class="times"><span>${comment.moment}</span><a class="del" href="/Go1Shop/g07_msgboard/comments.do?commentId=${comment.commentId}">删除</a></div>
-					<a href="/Go1Shop/g07_msgboard/comments.do?reportId=${comment.commentId}">檢舉</a>
+					<a onclick="report()" href="/Go1Shop/g07_msgboard/comments.do?reportId=${comment.commentId}">檢舉</a>
                 </div>
 
             </li>
@@ -436,6 +436,12 @@ EventUtil.addLoadHandler(function ()
         </ul>
     </div>	
 </div>
+
+<script>
+	function report(){
+		alert("檢舉已送出!");
+	}
+</script>
 
 </body>
 </html>

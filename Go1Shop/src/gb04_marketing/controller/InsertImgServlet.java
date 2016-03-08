@@ -14,7 +14,7 @@ import javax.servlet.http.Part;
 
 import gb04_marketing.model.ImgDAO;
 
-@WebServlet(urlPatterns={"/xxx.do"})
+@WebServlet(urlPatterns={"/gb04_marketing/xxx.do"})
 @MultipartConfig(location = "", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 500, maxRequestSize = 1024 * 1024 * 500 * 5)
 public class InsertImgServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -22,6 +22,7 @@ public class InsertImgServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		//System.out.println(123);
 		
 		String fileName = "";
 		String picId="";
@@ -60,7 +61,7 @@ public class InsertImgServlet extends HttpServlet {
 		} 
 		
 		
-		String location ="/Go1Shop/gb04_marketing/adManage.jsp";
+		String location ="/Go1Shop/gb04_marketing/backMarketing.jsp";
 		resp.sendRedirect(location);
 		
 		

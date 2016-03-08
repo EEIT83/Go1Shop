@@ -39,7 +39,7 @@
 				<ul class="nav nav-justified">
 					<li><a href="../backLogin.jsp">管理員</a></li>
 					<li><a href="/Go1Shop/gb04_marketing/backMarketing.jsp">廣告管理</a></li>
- 					<li class="active"><a href="/Go1Shop/gb03_msgboard/backCommentsManage.jsp">留言板管理</a></li>
+ 					<li class="active"><a href="/Go1Shop/g07_msgboard/comments.do?manage=1">留言板管理</a></li>
 					<li><a href="/Go1Shop/gb02_member/backMember.jsp">會員權限管理</a></li>
 <!-- 					<li><a href="AutoComplete.html">系統公告</a></li> -->
 <!-- 					<li><a href="#">優惠設定</a></li> -->
@@ -70,7 +70,7 @@
 <table  class="table table-condensed">
 	<tr>	
 	   		<th>編號</th>
-			<th>姓名</th>
+			<th>帳號</th>
 			<th>留言</th>
 			<th>時間</th>
 			<th>狀態</th>
@@ -86,7 +86,7 @@
 			<td>${comment.report}</td>
 			<td>
 				<a href="/Go1Shop/g07_msgboard/comments.do?manage=1&hideId=${comment.commentId}">隱藏</a>
-				<a href="/Go1Shop/g07_msgboard/comments.do?manage=1&recoverId=${comment.commentId}">復原</a>
+<%-- 				<a href="/Go1Shop/g07_msgboard/comments.do?manage=1&recoverId=${comment.commentId}">復原</a> --%>
 			</td>
 					
 		</tr>
