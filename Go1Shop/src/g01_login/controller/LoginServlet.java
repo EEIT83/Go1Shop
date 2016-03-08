@@ -21,7 +21,6 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = -595078994078999385L;
 
 	private String accountStatus = null;
-	//private int windonStatus = 0;
 	private MemberBean memBean = new MemberBean();
 	private AdminBean adBean = new AdminBean();
 	private HttpSession session;

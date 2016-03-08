@@ -15,20 +15,16 @@
 </script>
 </head>
 <body>
-<ul id="leftNavigation">
-			<li><a rel="leanModal" name="signup" href="#signup" id="login">
-			<i class="glyphicon glyphicon-user leftNavIcon"></i>會員登入</a></li>
-<!-- 			<li><a href="login.html" style="text-decoration: none"> -->
-<!-- 			<i class="glyphicon glyphicon-search leftNavIcon"></i>查詢</a></li> -->
-			<c:if test="${!empty LoginOK}">
+			<ul id="leftNavigation">
+				<c:if test="${!empty LoginOK}">				
 				<li class="active1"><a href="" id="modify" style="text-decoration: none" target="_blank">
 				<i class="glyphicon glyphicon-comment leftNavIcon"></i>基本資料</a>
 				
 				<li class="active1"><a href="#" style="text-decoration: none" target="_blank">
 				<i class="glyphicon glyphicon-comment leftNavIcon"></i>訊息</a>
 				<ul>
-					<li><a href='<c:url value='/mail.do'/>'>信箱</a></li>
-					<li><a href="<%=request.getContextPath()%>/gb05_mail/send.jsp">寫信</a></li>
+					<li><a href='#' id="mail">信箱</a></li>
+					<li><a href='#' id="sendmail">寫信</a></li>
 				</ul>
 			</li>
 			</c:if>
@@ -54,17 +50,19 @@
 					<li><a href="#">飛鼠褲</a></li>
 					<li><a href="#">海灘褲</a></li>
 					<li><a href="#">運動褲</a></li>
-				</ul></li>
+				</ul>
+			</li>
 			<li class="active1"><a href="#" style="text-decoration: none">
 			<i 	class="glyphicon glyphicon-triangle-right leftNavIcon"></i>配件專區</a>
-			<ul>
-				<li><a href="#">圍巾</a></li>
-				<li><a href="#">帽子</a></li>
-				<li><a href="#">眼鏡</a></li>
-				<li><a href="#">項鍊</a></li>
-				<li><a href="#">髮圈</a></li>
-				<li><a href="#">皮帶</a></li>
-			</ul></li>
+				<ul>
+					<li><a href="#">圍巾</a></li>
+					<li><a href="#">帽子</a></li>
+					<li><a href="#">眼鏡</a></li>
+					<li><a href="#">項鍊</a></li>
+					<li><a href="#">髮圈</a></li>
+					<li><a href="#">皮帶</a></li>
+				</ul>
+			</li>
 		</ul>
 <!-- ---------------------彈跳視窗------------------------------- -->
 <div id="signup">
@@ -139,12 +137,24 @@
 	</div>
 </div>
 <script type="text/javascript">
-var modify = document.getElementById("modify");
-modify.addEventListener("click", function() {
-	document.getElementById("mainFrame").style.display="none";
-	document.getElementById("right").innerHTML="<iframe src='<c:url value='/Account/Modify.controller'/>' scrolling='no' frameborder='0' height='100%' id='modifyFrame' width='100%' onload='IFrameReSize('modifyFrame');IFrameReSizeWidth('modifyFrame');'></iframe>";
-})
+	var modify = document.getElementById("modify");
+	modify.addEventListener("click", function() {
+		document.getElementById("mainFrame").style.display="none";
+		document.getElementById("right").innerHTML="<iframe src='<c:url value='/Account/Modify.controller'/>' scrolling='no' frameborder='0' height='100%' id='modifyFrame' width='100%' onload='IFrameReSize('modifyFrame');IFrameReSizeWidth('modifyFrame');'></iframe>";
+	})
+	var mail = document.getElementById("mail");
+	mail.addEventListener("click", function() {
+		document.getElementById("mainFrame").style.display="none";
+		document.getElementById("right").innerHTML="<iframe  src='<c:url value='/mail.do'/>' frameborder='0' height='100%' id='mailFrame' width='100%' onload='IFrameReSize('mailFrame');IFrameReSizeWidth('mailFrame');'></iframe>";
+	})
+	var sendmail = document.getElementById("sendmail");
+	sendmail.addEventListener("click", function() {
+		document.getElementById("mainFrame").style.display="none";
+		document.getElementById("right").innerHTML="<iframe style='width: 100%;' src='/Go1Shop/gb05_mail/send.jsp' scrolling='no' frameborder='0' height='100%' id='sendmailFrame' width='100%' onload='IFrameReSize('sendmailFrame');IFrameReSizeWidth('sendmailFrame');'></iframe>";
+	})
 </script>
+
+<!-- 彈跳視窗 -->
 <script type="text/javascript">
 var registerForm = document.getElementById("registerForm");
 var loginForm = document.getElementById("loginForm");
