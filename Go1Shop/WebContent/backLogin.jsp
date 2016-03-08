@@ -29,9 +29,14 @@
 		
 		<div class="masthead">
 			<h3 class="text-muted">Go1Shop後台管理系統</h3>
+			
+			<c:if test="${LoginOK != null}">
+				${mail}<a href="/Go1Shop/backLogout.do">登出</a>
+			</c:if>
+			
 			<nav>
 				<ul class="nav nav-justified">
-					<li class="active"><a href="#">管理員登入</a></li>
+					<li class="active"><a href="#">管理員</a></li>
 					<li><a href="/Go1Shop/gb04_marketing/backMarketing.jsp">廣告管理</a></li>
  					<li><a href="/Go1Shop/gb03_msgboard/backCommentsManage.jsp">留言板管理</a></li>
 					<li><a href="FormStyle.html">會員權限管理</a></li>
@@ -58,27 +63,43 @@
 
 <%-- 	<form action='<c:url value="/gb04_marketing/insertImg.do" />' method="post" enctype="multipart/form-data"> --%>
 	
-	<form action="Parameter.jsp" method="post" enctype="application/x-www-form-urlencoded" name="userInfo" class="form-horizontal">
+	
+	
+<%-- 	<c:if test="${LoginOK != null}"> --%>
+<!-- 		<h3>管理員登入成功!</h3> -->
+<%-- 	</c:if> --%>
+
+
+	<c:if test="${LoginOK == null}">
+	<form action="<c:url value='/Account/Login.controller'/>?accountStatus=backLogin" method="post" enctype="application/x-www-form-urlencoded" name="userInfo" class="form-horizontal">
 				<div class="form-group">
 					<label for="userName" class="col-md-2 control-label">帳號 :</label>
 					<div class="col-md-10">
-						<input type="text" name="name" class="form-control"
+						<input type="text" name="mail" class="form-control" value="${bmail}"
 							id="userName" placeholder="Account">
+						<span id="errorMail">${error.mail}</span>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="password" class="col-md-2 control-label">密碼 :</label>
 					<div class="col-md-10">
-						<input type="text" name="age" class="form-control"
+						<input type="password" name="pwd" class="form-control" value="${bpwd}"
 							id="age" placeholder="Password">
+						<span id="errorPwd">${error.pwd }</span>
 					</div>
 				</div>
+				
+				<h5>${error.loginError }</h5>
+				
 				<div class="form-group">
 					<div class="col-md-offset-2 col-md-10">
 						<button type="submit" class="btn btn-default" id="btnClick">送出</button>
 					</div>
 				</div>
-			</form>
+	</form>
+	</c:if>
+
+
 
 			<div id="div1"></div>
 
