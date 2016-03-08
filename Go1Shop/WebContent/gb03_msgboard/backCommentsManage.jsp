@@ -28,9 +28,14 @@
 	<div class="container">
 		<div class="masthead">
 			<h3 class="text-muted">Go1Shop後台管理系統</h3>
+			
+			<c:if test="${LoginOK != null}">
+				${mail}<a href="/Go1Shop/backLogout.do">登出</a>
+			</c:if>
+			
 			<nav>
 				<ul class="nav nav-justified">
-					<li><a href="../backLogin.jsp">管理員登入</a></li>
+					<li><a href="../backLogin.jsp">管理員</a></li>
 					<li><a href="/Go1Shop/gb04_marketing/backMarketing.jsp">廣告管理</a></li>
  					<li class="active"><a href="/Go1Shop/gb03_msgboard/backCommentsManage.jsp">留言板管理</a></li>
 					<li><a href="FormStyle.html">會員權限管理</a></li>
