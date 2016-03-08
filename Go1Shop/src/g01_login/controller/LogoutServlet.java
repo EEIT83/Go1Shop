@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(value={"/Logout.do"})
+@WebServlet(urlPatterns={"/Logout.do"})
 public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -17,7 +17,6 @@ public class LogoutServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		HttpSession session = req.getSession();
-		System.out.println("aaaa");
 		session.invalidate();
 		
 		/*
@@ -25,8 +24,7 @@ public class LogoutServlet extends HttpServlet {
 		session.removeAttribute("bmail");
 		session.removeAttribute("bpwd");
 		*/
-		//resp.sendRedirect("/Go1Shop/index.jsp");
-		req.getRequestDispatcher("/Go1Shop/index.jsp").forward(req, resp);
+		resp.sendRedirect("/Go1Shop/");
 	}
 
 	@Override

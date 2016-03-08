@@ -15,17 +15,8 @@
 </script>
 </head>
 <body>
-<ul id="leftNavigation">
-			<li><a rel="leanModal" name="signup" href="#signup" id="login">
-			<i class="glyphicon glyphicon-user leftNavIcon"></i>會員登入</a></li>
-<!-- 			<li><a href="login.html" style="text-decoration: none"> -->
-<!-- 			<i class="glyphicon glyphicon-search leftNavIcon"></i>查詢</a></li> -->
-			</c:if>
-			<c:if test="${!empty LoginOK}">
-
-				<li class="active1"><a href="/Go1Shop/Logout.do" id="logout" style="text-decoration: none" target="_blank">
-				<i class="glyphicon glyphicon-comment leftNavIcon"></i>登出</a>
-				
+			<ul id="leftNavigation">
+				<c:if test="${!empty LoginOK}">				
 				<li class="active1"><a href="" id="modify" style="text-decoration: none" target="_blank">
 				<i class="glyphicon glyphicon-comment leftNavIcon"></i>基本資料</a>
 				
@@ -59,17 +50,19 @@
 					<li><a href="#">飛鼠褲</a></li>
 					<li><a href="#">海灘褲</a></li>
 					<li><a href="#">運動褲</a></li>
-				</ul></li>
+				</ul>
+			</li>
 			<li class="active1"><a href="#" style="text-decoration: none">
 			<i 	class="glyphicon glyphicon-triangle-right leftNavIcon"></i>配件專區</a>
-			<ul>
-				<li><a href="#">圍巾</a></li>
-				<li><a href="#">帽子</a></li>
-				<li><a href="#">眼鏡</a></li>
-				<li><a href="#">項鍊</a></li>
-				<li><a href="#">髮圈</a></li>
-				<li><a href="#">皮帶</a></li>
-			</ul></li>
+				<ul>
+					<li><a href="#">圍巾</a></li>
+					<li><a href="#">帽子</a></li>
+					<li><a href="#">眼鏡</a></li>
+					<li><a href="#">項鍊</a></li>
+					<li><a href="#">髮圈</a></li>
+					<li><a href="#">皮帶</a></li>
+				</ul>
+			</li>
 		</ul>
 <!-- ---------------------彈跳視窗------------------------------- -->
 <div id="signup">
@@ -160,6 +153,7 @@
 		document.getElementById("right").innerHTML="<iframe style='width: 100%;' src='/Go1Shop/gb05_mail/send.jsp' scrolling='no' frameborder='0' height='100%' id='sendmailFrame' width='100%' onload='IFrameReSize('sendmailFrame');IFrameReSizeWidth('sendmailFrame');'></iframe>";
 	})
 </script>
+
 <!-- 彈跳視窗 -->
 <script type="text/javascript">
 var registerForm = document.getElementById("registerForm");
