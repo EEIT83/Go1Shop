@@ -29,7 +29,6 @@
 
 </head>
 <body>
-<<<<<<< HEAD
 	<ul id="leftNavigation">
 		<c:if test="${!empty LoginOK}">
 			<li class="active1"><a href="" style="text-decoration: none"

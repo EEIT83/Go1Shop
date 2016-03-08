@@ -335,7 +335,8 @@
     };
 
     //main
-    '#twzipcode' = function (method) {
+//    '#twzipcode' = function (method) {
+    	var twzipcode = function (method) {
         var wrap = this, container = {};
         if ('string' === typeof method) {
             return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
