@@ -25,7 +25,7 @@
 	</div>
 <!-- 	<div style="width:100%;height:50%;margin:5% 5% 5% 5%;border:1px solid red; " > -->
 	<div style="width:100%;height:100%;" >
-		<iframe src="<%=request.getContextPath()%>/gb04_marketing/ad.jsp" scrolling="no" frameborder="0" height="100%" id="mainFrame" width="100%" onload='IFrameReSize("mainFrame");IFrameReSizeWidth("mainFrame");'></iframe>
+		<iframe src="<%=request.getContextPath()%>/gb04_marketing/ad.jsp" scrolling="no" frameborder="0" height="100%" id="mainFrame" width="100%" onload='IFrameReSize("mainFrame");IFrameReSizeWidth("mainFrame");' style="display:inline;"></iframe>
 	</div>
 	<script type="text/javascript">
 
@@ -60,40 +60,41 @@
 	</div>
 <!-- 右邊	----------------------------------------------------------------------------------->
 	<div id="right"style="float: left;margin-right:2%;margin-left:1%;margin-bottom:0.5%;width: 75%;">
-		<div style="float: left;margin:5% 0 0 5%;width: 80%; ">
-			<div style="width:100%;margin-left:5%">
-				<form action="<c:url value="/g03_product/ProductGenderServlet.controller"/>" method="post">
-					<div id="B">
-						<span>產品名稱：</span> <input type="text" name="prod_name"	value="${param.prod_name}" style="width: 70%;"><br>
-						<br>
-						<span>價錢範圍從：</span><input type="text" name="lowprice" value="${param.lowprice}" style="width:10%;">
-						&nbsp;到&nbsp;
-						<input type="text" name="highprice" value="${param.highprice}" style="width:10%;" >
-						<span><input type="submit" name="prodaction" value="Select" style="width:10%"class="btn btn-primary"></span>
-						<button type="submit" name="selectorder" value="OrderByPrice" class="btn btn-primary">依金額低至高</button>
-						<button type="submit" name="selectorder" value="OrderByPriceDesc" class="btn btn-primary">依金額高至低</button>
-						<button type="submit" name="selectorder" value="OrderByDate" class="btn btn-primary">依刊登日期舊至新</button>
-						<button type="submit" name="selectorder" value="OrderByDateDesc" class="btn btn-primary">依刊登日期新至舊</button>
-						<br>
-						<br>
+<!-- 		<iframe src="<%=request.getContextPath()%>/g02_member/Modify.jsp" scrolling="no" frameborder="0" height="100%" id="modifyFrame" width="100%" onload='IFrameReSize("modifyFrame");IFrameReSizeWidth("modifyFrame");'></iframe> -->
+<!-- 		<div style="float: left;margin:5% 0 0 5%;width: 80%; ">			 -->
+<!-- 			<div style="width:100%;margin-left:5%"> -->
+<!-- 				<form action="<c:url value="/g03_product/ProductGenderServlet.controller"/>" method="post"> -->
+<!-- 					<div id="B"> -->
+<!-- 						<span>產品名稱：</span> <input type="text" name="prod_name"	value="${param.prod_name}" style="width: 70%;"><br> -->
+<!-- 						<br> -->
+<!-- 						<span>價錢範圍從：</span><input type="text" name="lowprice" value="${param.lowprice}" style="width:10%;"> -->
+<!-- 						&nbsp;到&nbsp; -->
+<!-- 						<input type="text" name="highprice" value="${param.highprice}" style="width:10%;" > -->
+<!-- 						<span><input type="submit" name="prodaction" value="Select" style="width:10%"class="btn btn-primary"></span> -->
+<!-- 						<button type="submit" name="selectorder" value="OrderByPrice" class="btn btn-primary">依金額低至高</button> -->
+<!-- 						<button type="submit" name="selectorder" value="OrderByPriceDesc" class="btn btn-primary">依金額高至低</button> -->
+<!-- 						<button type="submit" name="selectorder" value="OrderByDate" class="btn btn-primary">依刊登日期舊至新</button> -->
+<!-- 						<button type="submit" name="selectorder" value="OrderByDateDesc" class="btn btn-primary">依刊登日期新至舊</button> -->
+<!-- 						<br> -->
+<!-- 						<br> -->
 					
-					</div>
-				</form>
-				<div id="div">
-					<c:forEach var="bean" items="${select}">
-						<div id="div_out">
-							<a href="#">
-							<img id="img1" class="img-responsive" style="width:300px;height:300px" src='<c:url value="/pages/showImg.controller?prod_id="/>${bean.prod_id}'>
-							</a>
-							<h3 id="h3txt">						
-								<a>${bean.prod_name}</a><br>
-								<a>金額:${bean.price}</a>						
-							</h3>
-						</div>
-					</c:forEach>
-				</div>
-			</div>
-		</div>
+<!-- 					</div> -->
+<!-- 				</form> -->
+<!-- 				<div id="div"> -->
+<!-- 					<c:forEach var="bean" items="${select}"> -->
+<!-- 						<div id="div_out"> -->
+<!-- 							<a href="#"> -->
+<!-- 							<img id="img1" class="img-responsive" style="width:300px;height:300px" src='<c:url value="/pages/showImg.controller?prod_id="/>${bean.prod_id}'> -->
+<!-- 							</a> -->
+<!-- 							<h3 id="h3txt">						 -->
+<!-- 								<a>${bean.prod_name}</a><br> -->
+<!-- 								<a>金額:${bean.price}</a>						 -->
+<!-- 							</h3> -->
+<!-- 						</div> -->
+<!-- 					</c:forEach> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
 	</div>
 <!-- 下邊	--------------------------------------------------------------------------------- -->	
 	<div id="bottom" style="clear:left;width:100%;bottom:0;left:0;position:fixed;">

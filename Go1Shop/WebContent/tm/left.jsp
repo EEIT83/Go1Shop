@@ -7,7 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Go1Shop Home</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/_css/style.css" />
-<script type="text/javascript" src="<%=request.getContextPath() %>/_js/jquery.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/_js/jquery.leanModal.min.js"></script>
 <script type="text/javascript">
 	$(function() {
@@ -22,9 +21,12 @@
 <!-- 			<li><a href="login.html" style="text-decoration: none"> -->
 <!-- 			<i class="glyphicon glyphicon-search leftNavIcon"></i>查詢</a></li> -->
 			<c:if test="${!empty LoginOK}">
+				<li class="active1"><a href="" id="modify" style="text-decoration: none" target="_blank">
+				<i class="glyphicon glyphicon-comment leftNavIcon"></i>基本資料</a>
+				
 				<li class="active1"><a href="#" style="text-decoration: none" target="_blank">
 				<i class="glyphicon glyphicon-comment leftNavIcon"></i>訊息</a>
-			<ul>
+				<ul>
 					<li><a href='<c:url value='/mail.do'/>'>信箱</a></li>
 					<li><a href="<%=request.getContextPath()%>/gb05_mail/send.jsp">寫信</a></li>
 				</ul>
@@ -88,6 +90,13 @@
 			    </form>
 	</div>
 </div>
+<script type="text/javascript">
+var modify = document.getElementById("modify");
+modify.addEventListener("click", function() {
+	document.getElementById("mainFrame").style.display="none";
+	document.getElementById("right").innerHTML="<iframe src='<c:url value='/Account/Modify.controller'/>' scrolling='no' frameborder='0' height='100%' id='modifyFrame' width='100%' onload='IFrameReSize('modifyFrame');IFrameReSizeWidth('modifyFrame');'></iframe>";
+})
+</script>
 <script type="text/javascript">
 		var checkMail=document.getElementById("mail");
 		var checkPwd=document.getElementById("pwd");
