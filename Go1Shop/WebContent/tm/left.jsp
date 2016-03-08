@@ -86,8 +86,8 @@
 					  </div>
 					  <h5>${error.loginError }</h5>
 <!-- 					  <div class="btn-fld"> -->
-					  <input type="submit" value="Sign Up &raquo;"  class="loginbutton">
-					    <input type="button" value="Sign In &raquo;"  class="registerbutton" id="register">
+					  <input type="submit" value="Sign In &raquo;"  class="loginbutton">
+					    <input type="button" value="Sign Up &raquo;"  class="registerbutton" id="register">
 
 <!-- 					</div> -->
 			    </form>
