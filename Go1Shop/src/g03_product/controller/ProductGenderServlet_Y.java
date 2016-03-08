@@ -80,7 +80,7 @@ public class ProductGenderServlet_Y extends HttpServlet {
 		//如果已經先選了部位 就直接針對部位做篩選排序
 		String sessionpart = (String) session.getAttribute("PART");
 		if (sessionpart != null) {SQLpart = " and part = '" + sessionpart + "'";}
-		System.out.println("session=" + session.getAttribute("PART"));
+		//System.out.println("session=" + session.getAttribute("PART"));
 		
 		
 		//搜尋功能，搜尋前先確認有無輸入價格範圍，part已經先存入session且新增到SQLpart
@@ -234,7 +234,7 @@ public class ProductGenderServlet_Y extends HttpServlet {
 			
 //			System.out.println("SQLpart=" + SQLpart);
 //			System.out.println("gender=" + gender);
-			System.out.println("result="+result);
+			//System.out.println("result="+result);
 			return;
 		}//結束
 	
