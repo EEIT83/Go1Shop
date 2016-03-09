@@ -24,13 +24,13 @@ import g01_login.controller.MemberBean;
  */
 @WebFilter(
 
-		urlPatterns = { "/*"}, 
+//		urlPatterns = { "/*"}, 
 		
 
 		initParams = { 
-		@WebInitParam(name = "url_checkDetail", value = "/g05_customer/checkout/checkDetail.jsp"),
-		@WebInitParam(name = "url_success", value = "/g05_customer/checkout/success.jsp"),
-		@WebInitParam(name = "url_buyProd", value = "/g05_customer/shoppingCar/controller/BuyProServlet.con")
+//		@WebInitParam(name = "url_checkDetail", value = "/g05_customer/checkout/checkDetail.jsp"),
+//		@WebInitParam(name = "url_success", value = "/g05_customer/checkout/success.jsp"),
+//		@WebInitParam(name = "url_buyProd", value = "/g05_customer/shoppingCar/controller/BuyProServlet.con")
 		
 		}
 )
@@ -62,6 +62,7 @@ public class FilterLogin implements Filter {
 			} else {
 				HttpSession session = req.getSession();
 				session.setAttribute("target", servletPath);
+				System.out.println(123);
 				resp.sendRedirect(contextPath + "/g01_login/Login.jsp");
 //				RequestDispatcher rd = req
 //						.getRequestDispatcher("/_01_login/login.jsp");

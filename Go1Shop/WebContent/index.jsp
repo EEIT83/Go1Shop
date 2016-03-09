@@ -62,14 +62,14 @@
 	<div id="right"style="float: left;margin-right:2%;margin-left:1%;margin-bottom:0.5%;width: 75%;">
 		<div style="float: left;margin:5% 0 0 5%;width: 80%; ">
 			<div style="width:100%;margin-left:5%">
-				<form action="<c:url value="/g03_product/ProductGenderServlet.controller"/>" method="post">
+				<form>
 					<div id="B">
 						<span>產品名稱：</span> <input type="text" name="prod_name"	value="${param.prod_name}" style="width: 70%;"><br>
 						<br>
 						<span>價錢範圍從：</span><input type="text" name="lowprice" value="${param.lowprice}" style="width:10%;">
 						&nbsp;到&nbsp;
 						<input type="text" name="highprice" value="${param.highprice}" style="width:10%;" >
-						<span><input type="submit" name="prodaction" value="Select" style="width:10%"class="btn btn-primary"></span>
+						<span><input type="button" onclick="run();" name="prodaction" value="Select" style="width:10%"class="btn btn-primary"></span>
 						<button type="submit" name="selectorder" value="OrderByPrice" class="btn btn-primary">依金額低至高</button>
 						<button type="submit" name="selectorder" value="OrderByPriceDesc" class="btn btn-primary">依金額高至低</button>
 						<button type="submit" name="selectorder" value="OrderByDate" class="btn btn-primary">依刊登日期舊至新</button>
@@ -79,6 +79,28 @@
 					
 					</div>
 				</form>
+				<script type="text/javascript">
+	window.onload=function(){
+// 				document.forms[0].url="<c:url value='/g03_product/ProductGenderServlet.controller?gender=M'/>";
+// 				document.forms[0].method="GET";
+// 				document.forms[0].submit();
+		// 		document.forms[0].action="<c:url value='/checkDetail.action?payment=" + str + "&address=" + address + "&zip_code=" + zipcode + "&sender_address=" + address_sen + "&zip_code_sen=" + zipcode_sen + "'/>";	
+		// 		document.forms[0].method = "POST";
+		// 		document.forms[0].submit();
+				
+		
+	}
+	function run(){
+		document.forms[0].url="<c:url value='/g03_product/ProductGenderServlet.controller?gender=M'/>";
+		document.forms[0].method="GET";
+		alert(123)
+		document.forms[0].submit();
+		alert(456)
+	}
+	
+	
+
+</script>
 				<div id="div">
 					<c:forEach var="bean" items="${select}">
 						<div id="div_out">
@@ -101,5 +123,6 @@
 	</div>
 <!-------------------------------------------------------------------------------------- -->
 </div>
+
 </body>
 </html>
