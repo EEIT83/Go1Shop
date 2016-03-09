@@ -20,7 +20,7 @@
 
 <script language="javascript">
 		function reSize(){
-		　　//parent.document.all.frameid.height=document.body.scrollHeight; 
+// 		　　parent.document.all.frameid.height=document.body.scrollHeight; 
 		　　parent.document.getElementById("mailFrame").height=document.body.scrollHeight;
 		} 
 		window.onload=reSize;
@@ -37,7 +37,9 @@ table, th, td {
 </head>
 <body>
 	<div style="margin: 5% 0 0 3% ">
-		<a href="<%=request.getContextPath() %>/gb05_mail/send.jsp" class="btn btn-primary">寫信</a>
+		
+<%-- 		<a href="<%=request.getContextPath() %>/gb05_mail/send.jsp" class="btn btn-primary">寫信</a> --%>
+		
 		<c:if test="${not empty validate}">
 		<table class="table table-hover"style="margin-top: 1%;">
 			<tr>	

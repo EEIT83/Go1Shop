@@ -21,9 +21,9 @@
 				<i class="glyphicon glyphicon-comment leftNavIcon"></i>基本資料</a>
 				
 				<li class="active1"><a href="#" style="text-decoration: none" target="_blank">
-				<i class="glyphicon glyphicon-comment leftNavIcon"></i>訊息</a>
+				<i class="glyphicon glyphicon-comment leftNavIcon"></i>簡訊</a>
 				<ul>
-					<li><a href='#' id="mail">信箱</a></li>
+					<li><a href='#' id="mail">收信</a></li>
 					<li><a href='#' id="sendmail">寫信</a></li>
 				</ul>
 			</li>

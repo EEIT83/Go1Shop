@@ -117,7 +117,7 @@ public class FilterBackLogin implements Filter {
 
 	public boolean checkLogin(HttpServletRequest req) {
 		HttpSession session = req.getSession();
-		AdminBean ch = (AdminBean)session.getAttribute("LoginOK");
+		AdminBean ch = (AdminBean)session.getAttribute("bLoginOK");
 		//System.out.println(ch);
 		if (ch == null) {
 			return false;

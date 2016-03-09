@@ -81,7 +81,7 @@ public class LoginServlet extends HttpServlet {
 					request.getRequestDispatcher("/index.jsp").forward(request, response);
 				} else if (adService.Login(mail, pwd) != null && accountStatus.equals("backLogin")) {
 					adBean = adService.Login(mail, pwd);
-					session.setAttribute("LoginOK", adBean);
+					session.setAttribute("bLoginOK", adBean);
 					session.setAttribute("mail", adBean.getAd_mail());
 					response.sendRedirect("/Go1Shop/gb04_marketing/backMarketing.jsp");
 					

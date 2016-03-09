@@ -18,13 +18,12 @@ public class backLogoutServlet extends HttpServlet {
 		
 		HttpSession session = req.getSession();
 		
-		session.invalidate();
+		//session.invalidate();
 		
-		/*
-		session.removeAttribute("LoginOK");
+		session.removeAttribute("bLoginOK");
 		session.removeAttribute("bmail");
 		session.removeAttribute("bpwd");
-		*/
+
 		resp.sendRedirect("/Go1Shop/backLogin.jsp");
 		
 	}
