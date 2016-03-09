@@ -30,7 +30,7 @@
 		<div class="masthead">
 			<div>
 			<span class="text-muted"; style="font-size:30px">Go1Shop後台管理系統</sapn>
-			<span style="margin-left:65%;font-size:15px;"><c:if test="${bLoginOK != null}">
+			<span style="margin-left:68%;font-size:15px;"><c:if test="${bLoginOK != null}">
 				${mail}<a href="/Go1Shop/backLogout.do">登出</a>
 			</c:if>
 			</span>

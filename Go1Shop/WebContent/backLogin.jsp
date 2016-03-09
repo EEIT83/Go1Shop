@@ -31,7 +31,7 @@
 			
 		<div>
 			<span class="text-muted"; style="font-size:30px">Go1Shop後台管理系統</sapn>
-			<span style="margin-left:65%;font-size:15px;"><c:if test="${bLoginOK != null}">
+			<span style="margin-left:68%;font-size:15px;"><c:if test="${bLoginOK != null}">
 				${bmail}<a href="/Go1Shop/backLogout.do">登出</a>
 			</c:if>
 			</span>
@@ -79,7 +79,7 @@
 				<div class="form-group">
 					<label for="userName" class="col-md-2 control-label">帳號 :</label>
 					<div class="col-md-10">
-						<input type="text" name="mail" class="form-control" value="${bmail}"
+						<input  type="text" name="mail" class="form-control" value="${bmail}"
 							id="userName" placeholder="Account">
 						<span id="errorMail">${error.mail}</span>
 					</div>

@@ -28,7 +28,7 @@
 
 <style>
 table, th, td {
-    border: 1px solid black;
+    border: 1px solid gray;
     border-collapse: collapse;
 }
 </style>
@@ -39,27 +39,42 @@ table, th, td {
 	<div style="margin: 5% 0 0 3% ">
 		
 <%-- 		<a href="<%=request.getContextPath() %>/gb05_mail/send.jsp" class="btn btn-primary">寫信</a> --%>
+		<a id="a" href="" class="btn btn-primary">刪除</a>
+		
+<!-- 		<a id="a" href="">刪多個</a> -->
 		
 		<c:if test="${not empty validate}">
 		<table class="table table-hover"style="margin-top: 1%;">
 			<tr>	
+					<th>勾選</th>
 			   		<th>編號</th>
-					<th>寄件者</th>
 					<th>主旨</th>
 					<th>內容</th>
+					<th>寄件者</th>
 			</tr>
 			<c:forEach var="mail" items="${mails}">
 				<tr>
+					<td><input type="checkbox"></td>
 					<td>${mail.mailId}</td>
-					<td>${mail.sender}</td>
 					<td>${mail.title}</td>
 					<td>${mail.content}</td>
+					<td>${mail.sender}</td>
 					               
 				</tr>
 			</c:forEach>
 		</table>
 		</c:if>
 	</div>
+
+<script>
+	function deleteMail(){
+		//alert(123)
+		
+		
+	}
+</script>
+
+
 
 </body>
 </html>
