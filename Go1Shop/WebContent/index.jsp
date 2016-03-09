@@ -150,7 +150,7 @@ request.setAttribute("select", result);
 <%-- <c:set var="init" value="0" scope="session"></c:set> --%>
 <%-- </c:if> --%>
 
-<jsp:include page="/g05_customer/shoppingCar/shopcar.jsp" />	
+<%-- <jsp:include page="/g05_customer/shoppingCar/shopcar.jsp" />	 --%>
 </body>
 
 </html>
