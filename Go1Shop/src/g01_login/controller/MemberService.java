@@ -18,7 +18,7 @@ public class MemberService {
 				if (bean.getStatus().equals("N")) {
 					return bean;
 				} else {
-					throw new Exception("你已被停權");
+					throw new Exception("2");
 				}
 			}
 		}

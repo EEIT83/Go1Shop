@@ -11,10 +11,11 @@
 html {
 	height: 100%;
 	background-attachment: fixed;
-	background-image: url(img/alipay_3.png);
+/* 	background-image: url(img/alipay_3.png); */
 	background-repeat: repeat;
 }
-body { background: url(img/grad.png) fixed center top no-repeat; font-size: 62.5%; font-family: "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", sans-serif;  } 
+
+body { background: fixed center top no-repeat; font-size: 62.5%; font-family: "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", sans-serif;  } 
 #banner {
 	position: fixed;
 	top: 0px;
@@ -28,14 +29,17 @@ body { background: url(img/grad.png) fixed center top no-repeat; font-size: 62.5
 	overflow: hidden;
 }
 
+
 #banner-left {
 	float: left;
 	width: 120px;
+
 }
 
 #banner-right {
 	float: right;
 	width: 900px;
+
 }
 
 #banner p {
@@ -128,7 +132,7 @@ h1 {
 -----------------------------------------*/
 p {
 	font-size: 1.3em;
-	color: #D0E4EF;
+	color: #000000;
 	margin-bottom: 16px;
 	line-height: 140%;
 	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
@@ -139,13 +143,13 @@ strong {
 }
 
 h2 {
-	color: #FFF;
-	font-size: 2em;
-	font-weight: normal;
-	padding-bottom: 4px;
-	margin-bottom: 8px;
-	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
-	font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+	color: #000000;
+/* 	font-size: 2em; */
+/* 	font-weight: normal; */
+/* 	padding-bottom: 4px; */
+/* 	margin-bottom: 8px; */
+/* 	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2); */
+/* 	font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif; */
 }
 
 h3 {
@@ -162,7 +166,7 @@ ul {
 }
 
 li {
-	padding-left: 20px;
+/* 	padding-left: 20px; */
 	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
 	line-height: 140%;
 	margin-bottom: 2px;
@@ -178,7 +182,7 @@ li {
 
 a:link, a:visited {
 	color: #D0E4EF;
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 a:hover, a:active {
@@ -236,7 +240,7 @@ pre {
 
 -----------------------------------------*/
 #signup {
-	width: 404px;
+	width: 450px;
 	padding-bottom: 2px;
 	display: none;
 	background: #FFF;
@@ -297,7 +301,7 @@ pre {
 #signup .txt-fld {
 	position: relative;
 	width: 364px;
-	padding: 14px 20px;
+	padding: 10px 10px;
 	border-bottom: 1px solid #EEE;
 	text-align: right;
 }
@@ -315,12 +319,28 @@ pre {
 	padding-top: 8px;
 	color: #222;
 	font-size: 1.3em;
-	text-align: left;
+	text-align: right;
 }
 
-#signup .txt-fld input {
-	width: 244px;
+#signup .txt-fld .input {
+	width: 250px;
 	padding: 8px;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	font-size: 1.2em;
+	color: #222;
+	background: #F7F7F7;
+	font-family: "Helvetica Neue";
+	outline: none;
+	border-top: 1px solid #CCC;
+	border-left: 1px solid #CCC;
+	border-right: 1px solid #E7E6E6;
+	border-bottom: 1px solid #E7E6E6;
+}
+#signup .txt-fld .gender{
+	width: 70px;
+	padding: 0px;
 	border-radius: 4px;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
@@ -370,8 +390,25 @@ p.error span {
 	background-color: #FAF9DC;
 }
 
-button {
-	float: right;
+.loginbutton {
+	margin:0 0 0 150px;
+	font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+	background: #3F9D4A;
+	border: none;
+	width: auto;
+	overflow: visible;
+	font-size: 1.4em;
+	color: #FFF;
+	padding: 7px 10px;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	font-weight: bold;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.registerbutton {
+	margin:0 50px 0 0;
 	font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 	background: #3F9D4A;
 	border: none;

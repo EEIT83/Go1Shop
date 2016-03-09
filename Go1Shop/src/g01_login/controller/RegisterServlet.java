@@ -37,6 +37,7 @@ public class RegisterServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		pageStatus = request.getParameter("pageStatus");
 		try {
 			if ("register".equals(pageStatus)) {
@@ -50,7 +51,7 @@ public class RegisterServlet extends HttpServlet {
 				bean.setBdate(Date.valueOf(request.getParameter("bdate")));
 				dao.insert(bean);
 				response.setCharacterEncoding("UTF-8");
-				response.getWriter().write("<script>charset='UTF-8'; alert('Success!'); location.href='/Go1Shop/g01_login/Login.jsp';</script>");
+				response.getWriter().write("<script>charset='UTF-8'; swal('請先登入!'); location.href='/Go1Shop/index.jsp';</script>");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

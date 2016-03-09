@@ -18,7 +18,13 @@
 <script src="<%=request.getContextPath()%>/_js/jQuery-TWzipcode-master/jQuery-TWzipcode-master/jquery.twzipcode.js"></script>
 <link href="<%=request.getContextPath()%>/_css/page.css" rel="stylesheet">
 
-
+<script language="javascript">
+		function reSize(){
+		　　//parent.document.all.frameid.height=document.body.scrollHeight; 
+		　　parent.document.getElementById("mailFrame").height=document.body.scrollHeight;
+		} 
+		window.onload=reSize;
+</script>
 
 <style>
 table, th, td {
@@ -30,20 +36,7 @@ table, th, td {
 <title>Go1Shop信箱</title>
 </head>
 <body>
-
-<div style="width: 100%;height: 100%;">
-<!-- 上邊	--------------------------------------------------------------------------------- -->
-	<div style="margin-bottom:0.5%;">
-		<jsp:include page="/tm/top.jsp" />
-	</div>
-<!-- 左邊	--------------------------------------------------------------------------------- -->
-	<div id="left" style="float: left;margin-left:2%;width: 11%;">
-		<jsp:include page="/tm/left.jsp" />
-	</div>
-<!-- 右邊	----------------------------------------------------------------------------------->
-	<div id="right"style="float: left;margin-right:2%;margin-left:1%;margin-bottom:0.5%;width: 82%;">
-<!----------------------------------------------------------------------------------------->	
-		<h2>Mail</h2>
+	<div style="margin: 5% 0 0 3% ">
 		<a href="<%=request.getContextPath() %>/gb05_mail/send.jsp" class="btn btn-primary">寫信</a>
 		<c:if test="${not empty validate}">
 		<table class="table table-hover"style="margin-top: 1%;">
@@ -65,11 +58,6 @@ table, th, td {
 		</table>
 		</c:if>
 	</div>
-<!-- 下邊	--------------------------------------------------------------------------------- -->	
-	<div id="bottom" style="clear:left;width:100%;bottom:0;left:0;;position:fixed;">
-		<jsp:include page="/tm/bottom.jsp" />	
-	</div>
-<!-------------------------------------------------------------------------------------- -->
-</div>
+
 </body>
 </html>

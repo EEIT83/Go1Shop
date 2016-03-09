@@ -20,4 +20,6 @@ public interface ProductDAO_M {
 
 	List<ProductVO_M> getAllByMemId(Integer memId);
 	
+	public int updateWithImg(ProductVO_M productVO,List<Prodimg> prodimgList);
+	
 }

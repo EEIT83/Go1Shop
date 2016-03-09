@@ -14,6 +14,25 @@
 <script src="<%=request.getContextPath()%>/_js/jquery-1.11.3.min.js"></script>
 <script src="<%=request.getContextPath()%>/_js/bootstrap.min.js"></script>
 
+
+<script type="text/javascript">
+$(document).ready(function() {
+	var url = '<%= request.getContextPath() %>/PicForProdimg.do?prodId=${productVO.prodId}';
+	$('#infoPicResult').attr("src",url);
+	$('#img').change(function(event){
+    	var input = event.target;
+    	var reader = new FileReader();
+    	reader.onload = function(){
+    		var dataURL = reader.result;
+    		var infoPicResult =document.getElementById('infoPicResult');
+    		infoPicResult.src = dataURL;
+    	};
+    	reader.readAsDataURL(input.files[0]);
+    });//end of file change
+})
+</script>
+
+
 <title>Insert title here</title>
 </head>
 <body>
@@ -35,8 +54,17 @@
 					</font>
 				</c:if>
 				<div class="col-md-8">
-					<form action="<%=request.getContextPath()%>/ProductServlet.do" method="get" class="form-horizontal">
-						
+					<form action="<%=request.getContextPath()%>/ProductServlet.do" method="post" class="form-horizontal" enctype="multipart/form-data">
+						<div class="col-md-6">
+						<div class="form-group">
+								<label for="img">note</label> <input type="file" name="img"
+									class="form-control" id="img" placeholder="img" />
+							</div>
+							<img id="infoPicResult"  class="img-responsive img-thumbnail" />
+						</div>
+						<div class="col-md-2">								
+						</div>
+						<div class="col-md-4">
 						
 						<div class="form-group">
 							<label for="prodName">prodName</label> <input type="text" name="prodName"
@@ -87,6 +115,8 @@
 						<input type="hidden" name="action" value="updateProdByProdId" /><br />
 
 						<button type="submit" class="btn btn-default">Submit</button>
+						
+						</div>
 					</form>
 				</div>
 			</div>

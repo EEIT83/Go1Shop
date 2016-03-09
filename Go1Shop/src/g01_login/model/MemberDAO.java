@@ -17,20 +17,21 @@ public class MemberDAO implements MemberFace {
 	private String SELECT_ALL = "select * from member ";
 	private String INSERT = "insert into member (mail, pwd, mem_name, nickname, gender, bdate) values (?, ?, ?, ?, ?, ?)";
 	private StringBuilder UPDATE;
-	SQLserver db;
+	//private DataSource db = ConnDB.getConnDB();
+	SQLserver ds;
 	QueryRunner runner;
 
-	public MemberDAO() throws Exception {
-		db = new SQLserver();
+	public MemberDAO() throws Exception{
+		ds = new SQLserver();
 		runner = new QueryRunner();
 	}
-
+	
 	public MemberBean selectId(String mail) throws Exception {
 		try {
 			ResultSetHandler<List<MemberBean>> rsh = new BeanListHandler<MemberBean>(
 					MemberBean.class);
 			Object params[] = { mail };
-			List<MemberBean> result = runner.query(db.getConn(), SELECT_ID,
+			List<MemberBean> result = runner.query(ds.getConn(), SELECT_ID,
 					rsh, params);
 			if (result.size() <= 0) {
 				return null;
@@ -46,7 +47,7 @@ public class MemberDAO implements MemberFace {
 		try {
 			ResultSetHandler<List<MemberBean>> rsh = new BeanListHandler<MemberBean>(
 					MemberBean.class);
-			List<MemberBean> result = runner.query(db.getConn(), SELECT_ALL,
+			List<MemberBean> result = runner.query(ds.getConn(), SELECT_ALL,
 					rsh);
 			if (result.size() <= 0) {
 				return null;
@@ -64,7 +65,7 @@ public class MemberDAO implements MemberFace {
 				Object params[] = { memVo.getMail(), memVo.getPwd(),
 						memVo.getMem_name(), memVo.getNickName(),
 						memVo.getGender(), memVo.getBdate() };
-				runner.update(db.getConn(), INSERT, params);
+				runner.update(ds.getConn(), INSERT, params);
 			}
 		} catch (SQLException e) {
 			throw new Exception("新增資料有誤:" + e.getMessage());
@@ -103,7 +104,7 @@ public class MemberDAO implements MemberFace {
 		UPDATE.append(" where mail=? ");
 		pList.add(memVo.getMail());
 
-		int count = runner.update(db.getConn(), UPDATE.toString(),
+		int count = runner.update(ds.getConn(), UPDATE.toString(),
 				pList.toArray());
 		if (count <= 0) {
 			throw new Exception("Update 失敗");
@@ -125,7 +126,7 @@ public class MemberDAO implements MemberFace {
 			params.add(memVo.getMail());
 		}
 		try {
-			return runner.update(db.getConn(), DEL_SQL.toString(),
+			return runner.update(ds.getConn(), DEL_SQL.toString(),
 					params.toArray());
 		} catch (SQLException e) {
 			throw new Exception("刪除資料有誤:" + e.getMessage());
@@ -158,7 +159,7 @@ public class MemberDAO implements MemberFace {
 			params.add(memVo.getStatus());
 		}
 		try {
-			return runner.query(db.getConn(), sb.toString(), rsh,
+			return runner.query(ds.getConn(), sb.toString(), rsh,
 					params.toArray());
 		} catch (SQLException e) {
 			throw new Exception("查尋失敗" + e.getMessage());

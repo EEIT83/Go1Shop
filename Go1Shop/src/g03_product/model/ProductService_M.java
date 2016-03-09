@@ -68,8 +68,12 @@ public class ProductService_M {
 		return dao.update(productVO);
 	}
 
-	public  ProductVO_M getOne(Integer prodId) {
-		// TODO Auto-generated method stub
+	public int update(ProductVO_M productVO,List<Prodimg> prodimgList){		
+		return dao.updateWithImg(productVO, prodimgList);		
+	}
+
+	
+	public  ProductVO_M getOne(Integer prodId) {		
 		return dao.getOne(prodId);
 	}
 

@@ -1,10 +1,35 @@
+<%@page import="com.sun.xml.internal.bind.v2.schemagen.xmlschema.Import"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<!-- 一進入首頁就搜尋 -->
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page import="g03_product.*"%>
+<%@ page import="g03_product.model.*"%>
+<%@ page import="g03_product.controller.*"%>
+<%@ page import="java.util.*"%>
+<!-- 一進入首頁就搜尋 -->
+<!DOCTYPE html>
 <html>
 <head>
+<%
+ProductService_Y service = new ProductService_Y();
+ProductBean_Y bean = new ProductBean_Y();
+List<ProductBean_Y> result = null;
+
+String SQLorder = "";
+String SQLprice = "";
+String SQLgender ="";
+String SQLpart = "";
+List<ProductBean_Y> temp =service.productDao.select(bean.getProd_name(), SQLprice, SQLorder, SQLgender, SQLpart);
+result = new ArrayList<ProductBean_Y>();
+result.addAll(temp);
+request.setAttribute("select", result);
+%>
+
+
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,9 +38,20 @@
 <link href="<%=request.getContextPath()%>/_css/page.css" rel="stylesheet">
 <title>Go1Shop Home</title>
 <style>
-
+#div_out {    
+  
+    display:inline-block;
+ 	float:left;
+    margin-left: 10px;
+    margin-top: 10px; 
+ } 
+#div_out:nth-child(3n+1){
+ clear: both;
+ }
 /* ------------------------------------------------ */
 </style>
+
+
 </head>
 <body>
 <div style="width: 100%;height: 100%;">
@@ -31,7 +67,7 @@
 
 		//iframe高度自适应
 		function IFrameReSize(iframename) {
-			var pTar = document.getElementByIdx_x_x(iframename);
+			var pTar = document.getElementById(iframename);
 			if (pTar) { //ff
 				if (pTar.contentDocument && pTar.contentDocument.body.offsetHeight) {
 					pTar.height = pTar.contentDocument.body.offsetHeight;
@@ -43,7 +79,7 @@
 		}
 		//iframe宽度自适应
 		function IFrameReSizeWidth(iframename) {
-			var pTar = document.getElementByIdx_x_x(iframename);
+			var pTar = document.getElementById(iframename);
 			if (pTar) { //ff
 				if (pTar.contentDocument && pTar.contentDocument.body.offsetWidth) {
 					pTar.width = pTar.contentDocument.body.offsetWidth;
@@ -59,70 +95,63 @@
 		<jsp:include page="/tm/left.jsp" />
 	</div>
 <!-- 右邊	----------------------------------------------------------------------------------->
-	<div id="right"style="float: left;margin-right:2%;margin-left:1%;margin-bottom:0.5%;width: 75%;">
-		<div style="float: left;margin:5% 0 0 5%;width: 80%; ">
-			<div style="width:100%;margin-left:5%">
-				<form>
-					<div id="B">
-						<span>產品名稱：</span> <input type="text" name="prod_name"	value="${param.prod_name}" style="width: 70%;"><br>
-						<br>
-						<span>價錢範圍從：</span><input type="text" name="lowprice" value="${param.lowprice}" style="width:10%;">
-						&nbsp;到&nbsp;
-						<input type="text" name="highprice" value="${param.highprice}" style="width:10%;" >
-						<span><input type="button" onclick="run();" name="prodaction" value="Select" style="width:10%"class="btn btn-primary"></span>
-						<button type="submit" name="selectorder" value="OrderByPrice" class="btn btn-primary">依金額低至高</button>
-						<button type="submit" name="selectorder" value="OrderByPriceDesc" class="btn btn-primary">依金額高至低</button>
-						<button type="submit" name="selectorder" value="OrderByDate" class="btn btn-primary">依刊登日期舊至新</button>
-						<button type="submit" name="selectorder" value="OrderByDateDesc" class="btn btn-primary">依刊登日期新至舊</button>
-						<br>
-						<br>
-					
-					</div>
-				</form>
-				<script type="text/javascript">
-	window.onload=function(){
-// 				document.forms[0].url="<c:url value='/g03_product/ProductGenderServlet.controller?gender=M'/>";
-// 				document.forms[0].method="GET";
-// 				document.forms[0].submit();
-		// 		document.forms[0].action="<c:url value='/checkDetail.action?payment=" + str + "&address=" + address + "&zip_code=" + zipcode + "&sender_address=" + address_sen + "&zip_code_sen=" + zipcode_sen + "'/>";	
-		// 		document.forms[0].method = "POST";
-		// 		document.forms[0].submit();
-				
-		
-	}
-	function run(){
-		document.forms[0].url="<c:url value='/g03_product/ProductGenderServlet.controller?gender=M'/>";
-		document.forms[0].method="GET";
-		alert(123)
-		document.forms[0].submit();
-		alert(456)
-	}
-	
-	
-
-</script>
-				<div id="div">
+	<div id="right"style="float: left;margin-right:2%;margin-left:1%;margin-bottom:0.5%;width: 80%;">
+<!-- 	<div style="width:100%;height:100%;" > -->
+<%-- 		<iframe src="<%=request.getContextPath()%>/g03_product/selectmen_Y.jsp" scrolling="no" frameborder="0" height="100%" id="selectFrame" width="100%" onload='IFrameReSize("selectFrame");IFrameReSizeWidth("selectFrame");' style="display:inline;"></iframe> --%>
+<!-- 	</div> -->
+			<div style="width:95%;margin:5% 0 0 3%;">
+<%-- 				<form style="" action="<c:url value='/g03_product/ProductGenderServlet.controller?gender=M'/>" method="post"> --%>
+<!-- 					<div id="B"> -->
+<%-- 						<span>產品名稱：</span> <input type="text" name="prod_name"	value="${param.prod_name}" style="width: 70%;"><br> --%>
+<!-- 						<br> -->
+<%-- 						<span>價錢範圍從：</span><input type="text" name="lowprice" value="${param.lowprice}" style="width:10%;"> --%>
+<!-- 						&nbsp;到&nbsp; -->
+<%-- 						<input type="text" name="highprice" value="${param.highprice}" style="width:10%;" > --%>
+<!-- 						<span><input type="submit" name="prodaction" value="Select" style="" class="btn btn-primary"></span> -->
+<!-- 						<button type="submit" name="selectorder" value="OrderByPrice" class="btn btn-primary">金額低至高</button> -->
+<!-- 						<button type="submit" name="selectorder" value="OrderByPriceDesc" class="btn btn-primary">金額高至低</button> -->
+<!-- 						<button type="submit" name="selectorder" value="OrderByDate" class="btn btn-primary">日期舊至新</button> -->
+<!-- 						<button type="submit" name="selectorder" value="OrderByDateDesc" class="btn btn-primary">日期新至舊</button> -->
+<!-- 						<br> -->
+<!-- 						<br> -->
+<!-- 					</div> -->
+<!-- 				</form> -->
+				<div id="div" style="margin: 5% 0 0 0">
 					<c:forEach var="bean" items="${select}">
-						<div id="div_out">
-							<a href="#">
-							<img id="img1" class="img-responsive" style="width:300px;height:300px" src='<c:url value="/pages/showImg.controller?prod_id="/>${bean.prod_id}'>
+						<div id="div_out" >
+							<c:url value="/g05_customer/shoppingCar/show.jsp" var="path">
+								<c:param name="id" value="${bean.prod_id}" />
+							</c:url>
+							<a href="${path}">
+							<img id="img1" class="img-responsive" style="width:300px;height:300px" 
+							src='<c:url value="/pages/showImg.controller?prod_id="/>${bean.prod_id}'>
+							
 							</a>
 							<h3 id="h3txt">						
 								<a>${bean.prod_name}</a><br>
 								<a>金額:${bean.price}</a>						
 							</h3>
+							
 						</div>
 					</c:forEach>
 				</div>
 			</div>
-		</div>
 	</div>
 <!-- 下邊	--------------------------------------------------------------------------------- -->	
-	<div id="bottom" style="clear:left;width:100%;bottom:0;left:0;position:fixed;">
+	<div id="bottom" style="clear:left;width:100%;position:relative;bottom:0;left:0;">
 		<jsp:include page="/tm/bottom.jsp" />	
 	</div>
 <!-------------------------------------------------------------------------------------- -->
 </div>
 
+
+<%-- <c:if test="${init == '0'}"> --%>
+<%-- <jsp:forward page="/g03_product/ProductGenderServlet.controller?init=1" /> --%>
+<%-- <c:set var="init" value="0" scope="session"></c:set> --%>
+<%-- </c:if> --%>
+
+<%-- <jsp:include page="/g05_customer/shoppingCar/shopcar.jsp" />	 --%>
+
 </body>
+
 </html>

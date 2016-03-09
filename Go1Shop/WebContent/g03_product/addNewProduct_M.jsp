@@ -13,6 +13,7 @@
 	href="<%=request.getContextPath()%>/_css/bootstrap.min.css">
 <script src="<%=request.getContextPath()%>/_js/jquery-1.11.3.min.js"></script>
 <script src="<%=request.getContextPath()%>/_js/bootstrap.min.js"></script>
+
 <script type="text/javascript">
 $(document).ready(function() {
 	$('#img').change(function(event){
@@ -32,10 +33,9 @@ $(document).ready(function() {
 </head>
 <body>
 
-	<%@ include file="../_files/nav.file"%>
 
 	<div class="container-fluid">
-		<%@ include file="../_files/sideBar.file"%>
+		
 		<div class="row">
 			<div class="col-md-offset-2">
 				<%-- 錯誤表列 --%>
@@ -59,15 +59,7 @@ $(document).ready(function() {
 						</div>
 						<div class="col-md-2">								
 						</div>
-						<div class="col-md-4">
-
-							<div class="form-group">
-								<label for="memId" class="col-sm-2 control-label">memId</label>
-								<div class="col-sm-2"> 
-									<input type="text" name="memId" class="form-control" id="memId"
-										placeholder="memId" />
-								</div>
-							</div>
+						<div class="col-md-4">				
 
 							<div class="form-group">
 								<label for="prodName">prodName</label> <input type="text"
@@ -116,7 +108,7 @@ $(document).ready(function() {
 									class="form-control" id="note" placeholder="note" />
 							</div>
 							<input type="hidden" name="action" value="insert" /><br />
-
+							<input type="hidden" name="memId" value="${LoginOK.mem_id}" /><br />
 							<button type="submit" class="btn btn-default">Submit</button>
 
 						</div>

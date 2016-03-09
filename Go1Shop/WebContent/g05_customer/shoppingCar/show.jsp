@@ -11,9 +11,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="<%=request.getContextPath()%>/_js/car/jquery.fly.min.js"></script>
-<script src="<%=request.getContextPath()%>/_js/jquery.fly.min.js"></script> 
 <title>Insert title here</title>
 <link href="<%=request.getContextPath()%>/_css/page.css" rel="stylesheet">
+<script src="<%=request.getContextPath()%>/_js/sweet-alert.js"></script>
+<link href="<%=request.getContextPath()%>/_css/sweet-alert.css" rel="stylesheet">
 <style>
 /* -------------------商品頁-------------------------- */
 .titleClass:after, .titleClass:before{
@@ -33,9 +34,9 @@
 .box h4 span{font-size:20px} 
 .u-flyer{display: block;width: 50px;height: 50px;border-radius: 50px;position: fixed;z-index: 9999;} 
  
-.m-sidebar{position: fixed;top: 0;right: 0;background: #000;z-index: 2000;width: 35px;height: 100%;font-size: 12px;color: #fff;} 
-.cart{color: #fff;text-align:center;line-height: 20px;padding: 200px 0 0 0px;} 
-.cart span{display:block;width:20px;margin:0 auto;} 
+.m-sidebar{position: fixed;top: 40%;right: 0;background: #000;z-index: 2000;width: 35px;height: 10%;font-size: 12px;color: #fff;} 
+.cart{color: #fff;text-align:center;} 
+.cart span{display:block;width:20px;margin:auto auto;} 
 .cart i{width:35px;height:35px;display:block; background:url(/Go1Shop/_img/car.png) no-repeat;} 
 #msg{position:fixed; top:300px; right:35px; z-index:10000; width:1px; height:52px; line-height:52px; font-size:20px; text-align:center; color:#fff; background:#360; display:none} 
 
@@ -56,11 +57,11 @@
 		<jsp:include page="/tm/top.jsp" />
 	</div>
 <!-- 左邊	--------------------------------------------------------------------------------- -->
-	<div id="left" style="float: left;margin-left:2%;width: 11%;">
+	<div id="left" style="float: left;margin-left:2%;width: 15%;">
 		<jsp:include page="/tm/left.jsp" />
 	</div>
 <!-- 右邊	----------------------------------------------------------------------------------->
-	<div id="right"style="float: left;margin-right:2%;margin-left:1%;margin-bottom:0.5%;width: 82%;">
+	<div id="right"style="float: left;margin-right:2%;margin-left:1%;margin-bottom:0.5%;width: 80%;">
 <!----------------------------------------------------------------------------------------->	
 		<div id = "title" style="width:100%;height:100%;margin-bottom: 10px;clear: both;" class="titleClass">
 			<div id="PtitleImg" style="width:60%;margin:5% 0 0 3%;float:left;"></div>
@@ -72,16 +73,30 @@
 				<div id="Psize" style="width:11%;margin:3% 0 0 0%;font-weight: bold;text-align:left;float:left;" ></div>
 <!-------------------------------------				 -->
 				<div style="clear: both;"></div>
+				
+<!------------------關於我---------------- -->
+<!-- 				<div style="margin: 8% 0 0 0; "><a href="" style="text-decoration:none;font-size: 20px;color:blue;">關於賣家...</a></div> -->
+				
+				
 <!------------------價錢---------------- -->
-					<div style="width:23%;margin:40% 0 0 25%;font-size:30px;color:red;float:left; ">NT＄</div>
-				<div id="Pprice" style="width:30%;font-size:45px;color:red;margin:40% 0 0 0%;float:left; "></div>
+				<div style="width:23%;margin:25% 0 0 45%;font-size:30px;color:red;float:left; ">NT＄</div>
+				<div id="Pprice" style="width:30%;font-size:45px;color:red;margin:25% 0 0 0%;float:left;"></div>
 <!-- 					<div style="width:8%;margin:42% 0 0 0;text-align:right;float:left;"><p  style='color:red;font-size:50px; '>元</p></div> -->
+<!-----------------NOTE-------------- -->
+				<div id="Pnote" style="width:100%;font-size:45px;color:red;margin:0 0 0 0;float:left;"></div>
+
 <!------------------送出---------------- -->
-				<form>
-				<div style="width:100%;margin:100% 0 0 0;text-align:center;" id="box"><input type="button" class="button addcar btn btn-primary" value="加入購物車" /></div>
-				<input type="hidden" value="15" name="prodId">
-				</form>
-			</div>
+				<c:if test="${empty LoginOK}">
+					<div style="width:100%;margin:100% 0 0 0;text-align:center;"><input type="button" id="noLogin" class="button btn" value="加入購物車" /></div>
+					<input type="hidden" value="15" name="prodId">
+				</c:if>
+				<c:if test="${!empty LoginOK}">
+					<form>
+					<div style="width:100%;margin:100% 0 0 0;text-align:center;" id="box"><input type="button" class="button addcar btn btn-primary" value="加入購物車" /></div>
+					<input type="hidden" value="15" name="prodId">
+					</form>
+				</c:if>
+			</div>	
 		</div>
 		<div style='display:block;margin-top:20px;padding-top:2px;background-color:#BEBEBE;height: 2px;clear: both;'></div>
 		<br>
@@ -89,15 +104,23 @@
 			<ul class="nav nav-tabs">
 			  <li role="presentation"><a  onclick="showImg()" >產品說明</a></li>
 			  <li role="presentation"><a  onclick="msgboard()">留言板</a></li>
+			  <li role="presentation"><a  onclick="sell()">關於賣家...</a></li>
 			</ul>
 		</div>
 		<div id="content" style="width: 90%;margin:0 5% 0 5%;"></div>
-		<iframe>12313</iframe>
 
 	</div>
+	
+	<!-- 驗證登入帳號 -->
+	<script type="text/javascript">
+			
+	</script>
+	
+	
+	
+	
 	<script>
 
-	
 	function content2(data){
 		
 		$('#content').append("<iframe width='100%' height='1000 px' id='imgif'>");
@@ -113,6 +136,12 @@
  		document.getElementById("content").innerHTML="<iframe width='100%' height='1000 px' src='/Go1Shop/g07_msgboard/comments.do'></iframe>";
 	}
 	
+	function sell(){
+		document.getElementById("content").innerHTML="";
+ 		document.getElementById("content").innerHTML="<iframe width='100%' height='1000 px' src='/StoreServlet.do'></iframe>";
+	}
+	
+	
 	function showImg(){
 	//	alert('xxx');
 		document.getElementById("content").innerHTML="";
@@ -124,7 +153,7 @@
 				'type':'POST',
 				'url':"<c:url value='/showProdImg.con'/>",
 				'dataType':'json',
-				'data':{prodId:'16'},
+				'data':{prodId:'${param.id}'},
 				'success':function(data){								
 					content2(data);
 					console.log(data.imgid[0]);
@@ -184,7 +213,13 @@
 </div> 
 <div id="msg">已成功加入購物車！</div> 
 <script type="text/javascript">
-$(function() { 
+$(function() {
+		$("#noLogin").click(function(event){
+			swal("請先登入!");
+		})
+	
+	
+	
 	//加入購物車
 		$(".addcar").click(function(event){
 			
@@ -192,7 +227,7 @@ $(function() {
 				'type':'POST',
 				'url':"<c:url value='/BuyProServlet.con'/>",
 				'dataType':'json',
-				'data':{prodId:'16'},
+				'data':{prodId:'${param.id}'},
 				'success':function(data){		
 
 					if(data.error=='error'){
@@ -204,6 +239,16 @@ $(function() {
 				}
 				
 			});
+			
+			
+// 			<div class="m-sidebar"> 
+	// 		    <div class="cart"> 
+	// 		        <i id="end"></i> 
+	// 		        <span><a style="" id="carurl" href="<c:url value="/g05_customer/shoppingCar/car.jsp" />">購物車</a></span> 
+	// 		    </div> 
+// 			</div> 
+			
+			
 			var offset = $("#end").offset(); 
 	        var addcar = $(this); 
 	        var img = $('#PtitleImg').find('img').attr('src'); 
@@ -234,7 +279,7 @@ $(function() {
 		'type':'POST',
 		'url':"<c:url value='/showProdImg.con'/>",
 		'dataType':'json',
-		'data':{prodId:'16'},
+		'data':{prodId:'${param.id}'},
 		'success':function(data){								
 			content(data);
 			console.log(data.imgid[0]);
@@ -249,7 +294,7 @@ $(function() {
 			'type':'GET',
 			'url':"<c:url value='/g05_customer/ShowProServlet.con'/>",
 			'dataType':'json',
-			'data':{prod_id:'16'},
+			'data':{prod_id:'${param.id}'},
 			'success':function(Prod){								
 			console.log(Prod);
 		$('#PtitleImg').append("<img id='img1' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[0]+"'/>'  style='width: 100%' />");
@@ -257,6 +302,7 @@ $(function() {
 		$('#Psize').append("<p style='font-size:35px;'>"+Prod.size+"</p>");
 		$('#Pprice').append("<p style='color:red'>"+Prod.price+"</p>");
 		$('#Pbrand').append("<h3 style='font-size:20px;'>"+Prod.brand+"</h3>");
+		$('#Pnote').append("<p style='font-size:10px;'>"+Prod.note+"</p>");
 		$('#content').append("<img id='img2' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[1]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
 		$('#content').append("<img id='img3' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[2]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
 		$('#content').append("<img id='img4' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[3]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");

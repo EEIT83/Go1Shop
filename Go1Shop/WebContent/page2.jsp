@@ -8,10 +8,10 @@
 </head>
 <body>
 <div style="border:2px solid red;width: 100%;height: 100%;">
-	<div style="background-color:blue;margin-bottom:0.5%;">toptoptoptoptoptop</div>
-	<div style="background-color:yellow;float: left;margin-left:2%;width: 10%;">leftleftleftleft1321321</div>
-	<div style="background-color:green;float: left;margin-right:2%;margin-left:1%;margin-bottom:0.5%;width: 85%;">rigtsdasdasdasdash</div>
-	<div style="background-color:orange;clear:left;">bottom</div>
+	<div style="background-color:blue;margin-bottom:0.5%;"></div>
+	<div style="background-color:yellow;float: left;margin-left:2%;width: 10%;"></div>
+	<div style="background-color:green;float: left;margin-right:2%;margin-left:1%;margin-bottom:0.5%;width: 85%;"></div>
+	<div style="background-color:orange;clear:left;"></div>
 </div>
 </body>
 </html>
