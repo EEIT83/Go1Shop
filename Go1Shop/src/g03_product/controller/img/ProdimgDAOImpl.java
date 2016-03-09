@@ -21,6 +21,7 @@ public class ProdimgDAOImpl implements ProdimgDAO {
 	private DataSource ds = ConnDB.getConnDB();
 	private static final String INSERT_STMT = "INSERT INTO prodimg (prod_id,img) VALUES(?,?)";
 	private static final String GET_ALL_BY_PRODID ="SELECT * FROM prodimg where prod_id = ?";
+	private static final String UPDATE_IMG ="UPDATE prodimg SET img = ? WHERE img_id=?";
 
 	@Override
 	public int insert(Prodimg prodimg) {
@@ -30,8 +31,6 @@ public class ProdimgDAOImpl implements ProdimgDAO {
 
 		int updateCount = 0;
 		try {
-//			Class.forName(DRIVER);
-//			con = DriverManager.getConnection(URL, USER, PASSWARD);
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(INSERT_STMT);
 			
@@ -54,7 +53,6 @@ public class ProdimgDAOImpl implements ProdimgDAO {
 
 	@Override
 	public int update(Prodimg prodimg) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -125,6 +123,25 @@ public class ProdimgDAOImpl implements ProdimgDAO {
 			}
 		}
 		return list;
+	}
+
+	@Override
+	public int updateWithConnection(Prodimg prodimg, Connection con) {
+		
+		PreparedStatement pstmt = null;
+		int updateCount = 0;
+		try {
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(UPDATE_IMG);
+			
+			pstmt.setBytes(1,prodimg.getImg());			
+			pstmt.setInt(2, prodimg.getImgId());
+			updateCount = pstmt.executeUpdate();
+		} catch (SQLException se) {
+			se.printStackTrace();
+			throw new RuntimeException(se);
+		} 
+		return updateCount;
 	}
 
 }

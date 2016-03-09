@@ -19,4 +19,6 @@ public interface ProdimgDAO {
 
 	public int insertWithConnection(Prodimg prodimg,Connection con);
 	
+	public int updateWithConnection(Prodimg prodimg,Connection con);
+	
 }

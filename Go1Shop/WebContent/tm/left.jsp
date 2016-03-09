@@ -26,6 +26,18 @@
 				<li class="active1"><a href="" id="modify" style="text-decoration: none" target="_blank">
 				<i class="glyphicon glyphicon-user leftNavIcon"></i>基本資料</a>
 				
+				<li class="active1"><a href="" id="sell" style="text-decoration: none" target="_blank">
+				<i class="glyphicon glyphicon-home leftNavIcon"></i>商家專區</a>
+					<ul>
+						<li><a href="#" style="width: 100%">短袖</a></li>
+						<li><a href="#">長袖</a></li>
+						<li><a href="#">背心</a></li>
+						<li><a id="d" href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=M&part=襯衫'/>">襯衫</a></li>
+						<li><a href="#">毛衣</a></li>
+						<li><a href="#">外套</a></li>
+					</ul>
+				</li>
+				
 				<li class="active1"><a href="#" style="text-decoration: none" target="_blank">
 				<i class="glyphicon glyphicon-comment leftNavIcon"></i>訊息</a>
 				<ul>
@@ -146,27 +158,38 @@
 </div>
 <script type="text/javascript" src="<%=request.getContextPath()%>/_js/register.js"></script>
 <script type="text/javascript">
+
 	var modify = document.getElementById("modify");
 	modify.addEventListener("click", function() {
+		if(document.getElementById("mainFrame")!=null){
+			
 		document.getElementById("mainFrame").style.display="none";
+		}
 		document.getElementById("right").innerHTML="<iframe src='<c:url value='/Account/Modify.controller'/>' scrolling='no' frameborder='0' height='100%' id='modifyFrame' width='100%' onload='IFrameReSize('modifyFrame');IFrameReSizeWidth('modifyFrame');'></iframe>";
 	})
 	var mail = document.getElementById("mail");
 	mail.addEventListener("click", function() {
-		document.getElementById("mainFrame").style.display="none";
+		if(document.getElementById("mainFrame")!=null){
+			document.getElementById("mainFrame").style.display="none";
+		}
 		document.getElementById("right").innerHTML="<iframe  src='<c:url value='/mail.do'/>' frameborder='0' height='100%' id='mailFrame' width='100%' onload='IFrameReSize('mailFrame');IFrameReSizeWidth('mailFrame');'></iframe>";
 	})
 	var sendmail = document.getElementById("sendmail");
 	sendmail.addEventListener("click", function() {
-		document.getElementById("mainFrame").style.display="none";
+		if(document.getElementById("mainFrame")!=null){
+			document.getElementById("mainFrame").style.display="none";
+		}
 		document.getElementById("right").innerHTML="<iframe style='width: 100%;' src='/Go1Shop/gb05_mail/send.jsp' scrolling='no' frameborder='0' height='100%' id='sendmailFrame' width='100%' onload='IFrameReSize('sendmailFrame');IFrameReSizeWidth('sendmailFrame');'></iframe>";
 	})
 	var d = document.getElementById("d");
 	d.addEventListener("click", function() {
-		document.getElementById("mainFrame").style.display="none";
+// 		document.getElementById("mainFrame").style.display="none";
 // 		document.getElementById("right").innerHTML="<iframe style='width: 100%;' src='<c:url value='/g03_product/ProductGenderServlet.controller?gender=M&part=襯衫'/>' scrolling='no' frameborder='0' height='100%' id='dFrame' width='100%' onload='IFrameReSize('dFrame');IFrameReSizeWidth('dFrame');'></iframe>";
 	})
-
+	var sell = document.getElementById("sell");
+	sell.addEventListener("click", function() {
+			document.location='<%=request.getContextPath()%>/ProductServlet.do?action=getOneByMemId&memId=${LoginOK.mem_id}';
+		})
 	
 </script>
 
