@@ -224,7 +224,7 @@
 				r[i].onchange = radio;
 			}
 			
-			document.getElementById("button").onclick =check(this);
+			document.getElementById("button").onclick =check;
 			document.getElementById("previous").onclick = previous;
 			
 			
@@ -272,9 +272,8 @@
 
 		var tag="";
 		var str = "";
-		function radio(myform){
-			alert('myform=' + myform);
-				for (var i = 0; i < myform.radio.length; i++) {
+		function radio(){
+				for (var i = 0; i < document.getElementsByName("radio").length; i++) {
 					var x = document.forms[0].radio[i].checked;
 					if (x) {
 						tag = i;
@@ -291,7 +290,7 @@
 					$('#radio').after("<span class='glyphicon glyphicon-ok form-control-feedback'></span>");
 					document.getElementById("radio").parentNode.className="form-group has-success has-feedback";
 				}
-				//alert(tag);
+				alert(tag);
 		}
 		
 		function ok(){
@@ -315,7 +314,6 @@
 			checkSender();
 			checkPhoneSen();
 			choice_sen();
-			alert(123);
 			radio();
 			if(!$('span').hasClass('glyphicon-remove')){
 				ok();
