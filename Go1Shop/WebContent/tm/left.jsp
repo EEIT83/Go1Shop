@@ -72,6 +72,31 @@
 		</ul>
 
 
+<!-- ---------------------彈跳視窗------------------------------- -->
+<div id="signup">
+	<div id="signup-ct">
+<!-- 登入 -->
+		<div id="loginForm" style="display: inline;">
+				<div id="signup-header">
+					<p>會員登入</p>
+					<a class="modal_close" href="#"></a>
+				</div>				
+				<form action="<c:url value="/Account/Login.controller?accountStatus=login" />" method="post">
+					  <div class="txt-fld">
+					    <label for="mail" >帳號:</label> 
+						<input type="text" name="mail" id="mail" class="input" >
+						<span id="errorMail">${error.mail}</span>
+					  </div>
+					  <div class="txt-fld">
+					    <label for="pwd">密碼:</label>
+						<input type="text" name="pwd" id="pwd" class="input">
+						<span id="errorPwd">${error.pwd }</span>
+					  </div>
+					  <h5>${error.loginError }</h5>
+<!-- 					  <div class="btn-fld"> -->
+					  <input type="submit" value="Sign In &raquo;"  class="loginbutton">
+					    <input type="button" value="Sign Up &raquo;"  class="registerbutton" id="register">
+
 <!-- 					</div> -->
 			    </form>
 		</div>
