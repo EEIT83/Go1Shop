@@ -193,6 +193,7 @@
 							<div id = "bt">
 								<button id="previous" class="btn btn-primary" >上一頁</button>
 								<button id="button"  class="btn btn-primary" >送出</button>
+								<button id="sub" class="btn btn-primary">一鍵輸入</button>
 							</div>
 					</form>
 					<div style="width: 100px;">
@@ -266,7 +267,22 @@
 			
 			document.getElementById("button").onclick =check;
 			document.getElementById("previous").onclick = previous;
+			document.getElementById("sub").onclick = sub;
 			
+			
+		}
+		
+		
+		function sub(){
+			$(function(){
+				$('#addressee').val('復興南路390號一樓');
+				$('#phone').val('09123456789');
+				$('#address').val('丁小雨');
+				$('#sender').val('永大路230號');
+				$('#sender_phone').val('0998765432');
+				$('#sender_address').val('韋小寶');
+				
+			})
 			
 		}
 		
@@ -343,18 +359,22 @@
 				
 		}
 		
-		function ok(){
-			if (tag == 0)
-				str += "貨到付款\n";
-			if (tag == 1)
-				str += "信用卡付款\n";
-			if (tag == 2)
-				str += "ATM轉帳\n";
-			
-			document.forms[0].action="<c:url value='/checkDetail.action?payment=" + str + "&address=" + address + "&zip_code=" + zipcode + "&sender_address=" + address_sen + "&zip_code_sen=" + zipcode_sen + "'/>";	
-			document.forms[0].method = "POST";
-			document.forms[0].submit();
-		}
+// 		function ok(){
+// 			if (tag == 0)
+// 				str += "貨到付款\n";
+// 			if (tag == 1)
+// 				str += "信用卡付款\n";
+// 			if (tag == 2)
+// 				str += "ATM轉帳\n";
+// 			alert("str=" + str);
+// 			alert("address=" + address);
+// 			alert("zipcode=" + zipcode);
+// 			alert("address_sen=" + address_sen);
+// 			alert("zipcode_sen=" + zipcode_sen);
+// 			document.forms[0].action="<c:url value='/checkDetail.action?payment=" + str + "&address=" + address + "&zip_code=" + zipcode + "&sender_address=" + address_sen + "&zip_code_sen=" + zipcode_sen + "'/>";	
+// 			document.forms[0].method = "POST";
+// 			document.forms[0].submit();
+// 		}
 		
 		
 		function check(){
