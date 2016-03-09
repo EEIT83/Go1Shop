@@ -79,7 +79,7 @@
 				<div class="form-group">
 					<label for="userName" class="col-md-2 control-label">帳號 :</label>
 					<div class="col-md-10">
-						<input  type="text" name="mail" class="form-control" value="${bmail}"
+						<input  type="text" name="mail" class="form-control" value=""
 							id="userName" placeholder="Account">
 						<span id="errorMail">${error.mail}</span>
 					</div>
@@ -87,7 +87,7 @@
 				<div class="form-group">
 					<label for="password" class="col-md-2 control-label">密碼 :</label>
 					<div class="col-md-10">
-						<input type="password" name="pwd" class="form-control" value="${bpwd}"
+						<input type="password" name="pwd" class="form-control" value=""
 							id="age" placeholder="Password">
 						<span id="errorPwd">${error.pwd }</span>
 					</div>

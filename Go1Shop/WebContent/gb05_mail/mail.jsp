@@ -66,12 +66,27 @@ table, th, td {
 		</c:if>
 	</div>
 
-<script>
-	function deleteMail(){
-		//alert(123)
-		
-		
-	}
+
+<script src="js/jquery-2.2.0.min.js"></script>
+<script type="text/javascript">
+	
+	
+	$(function() {
+		$('#a').click(function() {
+			
+// 			var href = "ProductServlet?action=deleteAll&id=";
+			var href = "deleteMail.do?mail=${LoginOK.mail}&id=";
+			
+			$(':checkbox').each(function() {
+				var b = $(this).prop('checked');
+				if (b) {
+					var prodId = $(this).parents('tr').find("td:eq(1)").text();
+					href = href + prodId + "-";
+				}
+			});
+			$('#a').attr("href", href);
+		})
+	})
 </script>
 
 

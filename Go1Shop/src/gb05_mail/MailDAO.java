@@ -22,6 +22,24 @@ public class MailDAO {
 //		}
 //	}
 	
+	
+	private final String DELETE="delete from mail where mailId=?";
+	public void delete(int mailId){
+		
+		try (Connection conn = ds.getConnection();
+				PreparedStatement ps = conn.prepareStatement(DELETE);)
+		{
+			ps.setInt(1, mailId);
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return;
+	}
+	
+	
 	private final String SELECT="select * from mail where address_memId = ?";
 	public List<MailVO> select(String mail){
 		List<MailVO> list = new ArrayList<>();
