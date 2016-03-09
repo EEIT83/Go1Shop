@@ -31,6 +31,8 @@
 			<c:if test="${!empty LoginOK}">
 			<li><a href='<c:url value="/Logout.do"></c:url>' id="logout">			
 				<i class="glyphicon glyphicon-user leftNavIcon"></i>登出</a></li>
+			<li><a href='<c:url value="/g05_customer/shoppingCar/car.jsp" />'>			
+				<i class="glyphicon glyphicon-shopping-cart leftNavIcon"></i>購物車</a></li>
 			</c:if>
 			</ul>
 		</div>

@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import g03_product.controller.img.Prodimg;
+import g03_product.controller.img.ProdimgService;
 import g03_product.model.ProductService_M;
 import g03_product.model.ProductVO_M;
 
@@ -321,6 +322,14 @@ public class ProductServlet_M extends HttpServlet {
 				if (note == null || note.trim().length() == 0) {
 					errorMsgs.add("註解請勿空白");
 				}
+				
+				Part imgPart = req.getPart("img");
+				InputStream inputStream = imgPart.getInputStream();
+				byte[] data = new byte[inputStream.available()];
+				inputStream.read(data);
+				if(data.length==0){
+					errorMsgs.add("請上傳圖片");
+				}
 
 				ProductVO_M productVO = new ProductVO_M();
 				productVO.setProdId(prodId);
@@ -334,6 +343,12 @@ public class ProductServlet_M extends HttpServlet {
 				productVO.setGender(gender);
 				productVO.setPart(part);
 				productVO.setNote(note);
+				
+				List<Prodimg> prodimgList = new ArrayList<Prodimg>();
+				ProdimgService prodimgService = new ProdimgService();
+				Prodimg prodimg =  prodimgService.getOneByProdId(prodId);
+				prodimg.setImg(data);			
+				prodimgList.add(prodimg);
 
 				if (!errorMsgs.isEmpty()) {					
 					req.setAttribute("ProductVO", productVO); // 資料庫取出的empVO物件,存入req
@@ -342,10 +357,11 @@ public class ProductServlet_M extends HttpServlet {
 					return;
 				}
 
-				// 2.開始新增資料
+				// 2.開始更新資料
 
 				ProductService_M prodsvc = new ProductService_M();
-				int count1 = prodsvc.update(productVO);
+				int count1 = prodsvc.update(productVO,prodimgList);
+				
 				
 				List<ProductVO_M> list = prodsvc.getOneByMemId(memId);
 

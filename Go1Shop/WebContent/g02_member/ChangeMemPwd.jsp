@@ -4,7 +4,12 @@
 <html>
 <head>
 <title>ChangePwd</title>
-
+<script language="javascript">
+function reSize(){
+	parent.document.getElementById("changePwdFrame").height=document.body.scrollHeight;
+} 
+window.onload=reSize;
+</script>
 </head>
 <body>
 	<form action="<c:url value="/Account/ChangePwd.controller"/>?pageStatus=available" method="post">
@@ -24,6 +29,6 @@
 		
 		<span>${message }</span>
 	</form>
-<script src="../js/ChangPwd.js"></script>
+<script src="<%=request.getContextPath() %>/_js/ChangPwd.js"></script>
 </body>
 </html>

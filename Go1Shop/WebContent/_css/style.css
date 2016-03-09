@@ -11,7 +11,7 @@
 html {
 	height: 100%;
 	background-attachment: fixed;
-	background-image: url(img/alipay_3.png);
+/* 	background-image: url(img/alipay_3.png); */
 	background-repeat: repeat;
 }
 
@@ -240,7 +240,7 @@ pre {
 
 -----------------------------------------*/
 #signup {
-	width: 404px;
+	width: 450px;
 	padding-bottom: 2px;
 	display: none;
 	background: #FFF;
@@ -301,7 +301,7 @@ pre {
 #signup .txt-fld {
 	position: relative;
 	width: 364px;
-	padding: 14px 20px;
+	padding: 10px 10px;
 	border-bottom: 1px solid #EEE;
 	text-align: right;
 }
@@ -319,11 +319,11 @@ pre {
 	padding-top: 8px;
 	color: #222;
 	font-size: 1.3em;
-	text-align: left;
+	text-align: right;
 }
 
 #signup .txt-fld .input {
-	width: 200px;
+	width: 250px;
 	padding: 8px;
 	border-radius: 4px;
 	-moz-border-radius: 4px;
