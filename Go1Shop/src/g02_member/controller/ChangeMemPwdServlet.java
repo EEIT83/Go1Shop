@@ -18,10 +18,7 @@ public class ChangeMemPwdServlet extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = -7882234995784010949L;
-//	private String pageName = "/g02_member/ChangeMemPwd.jsp";
 	private String pageStatus = null;
-//	private int returnStatus = 0;
-//	private String returnMessage = "";
 
 	@Override
 	public void init() throws ServletException {
@@ -47,17 +44,16 @@ public class ChangeMemPwdServlet extends HttpServlet {
 				String oldPwd = request.getParameter("oldPwd");
 				String newPwd = request.getParameter("newPwd");
 				
-				new AdminService().ChangePwd(mail, oldPwd, newPwd);
+				new MemberService().ChangePwd(mail, oldPwd, newPwd);
 				response.setCharacterEncoding("UTF-8");
-				response.getWriter().write("<script>charset='UTF-8'; alert('Success!'); location.href='/Go1Shop/index.jsp';</script>");
+				response.getWriter().write("<script>charset='UTF-8'; alert('Success!');parent.window.location.replace('/Go1Shop/index.jsp');</script>");
 				//this.available(mail, oldPwd, newPwd);
 			} else {
-				//pageName = "/g01_login/Login.jsp";
 				request.getRequestDispatcher("/g01_login/Login.jsp").forward(request, response);
 			}
-			//request.setAttribute("pageStatus", "available");
 		} catch (Exception e) {
-			request.setAttribute("message",e.getMessage().toString() );
+			System.out.println(e.getMessage().toString());
+			request.setAttribute("message",e.getMessage());
 			request.getRequestDispatcher("/g02_member/ChangeMemPwd.jsp").forward(request, response);
 		}
 //		request.setAttribute("status", returnStatus);
