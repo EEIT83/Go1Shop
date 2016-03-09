@@ -51,7 +51,7 @@ public class RegisterServlet extends HttpServlet {
 				bean.setBdate(Date.valueOf(request.getParameter("bdate")));
 				dao.insert(bean);
 				response.setCharacterEncoding("UTF-8");
-				response.getWriter().write("<script>charset='UTF-8'; alert('Success!'); location.href='/Go1Shop/index.jsp';</script>");
+				response.getWriter().write("<script>charset='UTF-8'; swal('請先登入!'); location.href='/Go1Shop/index.jsp';</script>");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
