@@ -36,7 +36,7 @@ window.onload=reSize;
   
   <body>
 
- <div style="margin: 0 auto;">
+ <div style="margin: 0 auto;width:700px;">
   <form action="<c:url value="/Account/Modify.controller" />" method="post" class="w3-container"  >
   <div>
    <label for="mail">Mail</label>
@@ -66,9 +66,8 @@ window.onload=reSize;
    <label>Gender</label>
    <span style="font-size:30px;margin-left:100px;"><input type="radio" name="gender"   value="1" ${account.gender != 2 ? "checked" : ""}>Male</span>
    <span style="font-size:30px;margin-left:80px;"><input type="radio" name="gender"  value="2" ${account.gender == 2 ? "checked" : ""}>Female</span>
-   <span style="float:right;"><input type="submit" name="pageStatus" value="save" class="btn btn-primary btn-lg" style="font-size:25px;"></span>
-   </div>
-   
+   </div><br>
+   <input type="submit" name="pageStatus" value="save" class="btn btn-primary btn-lg" style="font-size:25px;width:100%">
    </form>
   </div>
  <!--<script src="../js/Modify.js"></script>  -->
