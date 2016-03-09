@@ -21,13 +21,8 @@ function load() {
 }
 
 function callback() {
-	if (xhr.readyState == 1) {
-		document.getElementById("img1").style.display = "inline";
-	}
-	// readyState=4表示資料已經回傳到Client端了
 	if (xhr.readyState == 4) {
-		document.getElementById("img1").style.display = "none";
-		// status=200確定Server端程式執行沒有錯誤
+
 		if (xhr.status == 200) {
 			// 步驟三接收Server端回傳的資料
 			var datas = JSON.parse(xhr.responseText);

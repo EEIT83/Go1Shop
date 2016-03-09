@@ -90,7 +90,8 @@ public class CommentsServlet extends HttpServlet {
 		//根據執行結果顯示view
 		
 		String location="/Go1Shop/g07_msgboard/comments.jsp";
-		String mlocation="/Go1Shop/gb03_msgboard/commentsManage.jsp";
+		String mlocation="/Go1Shop/gb03_msgboard/backCommentsManage.jsp";
+							
 		if(manageid!=0){
 			resp.sendRedirect(mlocation);
 		}else{

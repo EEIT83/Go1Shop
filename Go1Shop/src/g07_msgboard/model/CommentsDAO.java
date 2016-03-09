@@ -42,7 +42,7 @@ public class CommentsDAO {
 		return i;
 	}
 	
-	private final String HIDE="update comments set comment='hide',report='hide' where commentId=?";
+	private final String HIDE="update comments set comment='此留言已遭封鎖',report='已處理' where commentId=?";
 	public int hide(int commentId){
 		int i=0;
 		
@@ -60,7 +60,7 @@ public class CommentsDAO {
 		return i;
 	}
 	
-	private final String UPDATE="update comments set report='report' where commentId=?";
+	private final String UPDATE="update comments set report='未處理' where commentId=?";
 	public int update(int commentId){
 		int i = 0;
 		

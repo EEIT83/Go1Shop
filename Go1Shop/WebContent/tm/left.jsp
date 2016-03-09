@@ -17,12 +17,14 @@
   			$('a[rel*=leanModal]').leanModal({ top : 200, closeButton: ".modal_close" });		
 	});
 </script>
+
+
 </head>
 <body>
 			<ul id="leftNavigation">
 				<c:if test="${!empty LoginOK}">				
 				<li class="active1"><a href="" id="modify" style="text-decoration: none" target="_blank">
-				<i class="glyphicon glyphicon-comment leftNavIcon"></i>基本資料</a>
+				<i class="glyphicon glyphicon-user leftNavIcon"></i>基本資料</a>
 				
 				<li class="active1"><a href="#" style="text-decoration: none" target="_blank">
 				<i class="glyphicon glyphicon-comment leftNavIcon"></i>訊息</a>
@@ -35,10 +37,10 @@
 			<li class="active1"><a href="#" style="text-decoration: none">
 			<i class="glyphicon glyphicon-triangle-right leftNavIcon"></i>上衣專區</a>
 				<ul>
-					<li><a href="#">短袖</a></li>
+					<li><a href="#" style="width: 100%">短袖</a></li>
 					<li><a href="#">長袖</a></li>
 					<li><a href="#">背心</a></li>
-					<li><a href="#">襯衫</a></li>
+					<li><a id="d" href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=M&part=襯衫'/>">襯衫</a></li>
 					<li><a href="#">毛衣</a></li>
 					<li><a href="#">外套</a></li>
 				</ul>
@@ -68,30 +70,7 @@
 				</ul>
 			</li>
 		</ul>
-<!-- ---------------------彈跳視窗------------------------------- -->
-<div id="signup">
-	<div id="signup-ct">
-<!-- 登入 -->
-		<div id="loginForm" style="display: inline;">
-				<div id="signup-header">
-					<p>會員登入</p>
-					<a class="modal_close" href="#"></a>
-				</div>				
-				<form action="<c:url value="/Account/Login.controller?accountStatus=login" />" method="post">
-					  <div class="txt-fld">
-					    <label for="mail" >帳號:</label> 
-						<input type="text" name="mail" id="mail" class="input" >
-						<span id="errorMail">${error.mail}</span>
-					  </div>
-					  <div class="txt-fld">
-					    <label for="pwd">密碼:</label>
-						<input type="text" name="pwd" id="pwd" class="input">
-						<span id="errorPwd">${error.pwd }</span>
-					  </div>
-					  <h5>${error.loginError }</h5>
-<!-- 					  <div class="btn-fld"> -->
-					  <input type="submit" value="Sign In &raquo;"  class="loginbutton">
-					    <input type="button" value="Sign Up &raquo;"  class="registerbutton" id="register">
+
 
 <!-- 					</div> -->
 			    </form>
@@ -157,7 +136,15 @@
 		document.getElementById("mainFrame").style.display="none";
 		document.getElementById("right").innerHTML="<iframe style='width: 100%;' src='/Go1Shop/gb05_mail/send.jsp' scrolling='no' frameborder='0' height='100%' id='sendmailFrame' width='100%' onload='IFrameReSize('sendmailFrame');IFrameReSizeWidth('sendmailFrame');'></iframe>";
 	})
+	var d = document.getElementById("d");
+	d.addEventListener("click", function() {
+		document.getElementById("mainFrame").style.display="none";
+// 		document.getElementById("right").innerHTML="<iframe style='width: 100%;' src='<c:url value='/g03_product/ProductGenderServlet.controller?gender=M&part=襯衫'/>' scrolling='no' frameborder='0' height='100%' id='dFrame' width='100%' onload='IFrameReSize('dFrame');IFrameReSizeWidth('dFrame');'></iframe>";
+	})
+
+	
 </script>
+
 
 <!-- 彈跳視窗 -->
 <script type="text/javascript">
