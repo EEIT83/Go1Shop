@@ -13,6 +13,8 @@
 <script src="<%=request.getContextPath()%>/_js/car/jquery.fly.min.js"></script>
 <title>Insert title here</title>
 <link href="<%=request.getContextPath()%>/_css/page.css" rel="stylesheet">
+<script src="<%=request.getContextPath()%>/_js/sweet-alert.js"></script>
+<link href="<%=request.getContextPath()%>/_css/sweet-alert.css" rel="stylesheet">
 <style>
 /* -------------------商品頁-------------------------- */
 .titleClass:after, .titleClass:before{
@@ -32,9 +34,9 @@
 .box h4 span{font-size:20px} 
 .u-flyer{display: block;width: 50px;height: 50px;border-radius: 50px;position: fixed;z-index: 9999;} 
  
-.m-sidebar{position: fixed;top: 0;right: 0;background: #000;z-index: 2000;width: 35px;height: 100%;font-size: 12px;color: #fff;} 
-.cart{color: #fff;text-align:center;line-height: 20px;padding: 200px 0 0 0px;} 
-.cart span{display:block;width:20px;margin:0 auto;} 
+.m-sidebar{position: fixed;top: 40%;right: 0;background: #000;z-index: 2000;width: 35px;height: 10%;font-size: 12px;color: #fff;} 
+.cart{color: #fff;text-align:center;} 
+.cart span{display:block;width:20px;margin:auto auto;} 
 .cart i{width:35px;height:35px;display:block; background:url(/Go1Shop/_img/car.png) no-repeat;} 
 #msg{position:fixed; top:300px; right:35px; z-index:10000; width:1px; height:52px; line-height:52px; font-size:20px; text-align:center; color:#fff; background:#360; display:none} 
 
@@ -55,11 +57,11 @@
 		<jsp:include page="/tm/top.jsp" />
 	</div>
 <!-- 左邊	--------------------------------------------------------------------------------- -->
-	<div id="left" style="float: left;margin-left:2%;width: 11%;">
+	<div id="left" style="float: left;margin-left:2%;width: 15%;">
 		<jsp:include page="/tm/left.jsp" />
 	</div>
 <!-- 右邊	----------------------------------------------------------------------------------->
-	<div id="right"style="float: left;margin-right:2%;margin-left:1%;margin-bottom:0.5%;width: 82%;">
+	<div id="right"style="float: left;margin-right:2%;margin-left:1%;margin-bottom:0.5%;width: 80%;">
 <!----------------------------------------------------------------------------------------->	
 		<div id = "title" style="width:100%;height:100%;margin-bottom: 10px;clear: both;" class="titleClass">
 			<div id="PtitleImg" style="width:60%;margin:5% 0 0 3%;float:left;"></div>
@@ -76,11 +78,17 @@
 				<div id="Pprice" style="width:30%;font-size:45px;color:red;margin:40% 0 0 0%;float:left; "></div>
 <!-- 					<div style="width:8%;margin:42% 0 0 0;text-align:right;float:left;"><p  style='color:red;font-size:50px; '>元</p></div> -->
 <!------------------送出---------------- -->
-				<form>
-				<div style="width:100%;margin:100% 0 0 0;text-align:center;" id="box"><input type="button" class="button addcar btn btn-primary" value="加入購物車" /></div>
-				<input type="hidden" value="15" name="prodId">
-				</form>
-			</div>
+				<c:if test="${empty LoginOK}">
+					<div style="width:100%;margin:100% 0 0 0;text-align:center;"><input type="button" id="noLogin" class="button btn" value="加入購物車" /></div>
+					<input type="hidden" value="15" name="prodId">
+				</c:if>
+				<c:if test="${!empty LoginOK}">
+					<form>
+					<div style="width:100%;margin:100% 0 0 0;text-align:center;" id="box"><input type="button" class="button addcar btn btn-primary" value="加入購物車" /></div>
+					<input type="hidden" value="15" name="prodId">
+					</form>
+				</c:if>
+			</div>	
 		</div>
 		<div style='display:block;margin-top:20px;padding-top:2px;background-color:#BEBEBE;height: 2px;clear: both;'></div>
 		<br>
@@ -93,6 +101,15 @@
 		<div id="content" style="width: 90%;margin:0 5% 0 5%;"></div>
 
 	</div>
+	
+	<!-- 驗證登入帳號 -->
+	<script type="text/javascript">
+			
+	</script>
+	
+	
+	
+	
 	<script>
 
 	function content2(data){
@@ -182,6 +199,11 @@
 <div id="msg">已成功加入購物車！</div> 
 <script type="text/javascript">
 $(function() {
+		$("#noLogin").click(function(event){
+			swal("請先登入!");
+		})
+	
+	
 	
 	//加入購物車
 		$(".addcar").click(function(event){

@@ -13,12 +13,14 @@
   			$('a[rel*=leanModal]').leanModal({ top : 200, closeButton: ".modal_close" });		
 	});
 </script>
+
+
 </head>
 <body>
 			<ul id="leftNavigation">
 				<c:if test="${!empty LoginOK}">				
 				<li class="active1"><a href="" id="modify" style="text-decoration: none" target="_blank">
-				<i class="glyphicon glyphicon-comment leftNavIcon"></i>基本資料</a>
+				<i class="glyphicon glyphicon-user leftNavIcon"></i>基本資料</a>
 				
 				<li class="active1"><a href="#" style="text-decoration: none" target="_blank">
 				<i class="glyphicon glyphicon-comment leftNavIcon"></i>簡訊</a>
@@ -31,10 +33,10 @@
 			<li class="active1"><a href="#" style="text-decoration: none">
 			<i class="glyphicon glyphicon-triangle-right leftNavIcon"></i>上衣專區</a>
 				<ul>
-					<li><a href="#">短袖</a></li>
+					<li><a href="#" style="width: 100%">短袖</a></li>
 					<li><a href="#">長袖</a></li>
 					<li><a href="#">背心</a></li>
-					<li><a href="#">襯衫</a></li>
+					<li><a id="d" href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=M&part=襯衫'/>">襯衫</a></li>
 					<li><a href="#">毛衣</a></li>
 					<li><a href="#">外套</a></li>
 				</ul>
@@ -64,78 +66,7 @@
 				</ul>
 			</li>
 		</ul>
-<!-- ---------------------彈跳視窗------------------------------- -->
-<div id="signup">
-	<div id="signup-ct">
-<!-- 登入 -->
-		<div id="loginForm" style="display: inline;">
-				<div id="signup-header">
-					<p>會員登入</p>
-					<a class="modal_close" href="#"></a>
-				</div>				
-				<form action="<c:url value="/Account/Login.controller?accountStatus=login" />" method="post">
-					  <div class="txt-fld">
-					    <label for="mail" >帳號:</label> 
-						<input type="text" name="mail" id="mail" class="input" >
-						<span id="errorMail">${error.mail}</span>
-					  </div>
-					  <div class="txt-fld">
-					    <label for="pwd">密碼:</label>
-						<input type="text" name="pwd" id="pwd" class="input">
-						<span id="errorPwd">${error.pwd }</span>
-					  </div>
-					  <h5>${error.loginError }</h5>
-<!-- 					  <div class="btn-fld"> -->
-					  <input type="submit" value="Sign In &raquo;"  class="loginbutton">
-					    <input type="button" value="Sign Up &raquo;"  class="registerbutton" id="register">
 
-<!-- 					</div> -->
-			    </form>
-		</div>
-<!-- 註冊 -->
-		<div id="registerForm" style="display: none;">
-				<div id="signup-header">
-					<p>會員註冊</p>
-					<a class="modal_close" href="#"></a>
-				</div>				
-				<form action="<c:url value="/Account/Register.controller" />" method="post">
-					  <div class="txt-fld">
-					   <label>Mail</label>
-					   <input type="text" name="mail" class="input"/>
-					   <span id="errorMail">${error.mail }</span>
-					  </div>
-					  <div class="txt-fld">
-					   <label>Password</label>
-					   <input type="text" name="pwd" class="input"/>  
-					   <span id="errorPwd">${error.pwd }</span> 
-					  </div>
-					  <div class="txt-fld">
-					     <label>Name</label>
-					   <input type="text" name="mem_name" id="mem_name" class="input"/>
-					   <span id="errorMem_name">${error.mem_name }</span>
-					  </div>
-					  <div class="txt-fld">
-					   <label>gender</label>
-					   <input type="radio" name="gender" value="1" class="gender"> Male
-					   <input type="radio" name="gender" value="2" class="gender"> Female					  
-					  </div>
-					  <div class="txt-fld">
-					  <label>NickName</label>
-					   <input type="text" name="nickName" id="nickName" class="input"/>
-					   <span id="errorNickName">${error.nickName }</span>
-					  </div>
-					  <div class="txt-fld">
-					   <label>Birthday</label>
-					   <input type="text" name="bdate" id="bdate" class="input"/>
-					   <span id="errorBdate">${error.bdate }</span>
-					  </div>
-					  <div class="btn-fld">
-					  <input type="submit" name="pageStatus" value="save" class="registerbutton">
-					</div>
-			    </form>
-		</div>		    		    
-	</div>
-</div>
 <script type="text/javascript">
 	var modify = document.getElementById("modify");
 	modify.addEventListener("click", function() {
@@ -152,42 +83,16 @@
 		document.getElementById("mainFrame").style.display="none";
 		document.getElementById("right").innerHTML="<iframe style='width: 100%;' src='/Go1Shop/gb05_mail/send.jsp' scrolling='no' frameborder='0' height='100%' id='sendmailFrame' width='100%' onload='IFrameReSize('sendmailFrame');IFrameReSizeWidth('sendmailFrame');'></iframe>";
 	})
+	var d = document.getElementById("d");
+	d.addEventListener("click", function() {
+		document.getElementById("mainFrame").style.display="none";
+// 		document.getElementById("right").innerHTML="<iframe style='width: 100%;' src='<c:url value='/g03_product/ProductGenderServlet.controller?gender=M&part=襯衫'/>' scrolling='no' frameborder='0' height='100%' id='dFrame' width='100%' onload='IFrameReSize('dFrame');IFrameReSizeWidth('dFrame');'></iframe>";
+	})
+
+	
 </script>
 
-<!-- 彈跳視窗 -->
-<script type="text/javascript">
-var registerForm = document.getElementById("registerForm");
-var loginForm = document.getElementById("loginForm");
-document.getElementById("register").addEventListener("click", function() {
-	loginForm.style.display="none";
-	registerForm.style.display="inline";
-})
-document.getElementById("login").addEventListener("click", function() {
-	loginForm.style.display="inline";
-	registerForm.style.display="none";
-})
-</script>
-<!-- 驗證登入帳號 -->
-<script type="text/javascript">
-		var checkMail=document.getElementById("mail");
-		var checkPwd=document.getElementById("pwd");
-		checkMail.addEventListener("blur",function(){
-			var regExp = /^[^@^\s]+@[^\.@^\s]+(\.[^\.@^\s]+)+$/;
-			if(checkMail.value!=""){
-				if (!regExp.test(checkMail.value)){
-					document.getElementById("errorMail").innerHTML="電子郵件不正確";
-				}
-			}else{
-					document.getElementById("errorMail").innerHTML="不可以空白";
-			}
-		});
-		checkPwd.addEventListener("blur",function(){
-			if((this.value)==""){
-				document.getElementById("errorPwd").innerHTML="不可以空白";
-			}else{
-				document.getElementById("errorPwd").innerHTML=" ";
-			}
-		});
-</script>
+
+
 </body>
 </html>
