@@ -28,7 +28,9 @@
 </style>
 
 </head>
+
 <body>
+
 	<ul id="leftNavigation">
 		<c:if test="${!empty LoginOK}">
 			<li class="active1"><a href="" style="text-decoration: none"
@@ -141,29 +143,29 @@
 				<form action="<c:url value="/Account/Register.controller" />"
 					method="post">
 					<div class="txt-fld">
-						<label>Mail</label> <input type="text" name="mail" class="input" />
+						<label>帳號：</label> <input type="text" name="mail" class="input" />
 						<span id="errorMail"></span>
 					</div>
 					<div class="txt-fld">
-						<label>Password</label> <input type="text" name="pwd"
+						<label>密碼：</label> <input type="text" name="pwd"
 							class="input" /> <span id="errorPwd"></span>
 					</div>
 					<div class="txt-fld">
-						<label>Name</label> <input type="text" name="mem_name"
+						<label>姓名：</label> <input type="text" name="mem_name"
 							id="mem_name" class="input" /> <span id="errorMem_name">${error.mem_name }</span>
 					</div>
 					<div class="txt-fld">
-						<label>gender</label> <input type="radio" name="gender" value="1"
+						<label>性別：</label> <input type="radio" name="gender" value="1"
 							class="gender" id="male" /> Male <input type="radio"
 							name="gender" value="2" class="gender" id="female">
 						Female
 					</div>
 					<div class="txt-fld">
-						<label>NickName</label> <input type="text" name="nickName"
+						<label>暱稱：</label> <input type="text" name="nickName"
 							id="nickName" class="input" /> <span id="errorNickName">${error.nickName }</span>
 					</div>
 					<div class="txt-fld">
-						<label>Birthday</label> <input type="text" name="bdate" id="bdate"
+						<label>生日：</label> <input type="text" name="bdate" id="bdate"
 							class="input" /> <span id="errorBdate">${error.bdate }</span>
 					</div>
 					<div class="btn-fld">
@@ -180,9 +182,10 @@
 // 修改基本資料
 	var modify = document.getElementById("modify");
 	modify.addEventListener("click", function() {
+		
 		if(document.getElementById("mainFrame")!=null){
 			
-		document.getElementById("mainFrame").style.display="none";
+			document.getElementById("mainFrame").style.display="none";	
 		}
 		document.getElementById("right").innerHTML="<iframe src='<c:url value='/Account/Modify.controller'/>' scrolling='no' frameborder='0' height='100%' id='modifyFrame' width='100%' onload='IFrameReSize('modifyFrame');IFrameReSizeWidth('modifyFrame');'></iframe>";
 	})

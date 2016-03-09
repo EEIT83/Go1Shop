@@ -91,6 +91,8 @@ public class ShowProDAO {
 				bean.setGender(rs.getString(9));
 				bean.setPart(rs.getString(10));
 				bean.setLanchDate(rs.getDate(11));
+				bean.setNote(rs.getString(12));
+				bean.setCtr(rs.getInt(13));
 				
 			}
 			return bean;

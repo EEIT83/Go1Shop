@@ -1,8 +1,6 @@
 package g03_product.controller;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,10 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
 
-import g03_product.controller.img.Prodimg;
-import g03_product.controller.img.ProdimgService;
 import g03_product.model.ProductService_M;
 import g03_product.model.ProductVO_M;
 import g03_product.model.StoreService_M;
