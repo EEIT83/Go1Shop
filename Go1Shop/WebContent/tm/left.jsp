@@ -29,12 +29,18 @@
 				<li class="active1"><a href="" id="sell" style="text-decoration: none" target="_blank">
 				<i class="glyphicon glyphicon-home leftNavIcon"></i>商家專區</a>
 					<ul>
-						<li><a href="#" style="width: 100%">短袖</a></li>
-						<li><a href="#">長袖</a></li>
-						<li><a href="#">背心</a></li>
-						<li><a id="d" href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=M&part=襯衫'/>">襯衫</a></li>
-						<li><a href="#">毛衣</a></li>
-						<li><a href="#">外套</a></li>
+						<li><a href="<%=request.getContextPath()%>/ProductServlet.do?action=getOneByMemId&memId=${LoginOK.mem_id}" style="width: 100%">商品查詢</a></li>
+						<li><a href="<%=request.getContextPath()%>/g03_product/addNewProduct_M.jsp">新增商品</a></li>
+						<li><a href="<%=request.getContextPath()%>/g03_product/shopInfo.jsp">商店資訊</a></li>
+						<li><a href="<%=request.getContextPath()%>/index.jsp">回首頁</a></li>
+						<c:choose>
+							<c:when  test="${empty StoreVO}">
+								<li><a style='higth=10px;' href="<%=request.getContextPath()%>/g03_product/addShopInfo.jsp" >新增商店資訊</a></li>
+							</c:when>
+							<c:otherwise>
+								<li><a style='higth=10px;' href="<%=request.getContextPath()%>/g03_product/addShopInfo.jsp" >修改商店資訊</a></li>
+							</c:otherwise>
+						</c:choose>
 					</ul>
 				</li>
 				
@@ -52,7 +58,7 @@
 					<li><a href="#" style="width: 100%">短袖</a></li>
 					<li><a href="#">長袖</a></li>
 					<li><a href="#">背心</a></li>
-					<li><a id="d" href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=M&part=襯衫'/>">襯衫</a></li>
+					<li><a href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=M&part=襯衫'/>">襯衫</a></li>
 					<li><a href="#">毛衣</a></li>
 					<li><a href="#">外套</a></li>
 				</ul>
@@ -181,15 +187,15 @@
 		}
 		document.getElementById("right").innerHTML="<iframe style='width: 100%;' src='/Go1Shop/gb05_mail/send.jsp' scrolling='no' frameborder='0' height='100%' id='sendmailFrame' width='100%' onload='IFrameReSize('sendmailFrame');IFrameReSizeWidth('sendmailFrame');'></iframe>";
 	})
-	var d = document.getElementById("d");
-	d.addEventListener("click", function() {
+// 	var d = document.getElementById("d");
+// 	d.addEventListener("click", function() {
 // 		document.getElementById("mainFrame").style.display="none";
 // 		document.getElementById("right").innerHTML="<iframe style='width: 100%;' src='<c:url value='/g03_product/ProductGenderServlet.controller?gender=M&part=襯衫'/>' scrolling='no' frameborder='0' height='100%' id='dFrame' width='100%' onload='IFrameReSize('dFrame');IFrameReSizeWidth('dFrame');'></iframe>";
-	})
-	var sell = document.getElementById("sell");
-	sell.addEventListener("click", function() {
-			document.location='<%=request.getContextPath()%>/ProductServlet.do?action=getOneByMemId&memId=${LoginOK.mem_id}';
-		})
+// 	})
+// 	var sell = document.getElementById("sell");
+// 	sell.addEventListener("click", function() {
+<%-- 			document.location='<%=request.getContextPath()%>/ProductServlet.do?action=getOneByMemId&memId=${LoginOK.mem_id}'; --%>
+// 		})
 	
 </script>
 

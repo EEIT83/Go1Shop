@@ -75,8 +75,11 @@
 				<div style="clear: both;"></div>
 <!------------------價錢---------------- -->
 					<div style="width:23%;margin:40% 0 0 25%;font-size:30px;color:red;float:left; ">NT＄</div>
-				<div id="Pprice" style="width:30%;font-size:45px;color:red;margin:40% 0 0 0%;float:left; "></div>
+				<div id="Pprice" style="width:30%;font-size:45px;color:red;margin:40% 0 0 0%;float:left;border:1px solid red;  "></div>
 <!-- 					<div style="width:8%;margin:42% 0 0 0;text-align:right;float:left;"><p  style='color:red;font-size:50px; '>元</p></div> -->
+<!---------------------------------- -->
+				<div id="Pnote" style="width:100%;font-size:45px;color:red;margin:20% 0 0 0%;float:left;border:1px solid red;  ">asdasdasdas</div>
+
 <!------------------送出---------------- -->
 				<c:if test="${empty LoginOK}">
 					<div style="width:100%;margin:100% 0 0 0;text-align:center;"><input type="button" id="noLogin" class="button btn" value="加入購物車" /></div>
@@ -277,6 +280,7 @@ $(function() {
 		$('#Psize').append("<p style='font-size:35px;'>"+Prod.size+"</p>");
 		$('#Pprice').append("<p style='color:red'>"+Prod.price+"</p>");
 		$('#Pbrand').append("<h3 style='font-size:20px;'>"+Prod.brand+"</h3>");
+		$('#Pnote').append("<h3 style='font-size:20px;'>"+Prod.brand+"</h3>");
 		$('#content').append("<img id='img2' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[1]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
 		$('#content').append("<img id='img3' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[2]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
 		$('#content').append("<img id='img4' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[3]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
