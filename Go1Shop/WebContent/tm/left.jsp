@@ -8,6 +8,10 @@
 <title>Go1Shop Home</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/_css/style.css" />
 <script type="text/javascript" src="<%=request.getContextPath() %>/_js/jquery.leanModal.min.js"></script>
+<!-- jQuery Ui -->
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/_js/jquery-ui.css" />
+<script type="text/javascript" src="<%=request.getContextPath() %>/_js/jquery-ui.js"></script>
+
 <script type="text/javascript">
 	$(function() {
   			$('a[rel*=leanModal]').leanModal({ top : 200, closeButton: ".modal_close" });		
@@ -116,8 +120,8 @@
 					  </div>
 					  <div class="txt-fld">
 					   <label>gender</label>
-					   <input type="radio" name="gender" value="1" class="gender"> Male
-					   <input type="radio" name="gender" value="2" class="gender"> Female					  
+					   <input type="radio" name="gender" value="1" class="gender" id="male" /> Male
+					   <input type="radio" name="gender" value="2" class="gender" id="female" > Female					  
 					  </div>
 					  <div class="txt-fld">
 					  <label>NickName</label>
@@ -136,6 +140,7 @@
 		</div>		    		    
 	</div>
 </div>
+<script type="text/javascript" src="<%=request.getContextPath()%>/_js/register.js"></script>
 <script type="text/javascript">
 	var modify = document.getElementById("modify");
 	modify.addEventListener("click", function() {
@@ -159,10 +164,19 @@
 var registerForm = document.getElementById("registerForm");
 var loginForm = document.getElementById("loginForm");
 document.getElementById("register").addEventListener("click", function() {
+	document.getElementById("mail").value="";
+	document.getElementById("pwd").value="";
+	document.getElementById("mem_name").value="";
+	document.getElementById("nickName").value="";
+	document.getElementById("bdate").value="";
+	document.getElementById("male").checked=false;
+	document.getElementById("female").checked=false;
 	loginForm.style.display="none";
 	registerForm.style.display="inline";
 })
 document.getElementById("login").addEventListener("click", function() {
+	document.getElementById("mail").value="";
+	document.getElementById("pwd").value="";
 	loginForm.style.display="inline";
 	registerForm.style.display="none";
 })
