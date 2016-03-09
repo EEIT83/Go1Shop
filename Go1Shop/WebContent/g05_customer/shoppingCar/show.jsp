@@ -73,12 +73,17 @@
 				<div id="Psize" style="width:11%;margin:3% 0 0 0%;font-weight: bold;text-align:left;float:left;" ></div>
 <!-------------------------------------				 -->
 				<div style="clear: both;"></div>
+				
+<!------------------關於我---------------- -->
+<!-- 				<div style="margin: 8% 0 0 0; "><a href="" style="text-decoration:none;font-size: 20px;color:blue;">關於賣家...</a></div> -->
+				
+				
 <!------------------價錢---------------- -->
-					<div style="width:23%;margin:40% 0 0 25%;font-size:30px;color:red;float:left; ">NT＄</div>
-				<div id="Pprice" style="width:30%;font-size:45px;color:red;margin:40% 0 0 0%;float:left;border:1px solid red;  "></div>
+				<div style="width:23%;margin:25% 0 0 45%;font-size:30px;color:red;float:left; ">NT＄</div>
+				<div id="Pprice" style="width:30%;font-size:45px;color:red;margin:25% 0 0 0%;float:left;"></div>
 <!-- 					<div style="width:8%;margin:42% 0 0 0;text-align:right;float:left;"><p  style='color:red;font-size:50px; '>元</p></div> -->
-<!---------------------------------- -->
-				<div id="Pnote" style="width:100%;font-size:45px;color:red;margin:20% 0 0 0%;float:left;border:1px solid red;  ">asdasdasdas</div>
+<!-----------------NOTE-------------- -->
+				<div id="Pnote" style="width:100%;font-size:45px;color:red;margin:0 0 0 0;float:left;"></div>
 
 <!------------------送出---------------- -->
 				<c:if test="${empty LoginOK}">
@@ -99,6 +104,7 @@
 			<ul class="nav nav-tabs">
 			  <li role="presentation"><a  onclick="showImg()" >產品說明</a></li>
 			  <li role="presentation"><a  onclick="msgboard()">留言板</a></li>
+			  <li role="presentation"><a  onclick="sell()">關於賣家...</a></li>
 			</ul>
 		</div>
 		<div id="content" style="width: 90%;margin:0 5% 0 5%;"></div>
@@ -129,6 +135,12 @@
 		document.getElementById("content").innerHTML="";
  		document.getElementById("content").innerHTML="<iframe width='100%' height='1000 px' src='/Go1Shop/g07_msgboard/comments.do'></iframe>";
 	}
+	
+	function sell(){
+		document.getElementById("content").innerHTML="";
+ 		document.getElementById("content").innerHTML="<iframe width='100%' height='1000 px' src='/StoreServlet.do'></iframe>";
+	}
+	
 	
 	function showImg(){
 	//	alert('xxx');
@@ -227,6 +239,16 @@ $(function() {
 				}
 				
 			});
+			
+			
+// 			<div class="m-sidebar"> 
+	// 		    <div class="cart"> 
+	// 		        <i id="end"></i> 
+	// 		        <span><a style="" id="carurl" href="<c:url value="/g05_customer/shoppingCar/car.jsp" />">購物車</a></span> 
+	// 		    </div> 
+// 			</div> 
+			
+			
 			var offset = $("#end").offset(); 
 	        var addcar = $(this); 
 	        var img = $('#PtitleImg').find('img').attr('src'); 
@@ -280,7 +302,7 @@ $(function() {
 		$('#Psize').append("<p style='font-size:35px;'>"+Prod.size+"</p>");
 		$('#Pprice').append("<p style='color:red'>"+Prod.price+"</p>");
 		$('#Pbrand').append("<h3 style='font-size:20px;'>"+Prod.brand+"</h3>");
-		$('#Pnote').append("<h3 style='font-size:20px;'>"+Prod.brand+"</h3>");
+		$('#Pnote').append("<p style='font-size:10px;'>"+Prod.note+"</p>");
 		$('#content').append("<img id='img2' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[1]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
 		$('#content').append("<img id='img3' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[2]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
 		$('#content').append("<img id='img4' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[3]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
