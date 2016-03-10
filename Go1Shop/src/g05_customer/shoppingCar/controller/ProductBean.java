@@ -13,6 +13,13 @@ public class ProductBean {
 	private String part;
 	private java.util.Date lanchDate;
 	private String note;
+	private int ctr;
+	public int getCtr() {
+		return ctr;
+	}
+	public void setCtr(int ctr) {
+		this.ctr = ctr;
+	}
 	public int getProdId() {
 		return prodId;
 	}

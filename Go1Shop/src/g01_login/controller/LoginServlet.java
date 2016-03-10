@@ -16,7 +16,7 @@ import org.apache.commons.lang3.StringUtils;
 import gb01_login.controller.AdminBean;
 import gb01_login.controller.AdminService;
 
-@WebServlet(urlPatterns={"/Account/Login.controller"})
+@WebServlet(urlPatterns = { "/Account/Login.controller" })
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = -595078994078999385L;
 
@@ -28,24 +28,23 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		
-		
+
 		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8;");
 		session = request.getSession();
 		accountStatus = request.getParameter("accountStatus");
-		
-		
+
 		if (StringUtils.isEmpty(accountStatus)) {
-			request.getRequestDispatcher("/g01_login/Login.jsp").forward(request,
-					response);
+			request.getRequestDispatcher("/g01_login/Login.jsp").forward(
+					request, response);
 		} else {
 			String mail = request.getParameter("mail");
 			String pwd = request.getParameter("pwd");
-			
+
 			session.setAttribute("bmail", mail);
 			session.setAttribute("bpwd", pwd);
-			
-			
+
 			Map<String, String> error = new HashMap<>();
 			session.setAttribute("error", error);
 			// Mail判斷是否空值
@@ -58,52 +57,61 @@ public class LoginServlet extends HttpServlet {
 				error.put("pwd", "Password connt Empty");
 			}
 			if (error.size() > 0) {
-				if(accountStatus.equals("login")){
-					request.getRequestDispatcher("/g01_login/Login.jsp").forward(
-						request, response);
+				if (accountStatus.equals("login")) {
+					request.getRequestDispatcher("/g01_login/Login.jsp")
+							.forward(request, response);
 				}
-				if(accountStatus.equals("backLogin")){
+				if (accountStatus.equals("backLogin")) {
 					response.sendRedirect("/Go1Shop/backLogin.jsp");
-					//request.getRequestDispatcher("/backLogin.jsp").forward(request, response);
+					// request.getRequestDispatcher("/backLogin.jsp").forward(request,
+					// response);
 					return;
 				}
-				
-				
-			
 			}
 			try {
 				MemberService memService = new MemberService();
 				AdminService adService = new AdminService();
-				if (memService.Login(mail, pwd) != null && accountStatus.equals("login")) {
+				if (memService.Login(mail, pwd) != null
+						&& accountStatus.equals("login")) {
 					memBean = memService.Login(mail, pwd);
 					session.setAttribute("LoginOK", memBean);
 					session.setAttribute("mail", memBean.getMail());
-					request.getRequestDispatcher("/index.jsp").forward(request, response);
-				} else if (adService.Login(mail, pwd) != null && accountStatus.equals("backLogin")) {
+					response.getWriter()
+							.write("<script>charset='UTF-8'; alert('Success!');parent.window.location.replace('/Go1Shop/index.jsp');</script>");
+				} else if (adService.Login(mail, pwd) != null
+						&& accountStatus.equals("backLogin")) {
 					adBean = adService.Login(mail, pwd);
 					session.setAttribute("bLoginOK", adBean);
 					session.setAttribute("mail", adBean.getAd_mail());
 					response.sendRedirect("/Go1Shop/gb04_marketing/backMarketing.jsp");
-					
-					//response.sendRedirect("/Go1Shop/backLogin.jsp");
-					//request.getRequestDispatcher("/backLogin.jsp").forward(request, response);
+
+					// response.sendRedirect("/Go1Shop/backLogin.jsp");
+					// request.getRequestDispatcher("/backLogin.jsp").forward(request,
+					// response);
 					return;
 				} else {
-					throw new Exception("無此帳號密碼");
-				}			
+					throw new Exception("1");
+				}
 			} catch (Exception e) {
 				e.printStackTrace();
-				error.put("loginError", e.getMessage());
-				
-				if(accountStatus.equals("login")){
-					request.getRequestDispatcher("/index.jsp").forward(request, response);
-				}else if(accountStatus.equals("backLogin")){
+				if (accountStatus.equals("login")) {
+					if ("1".equals(e.getMessage())) {
+						response.getWriter()
+								.write("<script>alert('無此帳號密碼!'); parent.window.location.replace('/Go1Shop/index.jsp');</script>");
+						return;
+					}
+					if ("2".equals(e.getMessage())) {
+						response.getWriter()
+								.write("<script>alert('你已被停權!');parent.window.location.replace('/Go1Shop/index.jsp');</script>");
+						return;
+					}
+				} else if (accountStatus.equals("backLogin")) {
 					response.sendRedirect("/Go1Shop/backLogin.jsp");
-					//request.getRequestDispatcher().forward(request, response);
+					// request.getRequestDispatcher().forward(request,
+					// response);
 				}
-				
+
 			}
-			
 			return;
 		}
 

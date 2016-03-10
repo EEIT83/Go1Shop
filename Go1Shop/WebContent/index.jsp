@@ -67,7 +67,7 @@ request.setAttribute("select", result);
 
 		//iframe高度自适应
 		function IFrameReSize(iframename) {
-			var pTar = document.getElementByIdx_x_x(iframename);
+			var pTar = document.getElementById(iframename);
 			if (pTar) { //ff
 				if (pTar.contentDocument && pTar.contentDocument.body.offsetHeight) {
 					pTar.height = pTar.contentDocument.body.offsetHeight;
@@ -79,7 +79,7 @@ request.setAttribute("select", result);
 		}
 		//iframe宽度自适应
 		function IFrameReSizeWidth(iframename) {
-			var pTar = document.getElementByIdx_x_x(iframename);
+			var pTar = document.getElementById(iframename);
 			if (pTar) { //ff
 				if (pTar.contentDocument && pTar.contentDocument.body.offsetWidth) {
 					pTar.width = pTar.contentDocument.body.offsetWidth;
