@@ -19,8 +19,7 @@ import g03_product.controller.img.Prodimg;
 import g03_product.controller.img.ProdimgService;
 import g03_product.model.ProductService_M;
 import g03_product.model.ProductVO_M;
-
-@WebServlet("/ProductServlet.do")
+@WebServlet("/g03_product/ProductServlet.con")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 5 * 1024 * 1024, maxRequestSize = 5 * 5 * 1024 * 1024)
 public class ProductServlet_M extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -153,6 +152,7 @@ public class ProductServlet_M extends HttpServlet {
 		/********************** Get_One_By_Mem_Id ****************************/
 
 		if ("getOneByMemId".equals(action)) {
+			System.out.println("test");
 			List<String> errorMsgs = new LinkedList<String>();
 			req.setAttribute("errorMsgs", errorMsgs);
 
