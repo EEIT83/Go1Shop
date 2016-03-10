@@ -28,7 +28,9 @@
 </style>
 
 </head>
+
 <body>
+
 	<ul id="leftNavigation">
 		<c:if test="${!empty LoginOK}">
 			<li class="active1"><a href="" style="text-decoration: none"
@@ -36,6 +38,7 @@
 			<ul>
 					<li><a href="#" style="width: 100%" id="modify">修改基本資料</a></li>
 					<li><a href="#" id="changePwd">修改密碼</a></li>
+					<li><a href="#" id="history">歷史訂單</a></li>
 			</ul>
 			</li>	
 				<li class="active1"><a href="" id="sell" style="text-decoration: none" target="_blank">
@@ -54,14 +57,14 @@
 							</c:otherwise>
 						</c:choose>
 					</ul>
+
 				</li>
-				
 			<li class="active1"><a href="#" style="text-decoration: none"
 				target="_blank"> <i
 					class="glyphicon glyphicon-comment leftNavIcon"></i>訊息
 			</a>
 				<ul>
-					<li><a href='#' id="mail">信箱</a></li>
+					<li><a href='#' id="mail">收信</a></li>
 					<li><a href='#' id="sendmail">寫信</a></li>
 				</ul></li>
 		</c:if>
@@ -210,6 +213,18 @@
 		}
 		document.getElementById("right").innerHTML="<iframe style='width: 100%;' src='/Go1Shop/gb05_mail/send.jsp' scrolling='no' frameborder='0' height='100%' id='sendmailFrame' width='100%' onload='IFrameReSize('sendmailFrame');IFrameReSizeWidth('sendmailFrame');'></iframe>";
 	})
+
+// 歷史訂單
+	var history = document.getElementById("history");
+	history.addEventListener("click", function() {
+		if(document.getElementById("mainFrame")!=null){
+			
+		document.getElementById("mainFrame").style.display="none";
+		}
+		document.getElementById("right").innerHTML="<iframe src='<c:url value='/OrdDetail.do?memId=${LoginOK.mem_id}'/>' scrolling='no' frameborder='0' height='100%' id='modifyFrame' width='100%' onload='IFrameReSize('modifyFrame');IFrameReSizeWidth('modifyFrame');'></iframe>";
+	})	
+	
+	
 // 	var d = document.getElementById("d");
 // 	d.addEventListener("click", function() {
 // 		document.getElementById("mainFrame").style.display="none";

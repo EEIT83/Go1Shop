@@ -33,11 +33,11 @@
 			<form action='<c:url value='/ch07_mail/send.do'/>' style="margin: 0 0 0 5%;width: 600px;" >
 				<table>
 					<tr >
-						<td align="right">寄信人：</td>
+						<td align="right">寄件者：</td>
 						<td align="left">${LoginOK.mail}</td>
 					</tr>
 					<tr style="height: 50px;">
-						<td align="right">地址：</td>
+						<td align="right">收件者：</td>
 						<td align="left"><input class="form-control" name="addressee" type="text"/></td>
 					</tr>
 					<tr style="height: 50px;">

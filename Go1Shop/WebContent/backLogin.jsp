@@ -31,8 +31,8 @@
 			
 		<div>
 			<span class="text-muted"; style="font-size:30px">Go1Shop後台管理系統</sapn>
-			<span style="margin-left:65%;font-size:15px;"><c:if test="${LoginOK != null}">
-				${mail}<a href="/Go1Shop/backLogout.do">登出</a>
+			<span style="margin-left:68%;font-size:15px;"><c:if test="${bLoginOK != null}">
+				${bmail}<a href="/Go1Shop/backLogout.do">登出</a>
 			</c:if>
 			</span>
 		</div>	
@@ -44,8 +44,8 @@
 					<li><a href="/Go1Shop/gb04_marketing/backMarketing.jsp">廣告管理</a></li>
  					<li><a href="/Go1Shop/g07_msgboard/comments.do?manage=1">留言板管理</a></li>
 					<li><a href="/Go1Shop/gb02_member/backMember.jsp">會員權限管理</a></li>
-<!-- 					<li><a href="AutoComplete.html">系統公告</a></li> -->
-<!-- 					<li><a href="#">優惠設定</a></li> -->
+					<li><a href="/Go1Shop/gb02_member/ChangeAdPwd.jsp">修改密碼</a></li>
+											 
 				</ul>
 			</nav>
 		</div>
@@ -74,12 +74,12 @@
 <%-- 	</c:if> --%>
 
 
-	<c:if test="${LoginOK == null}">
+	<c:if test="${bLoginOK == null}">
 	<form action="<c:url value='/Account/Login.controller'/>?accountStatus=backLogin" method="post" enctype="application/x-www-form-urlencoded" name="userInfo" class="form-horizontal">
 				<div class="form-group">
 					<label for="userName" class="col-md-2 control-label">帳號 :</label>
 					<div class="col-md-10">
-						<input type="text" name="mail" class="form-control" value="${bmail}"
+						<input  type="text" name="mail" class="form-control" value=""
 							id="userName" placeholder="Account">
 						<span id="errorMail">${error.mail}</span>
 					</div>
@@ -87,7 +87,7 @@
 				<div class="form-group">
 					<label for="password" class="col-md-2 control-label">密碼 :</label>
 					<div class="col-md-10">
-						<input type="password" name="pwd" class="form-control" value="${bpwd}"
+						<input type="password" name="pwd" class="form-control" value=""
 							id="age" placeholder="Password">
 						<span id="errorPwd">${error.pwd }</span>
 					</div>
@@ -106,7 +106,7 @@
 
 
 			<div id="div1"></div>
-
+				
 
 			<!-- 每頁不同的內容到這裡結束 -->
 		</div>
@@ -125,7 +125,6 @@
 
 
 		<script>
-		
 		
 		//將資料存到陣列中
 

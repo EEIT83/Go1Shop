@@ -32,6 +32,8 @@ import gb01_login.controller.AdminBean;
 		@WebInitParam(name = "url_backMarketing", value = "/gb04_marketing/backMarketing.jsp"),
 		@WebInitParam(name = "url_backCommentsManage", value = "/gb03_msgboard/backCommentsManage.jsp"),
 		@WebInitParam(name = "url_backMember", value = "/gb02_member/backMember.jsp"),
+//		@WebInitParam(name = "url_backChangePwd", value = "/Admin/ChangePwd.controller?pageStatus=prompt"),
+		@WebInitParam(name = "url_backChangePwd", value = "/gb02_member/ChangeAdPwd.jsp"),
 		
 		
 		}
@@ -53,6 +55,7 @@ public class FilterBackLogin implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
 		//req.setCharacterEncoding("UTF-8");
+		resp.setContentType("text/html;charset=UTF-8;");
 
 		//System.out.println(123);
 		
@@ -71,7 +74,7 @@ public class FilterBackLogin implements Filter {
 				//resp.getWriter().write("<script>charset='UTF-8'; alert('請先登入!') ; location.href='/Go1Shop/backLogin.jsp'; </script>");
 				
 				resp.setCharacterEncoding("UTF-8");
-				resp.getWriter().write("<script>charset='UTF-8'; alert('Please Login!') ; location.href='/Go1Shop/backLogin.jsp'; </script>");
+				resp.getWriter().write("<script>charset='UTF-8'; alert('請先登入!') ; location.href='/Go1Shop/backLogin.jsp'; </script>");
 
 				
 //				resp.sendRedirect(contextPath + "/backLogin.jsp");
@@ -117,7 +120,7 @@ public class FilterBackLogin implements Filter {
 
 	public boolean checkLogin(HttpServletRequest req) {
 		HttpSession session = req.getSession();
-		AdminBean ch = (AdminBean)session.getAttribute("LoginOK");
+		AdminBean ch = (AdminBean)session.getAttribute("bLoginOK");
 		//System.out.println(ch);
 		if (ch == null) {
 			return false;

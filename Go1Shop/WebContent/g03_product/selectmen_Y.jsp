@@ -75,7 +75,8 @@
 							src='<c:url value="/pages/showImg.controller?prod_id="/>${bean.prod_id}'>
 							
 							</a>
-							<h3 id="h3txt">						
+							<h3 id="h3txt">					
+							<a>${bean.prod_id}</a><br>	
 								<a>${bean.prod_name}</a><br>
 								<a>金額:${bean.price}</a>						
 							</h3>

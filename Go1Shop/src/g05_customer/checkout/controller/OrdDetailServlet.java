@@ -1,4 +1,4 @@
-package gb01_login.controller;
+package g05_customer.checkout.controller;
 
 import java.io.IOException;
 
@@ -7,24 +7,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-@WebServlet(value={"/backLogout.do"})
-public class backLogoutServlet extends HttpServlet {
+@WebServlet(value={"/OrdDetail.do"})
+public class OrdDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		HttpSession session = req.getSession();
-		
-		//session.invalidate();
-		
-		session.removeAttribute("bLoginOK");
-		session.removeAttribute("bmail");
-		session.removeAttribute("bpwd");
-
-		resp.sendRedirect("/Go1Shop/backLogin.jsp");
+		System.out.println(888);
+		CheckDetailService cds = new CheckDetailService();
+		cds.select(10);
 		
 	}
 
@@ -32,6 +25,7 @@ public class backLogoutServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		this.doGet(req, resp);
 	}
+	
 	
 	
 	

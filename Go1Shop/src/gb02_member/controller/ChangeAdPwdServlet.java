@@ -2,6 +2,8 @@ package gb02_member.controller;
 
 import java.io.IOException;
 
+
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,16 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import gb01_login.controller.AdminService;
 
+
 @WebServlet(urlPatterns = "/Admin/ChangePwd.controller")
 public class ChangeAdPwdServlet extends HttpServlet {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -7882234995784010949L;
-	private String pageName = "/g02_member/admin/ChangeAdPwd.jsp";
+	private String pageName = "/gb02_member/ChangeAdPwd.jsp";
 	private String pageStatus = null;
-	private int returnStatus = 0;
 	private String returnMessage = "";
 
 	@Override
@@ -31,32 +30,33 @@ public class ChangeAdPwdServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		System.out.println(7777);
+		
 		request.setCharacterEncoding("UTF-8");
 		try {
 
 			pageStatus = request.getParameter("pageStatus");
-
 			if ("prompt".equals(pageStatus)) {
-				this.prompt();
 			} else if ("Ad_available".equals(pageStatus)) {
 
-				String mail = request.getSession().getAttribute("mail")
+				String mail = request.getSession().getAttribute("bmail")
 						.toString();
 				String oldPwd = request.getParameter("oldPwd");
 				String newPwd = request.getParameter("newPwd");
-
+				
 				this.available(mail, oldPwd, newPwd);
+				response.getWriter().write("<script>charset='UTF-8'; alert('修改成功!');parent.window.location.replace('/Go1Shop/index.jsp');</script>");
 			} else {
 				pageName = "/g01_login/Login.jsp";
-			}
-			request.setAttribute("pageStatus", "available");
+			}		
+			request.getRequestDispatcher(pageName).forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
-			returnMessage = e.getMessage();
+			if("2".equals(returnMessage)){
+				response.getWriter().write("<script>charset='UTF-8'; alert('舊密碼錯誤!');parent.window.location.replace('/gb02_member/ChangeAdPwd.jsp');</script>");
+			}
 		}
-		request.setAttribute("status", returnStatus);
-		request.setAttribute("message", returnMessage);
-		request.getRequestDispatcher(pageName).forward(request, response);
 	}
 
 	@Override
@@ -66,18 +66,11 @@ public class ChangeAdPwdServlet extends HttpServlet {
 		this.doGet(req, resp);
 	}
 
-	private void prompt() throws Exception {
-		returnStatus = 0;
-	}
-
 	private void available(String mail, String oldPwd, String newPwd)
 			throws Exception {
 		try {
 			new AdminService().ChangePwd(mail, oldPwd, newPwd);
-			returnStatus = 0;
-			returnMessage = "Success to changed password!";
 		} catch (Exception e) {
-			returnStatus = -1;
 			returnMessage = e.getMessage();
 		}
 	}

@@ -17,13 +17,12 @@ public class LogoutServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		HttpSession session = req.getSession();
-		session.invalidate();
+		//session.invalidate();
 		
-		/*
 		session.removeAttribute("LoginOK");
-		session.removeAttribute("bmail");
-		session.removeAttribute("bpwd");
-		*/
+		session.removeAttribute("mail");
+		session.removeAttribute("pwd");
+
 		resp.sendRedirect("/Go1Shop/");
 	}
 
