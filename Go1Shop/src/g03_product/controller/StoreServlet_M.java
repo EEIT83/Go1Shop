@@ -63,8 +63,8 @@ public class StoreServlet_M extends HttpServlet {
 				storeVO.setNote(note);
 
 				if (!errorMsgs.isEmpty()) {		
-					HttpSession session = req.getSession();
-					session.setAttribute("StoreVO", storeVO); // 資料庫取出的empVO物件,存入req					
+					
+					req.setAttribute("StoreVO", storeVO); // 資料庫取出的empVO物件,存入req					
 					RequestDispatcher failureView = req.getRequestDispatcher("/g03_product/addShopInfo.jsp");
 					failureView.forward(req, resp);
 					return;
@@ -77,6 +77,8 @@ public class StoreServlet_M extends HttpServlet {
 
 
 				// 3.轉交資料
+				HttpSession session = req.getSession();
+				session.setAttribute("StoreVO", storeVO);
 				String url = "/g03_product/shopInfo.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交
 																				// listAllEmp.jsp
@@ -98,74 +100,93 @@ public class StoreServlet_M extends HttpServlet {
 
 			try {
 				// 1.接受請求參數
-				Integer memId = null;
-				try {
-					memId = new Integer(req.getParameter("memId"));
-				} catch (NumberFormatException e) {
-					memId = 0;
-					errorMsgs.add("會員ID請勿空白");
-				}
+				Integer memId = null;				
+				memId = new Integer(req.getParameter("memId"));
+			
 				// 2.查詢資料(透過svc進行資料處理)
-				ProductService_M srv = new ProductService_M();
-				List<ProductVO_M> list = srv.getOneByMemId(memId);
+				StoreService_M storeSrv = new StoreService_M();
+				StoreVO_M storeVO = storeSrv.getOneByMemId(memId);
 
 				// 3.結果傳送到顯示的View
-				req.setAttribute("productVOList", list);
-				String url = "/g03_product/selectProductByMemId_M.jsp";
+				HttpSession session = req.getSession();
+				session.setAttribute("StoreVO", storeVO);
+				String url = "/g03_product/shopInfo.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url);// 成功轉交
 																				// update_emp_input.jsp
 				successView.forward(req, resp);
 
 			} catch (Exception e) {
 				errorMsgs.add(e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/g03_product/selectProductByMemId_M.jsp");
+				RequestDispatcher failureView = req.getRequestDispatcher("/g03_product/shopInfo.jsp");
 				failureView.forward(req, resp);
 
 			}
 
 		}
 		
-		/********************** goToUpdatePage ****************************/
+		/********************** updateProdByProdId ****************************/
 
-		if ("goToUpdatePage".equals(action)) { // 來自listAllEmp.jsp的請求
-
+		if ("update".equals(action)) { 
 			List<String> errorMsgs = new LinkedList<String>();
-			// Store this set in the request scope, in case we need to
-			// send the ErrorPage view.
 			req.setAttribute("errorMsgs", errorMsgs);
 
 			try {
-				// 1.接收請求參數
-
-				Integer prodId = null;
-				try {
-					prodId = new Integer(req.getParameter("prodId"));
-				} catch (NumberFormatException e) {
-					prodId = 0;
-					errorMsgs.add("產品ID請勿空白");
-				}
+				// 1.接受請求參數
 				
-				// 2.開始查詢資料
+				int memId = Integer.valueOf(req.getParameter("memId"));			
+				
+				String storeName = req.getParameter("storeName");
+				if (storeName == null || storeName.trim().length() == 0) {
+					errorMsgs.add("商店姓名: 請勿空白");
+				}
 
-				ProductService_M srv = new ProductService_M();
-				ProductVO_M productVO = srv.getOne(prodId);
+				String note = req.getParameter("note");
+				if (note == null || note.trim().length() == 0) {
+					errorMsgs.add("商店描述: 請勿空白");
+				}
 
-				// 3.查詢完成,準備轉交(Send the Success view)
+				String storeAddress = req.getParameter("storeAddress");
+				if (storeAddress == null || storeAddress.trim().length() == 0) {
+					errorMsgs.add("商店地址: 請勿空白");
+				}
 
-				req.setAttribute("productVO", productVO); // 資料庫取出的empVO物件,存入req
-				String url = "/g03_product/updateProductByProductId_M.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url);// 成功轉交
-																				// update_emp_input.jsp
+				
+				//商店物件
+				StoreVO_M storeVO = new StoreVO_M();
+				storeVO.setMemId(memId);
+				storeVO.setStoreName(storeName);
+				storeVO.setStoreAddress(storeAddress);
+				storeVO.setNote(note);
+
+				if (!errorMsgs.isEmpty()) {		
+					
+					req.setAttribute("StoreVO", storeVO); // 資料庫取出的empVO物件,存入req					
+					RequestDispatcher failureView = req.getRequestDispatcher("/g03_product/addShopInfo.jsp");
+					failureView.forward(req, resp);
+					return;
+				}
+
+				// 2.開始新增資料
+				//新增product
+				StoreService_M storeSrv = new StoreService_M();
+				int count1 = storeSrv.update(storeVO);
+
+
+				// 3.轉交資料
+				HttpSession session = req.getSession();
+				session.setAttribute("StoreVO", storeVO);
+				String url = "/g03_product/shopInfo.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交
+																				// listAllEmp.jsp
 				successView.forward(req, resp);
 
 				// 其他可能的錯誤處理
 			} catch (Exception e) {
 				errorMsgs.add(e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/g03_product/updateProductByProductId_M.jsp");
+				RequestDispatcher failureView = req.getRequestDispatcher("/g03_product/addShopInfo.jsp");
 				failureView.forward(req, resp);
 			}
 		}
-		
 		
 	}
 
