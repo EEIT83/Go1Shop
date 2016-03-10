@@ -19,7 +19,6 @@ public class ChangeAdPwdServlet extends HttpServlet {
 	private static final long serialVersionUID = -7882234995784010949L;
 	private String pageName = "/gb02_member/ChangeAdPwd.jsp";
 	private String pageStatus = null;
-	private String returnMessage = "";
 
 	@Override
 	public void init() throws ServletException {
@@ -29,31 +28,27 @@ public class ChangeAdPwdServlet extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
-		System.out.println(7777);
-		
+			throws ServletException, IOException {		
 		request.setCharacterEncoding("UTF-8");
 		try {
-
 			pageStatus = request.getParameter("pageStatus");
 			if ("prompt".equals(pageStatus)) {
+				System.out.println("Start");
 			} else if ("Ad_available".equals(pageStatus)) {
 
 				String mail = request.getSession().getAttribute("bmail")
 						.toString();
 				String oldPwd = request.getParameter("oldPwd");
 				String newPwd = request.getParameter("newPwd");
-				
-				this.available(mail, oldPwd, newPwd);
-				response.getWriter().write("<script>charset='UTF-8'; alert('修改成功!');parent.window.location.replace('/Go1Shop/index.jsp');</script>");
+				new AdminService().ChangePwd(mail, oldPwd, newPwd);
+				response.getWriter().write("<script>charset='UTF-8'; alert('修改成功!');location.href('/gb02_member/ChangeAdPwd.jsp');</script>");
 			} else {
 				pageName = "/g01_login/Login.jsp";
 			}		
 			request.getRequestDispatcher(pageName).forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
-			if("2".equals(returnMessage)){
+			if("2".equals(e.getMessage())){
 				response.getWriter().write("<script>charset='UTF-8'; alert('舊密碼錯誤!');parent.window.location.replace('/gb02_member/ChangeAdPwd.jsp');</script>");
 			}
 		}
@@ -68,10 +63,6 @@ public class ChangeAdPwdServlet extends HttpServlet {
 
 	private void available(String mail, String oldPwd, String newPwd)
 			throws Exception {
-		try {
-			new AdminService().ChangePwd(mail, oldPwd, newPwd);
-		} catch (Exception e) {
-			returnMessage = e.getMessage();
-		}
+		
 	}
 }

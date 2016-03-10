@@ -62,7 +62,7 @@
 			<!-- 每頁不同的內容從這裡開始 -->
 
 <%-- <form action="<c:url value="/Admin/ChangePwd.controller"/>?pageStatus=Ad_available" method="post" id="form"> --%>
-<form action="/Go1Shop/Admin/ChangePwd.controller?pageStatus=Ad_available" method="post" id="form">
+<form action="<c:url value="/Admin/ChangePwd.controller"/>?pageStatus=Ad_available" method="post" id="form">
 
 		<label>OldPwd</label> 
 		<input type="text" name="oldPwd" id="oldPwd" />
@@ -83,7 +83,7 @@
 		<br><br>
 		<span>${message }</span>
 	</form>
-<script src="<%=request.getContextPath() %>/_js/ChangPwd.js"></script>
+<!-- <script src="<%=request.getContextPath() %>/_js/ChangPwd.js"></script> -->
 			
 			
 
@@ -103,103 +103,103 @@
 
 
 
-		<script>
+<!-- 		<script> -->
 		
 		
-		//將資料存到陣列中
+<!-- 		//將資料存到陣列中 -->
 
-		//teacher's code
+<!-- 		//teacher's code -->
 
-		var show;
-		var txt;
+<!-- 		var show; -->
+<!-- 		var txt; -->
 
-		var xhr;
-		var datas = null;
-		var keyword = null;
+<!-- 		var xhr; -->
+<!-- 		var datas = null; -->
+<!-- 		var keyword = null; -->
 
-		window.addEventListener("load", init, false);
+<!-- 		window.addEventListener("load", init, false); -->
 		
-		function init() {
+<!-- 		function init() { -->
 
-			txt = document.getElementById("txtSearch");
-			txt.addEventListener("keyup", getData, true);
-			//txt.addEventListener("keyup", getData2, true);
-			show = document.getElementById("div1");
+<!-- 			txt = document.getElementById("txtSearch"); -->
+<!-- 			txt.addEventListener("keyup", getData, true); -->
+<!-- 			//txt.addEventListener("keyup", getData2, true); -->
+<!-- 			show = document.getElementById("div1"); -->
 
-		}
+<!-- 		} -->
 
-		function getData() {
+<!-- 		function getData() { -->
 
-			//my code
+<!-- 			//my code -->
 
-			keyword = document.getElementById("txtSearch").value.trim();
+<!-- 			keyword = document.getElementById("txtSearch").value.trim(); -->
 
-			if (keyword != null && keyword.length != 0) {
-				xhr = new XMLHttpRequest();
+<!-- 			if (keyword != null && keyword.length != 0) { -->
+<!-- 				xhr = new XMLHttpRequest(); -->
 
-				xhr.addEventListener("readystatechange", function() {
+<!-- 				xhr.addEventListener("readystatechange", function() { -->
 
-					if (xhr.readyState == 4) {
-						if (xhr.status == 200) {
+<!-- 					if (xhr.readyState == 4) { -->
+<!-- 						if (xhr.status == 200) { -->
 
-							datas = JSON.parse(xhr.responseText);
-							console.log(datas)
+<!-- 							datas = JSON.parse(xhr.responseText); -->
+<!-- 							console.log(datas) -->
 							
-							//teacher's code
-							if (datas != null) {
+<!-- 							//teacher's code -->
+<!-- 							if (datas != null) { -->
 
-								//show.style.display = "block";
-								if (show.childNodes.length > 0) {
-									show.removeChild(show.childNodes[0]);
-								}
-								var eleDiv = document.createElement("div");
-								eleDiv.className = "list-group";
-								for (var j = 0, max = datas.length; j < max; j++) {
-									var txtBtn = document.createTextNode(datas[j]);
-									var eleBtn = document.createElement("button");
-									eleBtn.className = "list-group-item";
-									eleBtn.setAttribute("type", "button");
-									eleBtn.appendChild(txtBtn);
+<!-- 								//show.style.display = "block"; -->
+<!-- 								if (show.childNodes.length > 0) { -->
+<!-- 									show.removeChild(show.childNodes[0]); -->
+<!-- 								} -->
+<!-- 								var eleDiv = document.createElement("div"); -->
+<!-- 								eleDiv.className = "list-group"; -->
+<!-- 								for (var j = 0, max = datas.length; j < max; j++) { -->
+<!-- 									var txtBtn = document.createTextNode(datas[j]); -->
+<!-- 									var eleBtn = document.createElement("button"); -->
+<!-- 									eleBtn.className = "list-group-item"; -->
+<!-- 									eleBtn.setAttribute("type", "button"); -->
+<!-- 									eleBtn.appendChild(txtBtn); -->
 
-									eleBtn
-											.addEventListener(
-													"click",
-													function() {
-														document.myData.keyword.value = this.firstChild.nodeValue;
-														show.style.display = "none";
-													}, false)
-									eleDiv.appendChild(eleBtn);
-								}
-								show.appendChild(eleDiv);
+<!-- 									eleBtn -->
+<!-- 											.addEventListener( -->
+<!-- 													"click", -->
+<!-- 													function() { -->
+<!-- 														document.myData.keyword.value = this.firstChild.nodeValue; -->
+<!-- 														show.style.display = "none"; -->
+<!-- 													}, false) -->
+<!-- 									eleDiv.appendChild(eleBtn); -->
+<!-- 								} -->
+<!-- 								show.appendChild(eleDiv); -->
 
-							}
+<!-- 							} -->
 
 							
 							
-						}
-					}
-				})
-				xhr.open("get", "JsonSimpleDemo?keyword=" + keyword, true);
-				xhr.send()
-			} else {
-				var div1 = document.getElementById("div1");
-				div1.innerHTML = "";
-			}
+<!-- 						} -->
+<!-- 					} -->
+<!-- 				}) -->
+<!-- 				xhr.open("get", "JsonSimpleDemo?keyword=" + keyword, true); -->
+<!-- 				xhr.send() -->
+<!-- 			} else { -->
+<!-- 				var div1 = document.getElementById("div1"); -->
+<!-- 				div1.innerHTML = ""; -->
+<!-- 			} -->
 
 			
 
-		}
+<!-- 		} -->
 		
 	
 		
-	</script>
+<!-- 	</script> -->
 
 
-	<script>
-$(document).on('ready', function() {
-    $("#input-4").fileinput({showCaption: false});
-});
-</script>
+<!-- 	<script> -->
+<!-- $(document).on('ready', function() { -->
+<!--     $("#input-4").fileinput({showCaption: false}); -->
+<!-- }); -->
+<!-- </script> -->
 
 
 </body>

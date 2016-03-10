@@ -20,7 +20,7 @@ th, td {
   </head>  
   <body>
   <div>  
-  <form method="get">
+  <form action="<c:url value="/Admin/SelectAdmin.controller"/>" method="get">
     <label>Mail</label>
     <input type="text" name="ad_mail" id="ad_mail">
     <input type="button" value="search" id="buttonLoad">
@@ -44,6 +44,6 @@ th, td {
   	 </tfoot>
   	</table>
   	</div>
-<script type="text/javascript" src="../_js/SelectAdmin.js"></script>
+<script type="text/javascript" src="../js/SelectAdmin.js"></script>
   </body>
 </html>
