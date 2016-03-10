@@ -17,7 +17,7 @@ public class ChangeAdPwdServlet extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = -7882234995784010949L;
-	private String pageName = "/g02_member/admin/ChangeAdPwd.jsp";
+	private String pageName = "/gb02_member/ChangeAdPwd.jsp";
 	private String pageStatus = null;
 	private int returnStatus = 0;
 	private String returnMessage = "";
@@ -35,7 +35,6 @@ public class ChangeAdPwdServlet extends HttpServlet {
 		try {
 
 			pageStatus = request.getParameter("pageStatus");
-
 			if ("prompt".equals(pageStatus)) {
 				this.prompt();
 			} else if ("Ad_available".equals(pageStatus)) {

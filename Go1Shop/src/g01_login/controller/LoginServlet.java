@@ -94,20 +94,17 @@ public class LoginServlet extends HttpServlet {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-				if ("1".equals(e.getMessage())) {
-					response.getWriter()
-							.write("<script>alert('無此帳號密碼!'); parent.window.location.replace('/Go1Shop/index.jsp');</script>");
-					return;
-				}
-				if ("2".equals(e.getMessage())) {
-					response.getWriter()
-							.write("<script>alert('你已被停權!');parent.window.location.replace('/Go1Shop/index.jsp');</script>");
-					return;
-				}
-
 				if (accountStatus.equals("login")) {
-					request.getRequestDispatcher("/index.jsp").forward(request,
-							response);
+					if ("1".equals(e.getMessage())) {
+						response.getWriter()
+								.write("<script>alert('無此帳號密碼!'); parent.window.location.replace('/Go1Shop/index.jsp');</script>");
+						return;
+					}
+					if ("2".equals(e.getMessage())) {
+						response.getWriter()
+								.write("<script>alert('你已被停權!');parent.window.location.replace('/Go1Shop/index.jsp');</script>");
+						return;
+					}
 				} else if (accountStatus.equals("backLogin")) {
 					response.sendRedirect("/Go1Shop/backLogin.jsp");
 					// request.getRequestDispatcher().forward(request,

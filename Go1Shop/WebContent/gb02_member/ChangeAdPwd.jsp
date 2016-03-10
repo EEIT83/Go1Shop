@@ -58,56 +58,25 @@
 					 <small></small>
 				</h3>
 			</div>
-			
-			<!-- 每頁不同的內容從這裡開始 -->
 
-			
-	
-
-<%-- 	<form action='<c:url value="/gb04_marketing/insertImg.do" />' method="post" enctype="multipart/form-data"> --%>
-	
-	
-	
-<%-- 	<c:if test="${LoginOK != null}"> --%>
-<!-- 		<h3>管理員登入成功!</h3> -->
-<%-- 	</c:if> --%>
-
-
-	<c:if test="${LoginOK == null}">
-	<form action="<c:url value='/Account/Login.controller'/>?accountStatus=backLogin" method="post" enctype="application/x-www-form-urlencoded" name="userInfo" class="form-horizontal">
-				<div class="form-group">
-					<label for="userName" class="col-md-2 control-label">帳號 :</label>
-					<div class="col-md-10">
-						<input type="text" name="mail" class="form-control" value="${bmail}"
-							id="userName" placeholder="Account">
-						<span id="errorMail">${error.mail}</span>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="password" class="col-md-2 control-label">密碼 :</label>
-					<div class="col-md-10">
-						<input type="password" name="pwd" class="form-control" value="${bpwd}"
-							id="age" placeholder="Password">
-						<span id="errorPwd">${error.pwd }</span>
-					</div>
-				</div>
-				
-				<h5>${error.loginError }</h5>
-				
-				<div class="form-group">
-					<div class="col-md-offset-2 col-md-10">
-						<button type="submit" class="btn btn-default" id="btnClick">送出</button>
-					</div>
-				</div>
+	<form action="<c:url value="/Admin/ChangePwd.controller"/>?pageStatus=Ad_available" method="post" id="form">
+		<label>OldPwd</label> 
+		<input type="text" name="oldPwd" id="oldPwd" />
+		<span id="errorOldPwd"></span>
+		<br> 
+		<label>NewPwd</label> 
+		<input type="text" name="newPwd" id="newPwd" />
+		<span id="errorNewPwd"></span>
+		<br> 
+		<label>CheckNewPwd</label> 
+		<input type="text" name="checkNewPwd" id="checkNewPwd" />
+		<span id="errorCheckNewPwd"></span>
+		<br>
+		<input type="button" value="Submit" id="submit">
+		<br><br>
+		<span>${message }</span>
 	</form>
-	</c:if>
-
-
-
-			<div id="div1"></div>
-				
-
-			<!-- 每頁不同的內容到這裡結束 -->
+<script src="<%=request.getContextPath() %>/_js/ChangPwd.js"></script>
 		</div>
 
 		
