@@ -24,18 +24,19 @@ public class OrdDetailDAO {
 	}
 	
 	
-	private Session session = HibernateUtil.getSessionFactory().openSession();
+//	private Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 	
 	public static void main(String[] args) {
 		
-		/*
+		
 		
 		OrdDetailDAO service = new OrdDetailDAO();
-		service.session.beginTransaction();
+//		service.session.beginTransaction();
+		HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
 		
 		List<OrdDetailBean> list = service.select(10);
 		System.out.println(list);
-		 */
+		 
 
 		/*
 		OrdDetailBean detBean = new OrdDetailBean();
@@ -47,9 +48,8 @@ public class OrdDetailDAO {
 		detBean.setCount(10);
 		detBean.setSubtotal(10000);
 		service.insert(detBean);
-		service.session.getTransaction().commit();
-		service.session.close();
 		 */
+		HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
 	}
 	
 	public void insert(OrdDetailBean detalBean){
@@ -61,10 +61,8 @@ public class OrdDetailDAO {
 	
 	public List<OrdDetailBean> select(int memId){
 		
-		Query query = getSession().createQuery("select * from OrdDetailBean where mem_id =" + memId);
+		List<OrdDetailBean> list = getSession().createQuery("from OrdDetailBean r where r.mem_id = :mId").setParameter("mId", memId).list();
 		//Query query = getSession().createQuery("select * from OrdDetailBean");
-		
-		List<OrdDetailBean> list = query.list();
 		
 		return list;
 	}
