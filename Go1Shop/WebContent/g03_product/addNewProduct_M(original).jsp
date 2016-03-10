@@ -1,18 +1,11 @@
-<%@page import="com.sun.xml.internal.bind.v2.schemagen.xmlschema.Import"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+	pageEncoding="UTF-8"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-<link href="<%=request.getContextPath()%>/_css/page.css" rel="stylesheet">
-<!-- Meng---------------------------------------------------------------------------->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width initial-scale =1">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/_css/normalize.css">
@@ -22,16 +15,6 @@
 <script src="<%=request.getContextPath()%>/_js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-function reSize(){
-　　parent.document.getElementById("newProFrame").height=document.body.scrollHeight;
-} 
-window.onload=reSize;
-
-
-
-
-
-
 $(document).ready(function() {
 	$('#img').change(function(event){
     	var input = event.target;
@@ -45,70 +28,13 @@ $(document).ready(function() {
     });//end of file change
 })
 </script>
-<!-- Meng---------------------------------------------------------------------------->
-<title>addNewProduct</title>
-<style>
-#div_out {    
-  
-    display:inline-block;
- 	float:left;
-    margin-left: 10px;
-    margin-top: 10px; 
- } 
-#div_out:nth-child(3n+1){
- clear: both;
- }
-/* ------------------------------------------------ */
-</style>
 
-
+<title>Insert title here</title>
 </head>
 <body>
-<div style="width: 100%;height: 100%;">
-<!-- 上邊	--------------------------------------------------------------------------------- -->
-	<div style="margin-bottom:0;">
-	<jsp:include page="/tm/top.jsp" />
-	</div>
-<!-- 	<div style="width:100%;height:50%;margin:5% 5% 5% 5%;border:1px solid red; " > -->
-	<div style="width:100%;height:100%;" >
-		<iframe src="<%=request.getContextPath()%>/gb04_marketing/ad.jsp" scrolling="no" frameborder="0" height="100%" id="mainFrame" width="100%" onload='IFrameReSize("mainFrame");IFrameReSizeWidth("mainFrame");'></iframe>
-	</div>
-	<script type="text/javascript">
 
-		//iframe高度自适应
-		function IFrameReSize(iframename) {
-			var pTar = document.getElementById(iframename);
-			if (pTar) { //ff
-				if (pTar.contentDocument && pTar.contentDocument.body.offsetHeight) {
-					pTar.height = pTar.contentDocument.body.offsetHeight;
-				} //ie
-				else if (pTar.Document && pTar.Document.body.scrollHeight) {
-				pTar.height = pTar.Document.body.scrollHeight;
-				}
-			}
-		}
-		//iframe宽度自适应
-		function IFrameReSizeWidth(iframename) {
-			var pTar = document.getElementById(iframename);
-			if (pTar) { //ff
-				if (pTar.contentDocument && pTar.contentDocument.body.offsetWidth) {
-					pTar.width = pTar.contentDocument.body.offsetWidth;
-				} //ie
-				else if (pTar.Document && pTar.Document.body.scrollWidth) {
-			pTar.width = pTar.Document.body.scrollWidth;
-				}
-			}
-		}
-	</script>
-<!-- 左邊	--------------------------------------------------------------------------------- -->
-	<div id="left" style="float: left;margin-left:2%;width: 15%;">
-		<jsp:include page="/tm/left.jsp" />
-	</div>
-<!-- 右邊	----------------------------------------------------------------------------------->
-<br>
-<br>
 
-<div class="container-fluid">
+	<div class="container-fluid">
 		
 		<div class="row">
 			<div class="col-md-offset-2">
@@ -192,14 +118,6 @@ $(document).ready(function() {
 			</div>
 		</div>
 	</div>
-	
-<!-- 下邊	--------------------------------------------------------------------------------- -->	
-	<div id="bottom" style="clear:left;width:100%;position:relative;bottom:0;left:0;">
-		<jsp:include page="/tm/bottom.jsp" />	
-	</div>
-<!-------------------------------------------------------------------------------------- -->
-</div>
 
 </body>
-
 </html>
