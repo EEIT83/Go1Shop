@@ -1,5 +1,6 @@
 package g05_customer.checkout.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import g01_login.controller.MemberBean;
@@ -65,12 +66,30 @@ public class CheckDetailService {
 		
 		carDAO.delete(memBean.getMem_id());
 
+	}
+	//select OrderDetail by mem_id-----------------------------------------------------------
+	
+	public List<OrdDetailBean> select(int memId){
 		
-		
-		
-
-
-		
+		OrdDetailDAO oddao = new OrdDetailDAO();
+		return oddao.select(memId);
 		
 	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
