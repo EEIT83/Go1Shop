@@ -32,14 +32,14 @@ public class OpenSessionInViewFilter implements Filter {
 		HttpServletResponse response = (HttpServletResponse) resp;
 		try {
 			HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
-			//System.out.println("11111");
+			System.out.println("11111");
 			chain.doFilter(request, response);
-			//System.out.println("22222");
+			System.out.println("22222");
 			HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
-			//System.out.println("33333");
+			System.out.println("33333");
 		} catch (HibernateException e) {
 			e.printStackTrace();
-			//System.out.println("44444");
+			System.out.println("44444");
 			HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().rollback();
 			chain.doFilter(request, response);
 		}
