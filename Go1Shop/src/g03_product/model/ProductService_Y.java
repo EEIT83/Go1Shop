@@ -53,6 +53,9 @@ public class ProductService_Y {
 		return result;// 把結果資料傳給servlet
 	}
 
+	
+
+	
 	public static void main(String[] args) {
 		ProductService_Y service = new ProductService_Y();
 		ProductBean_Y beantest = new ProductBean_Y();

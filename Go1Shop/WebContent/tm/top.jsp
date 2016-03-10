@@ -19,7 +19,7 @@
 			<div class="address-bar" style="color:black;text-shadow:5px 5px 5px #5B5B5B;font-size:8px;">Enjoy Your Life&nbsp;●&nbsp;Chase Love．Brave Dream</div>
 			</div>
 			<ul class="nav navbar-nav"  >
-				<li><a href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=F&change=true' />">WOMEN</a></li>
+				<li><a href="<c:url value="/g03_product/ProductGenderServlet.controller?gender=F&change=true"/>">WOMEN</a></li>
 				<li><a href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=M&change=true' />">MEN</a></li>
 				<li><a href="<%=request.getContextPath()%>/p_KIDS/K_index.jsp">KIDS</a></li>
 				<li><a href="<%=request.getContextPath()%>/p_SOPRTS/S_index.jsp">SOPRTS</a></li>

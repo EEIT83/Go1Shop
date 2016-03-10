@@ -16,6 +16,7 @@ import javax.sql.DataSource;
 
 import g03_product.model.ProductBean_Y;
 import g03_product.model.ProductDAOI_Y;
+import g03_product.model.StoreVO_M;
 
 public class ProductDAO_Y implements ProductDAOI_Y {
 	// private static final String URL =
@@ -144,6 +145,43 @@ public class ProductDAO_Y implements ProductDAOI_Y {
 		}
 		return result;// 資料結果傳回service
 	}
+	
+	private static final String GET_ONE = "select * from store where mem_id = ?";
+	@Override
+	public StoreVO_M getOneByMemId(int memId) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		StoreVO_M storeVO = null;
+		try {		
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(GET_ONE);
+
+			pstmt.setInt(1, memId);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				storeVO = new StoreVO_M();
+				storeVO.setStoreId(rs.getInt(1));				
+				storeVO.setStoreName(rs.getString(2));
+				storeVO.setStoreAddress(rs.getString(3));	
+				storeVO.setMemId(rs.getInt(4));
+				storeVO.setNote(rs.getString(5));
+			}
+		} catch (SQLException se) {
+			se.printStackTrace();
+		} finally {
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException se) {
+					se.printStackTrace();
+				}
+			}
+		}
+		return storeVO;
+	}
+
+
 
 	public static void main(String[] args) {
 		ProductDAOI_Y dao = new ProductDAO_Y();
