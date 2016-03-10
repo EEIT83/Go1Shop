@@ -11,9 +11,9 @@ public class StoreService_M {
 		return dao.insert(storeVO);
 	}
 	public int update(StoreVO_M storeVO){
-		return 0;
+		return dao.update(storeVO);
 	}
 	public StoreVO_M getOneByMemId(int memId){
-		return null;
+		return dao.getOneByMemId(memId);
 	}
 }

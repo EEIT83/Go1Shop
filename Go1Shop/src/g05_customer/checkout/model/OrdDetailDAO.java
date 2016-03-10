@@ -1,5 +1,8 @@
 package g05_customer.checkout.model;
 
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -21,11 +24,21 @@ public class OrdDetailDAO {
 	}
 	
 	
-	private Session session = HibernateUtil.getSessionFactory().openSession();
+//	private Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+	
 	public static void main(String[] args) {
 		
+		
+		
 		OrdDetailDAO service = new OrdDetailDAO();
-		service.session.beginTransaction();
+//		service.session.beginTransaction();
+		HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
+		
+		List<OrdDetailBean> list = service.select(10);
+		System.out.println(list);
+		 
+
+		/*
 		OrdDetailBean detBean = new OrdDetailBean();
 		detBean.setMem_id(10);
 		detBean.setSeller_id(11);
@@ -34,11 +47,9 @@ public class OrdDetailDAO {
 		detBean.setPrice(1000);
 		detBean.setCount(10);
 		detBean.setSubtotal(10000);
-
 		service.insert(detBean);
-		service.session.getTransaction().commit();
-		service.session.close();
-
+		 */
+		HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
 	}
 	
 	public void insert(OrdDetailBean detalBean){
@@ -48,7 +59,30 @@ public class OrdDetailDAO {
 		
 	}
 	
+	public List<OrdDetailBean> select(int memId){
+		
+		List<OrdDetailBean> list = getSession().createQuery("from OrdDetailBean r where r.mem_id = :mId").setParameter("mId", memId).list();
+		//Query query = getSession().createQuery("select * from OrdDetailBean");
+		
+		return list;
+	}
+	
 	
 	
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

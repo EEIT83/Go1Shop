@@ -6,7 +6,7 @@
 
 	<package name="aaa" namespace="/" extends="struts-default" >
 		<action name="checkDetail" class="g05_customer.checkout.controller.CheckDetailServlet">
-			<result name="xxx">/g05_customer/checkout/success.jsp</result>
+			<result name="xxx">/index.jsp</result>
 			<result name="input" >/g05_customer/checkout/checkDetail.jsp</result>
 		</action>
 	</package>

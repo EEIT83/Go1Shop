@@ -14,7 +14,7 @@
 <!-- 最新編譯和最佳化的 JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script src="<%=request.getContextPath()%>/_js/jQuery-TWzipcode-master/jQuery-TWzipcode-master/jquery.twzipcode.js"></script>
-<%-- <link href="<%=request.getContextPath()%>/_css/page.css" rel="stylesheet"> --%>
+<link href="<%=request.getContextPath()%>/_css/page.css" rel="stylesheet">
 
 
 
@@ -86,21 +86,22 @@
 <div id="all">
 	<div id="tb">
 		<table class="table table-striped">
-			<tr>
-				<th>product</th>
-				<th>price</th>
-				<th>count</th>
-				<th>subtotal</th>
-			</tr>
-			<c:forEach var="cars" items="${shopcar.car}">
 				<tr>
-					<td>${cars.value.prod_Name}</td>
-					<td>${cars.value.price}</td>
-					<td>${cars.value.count}</td>
-					<td>${cars.value.subtotal}</td>
+					<th>product</th>
+					<th>price</th>
+					<th>count</th>
+					<th>subtotal</th>
 				</tr>
-			</c:forEach>
-		</table>
+				<c:forEach var="cars" items="${shopcar.car}">
+		
+					<tr>
+						<td>${cars.value.prod_Name}</td>
+						<td>${cars.value.price}</td>
+						<td>${cars.value.count}</td>
+						<td>${cars.value.subtotal}</td>
+					</tr>
+				</c:forEach>
+			</table>
 	</div>
 	<div class="form">
 		<div class="col-fixed">
@@ -172,25 +173,59 @@
 					${errors.payment} 
 				</div>
 				</fieldset>
-				<div id = "car"></div>
 				<br>
 				<br>
 					<div id = "bt">
 						<button id="previous" class="btn btn-primary" >上一頁</button>
 						<button id="button"  class="btn btn-primary" >送出</button>
-						<input type="button" id="sub" value="一鍵輸入" class="btn btn-primary" style="width: auto" >
 					</div>
 			</form>
-			</div>
+			<div style="width: 100%;">
+						<div class="row">
+							<div class="col-md-1-5">信用卡卡號：<input type="text" style="" class="form-control"></div>
+							<div class="col-lg-3">-<input type="text" style="" class="form-control"></div>
+							-<input type="text" style="width: 60px;" class="form-control">
+							-<input type="text" style="width: 60px;" class="form-control">
+						</div>
+					<br>
+					有效日期：<select>
+								<option>01</option>	
+								<option>02</option>	
+								<option>03</option>	
+								<option>04</option>	
+								<option>05</option>	
+								<option>06</option>	
+								<option>07</option>	
+								<option>08</option>	
+								<option>09</option>	
+								<option>10</option>
+								<option>11</option>
+								<option>12</option>	
+						   </select>
+					月
+							<select>
+								<option>2015</option>	
+								<option>2016</option>	
+								<option>2017</option>	
+								<option>2018</option>	
+								<option>2019</option>	
+								<option>2020</option>	
+								<option>2021</option>	
+								<option>2022</option>	
+								<option>2023</option>	
+								<option>2024</option>
+								<option>2025</option>
+								<option>2026</option>
+								<option>2027</option>
+						   </select>
+					年
+					<br>
+					背面後三碼：<input type="text" style="width: 60px;" class="form-control">
+					</div>
+				</div>
 		</div>
 	</div>
 </div>
-</div>
-<!-- 下邊	--------------------------------------------------------------------------------- -->	
-	<div id="bottom" style="clear:left;width:100%;position:fixed;bottom:0;left:0;">
-		<jsp:include page="/tm/bottom.jsp" />	
-	</div>
-<!-------------------------------------------------------------------------------------- -->
 	<SCRIPT>
 		$('#twzipcode').twzipcode({
 			// 依序套用至縣市、鄉鎮市區及郵遞區號框
@@ -221,23 +256,9 @@
 			
 			document.getElementById("button").onclick =check;
 			document.getElementById("previous").onclick = previous;
-			document.getElementById("sub").onclick = sub;
+			
 			
 		}
-		
-		$(function(){
-			$('#addressee').val('丁小雨');
-			$('#address').val('復興北路390號');
-			$('#phone').val('0912345678');
-			$('#sender').val('派大星');
-			$('#sender_address').val('中正路100號');
-			$('#sender_phone').val('0987654321');
-			check();
-		})
-		
-		
-		
-		
 		
 		var county;
 		var district;
@@ -298,38 +319,9 @@
 					$('#radio').after("<span class='glyphicon glyphicon-ok form-control-feedback'></span>");
 					document.getElementById("radio").parentNode.className="form-group has-success has-feedback";
 				}
-				if(tag==1){
-					document.getElementById("car").innerHTML="<iframe src='<c:url value='/g05_customer/checkout/testcar.jsp' />' scrolling='no' frameborder='0' height='100%' id='carFrame' width='100%' onload='IFrameReSize('carFrame');IFrameReSizeWidth('carFrame');'></iframe>";
-				}
-		}
-		//iframe高度自适应
-		function IFrameReSize(iframename) {
-			var pTar = document.getElementById(iframename);
-			if (pTar) { //ff
-				if (pTar.contentDocument && pTar.contentDocument.body.offsetHeight) {
-					pTar.height = pTar.contentDocument.body.offsetHeight;
-				} //ie
-				else if (pTar.Document && pTar.Document.body.scrollHeight) {
-				pTar.height = pTar.Document.body.scrollHeight;
-				}
-			}
-		}
-		//iframe宽度自适应
-		function IFrameReSizeWidth(iframename) {
-			var pTar = document.getElementById(iframename);
-			if (pTar) { //ff
-				if (pTar.contentDocument && pTar.contentDocument.body.offsetWidth) {
-					pTar.width = pTar.contentDocument.body.offsetWidth;
-				} //ie
-				else if (pTar.Document && pTar.Document.body.scrollWidth) {
-			pTar.width = pTar.Document.body.scrollWidth;
-				}
-			}
+				//alert(tag);
 		}
 		
-		
-		
-
 		function ok(){
 			if (tag == 0)
 				str += "貨到付款\n";
@@ -463,7 +455,7 @@
 		
 		function checkAddressSen(){
 			var theAddress=document.getElementById("sender_address").value;
-			var re=/^[\u4E00-\u9FFF]+\d+$/;
+			var re=/^[\u4E00-\u9FFF]{2,}$/;
 			console.log("district=" + district_sen + "  county=" + county_sen +"  zipcode=" + zipcode_sen + +"theAddress=" + theAddress);
 			if(re.test(theAddress) & district_sen != null & county_sen != null & zipcode_sen != null){
 				//alert("成功");
@@ -482,6 +474,6 @@
 			
 		}
 	</SCRIPT>
-
+	</div>
 </body>
 </html>

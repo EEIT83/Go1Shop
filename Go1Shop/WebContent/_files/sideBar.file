@@ -4,7 +4,7 @@
 	<div class="col-md-12  affix  clearfix" data-spy="affix">
 		<div class="col-md-2">
 			<ul class="nav text-center">
-				<li><a style='higth=10px;' href="<%=request.getContextPath()%>/ProductServlet.do?action=getOneByMemId&memId=${LoginOK.mem_id}" class="btn btn-primary">商品查詢 </a></li>
+				<li><a style='higth=10px;' href="<%=request.getContextPath()%>/g03_product/ProductServlet.con?action=getOneByMemId&memId=${LoginOK.mem_id}" class="btn btn-primary">商品查詢 </a></li>
 				<li><a style='higth=10px;' href="<%=request.getContextPath()%>/g03_product/addNewProduct_M.jsp" class="btn btn-primary">新增商品</a></li>
 				<c:choose>
 					<c:when  test="${empty StoreVO}">

@@ -7,5 +7,5 @@ public interface AdminFace {
 	public AdminBean selectById(String mail)throws Exception;
 	public List<AdminBean> selectAll()throws Exception;
 	public int delete(String mail)throws Exception;
-	public void update(AdminBean AdVo)throws Exception;
+	public void update(String mail, String pwd)throws Exception;
 }

@@ -1,6 +1,8 @@
-package gb01_login.controller;
+package gb02_member.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
 
+import gb01_login.controller.AdminBean;
 import gb01_login.model.AdminDAO;
 
 @WebServlet(
@@ -46,7 +49,7 @@ public class AdminRegisterServlet extends HttpServlet {
 					returnStatus=1;
 				}
 			} else {
-				response.sendRedirect("/g01_login/Login.jsp");
+				response.sendRedirect("/account/Login.jsp");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -55,7 +58,7 @@ public class AdminRegisterServlet extends HttpServlet {
 		}
 		request.setAttribute("returnStatus", returnStatus);
 		request.setAttribute("returnMessage", returnMessage);
-		request.getRequestDispatcher("/gb01_login/Register.jsp").forward(request, response);
+		request.getRequestDispatcher("/gb02_member/Register.jsp").forward(request, response);
 	}
 
 	@Override

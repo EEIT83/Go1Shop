@@ -23,9 +23,9 @@ public class AdminService {
 	public void ChangePwd(String mail,String oldPwd,String newPwd) throws Exception{
 		AdminBean bean = dao.selectById(mail);
 		if(oldPwd.equals(bean.getAd_pwd())){
-			bean.setAd_pwd(newPwd);
+			dao.update(mail,newPwd);
 		}else {
-			throw new Exception("舊密碼錯誤");
+			throw new Exception("2");
 		}
 
 	}

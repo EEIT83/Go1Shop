@@ -2,6 +2,7 @@ package g03_product.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import g99_Connection.ConnDB;
@@ -47,14 +48,66 @@ public class StoreDAOImpl implements StoreDAO_M {
 
 	@Override
 	public int update(StoreVO_M storeVO) {
-		// TODO Auto-generated method stub
-		return 0;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		int updateCount = 0;
+		try {			
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(UPDATE);
+			
+			pstmt.setString(1, storeVO.getStoreName());
+			pstmt.setString(2, storeVO.getStoreAddress());
+			pstmt.setString(3, storeVO.getNote());
+			pstmt.setInt(4, storeVO.getMemId());
+			
+			updateCount = pstmt.executeUpdate();
+		} catch (SQLException se) {
+			se.printStackTrace();
+		} finally {
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException se) {
+					se.printStackTrace();
+				}
+			}
+		}
+		return updateCount;
 	}
 
 	@Override
 	public StoreVO_M getOneByMemId(int memId) {
-		// TODO Auto-generated method stub
-		return null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		StoreVO_M storeVO = null;
+		try {		
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(GET_ONE);
+
+			pstmt.setInt(1, memId);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				storeVO = new StoreVO_M();
+				storeVO.setStoreId(rs.getInt(1));				
+				storeVO.setStoreName(rs.getString(2));
+				storeVO.setStoreAddress(rs.getString(3));	
+				storeVO.setMemId(rs.getInt(4));
+				storeVO.setNote(rs.getString(5));
+			}
+		} catch (SQLException se) {
+			se.printStackTrace();
+		} finally {
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException se) {
+					se.printStackTrace();
+				}
+			}
+		}
+		return storeVO;
 	}
 
 }

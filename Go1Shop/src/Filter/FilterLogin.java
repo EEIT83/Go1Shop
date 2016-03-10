@@ -77,7 +77,7 @@ public class FilterLogin implements Filter {
 	public void init(FilterConfig fConfig) throws ServletException {				
 		Enumeration<String> e = fConfig.getInitParameterNames();
 		while (e.hasMoreElements()) {
-			System.out.println("123");
+			//System.out.println("123");
 			String name = e.nextElement();
 			//System.out.println(fConfig.getInitParameter(name));
 			url.add(fConfig.getInitParameter(name));

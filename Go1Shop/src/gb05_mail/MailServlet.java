@@ -39,13 +39,18 @@ public class MailServlet extends HttpServlet {
 			MemberDAO dao = new MemberDAO();
 			member = dao.selectId(addressee);
 			
+			//System.out.println(member.getMail());
+			
 		} catch (Exception e) {
 			
 			e.printStackTrace();
 		}
 		MailDAO mdao = new MailDAO();
 		MemberBean mb = (MemberBean)req.getSession().getAttribute("LoginOK");
-		int i = mdao.insert(mb.getMem_id(),member.getMem_id() , title, content);
+		
+		//mdao.insert(mb.getMail(), "kkk" , title, content);
+		mdao.insert(mb.getMail(),member.getMail() , title, content);
+		
 		//System.out.println(i);
 		//show view
 		//String location = "/GoEshop/gb05_mail/sendSuccess.jsp";

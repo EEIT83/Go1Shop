@@ -1,43 +1,112 @@
-<%@page import="org.apache.commons.lang3.StringUtils"%>
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
+
 <html>
-  <head>
-    <title>Modify</title>
-  </head>
-  
-  <body>
-  <form action="<c:url value="/Account/Register.controller" />" method="post">
-   <label>Mail</label>
-   <input type="text" name="mail" />
-   <span id="errorMail">${error.mail }</span>
-   <br>
-   <label>Password</label>
-   <input type="text" name="pwd" />  
-   <span id="errorPwd">${error.pwd }</span> 
-   <br>
-   <label>Name</label>
-   <input type="text" name="mem_name" id="mem_name" />
-   <span id="errorMem_name">${error.mem_name }</span>
-   <br>
-   <label>gender</label>
-   <input type="radio" name="gender" value="1"> Male
-   <input type="radio" name="gender" value="2"> Female
-   <br>
-   <label>Identification</label>
-   <input type="text" name="identification" id="identification" />
-   <span id="errorIdentification">${error.identification }</span>
-   <br>
-   <label>Birthday</label>
-   <input type="text" name="bdate" id="bdate" />
-   <span id="errorBdate">${error.bdate }</span>
-   <br>
-   <input type="submit" name="pageStatus" value="save">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 
-   </form>
- <!--<script src="../js/Modify.js"></script>  -->
 
-  </body>
+<script src="<%=request.getContextPath()%>/_js/jquery-1.12.0.min.js"></script>
+<!-- 選擇性佈景主題 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+<!-- 最新編譯和最佳化的 JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+
+
+<link rel="stylesheet" href="../_css/bootstrap.min.css">
+<link rel="stylesheet" href="../_css/justified-nav.css">
+
+</head>
+<body>
+	<div class="container">
+		<div class="masthead">
+			<div>
+			<span class="text-muted"; style="font-size:30px">Go1Shop後台管理系統</sapn>
+			<span style="margin-left:68%;font-size:15px;"><c:if test="${bLoginOK != null}">
+				${mail}<a href="/Go1Shop/backLogout.do">登出</a>
+			</c:if>
+			</span>
+		</div>	
+			
+			<nav>
+				<ul class="nav nav-justified">
+					<li><a href="../backLogin.jsp">管理員</a></li>
+					<li><a href="/Go1Shop/gb04_marketing/backMarketing.jsp">廣告管理</a></li>
+ 					<li><a href="/Go1Shop/g07_msgboard/comments.do?manage=1">留言板管理</a></li>
+					<li><a href="/Go1Shop/gb02_member/backMember.jsp">會員權限管理</a></li>
+					<li><a href="#">修改密碼</a></li>
+					<c:if test="${bmail=='admin@gmail.com' }">
+						<li><a href="#">新增管理者</a></li>
+						<li><a href="/Go1Shop/gb02_member/SelectAdmin.jsp">查詢管理者</a></li>
+					</c:if>			
+					
+<!-- 					<li><a href="AutoComplete.html">系統公告</a></li> -->
+<!-- 					<li><a href="#">優惠設定</a></li> -->
+				</ul>
+			</nav>
+		</div>
+
+		<!-- Jumbotron -->
+		<div class="jumbotron">
+			<div class="page-header">
+				<h3>
+					新增管理者
+					 <small></small>
+				</h3>
+			</div>
+			
+			<!-- 每頁不同的內容從這裡開始 -->
+			
+	<form action="<c:url value="/Admin/Register.controller" />?pageStatus=insert" method="post" id="myForm">
+		<label>Mail</label> 
+		<input type="text" name="ad_mail" id="ad_mail" value="${param.ad_mail }"> 
+			<br> 
+		<input type="submit" value="submit" id="submit" ><span id="successMessage"></span>
+	</form>
+	
+			<!-- 每頁不同的內容到這裡結束 -->
+		</div>
+
+		
+
+		<!-- Site footer -->
+		<footer class="footer" >
+			<p>Go1Shopping &copy; EEIT83 2016</p>
+		</footer>
+
+	</div>
+	
+<script type="text/javascript">		
+<%int status = (request.getAttribute("returnStatus")) == null? 0: Integer.parseInt(request.getAttribute("returnStatus").toString());
+//String returnMessage = (request.getAttribute("returnMessage")) == null?null: request.getAttribute("returnMessage").toString();
+	if (status == -1) {%>
+		alert("${returnMessage}");
+<%}else if(status==1){%>
+		 document.getElementById("ad_mail").removeAttribute("value");
+		document.getElementById("successMessage").innerHTML="${returnMessage}";
+		
+<%}%>
+var myForm =  document.getElementById("myForm");
+document.getElementById("submit").addEventListener("click", function(){
+	var regExp = /^[^@^\s]+@[^\.@^\s]+(\.[^\.@^\s]+)+$/;
+	var mail = document.getElementById("ad_mail");
+	if(mail.value!=""){
+		if (regExp.test(mail.value)){
+			 myForm.submit();
+		}else{
+			alert("電子郵件不正確");
+		}
+	}else{
+			alert("不可以空白");
+	}
+});
+</script>
+</body>
 </html>
-

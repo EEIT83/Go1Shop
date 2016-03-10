@@ -51,7 +51,7 @@
 							<label for="note">商店描述</label> 
 							<textarea class="form-control" rows="3" name="note" placeholder="商店描述"></textarea>
 						</div>
-						<input type="hidden" name="action" value="insert" /><br />
+						<input type="hidden" name="action" value="${(empty StoreVO) ? "insert":"update"}" /><br />
 						<input type="hidden" name="memId" value="${LoginOK.mem_id}" /><br />
 						<button type="submit" class="btn btn-default">Submit</button>
 					</form>

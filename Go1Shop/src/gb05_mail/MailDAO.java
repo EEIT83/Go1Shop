@@ -22,7 +22,25 @@ public class MailDAO {
 //		}
 //	}
 	
-	private final String SELECT="select * from mail where mail = ?";
+	
+	private final String DELETE="delete from mail where mailId=?";
+	public void delete(int mailId){
+		
+		try (Connection conn = ds.getConnection();
+				PreparedStatement ps = conn.prepareStatement(DELETE);)
+		{
+			ps.setInt(1, mailId);
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return;
+	}
+	
+	
+	private final String SELECT="select * from mail where address_memId = ?";
 	public List<MailVO> select(String mail){
 		List<MailVO> list = new ArrayList<>();
 		ResultSet rs=null;
@@ -59,18 +77,19 @@ public class MailDAO {
 		return list;
 	}
 	
-	private final String INSERT="insert into mail values(?,?,?)";
-	public int insert(int sender,int addressee, String title, String content){
+	private final String INSERT="insert into mail(sender_memId,address_memId,title,article) values(?,?,?,?)";
+	public int insert(String sender,String addressee, String title, String content){
 		int i=0;
 		try (
 				Connection conn = ds.getConnection();
 				PreparedStatement ps = conn.prepareStatement(INSERT);
 				){
 
-			ps.setInt(1, sender);
-			ps.setInt(2, addressee);
+			ps.setString(1, sender);
+			ps.setString(2, addressee);
 			ps.setString(3, title);
 			ps.setString(4, content);
+			
 			i=ps.executeUpdate();
 			
 		} catch (SQLException e) {

@@ -30,7 +30,7 @@
 		<div class="masthead">
 			<div>
 			<span class="text-muted"; style="font-size:30px">Go1Shop後台管理系統</sapn>
-			<span style="margin-left:65%;font-size:15px;"><c:if test="${LoginOK != null}">
+			<span style="margin-left:68%;font-size:15px;"><c:if test="${bLoginOK != null}">
 				${mail}<a href="/Go1Shop/backLogout.do">登出</a>
 			</c:if>
 			</span>
@@ -42,6 +42,11 @@
 					<li><a href="/Go1Shop/gb04_marketing/backMarketing.jsp">廣告管理</a></li>
  					<li><a href="/Go1Shop/g07_msgboard/comments.do?manage=1">留言板管理</a></li>
 					<li class="active"><a href="#">會員權限管理</a></li>
+					<li><a href="/Go1Shop/gb02_member/ChangeAdPwd.jsp">修改密碼</a></li>
+					<c:if test="${bmail=='admin@gmail.com' }">
+						<li><a href="/Go1Shop/gb02_member/Register.jsp">新增管理者</a></li>
+						<li><a href="/Go1Shop/gb02_member/SelectAdmin.jsp">查詢管理者</a></li>
+					</c:if>			
 <!-- 					<li><a href="AutoComplete.html">系統公告</a></li> -->
 <!-- 					<li><a href="#">優惠設定</a></li> -->
 				</ul>
