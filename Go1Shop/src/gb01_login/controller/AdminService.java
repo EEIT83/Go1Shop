@@ -25,7 +25,7 @@ public class AdminService {
 		if(oldPwd.equals(bean.getAd_pwd())){
 			bean.setAd_pwd(newPwd);
 		}else {
-			throw new Exception("舊密碼錯誤");
+			throw new Exception("2");
 		}
 
 	}

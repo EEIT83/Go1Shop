@@ -20,31 +20,31 @@
 
 
 
-<link rel="stylesheet" href="_css/bootstrap.min.css">
-<link rel="stylesheet" href="_css/justified-nav.css">
+<link rel="stylesheet" href="../_css/bootstrap.min.css">
+<link rel="stylesheet" href="../_css/justified-nav.css">
 
 </head>
 <body>
 	<div class="container">
-		
 		<div class="masthead">
-			
-		<div>
+			<div>
 			<span class="text-muted"; style="font-size:30px">Go1Shop後台管理系統</sapn>
-			<span style="margin-left:65%;font-size:15px;"><c:if test="${LoginOK != null}">
+			<span style="margin-left:68%;font-size:15px;"><c:if test="${bLoginOK != null}">
 				${mail}<a href="/Go1Shop/backLogout.do">登出</a>
 			</c:if>
 			</span>
 		</div>	
 			
-			
 			<nav>
 				<ul class="nav nav-justified">
-					<li class="active"><a href="#">管理員</a></li>
+					<li><a href="../backLogin.jsp">管理員</a></li>
 					<li><a href="/Go1Shop/gb04_marketing/backMarketing.jsp">廣告管理</a></li>
  					<li><a href="/Go1Shop/g07_msgboard/comments.do?manage=1">留言板管理</a></li>
 					<li><a href="/Go1Shop/gb02_member/backMember.jsp">會員權限管理</a></li>
-					<li><a href="<c:url value="/Admin/ChangePwd.controller"/>?pageStatus=prompt">修改密碼</a></li>
+					<li class="active"><a href="#">修改密碼</a></li>
+					
+<!-- 					<li><a href="AutoComplete.html">系統公告</a></li> -->
+<!-- 					<li><a href="#">優惠設定</a></li> -->
 				</ul>
 			</nav>
 		</div>
@@ -54,12 +54,16 @@
 		<div class="jumbotron">
 			<div class="page-header">
 				<h3>
-					
+					管理員更改密碼
 					 <small></small>
 				</h3>
 			</div>
+			
+			<!-- 每頁不同的內容從這裡開始 -->
 
-	<form action="<c:url value="/Admin/ChangePwd.controller"/>?pageStatus=Ad_available" method="post" id="form">
+<%-- <form action="<c:url value="/Admin/ChangePwd.controller"/>?pageStatus=Ad_available" method="post" id="form"> --%>
+<form action="/Go1Shop/Admin/ChangePwd.controller?pageStatus=Ad_available" method="post" id="form">
+
 		<label>OldPwd</label> 
 		<input type="text" name="oldPwd" id="oldPwd" />
 		<span id="errorOldPwd"></span>
@@ -72,11 +76,18 @@
 		<input type="text" name="checkNewPwd" id="checkNewPwd" />
 		<span id="errorCheckNewPwd"></span>
 		<br>
-		<input type="button" value="Submit" id="submit">
+		
+<!-- 		<input type="button" value="Submit" id="submit"> -->
+		<input type="submit" id="submit" >
+		
 		<br><br>
 		<span>${message }</span>
 	</form>
 <script src="<%=request.getContextPath() %>/_js/ChangPwd.js"></script>
+			
+			
+
+			<!-- 每頁不同的內容到這裡結束 -->
 		</div>
 
 		
@@ -93,6 +104,7 @@
 
 
 		<script>
+		
 		
 		//將資料存到陣列中
 
