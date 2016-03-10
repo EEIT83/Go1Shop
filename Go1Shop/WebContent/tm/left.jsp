@@ -72,7 +72,7 @@
 				<i class="glyphicon glyphicon-triangle-right leftNavIcon"></i>上衣專區
 		</a>
 			<ul>
-				<li><a href="#" style="width: 100%">短袖</a></li>
+				<li><a href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=M&part=T-Shirt'/>" style="width: 100%">T-Shirt</a></li>
 				<li><a href="#">長袖</a></li>
 				<li><a href="#">背心</a></li>
 				<li><a id="d"

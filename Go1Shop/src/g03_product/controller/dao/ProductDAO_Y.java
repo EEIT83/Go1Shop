@@ -59,7 +59,7 @@ public class ProductDAO_Y implements ProductDAOI_Y {
 									// / and price < x
 			SELECT.append(SQLorder);// order by x
 
-			//System.out.println("SELECT = " + SELECT.toString());
+			System.out.println("SELECT = " + SELECT.toString());
 
 			PreparedStatement stmt = conn.prepareStatement(SELECT.toString());
 			if (prod_name != null) {
