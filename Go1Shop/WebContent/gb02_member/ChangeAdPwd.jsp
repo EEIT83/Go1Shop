@@ -22,7 +22,11 @@
 
 <link rel="stylesheet" href="../_css/bootstrap.min.css">
 <link rel="stylesheet" href="../_css/justified-nav.css">
-
+<style>
+label{
+margin-left:30px;
+}
+</style>
 </head>
 <body>
 	<div class="container">
@@ -41,7 +45,7 @@
 					<li><a href="/Go1Shop/gb04_marketing/backMarketing.jsp">廣告管理</a></li>
  					<li><a href="/Go1Shop/g07_msgboard/comments.do?manage=1">留言板管理</a></li>
 					<li><a href="/Go1Shop/gb02_member/backMember.jsp">會員權限管理</a></li>
-					<li class="active"><a href="#">修改密碼</a></li>
+					<li class="active"><a href="/Go1Shop/gb02_member/ChangeAdPwd.jsp">修改密碼</a></li>
 					<c:if test="${bmail=='admin@gmail.com' }">
 						<li><a href="/Go1Shop/gb02_member/Register.jsp">新增管理者</a></li>
 						<li><a href="/Go1Shop/gb02_member/SelectAdmin.jsp">查詢管理者</a></li>
@@ -68,21 +72,15 @@
 
 		<label>OldPwd</label> 
 		<input type="text" name="oldPwd" id="oldPwd" />
-		<span id="errorOldPwd"></span>
-		<br> 
-		<label>NewPwd</label> 
+		<span id="errorOldPwd"></span> 
+		<span><label>NewPwd</label> 
 		<input type="text" name="newPwd" id="newPwd" />
-		<span id="errorNewPwd"></span>
-		<br> 
-		<label>CheckNewPwd</label> 
+		<span id="errorNewPwd"></span></span>
+		<span><label>CheckNewPwd</label> 
 		<input type="text" name="checkNewPwd" id="checkNewPwd" />
-		<span id="errorCheckNewPwd"></span>
-		<br>
-		
+		<span id="errorCheckNewPwd"></span></span>
+		<span style="margin-left:30px;"><input type="submit" id="submit" value="確認修改"></span>
 <!-- 		<input type="button" value="Submit" id="submit"> -->
-		<input type="submit" id="submit" >
-		
-		<br><br>
 		<span>${message }</span>
 	</form>
 <!-- <script src="<%=request.getContextPath() %>/_js/ChangPwd.js"></script> -->

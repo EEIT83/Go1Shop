@@ -22,7 +22,14 @@
 
 <link rel="stylesheet" href="../_css/bootstrap.min.css">
 <link rel="stylesheet" href="../_css/justified-nav.css">
-
+<style>
+#myForm{
+text-align:center;
+}
+#ad_mail{
+width:40%;
+}
+</style>
 </head>
 <body>
 	<div class="container">
@@ -41,9 +48,9 @@
 					<li><a href="/Go1Shop/gb04_marketing/backMarketing.jsp">廣告管理</a></li>
  					<li><a href="/Go1Shop/g07_msgboard/comments.do?manage=1">留言板管理</a></li>
 					<li><a href="/Go1Shop/gb02_member/backMember.jsp">會員權限管理</a></li>
-					<li><a href="#">修改密碼</a></li>
+					<li><a href="/Go1Shop/gb02_member/ChangeAdPwd.jsp">修改密碼</a></li>
 					<c:if test="${bmail=='admin@gmail.com' }">
-						<li><a href="#">新增管理者</a></li>
+						<li class="active"><a href="/Go1Shop/gb02_member/Register.jsp">新增管理者</a></li>
 						<li><a href="/Go1Shop/gb02_member/SelectAdmin.jsp">查詢管理者</a></li>
 					</c:if>			
 					
@@ -65,10 +72,9 @@
 			<!-- 每頁不同的內容從這裡開始 -->
 			
 	<form action="<c:url value="/Admin/Register.controller" />?pageStatus=insert" method="post" id="myForm">
-		<label>Mail</label> 
-		<input type="text" name="ad_mail" id="ad_mail" value="${param.ad_mail }"> 
-			<br> 
-		<input type="submit" value="submit" id="submit" ><span id="successMessage"></span>
+		<label style="font-size:20px;">Mail</label> 
+		<input type="text" name="ad_mail" id="ad_mail" value="${param.ad_mail }" s>  
+		<input type="submit" value="新增" id="submit" style="font-size:15px"><span id="successMessage"></span>
 	</form>
 	
 			<!-- 每頁不同的內容到這裡結束 -->
