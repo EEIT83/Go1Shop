@@ -1,5 +1,7 @@
 package g05_customer.checkout.model;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -28,35 +30,39 @@ public class ProdOrderDAO {
 		
 		ProdOrderDAO service = new ProdOrderDAO();
 		
-		service.session.beginTransaction();
-
-		bean.setMem_id(60);
-		bean.setAddress("aaaa");
-		bean.setAddressee("bbbb");
-		bean.setPhone(123);
-		bean.setSender("cccccc");
-		bean.setSender_address("dddddd");
-		bean.setSender_phone(12321);
-		bean.setPayment("111");
-		bean.setTotal(10000);
-
-		OrdDetailBean detBean = new OrdDetailBean();
-		detBean.setProdBean(bean);
-		detBean.setMem_id(60);
-		detBean.setSeller_id(11);
-		detBean.setProd_id(100);
-		detBean.setProd_name("123");
-		detBean.setPrice(1000);
-		detBean.setCount(10);
-		detBean.setSubtotal(10000);
-		
-		
-				
-		service.insertTest(bean);
+//		service.session.beginTransaction();
+		HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
+//		bean.setMem_id(60);
+//		bean.setAddress("aaaa");
+//		bean.setAddressee("bbbb");
+//		bean.setPhone(123);
+//		bean.setSender("cccccc");
+//		bean.setSender_address("dddddd");
+//		bean.setSender_phone(12321);
+//		bean.setPayment("111");
+//		bean.setTotal(10000);
+//
+//		OrdDetailBean detBean = new OrdDetailBean();
+//		detBean.setProdBean(bean);
+//		detBean.setMem_id(60);
+//		detBean.setSeller_id(11);
+//		detBean.setProd_id(100);
+//		detBean.setProd_name("123");
+//		detBean.setPrice(1000);
+//		detBean.setCount(10);
+//		detBean.setSubtotal(10000);
+//		
+//		
+//				
+//		service.insertTest(bean);
 		
 		//service.select();
-		service.session.getTransaction().commit();
-		service.session.close();
+		
+		
+		List<ProdOrderBean> list = service.select(10);
+		System.out.println(list.get(0));
+		HibernateUtil.getSessionFactory().getCurrentSession().getTransaction().commit();
+		HibernateUtil.getSessionFactory().getCurrentSession().close();
 	}
 	
 	public void insertTest(ProdOrderBean probean){
@@ -86,7 +92,13 @@ public class ProdOrderDAO {
 
 		System.out.println(detailBean);
 	}
-	
+	public List<ProdOrderBean> select(int memId){
+		
+		List<ProdOrderBean> list = getSession().createQuery("from ProdOrderBean r where r.mem_id = :mId").setParameter("mId", memId).list();
+		//Query query = getSession().createQuery("select * from OrdDetailBean");
+		
+		return list;
+	}
 	
 	
 	
