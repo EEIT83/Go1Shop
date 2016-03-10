@@ -47,6 +47,7 @@
 					<li><a href="/Go1Shop/gb02_member/ChangeAdPwd.jsp">修改密碼</a></li>
 					<c:if test="${bmail=='admin@gmail.com' }">
 						<li><a href="/Go1Shop/gb02_member/Register.jsp">新增管理者</a></li>
+						<li><a href="/Go1Shop/gb02_member/SelectAdmin.jsp">查詢管理者</a></li>
 					</c:if>						 
 				</ul>
 			</nav>

@@ -66,6 +66,8 @@
 		<div id = "title" style="width:100%;height:100%;margin-bottom: 10px;clear: both;" class="titleClass">
 			<div id="PtitleImg" style="width:60%;margin:5% 0 0 3%;float:left;"></div>
 			<div style="margin:8% 0 0 3%;width:30%; float: left;">
+<!------------------賣家(YOGA)---------------- -->
+				<div id="Sellername" style="width:100%;height:50%;margin:4% 0 0 4%;font-size:20px;text-align:left;"></div>
 <!------------------品名---------------- -->
 				<div id="Pname" style="width:100%;height:50%;margin:4% 0 0 4%;font-size:20px;text-align:left;"></div>
 <!------------------大小---------------- -->
@@ -164,6 +166,8 @@
 			
 		});
 	}
+	
+	
 
 	</script>
 <%-- 	<c:forEach var="imgid" begin="1" end="${fn:length(imgId)}" varStatus="r"> --%>
@@ -311,8 +315,23 @@ $(function() {
 		});
 	}
     
-    
-    
+	
+// yoga 顯示商家
+		$.ajax({
+			'type':'GET',
+			'url':"<c:url value='/g03_product/ProductGenderServlet.controller'/>",
+			'dataType':'json',
+			'data':{memid:'${param.memid}'},
+			'success':function(shop){								
+			console.log(shop);		
+		$('#Sellername').append("<p>"+shop.storeName+"</p>");
+			},
+			error: function(){
+		          console.log('failed.');
+		      }
+		});
+// yoga   
+
 }); 
 </script>
 </div>

@@ -69,12 +69,22 @@ public class CheckDetailService {
 	}
 	//select OrderDetail by mem_id-----------------------------------------------------------
 	
-	public List<OrdDetailBean> select(int memId){
+	public List<OrdDetailBean> selectOrdDetailHis(int memId,int ordId){
 		
 		OrdDetailDAO oddao = new OrdDetailDAO();
-		return oddao.select(memId);
+		return oddao.select(memId,ordId);
 		
 	}
+	
+	
+	//select ProdOrderBean by mem_id-----------------------------------------------------------
+	
+		public List<ProdOrderBean> selectOrdHis(int memId){
+			
+			ProdOrderDAO Prod = new ProdOrderDAO();
+			return Prod.select(memId);
+			
+		}
 
 }
 

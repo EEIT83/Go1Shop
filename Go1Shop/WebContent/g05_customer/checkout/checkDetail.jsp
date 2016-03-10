@@ -14,7 +14,7 @@
 <!-- 最新編譯和最佳化的 JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script src="<%=request.getContextPath()%>/_js/jQuery-TWzipcode-master/jQuery-TWzipcode-master/jquery.twzipcode.js"></script>
-<link href="<%=request.getContextPath()%>/_css/page.css" rel="stylesheet">
+<%-- <link href="<%=request.getContextPath()%>/_css/page.css" rel="stylesheet"> --%>
 
 
 
@@ -93,7 +93,6 @@
 				<th>subtotal</th>
 			</tr>
 			<c:forEach var="cars" items="${shopcar.car}">
-	
 				<tr>
 					<td>${cars.value.prod_Name}</td>
 					<td>${cars.value.price}</td>
@@ -330,6 +329,7 @@
 		
 		
 		
+
 		function ok(){
 			if (tag == 0)
 				str += "貨到付款\n";
@@ -482,6 +482,6 @@
 			
 		}
 	</SCRIPT>
-	
+
 </body>
 </html>

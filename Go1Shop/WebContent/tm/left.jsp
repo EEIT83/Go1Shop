@@ -44,10 +44,9 @@
 				<li class="active1"><a href="" id="sell" style="text-decoration: none" target="_blank">
 				<i class="glyphicon glyphicon-home leftNavIcon"></i>商家專區</a>
 					<ul>
-						<li><a href="" id="newPro" style="width: 100%">商品查詢</a></li>
-						<li><a href="<%=request.getContextPath()%>/g03_product/addNewProduct_M.jsp">新增商品</a></li>
+						<li><a href=" "id="newPro" style="width: 100%">新增商品</a></li>
+<!-- 						<li><a href="" id="newPro" style="width: 100%">商品查詢</a></li> -->
 						<li><a href="<%=request.getContextPath()%>/g03_product/shopInfo.jsp">商店資訊</a></li>
-						<li><a href="<%=request.getContextPath()%>/index.jsp">回首頁</a></li>
 						<c:choose>
 							<c:when  test="${empty StoreVO}">
 								<li><a style='higth=10px;' href="<%=request.getContextPath()%>/g03_product/addShopInfo.jsp" >新增商店資訊</a></li>
@@ -72,7 +71,7 @@
 				<i class="glyphicon glyphicon-triangle-right leftNavIcon"></i>上衣專區
 		</a>
 			<ul>
-				<li><a href="#" style="width: 100%">短袖</a></li>
+				<li><a href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=M&part=T-Shirt'/>" style="width: 100%">T-Shirt</a></li>
 				<li><a href="#">長袖</a></li>
 				<li><a href="#">背心</a></li>
 				<li><a id="d"
@@ -217,33 +216,17 @@
 // 歷史訂單
 	var history = document.getElementById("history");
 	history.addEventListener("click", function() {
+		alert(1233);
 		if(document.getElementById("mainFrame")!=null){
 			
 		document.getElementById("mainFrame").style.display="none";
 		}
+		alert(123);
 		document.getElementById("right").innerHTML="<iframe src='<c:url value='/OrdDetail.do?memId=${LoginOK.mem_id}'/>' scrolling='no' frameborder='0' height='100%' id='historyFrame' width='100%' onload='IFrameReSize('historyFrame');IFrameReSizeWidth('historyFrame');'></iframe>";
 	})	
 	
-	
-// 	var d = document.getElementById("d");
-// 	d.addEventListener("click", function() {
-// 		document.getElementById("mainFrame").style.display="none";
-// 		document.getElementById("right").innerHTML="<iframe style='width: 100%;' src='<c:url value='/g03_product/ProductGenderServlet.controller?gender=M&part=襯衫'/>' scrolling='no' frameborder='0' height='100%' id='dFrame' width='100%' onload='IFrameReSize('dFrame');IFrameReSizeWidth('dFrame');'></iframe>";
-// 	})
-// 	var sell = document.getElementById("sell");
-// 	sell.addEventListener("click", function() {
-<%-- 			document.location='<%=request.getContextPath()%>/ProductServlet.do?action=getOneByMemId&memId=${LoginOK.mem_id}'; --%>
-// 		})
-
 //新增商品
-	var newPro = document.getElementById("newPro");
-	newPro.addEventListener("click", function() {
-		if(document.getElementById("mainFrame")!=null){
-			
-		document.getElementById("mainFrame").style.display="none";
-		}
-		document.getElementById("right").innerHTML="<iframe src='<c:url value='/g03_product/ProductServlet.con?action=getOneByMemId&memId=10'/>' scrolling='no' frameborder='0' height='100%' id='newProFrame' width='100%' onload='IFrameReSize('newProFrame');IFrameReSizeWidth('newProFrame');'></iframe>";
-	})	
+
 
 </script>
 

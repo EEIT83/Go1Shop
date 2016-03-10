@@ -36,6 +36,14 @@ request.setAttribute("select", result);
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <link href="<%=request.getContextPath()%>/_css/page.css" rel="stylesheet">
+<!-- 最新編譯和最佳化的 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<!-- 選擇性佈景主題 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+<!-- 最新編譯和最佳化的 JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="<%=request.getContextPath()%>/_js/sweet-alert.js"></script>
+<link href="<%=request.getContextPath()%>/_css/sweet-alert.css" rel="stylesheet">
 <title>Go1Shop Home</title>
 <style>
 #div_out {    
@@ -135,9 +143,7 @@ request.setAttribute("select", result);
 						</div>
 					</c:forEach>
 				</div>
-<a href="<c:url value='/g05_customer/ProdOrderHis.do?memId=${LoginOK.mem_id}'/>">test123</a>	
 			</div>
-			
 	</div>
 <!-- 下邊	--------------------------------------------------------------------------------- -->	
 	<div id="bottom" style="clear:left;width:100%;position:relative;bottom:0;left:0;">
@@ -155,5 +161,28 @@ request.setAttribute("select", result);
 <%-- <jsp:include page="/g05_customer/shoppingCar/shopcar.jsp" />	 --%>
 
 </body>
+<script type="text/javascript">
 
+window.onload=function(){
+	$(function() {
+		swal({
+			  title: "登入成功!",
+			  type: "success",
+			  confirmButtonClass: "btn-primary",
+			  confirmButtonText: "確定!",
+			  closeOnConfirm: false,
+			},
+			function(isConfirm) {
+			  if (isConfirm) {
+				parent.window.location.replace('/Go1Shop/index.jsp');
+			  } 
+			});
+
+
+	})
+}
+
+
+		
+</script>
 </html>

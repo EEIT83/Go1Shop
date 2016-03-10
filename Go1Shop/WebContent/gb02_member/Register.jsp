@@ -44,6 +44,7 @@
 					<li><a href="#">修改密碼</a></li>
 					<c:if test="${bmail=='admin@gmail.com' }">
 						<li><a href="#">新增管理者</a></li>
+						<li><a href="/Go1Shop/gb02_member/SelectAdmin.jsp">查詢管理者</a></li>
 					</c:if>			
 					
 <!-- 					<li><a href="AutoComplete.html">系統公告</a></li> -->
@@ -92,20 +93,20 @@
 		document.getElementById("successMessage").innerHTML="${returnMessage}";
 		
 <%}%>
-// var myForm =  document.getElementById("myForm");
-// document.getElementById("submit").addEventListener("click", function(){
-// 	var regExp = /^[^@^\s]+@[^\.@^\s]+(\.[^\.@^\s]+)+$/;
-// 	var mail = document.getElementById("ad_mail");
-// 	if(mail.value!=""){
-// 		if (regExp.test(mail.value)){
-// 			 myForm.submit();
-// 		}else{
-// 			alert("電子郵件不正確");
-// 		}
-// 	}else{
-// 			alert("不可以空白");
-// 	}
-// });
+var myForm =  document.getElementById("myForm");
+document.getElementById("submit").addEventListener("click", function(){
+	var regExp = /^[^@^\s]+@[^\.@^\s]+(\.[^\.@^\s]+)+$/;
+	var mail = document.getElementById("ad_mail");
+	if(mail.value!=""){
+		if (regExp.test(mail.value)){
+			 myForm.submit();
+		}else{
+			alert("電子郵件不正確");
+		}
+	}else{
+			alert("不可以空白");
+	}
+});
 </script>
 </body>
 </html>
