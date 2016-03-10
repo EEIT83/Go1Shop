@@ -25,12 +25,10 @@ public class AdminRegisterServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String pageStatus = request.getParameter("pageStatus");
 		HttpSession session = request.getSession();
-		System.out.println("Start");
 		try {
 			AdminDAO adminDAO = new AdminDAO();
 			if ((adminDAO.selectById((String) session.getAttribute("mail")).getCompetence()) == 1) {
 				if ("insert".equals(pageStatus)) {
-					System.out.println(pageStatus);
 					String ad_mail = request.getParameter("ad_mail").trim();
 					if (StringUtils.isNotEmpty(ad_mail)) {
 						AdminBean bean = new AdminBean();
