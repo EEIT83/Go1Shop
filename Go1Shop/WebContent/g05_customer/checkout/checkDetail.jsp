@@ -14,7 +14,7 @@
 <!-- 最新編譯和最佳化的 JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script src="<%=request.getContextPath()%>/_js/jQuery-TWzipcode-master/jQuery-TWzipcode-master/jquery.twzipcode.js"></script>
-<link href="<%=request.getContextPath()%>/_css/page.css" rel="stylesheet">
+<%-- <link href="<%=request.getContextPath()%>/_css/page.css" rel="stylesheet"> --%>
 
 
 
@@ -84,13 +84,13 @@
 <body>
 <div style="width: 100%;height: 100%;">
 <!-- 上邊	--------------------------------------------------------------------------------- -->
-	<div style="margin-bottom:0.5%;">
-		<jsp:include page="/tm/top.jsp" />
-	</div>
+<!-- 	<div style="margin-bottom:0.5%;"> -->
+<%-- 		<jsp:include page="/tm/top.jsp" /> --%>
+<!-- 	</div> -->
 <!-- 左邊	--------------------------------------------------------------------------------- -->
-	<div id="left" style="float: left;margin-left:2%;width: 11%;">
-		<jsp:include page="/tm/left.jsp" />
-	</div>
+<!-- 	<div id="left" style="float: left;margin-left:2%;width: 11%;"> -->
+<%-- 		<jsp:include page="/tm/left.jsp" /> --%>
+<!-- 	</div> -->
 <!-- 右邊	----------------------------------------------------------------------------------->
 	<div id="right"style="float: left;margin-right:2%;margin-left:1%;margin-bottom:0.5%;width: 82%;">
 <!----------------------------------------------------------------------------------------->	
@@ -117,7 +117,7 @@
 			</div>
 			<div class="form">
 				<div class="col-fixed">
-					<form name="my_form" id="myform" method=POST class="form-group"  >
+					<form name="my_form" method=POST class="form-group"  >
 						<fieldset>
 						<legend></legend>
 						<div class="form-group">
@@ -174,13 +174,13 @@
 							<label class="control-label" id="radio">付款方式:</label>
 						<div class="radio">
 							<label class="radio-inline">
-							<input type="radio" name="radioo" value="1">1.貨到付款
+							<input type="radio" name="radio" value="1">1.貨到付款
 							</label>
 							<label class="radio-inline">
-							<input type="radio" name="radioo" value="2">2.信用卡付款 
+							<input type="radio" name="radio" value="2">2.信用卡付款 
 							</label>
 							<label class="radio-inline">
-							<input type="radio" name="radioo" value="3">3.ATM轉帳
+							<input type="radio" name="radio" value="3">3.ATM轉帳
 							</label>
 							${errors.payment} 
 						</div>
@@ -196,43 +196,43 @@
 								<button id="sub" class="btn btn-primary">一鍵輸入</button>
 							</div>
 					</form>
-					<div style="width: 100px;">
-					信用卡卡號：<input type="text" style="width: 60px;" class="form-control">-<input type="text" style="width: 60px;" class="form-control">-<input type="text" style="width: 60px;" class="form-control">-<input type="text" style="width: 60px;" class="form-control">
-					<br>
-					有效日期：<select>
-								<option>01</option>	
-								<option>02</option>	
-								<option>03</option>	
-								<option>04</option>	
-								<option>05</option>	
-								<option>06</option>	
-								<option>07</option>	
-								<option>08</option>	
-								<option>09</option>	
-								<option>10</option>
-								<option>11</option>
-								<option>12</option>	
-						   </select>
-					月
-							<select>
-								<option>2015</option>	
-								<option>2016</option>	
-								<option>2017</option>	
-								<option>2018</option>	
-								<option>2019</option>	
-								<option>2020</option>	
-								<option>2021</option>	
-								<option>2022</option>	
-								<option>2023</option>	
-								<option>2024</option>
-								<option>2025</option>
-								<option>2026</option>
-								<option>2027</option>
-						   </select>
-					年
-					<br>
-					背面後三碼：<input type="text" style="width: 60px;" class="form-control">
-					</div>
+<!-- 					<div style="width: 100px;"> -->
+<!-- 					信用卡卡號：<input type="text" style="width: 60px;" class="form-control">-<input type="text" style="width: 60px;" class="form-control">-<input type="text" style="width: 60px;" class="form-control">-<input type="text" style="width: 60px;" class="form-control"> -->
+<!-- 					<br> -->
+<!-- 					有效日期：<select> -->
+<!-- 								<option>01</option>	 -->
+<!-- 								<option>02</option>	 -->
+<!-- 								<option>03</option>	 -->
+<!-- 								<option>04</option>	 -->
+<!-- 								<option>05</option>	 -->
+<!-- 								<option>06</option>	 -->
+<!-- 								<option>07</option>	 -->
+<!-- 								<option>08</option>	 -->
+<!-- 								<option>09</option>	 -->
+<!-- 								<option>10</option> -->
+<!-- 								<option>11</option> -->
+<!-- 								<option>12</option>	 -->
+<!-- 						   </select> -->
+<!-- 					月 -->
+<!-- 							<select> -->
+<!-- 								<option>2015</option>	 -->
+<!-- 								<option>2016</option>	 -->
+<!-- 								<option>2017</option>	 -->
+<!-- 								<option>2018</option>	 -->
+<!-- 								<option>2019</option>	 -->
+<!-- 								<option>2020</option>	 -->
+<!-- 								<option>2021</option>	 -->
+<!-- 								<option>2022</option>	 -->
+<!-- 								<option>2023</option>	 -->
+<!-- 								<option>2024</option> -->
+<!-- 								<option>2025</option> -->
+<!-- 								<option>2026</option> -->
+<!-- 								<option>2027</option> -->
+<!-- 						   </select> -->
+<!-- 					年 -->
+<!-- 					<br> -->
+<!-- 					背面後三碼：<input type="text" style="width: 60px;" class="form-control"> -->
+<!-- 					</div> -->
 				</div>
 			</div>
 		</div>
@@ -274,15 +274,20 @@
 		
 		
 		function sub(){
-			$(function(){
-				$('#addressee').val('復興南路390號一樓');
-				$('#phone').val('09123456789');
-				$('#address').val('丁小雨');
-				$('#sender').val('永大路230號');
-				$('#sender_phone').val('0998765432');
-				$('#sender_address').val('韋小寶');
+			document.getElementById("addressee").value="復興南路390號一樓";
+			document.getElementById("phone").value="0912345678";
+			document.getElementById("address").value="丁小雨";
+			document.getElementById("sender_address").value="永大路230號";
+			document.getElementById("sender_phone").value="0998765432";
+			document.getElementById("sender").value="韋小寶";
+				//$('#addressee').val('復興南路390號一樓');
+// 				$('#phone').val('0912345678');
+// 				$('#address').val('丁小雨');
+// 				$('#sender').val('永大路230號');
+// 				$('#sender_phone').val('0998765432');
+// 				$('#sender_address').val('韋小寶');
 				
-			})
+			
 			
 		}
 		
@@ -331,31 +336,47 @@
 		var x ="";
 		function radio(){
 			alert("in")
-			var form = document.getElementById("myform");
-				for (var i = 0; i < form.radioo.length; i++) {
-					
-					x = form.radioo[i].checked;
-					if (x) {
-						tag = i;
-					}
+			for (var i = 0; i < my_form.radio.length; i++) {
+				var x = document.forms[0].radio[i].checked;
+				if (x) {
+					tag = i;
 				}
-				if(tag==""){
-					var v = document.getElementById("radio");	
-					$('#radio').after("<span class='glyphicon glyphicon-remove form-control-feedback'></span>");
-					document.getElementById("radio").parentNode.className="form-group has-error has-feedback";
-				}else{
-					var v = document.getElementById("radio");
-					v.parentNode.removeChild(v.nextSibling);				
-					$('#radio').after("<span class='glyphicon glyphicon-ok form-control-feedback'></span>");
-					document.getElementById("radio").parentNode.className="form-group has-success has-feedback";
-				}
-				if(tag==1){
-					alert(123)
-					var car = document.getElementById("car");
-					car.BeforeBegin = "卡號：<input type='text'/>";
+			}
+			if(tag==""){
+				var v = document.getElementById("radio");	
+				$('#radio').after("<span class='glyphicon glyphicon-remove form-control-feedback'></span>");
+				document.getElementById("radio").parentNode.className="form-group has-error has-feedback";
+			}else{
+				var v = document.getElementById("radio");
+				v.parentNode.removeChild(v.nextSibling);				
+				$('#radio').after("<span class='glyphicon glyphicon-ok form-control-feedback'></span>");
+				document.getElementById("radio").parentNode.className="form-group has-success has-feedback";
+			}
+// 			var form = document.getElementById("myform");
+// 				for (var i = 0; i < form.radioo.length; i++) {
+					
+// 					x = form.radioo[i].checked;
+// 					if (x) {
+// 						tag = i;
+// 					}
+// 				}
+// 				if(tag==""){
+// 					var v = document.getElementById("radio");	
+// 					$('#radio').after("<span class='glyphicon glyphicon-remove form-control-feedback'></span>");
+// 					document.getElementById("radio").parentNode.className="form-group has-error has-feedback";
+// 				}else{
+// 					var v = document.getElementById("radio");
+// 					v.parentNode.removeChild(v.nextSibling);				
+// 					$('#radio').after("<span class='glyphicon glyphicon-ok form-control-feedback'></span>");
+// 					document.getElementById("radio").parentNode.className="form-group has-success has-feedback";
+// 				}
+// 				if(tag==1){
+// 					alert(123)
+// 					var car = document.getElementById("car");
+// 					car.BeforeBegin = "卡號：<input type='text'/>";
 					
 					
-				}
+// 				}
 				
 		}
 		
@@ -521,9 +542,9 @@
 		
 	</SCRIPT>
 <!-- 下邊	--------------------------------------------------------------------------------- -->	
-	<div id="bottom" style="clear:left;width:100%;;bottom:0;left:0;position:fixed;">
-		<jsp:include page="/tm/bottom.jsp" />	
-	</div>
+<!-- 	<div id="bottom" style="clear:left;width:100%;;bottom:0;left:0;position:fixed;"> -->
+<%-- 		<jsp:include page="/tm/bottom.jsp" />	 --%>
+<!-- 	</div> -->
 <!-------------------------------------------------------------------------------------- -->
 </div>
 </body>
