@@ -42,13 +42,14 @@
  					<li><a href="/Go1Shop/g07_msgboard/comments.do?manage=1">留言板管理</a></li>
 					<li><a href="/Go1Shop/gb02_member/backMember.jsp">會員權限管理</a></li>
 					<li class="active"><a href="#">修改密碼</a></li>
-					
+					<c:if test="${bmail=='admin@gmail.com' }">
+						<li><a href="/Go1Shop/gb02_member/Register.jsp">新增管理者</a></li>
+					</c:if>			
 <!-- 					<li><a href="AutoComplete.html">系統公告</a></li> -->
 <!-- 					<li><a href="#">優惠設定</a></li> -->
 				</ul>
 			</nav>
 		</div>
-</body>
 
 		<!-- Jumbotron -->
 		<div class="jumbotron">
