@@ -14,7 +14,7 @@ dependencies {						//宣告dependency library
 	providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
 	providedRuntime 'javax.servlet:jstl:1.2'
 	compile 'org.hibernate:hibernate-core:4.3.11.Final'
-	compile 'org.apache.struts:struts2-core:2.3.24.1'
+	compile ('org.apache.struts:struts2-core:2.3.24.1'){exclude group: 'javassist', module: 'javassist'}
 	compile 'javax.mail:mail:1.4.7'
 	compile 'commons-dbutils:commons-dbutils:1.6'
 	compile 'com.googlecode.json-simple:json-simple:1.1.1'

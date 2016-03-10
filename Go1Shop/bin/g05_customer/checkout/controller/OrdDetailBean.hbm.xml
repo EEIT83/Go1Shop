@@ -8,7 +8,7 @@
 			<column name="detail_id" />
 			<generator class="native" />
 		</id>
-		<many-to-one name="prodBean" class="g05_customer.checkout.controller.ProdOrderBean" fetch="join">
+		<many-to-one name="prodBean" class="g05_customer.checkout.controller.ProdOrderBean" fetch="join" lazy="false">
 			<column name="ord_id" />
 		</many-to-one>
 		<property name="mem_id" type="int">

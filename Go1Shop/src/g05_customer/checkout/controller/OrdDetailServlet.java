@@ -1,6 +1,7 @@
 package g05_customer.checkout.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,10 +16,12 @@ public class OrdDetailServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		System.out.println(888);
 		CheckDetailService cds = new CheckDetailService();
-		cds.select(10);
-		
+		String memId = req.getParameter("memId").trim();
+		String ordId = req.getParameter("ordId").trim();
+		List<OrdDetailBean> list = cds.selectOrdDetailHis(Integer.parseInt(memId),Integer.parseInt(ordId));
+		req.setAttribute("detail", list);
+		req.getRequestDispatcher("/g03_product/showHisOrdDte.jsp").forward(req, resp);
 	}
 
 	@Override

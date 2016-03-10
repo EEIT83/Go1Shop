@@ -34,8 +34,8 @@ public class OrdDetailDAO {
 //		service.session.beginTransaction();
 		HibernateUtil.getSessionFactory().getCurrentSession().beginTransaction();
 		
-		List<OrdDetailBean> list = service.select(10);
-		System.out.println(list);
+		//List<OrdDetailBean> list = service.select(10);
+		//System.out.println(list);
 		 
 
 		/*
@@ -59,9 +59,9 @@ public class OrdDetailDAO {
 		
 	}
 	
-	public List<OrdDetailBean> select(int memId){
+	public List<OrdDetailBean> select(int memId,int ordId){
 		
-		List<OrdDetailBean> list = getSession().createQuery("from OrdDetailBean r where r.mem_id = :mId").setParameter("mId", memId).list();
+	List<OrdDetailBean> list = getSession().createQuery("from OrdDetailBean r where r.mem_id = :mId and r.ord_id = :oId").setParameter("mId", memId).setParameter("oId", ordId).list();
 		//Query query = getSession().createQuery("select * from OrdDetailBean");
 		
 		return list;

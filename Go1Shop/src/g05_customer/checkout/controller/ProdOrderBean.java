@@ -17,7 +17,7 @@ public class ProdOrderBean {
 	private int sender_phone;
 	private String payment;
 	//private String payment_status;
-	//private java.util.Date ord_date;
+	private java.util.Date ord_date;
 	private int total;
 	private int total_point;
 
@@ -107,13 +107,13 @@ public class ProdOrderBean {
 //		this.payment_status = payment_status;
 //	}
 //
-//	public java.util.Date getOrd_date() {
-//		return ord_date;
-//	}
-//
-//	public void setOrd_date(java.util.Date ord_date) {
-//		this.ord_date = ord_date;
-//	}
+	public java.util.Date getOrd_date() {
+		return ord_date;
+	}
+
+	public void setOrd_date(java.util.Date ord_date) {
+		this.ord_date = ord_date;
+	}
 
 	public int getTotal() {
 		return total;
