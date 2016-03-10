@@ -28,7 +28,7 @@ public class ProductService_Y {
 			if (temp != null) {
 				result = new ArrayList<ProductBean_Y>();
 				result.addAll(temp);
-				System.out.println("temp="+temp.toString());
+				//System.out.println("temp="+temp.toString());
 			
 			}
 		}
