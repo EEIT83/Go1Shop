@@ -40,9 +40,6 @@ public class ChangeAdPwdServlet extends HttpServlet {
 						.toString();
 				String oldPwd = request.getParameter("oldPwd");
 				String newPwd = request.getParameter("newPwd");
-				System.out.println(mail);
-				System.out.println(oldPwd);
-				System.out.println(newPwd);
 				new AdminService().ChangePwd(mail, oldPwd, newPwd);
 				response.getWriter().write("<script>charset='UTF-8'; alert('修改成功!');location.href('/gb02_member/ChangeAdPwd.jsp');</script>");
 			} else {
