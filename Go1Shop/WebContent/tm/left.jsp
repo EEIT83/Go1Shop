@@ -128,11 +128,11 @@
 					</div>
 					<h5 id="loginError">${error.loginError }</h5>
 					<!-- 					  <div class="btn-fld"> -->
-					<input type="submit" value="Sign In &raquo;" class="loginbutton">
-					<input type="button" value="Sign Up &raquo;" class="registerbutton"
+					<input type="submit" value="登入" class="loginbutton">
+					<input type="button" value="註冊" class="registerbutton"
 						id="register">
+					<input type="button" value="忘記密碼" class="forgetPwdbutton"	id="forgetPwd">
 
-					<!-- 					</div> -->
 				</form>
 			</div>
 			<!-- 註冊 -->
@@ -144,12 +144,12 @@
 				<form action="<c:url value="/Account/Register.controller" />"
 					method="post">
 					<div class="txt-fld">
-						<label>帳號：</label> <input type="text" name="mail" class="input" />
+						<label>帳號：</label> <input type="text" name="mail" class="input" id="mail"/>
 						<span id="errorMail"></span>
 					</div>
 					<div class="txt-fld">
 						<label>密碼：</label> <input type="text" name="pwd"
-							class="input" /> <span id="errorPwd"></span>
+							class="input" id="pwd" /> <span id="errorPwd"></span>
 					</div>
 					<div class="txt-fld">
 						<label>姓名：</label> <input type="text" name="mem_name"
@@ -174,6 +174,19 @@
 							class="registerbutton">
 					</div>
 				</form>
+			</div>
+			<div id="forgetPwdForm" style="display: none;">
+					<div id="signup-header">
+						<p>忘記密碼</p>
+						<a class="modal_close" href="#"></a>
+					</div>
+					<form action="<c:url value="/Account/ForgetPwd.controller" />" method="post">
+						<div class="txt-fld">
+							<label for="mail">帳號:</label> <input type="text" name="mail"
+								id="mail" class="input"> <span id="errorMail">${error.mail}</span>
+						</div>
+						<input type="submit" value="送出" class="forgetPwdbutton" />
+					</form>
 			</div>
 		</div>
 	</div>
@@ -235,6 +248,7 @@
 	<script type="text/javascript">
 		var registerForm = document.getElementById("registerForm");
 		var loginForm = document.getElementById("loginForm");
+		var forgetPwdForm = document.getElementById("forgetPwdForm");
 		document.getElementById("register").addEventListener("click",
 				function() {
 					document.getElementById("mail").value = "";
@@ -248,6 +262,7 @@
 					document.getElementById("female").checked = false;
 					loginForm.style.display = "none";
 					registerForm.style.display = "inline";
+					forgetPwdForm.style.display = "none";
 				})
 		document.getElementById("login").addEventListener("click", function() {
 			document.getElementById("mail").value = "";
@@ -257,6 +272,13 @@
 			document.getElementById("loginError").innerHTML = "";
 			loginForm.style.display = "inline";
 			registerForm.style.display = "none";
+			forgetPwdForm.style.display = "none";
+		})
+		document.getElementById("forgetPwd").addEventListener("click",function(){
+			document.getElementById("mail").value = "";
+			loginForm.style.display = "none";
+			registerForm.style.display = "none";
+			forgetPwdForm.style.display = "inline";
 		})
 	</script>
 	<!-- 驗證登入帳號 -->

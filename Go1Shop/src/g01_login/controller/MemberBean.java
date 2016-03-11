@@ -12,7 +12,6 @@ public class MemberBean {
 	private String point;
 	private java.sql.Date join_date;
 	private String status;
-	
 
 	public String getStatus() {
 		return status;
