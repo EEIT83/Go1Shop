@@ -463,7 +463,7 @@
 		
 		function checkAddressSen(){
 			var theAddress=document.getElementById("sender_address").value;
-			var re=/^[\u4E00-\u9FFF]+\d+$/;
+			var re=/^[\u4E00-\u9FFF]+$/;
 			console.log("district=" + district_sen + "  county=" + county_sen +"  zipcode=" + zipcode_sen + +"theAddress=" + theAddress);
 			if(re.test(theAddress) & district_sen != null & county_sen != null & zipcode_sen != null){
 				//alert("成功");

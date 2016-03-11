@@ -17,10 +17,18 @@ public class OrdDetailServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		CheckDetailService cds = new CheckDetailService();
+		String addressee = req.getParameter("addressee").trim();
+		String sender = req.getParameter("sender").trim();
+		String total = req.getParameter("total").trim();
 		String memId = req.getParameter("memId").trim();
 		String ordId = req.getParameter("ordId").trim();
-		List<OrdDetailBean> list = cds.selectOrdDetailHis(Integer.parseInt(memId),Integer.parseInt(ordId));
+		ProdOrderBean bean = new ProdOrderBean();
+		bean.setOrd_id(Integer.parseInt(ordId));
+		List<OrdDetailBean> list = cds.selectOrdDetailHis(Integer.parseInt(memId),bean);
 		req.setAttribute("detail", list);
+		req.setAttribute("addressee", addressee);
+		req.setAttribute("sender", sender);
+		req.setAttribute("total", total);
 		req.getRequestDispatcher("/g03_product/showHisOrdDte.jsp").forward(req, resp);
 	}
 

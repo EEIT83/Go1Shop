@@ -2,11 +2,11 @@ package g05_customer.checkout.model;
 
 import java.util.List;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import g05_customer.checkout.controller.OrdDetailBean;
+import g05_customer.checkout.controller.ProdOrderBean;
 import g05_customer.checkout.hibernate.HibernateUtil;
 
 public class OrdDetailDAO {
@@ -59,9 +59,9 @@ public class OrdDetailDAO {
 		
 	}
 	
-	public List<OrdDetailBean> select(int memId,int ordId){
+	public List<OrdDetailBean> select(int memId,ProdOrderBean bean){
 		
-	List<OrdDetailBean> list = getSession().createQuery("from OrdDetailBean r where r.mem_id = :mId and r.ord_id = :oId").setParameter("mId", memId).setParameter("oId", ordId).list();
+	List<OrdDetailBean> list = getSession().createQuery("from OrdDetailBean r where r.mem_id = :mId and r.prodBean = :oId").setParameter("mId", memId).setParameter("oId", bean).list();
 		//Query query = getSession().createQuery("select * from OrdDetailBean");
 		
 		return list;

@@ -31,7 +31,10 @@ public class CheckDetailService {
 		ordBean.setZip_code_sen(orderBean.getZip_code_sen());
 		ordBean.setSender_phone(orderBean.getSender_phone());
 		ordBean.setPayment(orderBean.getPayment());
+		ordBean.setPayment_status(orderBean.getPayment_status());
+		ordBean.setOrd_date(orderBean.getOrd_date());
 		ordBean.setTotal(carBean.getTotal());
+		
 		//insert to SQL table prod_ord
 		ProdOrderDAO prOrderDAO = new ProdOrderDAO();
 		prOrderDAO.insert(ordBean);
@@ -69,10 +72,10 @@ public class CheckDetailService {
 	}
 	//select OrderDetail by mem_id-----------------------------------------------------------
 	
-	public List<OrdDetailBean> selectOrdDetailHis(int memId,int ordId){
+	public List<OrdDetailBean> selectOrdDetailHis(int memId,ProdOrderBean bean){
 		
 		OrdDetailDAO oddao = new OrdDetailDAO();
-		return oddao.select(memId,ordId);
+		return oddao.select(memId,bean);
 		
 	}
 	

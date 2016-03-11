@@ -38,7 +38,7 @@
 			<ul>
 					<li><a href="#" style="width: 100%" id="modify">修改基本資料</a></li>
 					<li><a href="#" id="changePwd">修改密碼</a></li>
-					<li><a href="#" id="history">歷史訂單</a></li>
+					<li><a href="#" style="width: 100%" id="history">歷史訂單</a></li>
 			</ul>
 			</li>	
 				<li class="active1"><a href="" id="sell" style="text-decoration: none" target="_blank">
@@ -216,14 +216,14 @@
 // 歷史訂單
 	var history = document.getElementById("history");
 	history.addEventListener("click", function() {
-		alert(1233);
 		if(document.getElementById("mainFrame")!=null){
 			
 		document.getElementById("mainFrame").style.display="none";
 		}
-		alert(123);
-		document.getElementById("right").innerHTML="<iframe src='<c:url value='/OrdDetail.do?memId=${LoginOK.mem_id}'/>' scrolling='no' frameborder='0' height='100%' id='historyFrame' width='100%' onload='IFrameReSize('historyFrame');IFrameReSizeWidth('historyFrame');'></iframe>";
+		document.getElementById("right").innerHTML="<iframe src='<c:url value='/Account/Modify.controller'/>' scrolling='no' frameborder='0' height='100%' id='modifyFrame' width='100%' onload='IFrameReSize('modifyFrame');IFrameReSizeWidth('modifyFrame');'></iframe>";
 	})	
+	//<c:url value='/g05_customer/ProdOrderHis.do?memId=${LoginOK.mem_id}'/>
+
 	
 //新增商品
 
