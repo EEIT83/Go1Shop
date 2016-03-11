@@ -95,7 +95,6 @@ request.setAttribute("select", result);
 		<jsp:include page="/tm/left.jsp" />
 	</div>
 <!-- 右邊	----------------------------------------------------------------------------------->
-
 	<div id="right"style="float: left;margin-right:2%;margin-left:1%;margin-bottom:0.5%;width: 80%;">
 <!-- 	<div style="width:100%;height:100%;" > -->
 <%-- 		<iframe src="<%=request.getContextPath()%>/g03_product/selectmen_Y.jsp" scrolling="no" frameborder="0" height="100%" id="selectFrame" width="100%" onload='IFrameReSize("selectFrame");IFrameReSizeWidth("selectFrame");' style="display:inline;"></iframe> --%>
@@ -136,7 +135,9 @@ request.setAttribute("select", result);
 						</div>
 					</c:forEach>
 				</div>
+<a href="<c:url value='/g05_customer/ProdOrderHis.do?memId=${LoginOK.mem_id}'/>">test123</a>	
 			</div>
+			
 	</div>
 <!-- 下邊	--------------------------------------------------------------------------------- -->	
 	<div id="bottom" style="clear:left;width:100%;position:relative;bottom:0;left:0;">
@@ -145,12 +146,14 @@ request.setAttribute("select", result);
 <!-------------------------------------------------------------------------------------- -->
 </div>
 
+
 <%-- <c:if test="${init == '0'}"> --%>
 <%-- <jsp:forward page="/g03_product/ProductGenderServlet.controller?init=1" /> --%>
 <%-- <c:set var="init" value="0" scope="session"></c:set> --%>
 <%-- </c:if> --%>
 
 <%-- <jsp:include page="/g05_customer/shoppingCar/shopcar.jsp" />	 --%>
+
 </body>
 
 </html>

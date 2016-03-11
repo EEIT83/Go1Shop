@@ -18,7 +18,7 @@
 </head>
 <body>
 
-	<%@ include file="../_files/nav.file"%>
+	
 
 	<div class="container-fluid">
 		
@@ -38,18 +38,18 @@
 					<form action="<c:url value='/StoreServlet.do'/>" method="post"
 						class="form-horizontal" enctype="multipart/form-data">
 						<div class="form-group">
-							<label for="storeName">商店名稱</label> <input type="text"
-								name="storeName" class="form-control" id="storeName"
+							<label for="storeName">商店名稱</label> <input type="text" required
+								name="storeName" class="form-control" id="storeName" value="${StoreVO.storeName}"
 								placeholder="商店名稱" />
 						</div>
 						<div class="form-group">
-							<label for="storeAddress">商店地址</label> <input type="text"
-								name="storeAddress" class="form-control" id="storeAddress"
+							<label for="storeAddress">商店地址</label> <input type="text" required
+								name="storeAddress" class="form-control" id="storeAddress" value="${StoreVO.storeAddress}"
 								placeholder="商店地址" />
 						</div>
 						<div class="form-group">
 							<label for="note">商店描述</label> 
-							<textarea class="form-control" rows="3" name="note" placeholder="商店描述"></textarea>
+							<textarea class="form-control" rows="3" name="note" placeholder="商店描述" required >${StoreVO.note}</textarea>
 						</div>
 						<input type="hidden" name="action" value="${(empty StoreVO) ? "insert":"update"}" /><br />
 						<input type="hidden" name="memId" value="${LoginOK.mem_id}" /><br />

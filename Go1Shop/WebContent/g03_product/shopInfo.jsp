@@ -16,11 +16,8 @@
 
 <title>Insert title here</title>
 </head>
-<body>
-
-	<%@ include file="../_files/nav.file"%>
-	<div class="container-fluid">
-		<%@ include file="../_files/sideBar.file"%>
+<body>	
+	<div class="container-fluid">		
 		<div class="row">
 			<div class="col-md-offset-2">	
 				<c:if test="${not empty StoreVO}">

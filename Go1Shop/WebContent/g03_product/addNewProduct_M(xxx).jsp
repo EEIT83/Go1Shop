@@ -22,8 +22,12 @@
 <script src="<%=request.getContextPath()%>/_js/jquery-1.11.3.min.js"></script>
 <script src="<%=request.getContextPath()%>/_js/bootstrap.min.js"></script>
 
-
 <script type="text/javascript">
+function reSize(){
+　　parent.document.getElementById("newProFrame").height=document.body.scrollHeight;
+} 
+window.onload=reSize;
+
 
 $(document).ready(function() {
 	$('#img').change(function(event){

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -41,23 +41,35 @@
 					<li><a href="#" style="width: 100%" id="history">歷史訂單</a></li>
 			</ul>
 			</li>	
-				<li class="active1"><a href="" id="sell" style="text-decoration: none" target="_blank">
-				<i class="glyphicon glyphicon-home leftNavIcon"></i>商家專區</a>
-					<ul>
-						<li><a href=" "id="newPro" style="width: 100%">新增商品</a></li>
-<!-- 						<li><a href="" id="newPro" style="width: 100%">商品查詢</a></li> -->
-						<li><a href="<%=request.getContextPath()%>/g03_product/shopInfo.jsp">商店資訊</a></li>
-						<c:choose>
-							<c:when  test="${empty StoreVO}">
-								<li><a style='higth=10px;' href="<%=request.getContextPath()%>/g03_product/addShopInfo.jsp" >新增商店資訊</a></li>
-							</c:when>
-							<c:otherwise>
-								<li><a style='higth=10px;' href="<%=request.getContextPath()%>/g03_product/addShopInfo.jsp" >修改商店資訊</a></li>
-							</c:otherwise>
-						</c:choose>
-					</ul>
+				<li class="active1"><a href="" id="sell"
+				style="text-decoration: none" target="_blank"> <i
+					class="glyphicon glyphicon-home leftNavIcon"></i>商家專區
+			</a>
+				<ul>
+					<li><a	href="#"
+							class="shopButton" style="width: 100%" 
+							data-shop-url="<%=request.getContextPath()%>/g03_product/ProductServlet.con?action=getOneByMemId&memId=${LoginOK.mem_id}"
+							data-shop-id="queryProductFrame">商品查詢</a></li>
+					<li><a  class="shopButton"
+							data-shop-url="<%=request.getContextPath()%>/g03_product/addNewProduct_M.jsp"
+							data-shop-id="insertProductFrame">新增商品</a></li>
+					<li><a  class="shopButton"
+						    data-shop-url="<%=request.getContextPath()%>/StoreServlet.do?action=getOneByMemId&memId=${LoginOK.mem_id}"
+						    data-shop-id="queryShopFrame">商店資訊</a></li>
+					<c:choose>
+						<c:when test="${empty StoreVO}">
+							<li><a  class="shopButton"
+							data-shop-url=""
+							data-shop-id="addShopFrame">新增商店資訊</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a  class="shopButton"
+							data-shop-url="<%=request.getContextPath()%>/g03_product/addShopInfo.jsp"
+							data-shop-id="<%=request.getContextPath()%>/g03_product/addShopInfo.jsp">修改商店資訊</a></li>
+						</c:otherwise>
+					</c:choose>					
+				</ul></li>
 
-				</li>
 			<li class="active1"><a href="#" style="text-decoration: none"
 				target="_blank"> <i
 					class="glyphicon glyphicon-comment leftNavIcon"></i>訊息

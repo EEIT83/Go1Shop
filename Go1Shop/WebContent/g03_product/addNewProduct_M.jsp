@@ -13,25 +13,20 @@
 	href="<%=request.getContextPath()%>/_css/bootstrap.min.css">
 <script src="<%=request.getContextPath()%>/_js/jquery-1.11.3.min.js"></script>
 <script src="<%=request.getContextPath()%>/_js/bootstrap.min.js"></script>
+
 <script type="text/javascript">
-		function reSize(){
-		　　parent.document.getElementById("newProFrame").height=document.body.scrollHeight;
-		} 
-		window.onload=reSize;
-</script>
-<script type="text/javascript">
-$(document).ready(function() {
-	$('#img').change(function(event){
-    	var input = event.target;
-    	var reader = new FileReader();
-    	reader.onload = function(){
-    		var dataURL = reader.result;
-    		var infoPicResult =document.getElementById('infoPicResult');
-    		infoPicResult.src = dataURL;
-    	};
-    	reader.readAsDataURL(input.files[0]);
-    });//end of file change
-})
+	$(document).ready(function() {
+		$('#img').change(function(event) {
+			var input = event.target;
+			var reader = new FileReader();
+			reader.onload = function() {
+				var dataURL = reader.result;
+				var infoPicResult = document.getElementById('infoPicResult');
+				infoPicResult.src = dataURL;
+			};
+			reader.readAsDataURL(input.files[0]);
+		});//end of file change
+	})
 </script>
 
 <title>Insert title here</title>
@@ -40,7 +35,7 @@ $(document).ready(function() {
 
 
 	<div class="container-fluid">
-		
+
 		<div class="row">
 			<div class="col-md-offset-2">
 				<%-- 錯誤表列 --%>
@@ -54,17 +49,18 @@ $(document).ready(function() {
 					</font>
 				</c:if>
 				<div class="col-md-8">
-					<form action="<c:url value='/ProductServlet.do'/>" method="post" class="form-horizontal" enctype="multipart/form-data">
+					<form action="<c:url value='/g03_product/ProductServlet.con'/>"
+						method="post" class="form-horizontal"
+						enctype="multipart/form-data">
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="img">note</label> <input type="file" name="img"
 									class="form-control" id="img" placeholder="img" />
 							</div>
-							<img id="infoPicResult"  class="img-responsive img-thumbnail" />
+							<img id="infoPicResult" class="img-responsive img-thumbnail" />
 						</div>
-						<div class="col-md-2">								
-						</div>
-						<div class="col-md-4">				
+						<div class="col-md-2"></div>
+						<div class="col-md-4">
 
 							<div class="form-group">
 								<label for="prodName">prodName</label> <input type="text"
@@ -83,8 +79,9 @@ $(document).ready(function() {
 							</div>
 
 							<div class="form-group">
-								<label for="Count">Count</label> <input type="text" name="count"
-									class="form-control" id="Count" placeholder="Count" />
+								<label for="Count">Count</label> <input type="number"
+									name="count" class="form-control" id="Count"
+									placeholder="Count" min="0" value="0" />
 							</div>
 
 							<div class="form-group">
@@ -99,8 +96,8 @@ $(document).ready(function() {
 
 							<div class="form-group">
 								<label for="gender">gender</label> <input type="text"
-									name="gender" class="form-control" id="gender"
-									placeholder="gender" />
+									list="genderlist" name="gender" class="form-control"
+									id="gender" placeholder="gender" autocomplete="off"/>
 							</div>
 
 							<div class="form-group">
@@ -112,12 +109,16 @@ $(document).ready(function() {
 								<label for="note">note</label> <input type="text" name="note"
 									class="form-control" id="note" placeholder="note" />
 							</div>
-							<input type="hidden" name="action" value="insert" /><br />
-							<input type="hidden" name="memId" value="${LoginOK.mem_id}" /><br />
+							<input type="hidden" name="action" value="insert" /><br /> <input
+								type="hidden" name="memId" value="${LoginOK.mem_id}" /><br />
 							<button type="submit" class="btn btn-default">Submit</button>
 
 						</div>
 					</form>
+					<datalist id="genderlist">
+						<option label="Male" value="M"></option>
+						<option label="Female" value="F"></option>
+					</datalist>
 				</div>
 
 			</div>
