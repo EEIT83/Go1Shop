@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import g01_login.controller.MemberBean;
+import g03_product.model.StoreDAOImpl;
+import g03_product.model.StoreVO_M;
 import g05_customer.checkout.model.OrdDetailDAO;
 import g05_customer.checkout.model.ProdOrderDAO;
 import g05_customer.shoppingCar.controller.CarDetailBean;
@@ -89,6 +91,12 @@ public class CheckDetailService {
 			
 		}
 
+	//select ProdOrderBean find mem_id-----------------------------------------------------------	
+		public StoreVO_M selectMem_id(int prodId){
+			StoreDAOImpl DAO = new StoreDAOImpl();
+			return DAO.getOneProd(prodId);
+		}
+		
 }
 
 
