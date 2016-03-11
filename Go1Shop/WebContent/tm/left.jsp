@@ -51,10 +51,12 @@
 							class="shopButton" style="width: 100%" 
 							data-shop-url="<%=request.getContextPath()%>/g03_product/ProductServlet.con?action=getOneByMemId&memId=${LoginOK.mem_id}"
 							data-shop-id="queryProductFrame">商品查詢</a></li>
-					<li><a  class="shopButton"
+					<li><a  href="#"
+							class="shopButton"
 							data-shop-url="<%=request.getContextPath()%>/g03_product/addNewProduct_M.jsp"
 							data-shop-id="insertProductFrame">新增商品</a></li>
-					<li><a  class="shopButton"
+					<li><a  href="#"
+							class="shopButton"
 						    data-shop-url="<%=request.getContextPath()%>/StoreServlet.do?action=getOneByMemId&memId=${LoginOK.mem_id}"
 						    data-shop-id="queryShopFrame">商店資訊</a></li>
 					<c:choose>
@@ -136,7 +138,7 @@
 							id="mail" class="input"> <span id="errorMail">${error.mail}</span>
 					</div>
 					<div class="txt-fld">
-						<label for="pwd">密碼:</label> <input type="text" name="pwd"
+						<label for="pwd">密碼:</label> <input type="password" name="pwd"
 							id="pwd" class="input"> <span id="errorPwd">${error.pwd }</span>
 					</div>
 					<h5 id="loginError">${error.loginError }</h5>

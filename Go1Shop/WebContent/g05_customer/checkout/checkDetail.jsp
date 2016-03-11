@@ -225,15 +225,15 @@
 			
 		}
 		
-		$(function(){
+		function sub(){
 			$('#addressee').val('丁小雨');
-			$('#address').val('復興北路390號');
+			$('#address').val('復興北路三號');
 			$('#phone').val('0912345678');
 			$('#sender').val('派大星');
-			$('#sender_address').val('中正路100號');
+			$('#sender_address').val('中正路一號');
 			$('#sender_phone').val('0987654321');
 			check();
-		})
+		}
 		
 		
 		
