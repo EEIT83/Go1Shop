@@ -35,7 +35,7 @@
 	<ul id="leftNavigation">
 		<c:if test="${!empty LoginOK}">
 			<li ><a href="" style="text-decoration: none"
-				target="_blank" id="active1"> <i class="glyphicon glyphicon-user leftNavIcon"></i>基本資料</a>
+				target="_blank" > <i class="glyphicon glyphicon-user leftNavIcon"></i>基本資料</a>
 			<ul>
 					<li><a href="#" style="width: 100%;" id="modify" >修改基本資料</a></li>
 					<li><a href="#" id="changePwd">修改密碼</a></li>
@@ -74,7 +74,7 @@
 				</ul></li>
 
 			<li ><a href="#" style="text-decoration: none"
-				target="_blank" id="active1"> <i
+				target="_blank" > <i
 					class="glyphicon glyphicon-comment leftNavIcon"></i>訊息
 			</a>
 				<ul>
@@ -82,7 +82,7 @@
 					<li><a href='#' id="sendmail">寫信</a></li>
 				</ul></li>
 		</c:if>
-		<li ><a href="#" style="text-decoration: none" id="active1">
+		<li id="active"><a href="#" style="text-decoration: none" >
 				<i class="glyphicon glyphicon-triangle-right leftNavIcon"></i>上衣專區
 		</a>
 			<ul>
@@ -94,7 +94,7 @@
 				<li><a href="#">毛衣</a></li>
 				<li><a href="#">外套</a></li>
 			</ul></li>
-		<li ><a href="#" style="text-decoration: none" id="active1">
+		<li id="active"><a href="#" style="text-decoration: none" >
 				<i class="glyphicon glyphicon-triangle-right leftNavIcon"></i>褲子專區
 		</a>
 			<ul>
@@ -107,7 +107,7 @@
 				<li><a href="#">海灘褲</a></li>
 				<li><a href="#">運動褲</a></li>
 			</ul></li>
-		<li ><a href="#" style="text-decoration: none" id="active1">
+		<li id="active"><a href="#" style="text-decoration: none" >
 				<i class="glyphicon glyphicon-triangle-right leftNavIcon"></i>配件專區
 		</a>
 			<ul>
