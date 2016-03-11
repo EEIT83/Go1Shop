@@ -60,7 +60,7 @@ public class CommentsDAO {
 		return i;
 	}
 	
-	private final String UPDATE="update comments set report='遭檢舉' where commentId=?";
+	private final String UPDATE="update comments set report='未處理' where commentId=?";
 	public int update(int commentId){
 		int i = 0;
 		

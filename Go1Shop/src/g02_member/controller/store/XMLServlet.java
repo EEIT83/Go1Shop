@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.jdom2.Document;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
-
-import g01_login.controller.MemberBean;
 @WebServlet("/XMLServlet.do")
 public class XMLServlet extends HttpServlet{
 
@@ -20,10 +18,9 @@ public class XMLServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//System.out.println("test123");
 		response.setCharacterEncoding("UTF-8");
-		MemberBean bean = (MemberBean)request.getSession().getAttribute("LoginOK");
 		System.out.println("test123");
 		XMLService service = new XMLService();
-		Document address = service.select(bean);
+		Document address = service.select();
 		Format format = Format.getPrettyFormat();		              
 		format.setIndent("");
 		PrintWriter out = response.getWriter();
