@@ -96,7 +96,7 @@
   	 	<tr>
   	 	<th>帳號</th>
   	 	<th>姓名</th>
-  	 	<th>身分證</th>
+  	 	<th>暱稱</th>
   	 	<th>性別</th>
   	 	<th>狀態</th>
   	 	<th></th>

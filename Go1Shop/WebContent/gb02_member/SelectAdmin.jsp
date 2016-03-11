@@ -18,6 +18,12 @@ th, td {
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
+label{
+font-size:20px;
+}
+#ad_mail{
+width:40%;
+}
 </style>
 <script src="<%=request.getContextPath()%>/_js/jquery-1.12.0.min.js"></script>
 <!-- 選擇性佈景主題 -->
@@ -48,10 +54,10 @@ th, td {
 					<li><a href="/Go1Shop/gb04_marketing/backMarketing.jsp">廣告管理</a></li>
  					<li><a href="/Go1Shop/g07_msgboard/comments.do?manage=1">留言板管理</a></li>
 					<li><a href="/Go1Shop/gb02_member/backMember.jsp">會員權限管理</a></li>
-					<li><a href="#">修改密碼</a></li>
+					<li><a href="/Go1Shop/gb02_member/ChangeAdPwd.jsp">修改密碼</a></li>
 					<c:if test="${bmail=='admin@gmail.com' }">
 						<li><a href="/Go1Shop/gb02_member/Register.jsp">新增管理者</a></li>
-						<li><a href="#">查詢管理者</a></li>
+						<li class="active"><a href="/Go1Shop/gb02_member/SelectAdmin.jsp">查詢管理者</a></li>
 					</c:if>			
 					
 <!-- 					<li><a href="AutoComplete.html">系統公告</a></li> -->

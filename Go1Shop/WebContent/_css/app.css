@@ -72,7 +72,7 @@ margin:0 100px;
 }
 #leftNavigation li a:hover {
 /*   color: #808080; */
-  background-color: #f4f4f4;
+  background-color: #c3c3c3;
 }
 #leftNavigation li ul {
   display: none;
@@ -80,6 +80,7 @@ margin:0 100px;
   background-color: #ffffff;
 /*   border-radius:10px 10px 10px 10px; */
 }
+
 /* #leftNavigation li ul li a { */
 /*   border-bottom: solid 1px #233547; */
 /* } */
