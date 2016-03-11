@@ -22,7 +22,7 @@
 				<li><a href="<c:url value="/g03_product/ProductGenderServlet.controller?gender=F&change=true"/>">WOMEN</a></li>
 				<li><a href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=M&change=true' />">MEN</a></li>
 				<li><a href="<%=request.getContextPath()%>/p_KIDS/K_index.jsp">KIDS</a></li>
-				<li><a href="<%=request.getContextPath()%>/p_SOPRTS/S_index.jsp">SOPRTS</a></li>
+				<li><a href="<%=request.getContextPath()%>/p_SOPRTS/S_index.jsp">SPORTS</a></li>
 				<li><a href="<%=request.getContextPath()%>/p_BABIES/B_index.jsp">BABIES</a></li>
 			<c:if test="${empty LoginOK}">
 				<li><a rel="leanModal" name="signup" href="#signup" id="login" onclick="login()">			
