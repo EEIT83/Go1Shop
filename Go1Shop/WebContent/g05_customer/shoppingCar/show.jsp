@@ -134,37 +134,31 @@
 		
 	}
 	function msgboard(){
-		document.getElementById("content").innerHTML="";
+		//document.getElementById("content").innerHTML="";
  		document.getElementById("content").innerHTML="<iframe width='100%' height='1000 px' src='/Go1Shop/g07_msgboard/comments.do'></iframe>";
 	}
 	
 	function sell(){
 		document.getElementById("content").innerHTML="";
- 		document.getElementById("content").innerHTML="<iframe width='100%' height='1000 px' src='/StoreServlet.do'></iframe>";
+ 		document.getElementById("content").innerHTML="<iframe width='100%' height='1000 px' src='/Go1Shop/StoreServlet.do?action=getOneByMemId'></iframe>";
 	}
 	
 	
 	function showImg(){
-	//	alert('xxx');
 		document.getElementById("content").innerHTML="";
 	//	document.getElementById("content").innerHTML="<img id='img2' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[1]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>";
 		//$('#content').append("<iframe width='100%' height='1000 px' src='/Go1Shop/t11111.jsp'></iframe>");
-		$(function(){
 // 			找出產品圖片
 			$.ajax({
 				'type':'POST',
 				'url':"<c:url value='/showProdImg.con'/>",
 				'dataType':'json',
 				'data':{prodId:'${param.id}'},
-				'success':function(data){								
-					content2(data);
-					console.log(data.imgid[0]);
-					console.log(data.imgid[0]);
-					
+				'success':function(data){
+					$('#content').append("<img id='img2' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[1]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
+					$('#content').append("<img id='img3' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[2]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
 				}
 			});
-			
-		});
 	}
 	
 	
