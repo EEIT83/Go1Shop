@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>\
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,21 +16,27 @@
 <title>Insert title here</title>
 </head>
 <body>
+<script>
+
+
+</script>
 <table class="table table-condensed">
 	<tr>
 		
 		<th>商品名稱</th>
+		<th>賣家</th>
 		<th>數量</th>
 		<th>價錢</th>
 		<th>小計</th>
 	</tr>
-	<c:forEach items="${detail}" var="bean">
+	<c:forEach  var="i" begin="0" end="${fn:length(detail)-1}">
 	<tr>
 		
-		<td>${bean.prod_name}</td>
-		<td>${bean.count }</td>
-		<td>${bean.price }</td>
-		<td>${bean.subtotal }</td>
+		<td>${detail[i].prod_name}</td>
+		<td>${listStor[i].storeName}</td>
+		<td>${detail[i].count }</td>
+		<td>${detail[i].price }</td>
+		<td>${detail[i].subtotal }</td>
 		
 	</tr>	
 	</c:forEach>

@@ -109,5 +109,37 @@ public class StoreDAOImpl implements StoreDAO_M {
 		}
 		return storeVO;
 	}
+	
+	
+	private String selectgetOneProd = "select s.store_name,s.store_address from product p  right join store s on p.mem_id=s.mem_id where p.prod_id=? ";
+	public StoreVO_M getOneProd(int prodId) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		StoreVO_M storeVO = null;
+		try {		
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(selectgetOneProd);
+
+			pstmt.setInt(1, prodId);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				storeVO = new StoreVO_M();
+				storeVO.setStoreName(rs.getString(1));
+				storeVO.setStoreAddress(rs.getString(2));	
+			}
+		} catch (SQLException se) {
+			se.printStackTrace();
+		} finally {
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException se) {
+					se.printStackTrace();
+				}
+			}
+		}
+		return storeVO;
+	}
 
 }

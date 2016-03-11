@@ -27,8 +27,8 @@
 		<th>訂單編號</th>
 		<th>訂單日期</th>
 		<th>金額</th>
-		<th>訂單狀態</th>
 		<th>付款方式</th>
+		<th>訂單狀態</th>
 	</tr>
 	<c:forEach  var="i" begin="0" end="${fn:length(order)-1 }">
 	<tr>
