@@ -50,10 +50,12 @@
 							class="shopButton" style="width: 100%" 
 							data-shop-url="<%=request.getContextPath()%>/g03_product/ProductServlet.con?action=getOneByMemId&memId=${LoginOK.mem_id}"
 							data-shop-id="queryProductFrame">商品查詢</a></li>
-					<li><a  class="shopButton"
+					<li><a  href="#"
+							class="shopButton"
 							data-shop-url="<%=request.getContextPath()%>/g03_product/addNewProduct_M.jsp"
 							data-shop-id="insertProductFrame">新增商品</a></li>
-					<li><a  class="shopButton"
+					<li><a  href="#"
+							class="shopButton"
 						    data-shop-url="<%=request.getContextPath()%>/StoreServlet.do?action=getOneByMemId&memId=${LoginOK.mem_id}"
 						    data-shop-id="queryShopFrame">商店資訊</a></li>
 					<c:choose>
