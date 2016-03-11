@@ -109,7 +109,7 @@
 			  <li role="presentation"><a  onclick="sell()">關於賣家...</a></li>
 			</ul>
 		</div>
-		<div id="content" style="width: 90%;margin:0 5% 0 5%;"></div>
+		<span id="content" style="width: 90%;margin:0 5% 0 5%;"></span>
 
 	</div>
 	
