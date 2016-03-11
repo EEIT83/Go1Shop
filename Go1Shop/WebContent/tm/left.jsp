@@ -135,7 +135,7 @@
 							id="mail" class="input"> <span id="errorMail">${error.mail}</span>
 					</div>
 					<div class="txt-fld">
-						<label for="pwd">密碼:</label> <input type="text" name="pwd"
+						<label for="pwd">密碼:</label> <input type="password" name="pwd"
 							id="pwd" class="input"> <span id="errorPwd">${error.pwd }</span>
 					</div>
 					<h5 id="loginError">${error.loginError }</h5>

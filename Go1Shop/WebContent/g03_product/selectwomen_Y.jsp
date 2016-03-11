@@ -80,9 +80,8 @@
 							</a>
 							<h3 id="h3txt" align="center">					
 <%-- 							<a>${bean.prod_id}</a><br>	 --%>
-								<a>memid=${bean.mem_id}</a><br>
 								<a>${bean.prod_name}</a><br>
-								<a>金額:${bean.price}</a>						
+								<a>NT:${bean.price}</a>						
 							</h3>
 							
 						</div>
@@ -91,7 +90,7 @@
 			</div>
 	</div>
 <!-- 下邊	--------------------------------------------------------------------------------- -->	
-	<div id="bottom" style="clear:left;width:100%;position:relative;bottom:0;left:0;">
+	<div id="bottom" style="clear:left;width:100%;position:fixed;bottom:0;left:0;">
 		<jsp:include page="/tm/bottom.jsp" />	
 	</div>
 <!-------------------------------------------------------------------------------------- -->
