@@ -25,7 +25,7 @@
 				<li><a href="<%=request.getContextPath()%>/p_SOPRTS/S_index.jsp">SOPRTS</a></li>
 				<li><a href="<%=request.getContextPath()%>/p_BABIES/B_index.jsp">BABIES</a></li>
 			<c:if test="${empty LoginOK}">
-				<li><a rel="leanModal" name="signup" href="#signup" id="login">			
+				<li><a rel="leanModal" name="signup" href="#signup" id="login" onclick="login()">			
 				<i class="glyphicon glyphicon-user leftNavIcon"></i>會員登入</a></li>
 			</c:if>
 			<c:if test="${!empty LoginOK}">

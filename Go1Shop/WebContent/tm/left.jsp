@@ -36,9 +36,9 @@
 			<li class="active1"><a href="" style="text-decoration: none"
 				target="_blank"> <i class="glyphicon glyphicon-user leftNavIcon"></i>基本資料</a>
 			<ul>
-					<li><a href="#" style="width: 100%" id="modify">修改基本資料</a></li>
+					<li><a href="#" style="width: 100%;" id="modify" >修改基本資料</a></li>
 					<li><a href="#" id="changePwd">修改密碼</a></li>
-					<li><a href="#" style="width: 100%" id="history">歷史訂單</a></li>
+					<li><a href="#" style="width: 100%;" id="history" onclick="history()" >歷史訂單</a></li>
 			</ul>
 			</li>	
 				<li class="active1"><a href="" id="sell"
@@ -239,18 +239,15 @@
 	})
 
 // 歷史訂單
-	var history = document.getElementById("history");
-	history.addEventListener("click", function() {
+	function history() {
 		if(document.getElementById("mainFrame")!=null){
-			
-		document.getElementById("mainFrame").style.display="none";
+			document.getElementById("mainFrame").style.display="none";
 		}
-		document.getElementById("right").innerHTML="<iframe src='<c:url value='/Account/Modify.controller'/>' scrolling='no' frameborder='0' height='100%' id='modifyFrame' width='100%' onload='IFrameReSize('modifyFrame');IFrameReSizeWidth('modifyFrame');'></iframe>";
-	})	
-	//<c:url value='/g05_customer/ProdOrderHis.do?memId=${LoginOK.mem_id}'/>
+		document.getElementById("right").innerHTML="<iframe src='<c:url value='/g05_customer/ProdOrderHis.do?memId=${LoginOK.mem_id}'/>' scrolling='no' frameborder='0' height='100%' id='historyFrame' width='100%' onload='IFrameReSize('historyFrame');IFrameReSizeWidth('historyFrame');'></iframe>";
+	}
+	//<c:url value='/g05_customer/ProdOrderHis.do?memId=${LoginOK.mem_id}'/>	
 
-	
-//新增商品
+	//新增商品
 
 
 </script>
@@ -276,7 +273,7 @@
 					registerForm.style.display = "inline";
 					forgetPwdForm.style.display = "none";
 				})
-		document.getElementById("login").addEventListener("click", function() {
+		function login() {
 			document.getElementById("mail").value = "";
 			document.getElementById("pwd").value = "";
 			document.getElementById("errorMail").innerHTML = "";
@@ -285,7 +282,7 @@
 			loginForm.style.display = "inline";
 			registerForm.style.display = "none";
 			forgetPwdForm.style.display = "none";
-		})
+		}
 		document.getElementById("forgetPwd").addEventListener("click",function(){
 			document.getElementById("mail").value = "";
 			loginForm.style.display = "none";
