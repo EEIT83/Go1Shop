@@ -251,7 +251,20 @@
 
 
 </script>
-
+<script type="text/javascript">
+//商品專用。	
+	var shopButtons = document.querySelectorAll(".shopButton");
+	console.log(shopButtons);
+	for(var i=0;i<shopButtons.length;i++){
+		shopButtons[i].addEventListener("click", function() {			
+			if(document.querySelector("#mainFrame")!=null){			
+				document.querySelector("#mainFrame").style.display="none";
+			}			
+			var tempString = "<iframe src='"+this.dataset.shopUrl+"' scrolling='yes' frameborder='0' height='800px' id='"+this.dataset.shopId+"' width='100%' onload='IFrameReSize('"+this.dataset.shopId+"');IFrameReSizeWidth('"+this.dataset.shopUrl+"');'></iframe>";
+			document.getElementById("right").innerHTML=tempString;			
+		});
+	}
+</script>
 
 	<!-- 彈跳視窗 -->
 	<script type="text/javascript">
