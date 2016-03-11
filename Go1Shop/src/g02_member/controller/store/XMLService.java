@@ -30,17 +30,18 @@ public class XMLService {
 
 		try (//Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 			Connection conn = ds.getConnection();	
-			PreparedStatement ps = conn.prepareStatement("select store_address from store where");
+			PreparedStatement ps = conn.prepareStatement("select store_address from store where mem_id=?");
 				){
+			ps.setInt(1, bean.getMem_id());
 			ResultSet rs = ps.executeQuery();
+			
 			Document document = new Document();
-			Element root = new Element("store_address");
+			Element root = new Element("Store_address");
 			document.addContent(root);
 			while(rs.next()){
 				Element e = new Element("store_address");
 				root.addContent(e);
 				e.addContent(new Element("store_address").setText(rs.getString(1)));
-				System.out.println(rs.getString(1));
 				return document;
 			}
 			

@@ -29,15 +29,15 @@
 				'dataType' : 'xml',
 				'data' : {},
 				'success' : function(data) {
-					$(data).find('address').each(function() {
+					$(data).find('Store_address').each(function() {
 						alert(213);
-						console.log($(this).children('address').text());
-						addr = $(this).children('address').text();
+						console.log($(this).children('store_address').text());
+						addr = $(this).children('store_address').text();
 						loadMap();
 					})
 				},
 				'error':function(data){
-					
+					alert(123);
 				}
 			});
 		});
