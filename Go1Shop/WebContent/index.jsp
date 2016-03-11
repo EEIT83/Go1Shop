@@ -139,7 +139,7 @@ request.setAttribute("select", result);
 			</div>
 	</div>
 <!-- 下邊	--------------------------------------------------------------------------------- -->	
-	<div id="bottom" style="clear:left;width:100%;position:relative;bottom:0;left:0;">
+	<div id="bottom" style="clear:left;width:100%;position:fixed;bottom:0;left:0;">
 		<jsp:include page="/tm/bottom.jsp" />	
 	</div>
 <!-------------------------------------------------------------------------------------- -->

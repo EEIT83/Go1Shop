@@ -54,7 +54,7 @@
 						enctype="multipart/form-data">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label for="img">note</label> <input type="file" name="img"
+								<label for="img">商品圖片</label> <input type="file" name="img"
 									class="form-control" id="img" placeholder="img" />
 							</div>
 							<img id="infoPicResult" class="img-responsive img-thumbnail" />
@@ -63,51 +63,51 @@
 						<div class="col-md-4">
 
 							<div class="form-group">
-								<label for="prodName">prodName</label> <input type="text"
-									name="prodName" class="form-control" id="prodName"
+								<label for="prodName">商品名稱</label> <input type="text"
+									name="prodName" class="form-control" id="商品名稱"
 									placeholder="prodName" />
 							</div>
 
 							<div class="form-group">
-								<label for="size">size</label> <input type="text" name="size"
-									class="form-control" id="size" placeholder="size" />
+								<label for="size">大小</label> <input type="text" name="size"
+									class="form-control" id="size" placeholder="大小" />
 							</div>
 
 							<div class="form-group">
-								<label for="color">color</label> <input type="text" name="color"
-									class="form-control" id="color" placeholder="color" />
+								<label for="color">顏色</label> <input type="text" name="color"
+									class="form-control" id="color" placeholder="顏色" />
 							</div>
 
 							<div class="form-group">
-								<label for="Count">Count</label> <input type="number"
+								<label for="Count">件數</label> <input type="number"
 									name="count" class="form-control" id="Count"
-									placeholder="Count" min="0" value="0" />
+									placeholder="件數" min="0" value="0" />
 							</div>
 
 							<div class="form-group">
-								<label for="price">price</label> <input type="text" name="price"
-									class="form-control" id="price" placeholder="price" />
+								<label for="price">價錢</label> <input type="text" name="price"
+									class="form-control" id="price" placeholder="價錢" />
 							</div>
 
 							<div class="form-group">
-								<label for="brand">brand</label> <input type="text" name="brand"
-									class="form-control" id="brand" placeholder="brand" />
+								<label for="brand">品牌</label> <input type="text" name="brand"
+									class="form-control" id="brand" placeholder="品牌" />
 							</div>
 
 							<div class="form-group">
-								<label for="gender">gender</label> <input type="text"
+								<label for="gender">性別</label> <input type="text"
 									list="genderlist" name="gender" class="form-control"
-									id="gender" placeholder="gender" autocomplete="off"/>
+									id="gender" placeholder="性別" autocomplete="off"/>
 							</div>
 
 							<div class="form-group">
-								<label for="part">part</label> <input type="text" name="part"
-									class="form-control" id="part" placeholder="part" />
+								<label for="part">部位</label> <input type="text" name="part"
+									class="form-control" id="part" placeholder="部位" />
 							</div>
 
 							<div class="form-group">
-								<label for="note">note</label> <input type="text" name="note"
-									class="form-control" id="note" placeholder="note" />
+								<label for="note">註記</label> <input type="text" name="note"
+									class="form-control" id="note" placeholder="NOTE" />
 							</div>
 							<input type="hidden" name="action" value="insert" /><br /> <input
 								type="hidden" name="memId" value="${LoginOK.mem_id}" /><br />
