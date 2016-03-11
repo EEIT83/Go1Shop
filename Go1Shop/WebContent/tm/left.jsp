@@ -35,7 +35,7 @@
 	<ul id="leftNavigation">
 		<c:if test="${!empty LoginOK}">
 			<li ><a href="" style="text-decoration: none"
-				target="_blank" id="active1"> <i class="glyphicon glyphicon-user leftNavIcon"></i>基本資料</a>
+				target="_blank" > <i class="glyphicon glyphicon-user leftNavIcon"></i>基本資料</a>
 			<ul>
 					<li><a href="#" style="width: 100%;" id="modify" >修改基本資料</a></li>
 					<li><a href="#" id="changePwd">修改密碼</a></li>
@@ -74,7 +74,7 @@
 				</ul></li>
 
 			<li ><a href="#" style="text-decoration: none"
-				target="_blank" id="active1"> <i
+				target="_blank" > <i
 					class="glyphicon glyphicon-comment leftNavIcon"></i>訊息
 			</a>
 				<ul>
