@@ -110,7 +110,12 @@ public class StoreServlet_M extends HttpServlet {
 				// 3.結果傳送到顯示的View
 				HttpSession session = req.getSession();
 				session.setAttribute("StoreVO", storeVO);
-				String url = "/g03_product/shopInfo.jsp";
+				String url="";
+				if(storeVO==null){
+					url="/g03_product/addShopInfo.jsp";
+				}else{
+					 url = "/g03_product/shopInfo.jsp";
+				}
 				RequestDispatcher successView = req.getRequestDispatcher(url);// 成功轉交
 																				// update_emp_input.jsp
 				successView.forward(req, resp);

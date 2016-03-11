@@ -1,6 +1,7 @@
 package g03_product.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,8 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+
 import g03_product.model.ProductBean_Y;
 import g03_product.model.ProductService_Y;
+import g03_product.model.StoreService_M;
+import g03_product.model.StoreVO_M;
+import g05_customer.shoppingCar.controller.ProductBean;
 
 @WebServlet(urlPatterns = {"/g03_product/ProductGenderServlet.controller"})
 
@@ -34,7 +40,7 @@ public class ProductGenderServlet_Y extends HttpServlet {
 			throws ServletException, IOException {
 		
 		
-		System.out.println("執行GenderServlet");
+		//System.out.println("執行GenderServlet");
 
 		HttpSession session = request.getSession();
 		
@@ -48,6 +54,7 @@ public class ProductGenderServlet_Y extends HttpServlet {
 		String lowprice = request.getParameter("lowprice");
 		String gender = request.getParameter("gender");
 		String part = request.getParameter("part");
+
 //		String index = request.getParameter("index").trim();
 		//
 //		System.out.println("index=" + index);
@@ -57,6 +64,29 @@ public class ProductGenderServlet_Y extends HttpServlet {
 //			lowprice ="";
 //			
 //		}
+		
+		
+		///////////////////////// MENG 抓出商店資訊///////////////////////////////
+		// 2.查詢資料(透過svc進行資料處理)
+		String memid = request.getParameter("memid");
+		// System.out.println("MENG 抓出商店資訊memid"+memid);
+		if (memid != null) {
+			Integer memId = Integer.parseInt(memid);
+			StoreService_M storeSrv = new StoreService_M();
+			StoreVO_M storeVO = storeSrv.getOneByMemId(memId);
+			// System.out.println("MENG 抓出商店資訊"+storeVO);
+			// List<StoreVO_M> xxx= new ArrayList<StoreVO_M>();
+			// xxx.add(storeVO);
+			Gson gson = new Gson();
+			System.out.println(gson.toJson(storeVO));
+			// System.out.println(gson.toJson(xxx));
+			response.getWriter().write(gson.toJson(storeVO));
+			return;
+		}
+
+		///////////////////////// MENG///////////////////////////////
+	
+
 		
 		// 呼叫model(DAO)
 
@@ -77,9 +107,9 @@ public class ProductGenderServlet_Y extends HttpServlet {
 
 		List<ProductBean_Y> result;//new一個接收回傳結果資料的
 		
+		
 		//如果已經先選了部位 就直接針對部位做篩選排序
 		String sessionpart = (String) session.getAttribute("PART");
-		if (sessionpart != null) {SQLpart = " and part = '" + sessionpart + "'";}
 		//System.out.println("session=" + session.getAttribute("PART"));
 		
 		
@@ -97,12 +127,13 @@ public class ProductGenderServlet_Y extends HttpServlet {
 			//搜尋時把使用者剛剛輸入的產品名稱條件和價格條件存入session，搜尋完後再點選排序會用到
 			session.setAttribute("PROD_NAME", prod_name);
 			session.setAttribute("PRICE_RANGE", SQLprice);	
+			if (sessionpart != null) {SQLpart = " and part = '" + sessionpart + "'";}
 			
 			
 			result = productService.select(bean, SQLprice, SQLorder, SQLgender, SQLpart);// 把SQL傳入select做查詢
 			request.setAttribute("select", result);
 
-					
+		
 			if (gender==null){
 				request.getRequestDispatcher("/index.jsp").forward(request, response);}
 			if(gender!=null){
@@ -128,7 +159,7 @@ public class ProductGenderServlet_Y extends HttpServlet {
 				SQLorder = " order by launch_date desc ";
 		
 			//如果使用者剛剛有輸入搜尋條件 這裡會沿用
-			
+			if (sessionpart != null) {SQLpart = " and part = '" + sessionpart + "'";}
 			
 			String sessionprod_name = (String) session.getAttribute("PROD_NAME");
 			if (sessionprod_name !=null ){
@@ -241,6 +272,7 @@ public class ProductGenderServlet_Y extends HttpServlet {
 		
 		//跳轉頁面
 		String change = request.getParameter("change");//如果換到另一個jsp頁面就消除剛剛存進的session part
+		System.out.println("change="+change);
 		if(change!=null){
 			session.removeAttribute("PART");
 			session.removeAttribute("PROD_NAME");

@@ -21,6 +21,10 @@
 		<filter-name>OpenSessionInViewFilter</filter-name>
 		<url-pattern>/OrdDetail.do</url-pattern>
 	</filter-mapping>
+	<filter-mapping>
+		<filter-name>OpenSessionInViewFilter</filter-name>
+		<url-pattern>/g05_customer/ProdOrderHis.do</url-pattern>
+	</filter-mapping>
 
 
 	<filter>

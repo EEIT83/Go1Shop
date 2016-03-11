@@ -49,12 +49,12 @@
         <property name="payment" type="java.lang.String">
             <column name="PAYMENT" />
         </property>
-<!--         <property name="payment_status" type="java.lang.String"> -->
-<!--             <column name="PAYMENT_STATUS" /> -->
-<!--         </property> -->
-<!--         <property name="ord_date" type="java.util.Date"> -->
-<!--             <column name="ORD_DATE" /> -->
-<!--         </property> -->
+        <property name="payment_status" type="java.lang.String">
+            <column name="PAYMENT_STATUS" />
+        </property>
+        <property name="ord_date" type="java.util.Date">
+            <column name="ORD_DATE" />
+        </property>
         <property name="total" type="int">
             <column name="TOTAL" />
         </property>

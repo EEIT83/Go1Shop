@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -36,29 +36,40 @@
 			<li class="active1"><a href="" style="text-decoration: none"
 				target="_blank"> <i class="glyphicon glyphicon-user leftNavIcon"></i>基本資料</a>
 			<ul>
-					<li><a href="#" style="width: 100%" id="modify">修改基本資料</a></li>
+					<li><a href="#" style="width: 100%;" id="modify" >修改基本資料</a></li>
 					<li><a href="#" id="changePwd">修改密碼</a></li>
-					<li><a href="#" id="history">歷史訂單</a></li>
+					<li><a href="#" style="width: 100%;" id="history" onclick="history()" >歷史訂單</a></li>
 			</ul>
 			</li>	
-				<li class="active1"><a href="" id="sell" style="text-decoration: none" target="_blank">
-				<i class="glyphicon glyphicon-home leftNavIcon"></i>商家專區</a>
-					<ul>
-						<li><a href="" id="newPro" style="width: 100%">商品查詢</a></li>
-						<li><a href="<%=request.getContextPath()%>/g03_product/addNewProduct_M.jsp">新增商品</a></li>
-						<li><a href="<%=request.getContextPath()%>/g03_product/shopInfo.jsp">商店資訊</a></li>
-						<li><a href="<%=request.getContextPath()%>/index.jsp">回首頁</a></li>
-						<c:choose>
-							<c:when  test="${empty StoreVO}">
-								<li><a style='higth=10px;' href="<%=request.getContextPath()%>/g03_product/addShopInfo.jsp" >新增商店資訊</a></li>
-							</c:when>
-							<c:otherwise>
-								<li><a style='higth=10px;' href="<%=request.getContextPath()%>/g03_product/addShopInfo.jsp" >修改商店資訊</a></li>
-							</c:otherwise>
-						</c:choose>
-					</ul>
+				<li class="active1"><a href="" id="sell"
+				style="text-decoration: none" target="_blank"> <i
+					class="glyphicon glyphicon-home leftNavIcon"></i>商家專區
+			</a>
+				<ul>
+					<li><a	href="#"
+							class="shopButton" style="width: 100%" 
+							data-shop-url="<%=request.getContextPath()%>/g03_product/ProductServlet.con?action=getOneByMemId&memId=${LoginOK.mem_id}"
+							data-shop-id="queryProductFrame">商品查詢</a></li>
+					<li><a  class="shopButton"
+							data-shop-url="<%=request.getContextPath()%>/g03_product/addNewProduct_M.jsp"
+							data-shop-id="insertProductFrame">新增商品</a></li>
+					<li><a  class="shopButton"
+						    data-shop-url="<%=request.getContextPath()%>/StoreServlet.do?action=getOneByMemId&memId=${LoginOK.mem_id}"
+						    data-shop-id="queryShopFrame">商店資訊</a></li>
+					<c:choose>
+						<c:when test="${empty StoreVO}">
+							<li><a  class="shopButton"
+							data-shop-url=""
+							data-shop-id="addShopFrame">新增商店資訊</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a  class="shopButton"
+							data-shop-url="<%=request.getContextPath()%>/g03_product/addShopInfo.jsp"
+							data-shop-id="<%=request.getContextPath()%>/g03_product/addShopInfo.jsp">修改商店資訊</a></li>
+						</c:otherwise>
+					</c:choose>					
+				</ul></li>
 
-				</li>
 			<li class="active1"><a href="#" style="text-decoration: none"
 				target="_blank"> <i
 					class="glyphicon glyphicon-comment leftNavIcon"></i>訊息
@@ -72,7 +83,7 @@
 				<i class="glyphicon glyphicon-triangle-right leftNavIcon"></i>上衣專區
 		</a>
 			<ul>
-				<li><a href="#" style="width: 100%">短袖</a></li>
+				<li><a href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=M&part=T-Shirt'/>" style="width: 100%">T-Shirt</a></li>
 				<li><a href="#">長袖</a></li>
 				<li><a href="#">背心</a></li>
 				<li><a id="d"
@@ -129,11 +140,11 @@
 					</div>
 					<h5 id="loginError">${error.loginError }</h5>
 					<!-- 					  <div class="btn-fld"> -->
-					<input type="submit" value="Sign In &raquo;" class="loginbutton">
-					<input type="button" value="Sign Up &raquo;" class="registerbutton"
+					<input type="submit" value="登入" class="loginbutton">
+					<input type="button" value="註冊" class="registerbutton"
 						id="register">
+					<input type="button" value="忘記密碼" class="forgetPwdbutton"	id="forgetPwd">
 
-					<!-- 					</div> -->
 				</form>
 			</div>
 			<!-- 註冊 -->
@@ -145,12 +156,12 @@
 				<form action="<c:url value="/Account/Register.controller" />"
 					method="post">
 					<div class="txt-fld">
-						<label>帳號：</label> <input type="text" name="mail" class="input" />
+						<label>帳號：</label> <input type="text" name="mail" class="input" id="mail"/>
 						<span id="errorMail"></span>
 					</div>
 					<div class="txt-fld">
 						<label>密碼：</label> <input type="text" name="pwd"
-							class="input" /> <span id="errorPwd"></span>
+							class="input" id="pwd" /> <span id="errorPwd"></span>
 					</div>
 					<div class="txt-fld">
 						<label>姓名：</label> <input type="text" name="mem_name"
@@ -175,6 +186,19 @@
 							class="registerbutton">
 					</div>
 				</form>
+			</div>
+			<div id="forgetPwdForm" style="display: none;">
+					<div id="signup-header">
+						<p>忘記密碼</p>
+						<a class="modal_close" href="#"></a>
+					</div>
+					<form action="<c:url value="/Account/ForgetPwd.controller" />" method="post">
+						<div class="txt-fld">
+							<label for="mail">帳號:</label> <input type="text" name="mail"
+								id="mail" class="input"> <span id="errorMail">${error.mail}</span>
+						</div>
+						<input type="submit" value="送出" class="forgetPwdbutton" />
+					</form>
 			</div>
 		</div>
 	</div>
@@ -215,35 +239,16 @@
 	})
 
 // 歷史訂單
-	var history = document.getElementById("history");
-	history.addEventListener("click", function() {
+	function history() {
 		if(document.getElementById("mainFrame")!=null){
-			
-		document.getElementById("mainFrame").style.display="none";
+			document.getElementById("mainFrame").style.display="none";
 		}
-		document.getElementById("right").innerHTML="<iframe src='<c:url value='/OrdDetail.do?memId=${LoginOK.mem_id}'/>' scrolling='no' frameborder='0' height='100%' id='historyFrame' width='100%' onload='IFrameReSize('historyFrame');IFrameReSizeWidth('historyFrame');'></iframe>";
-	})	
-	
-	
-// 	var d = document.getElementById("d");
-// 	d.addEventListener("click", function() {
-// 		document.getElementById("mainFrame").style.display="none";
-// 		document.getElementById("right").innerHTML="<iframe style='width: 100%;' src='<c:url value='/g03_product/ProductGenderServlet.controller?gender=M&part=襯衫'/>' scrolling='no' frameborder='0' height='100%' id='dFrame' width='100%' onload='IFrameReSize('dFrame');IFrameReSizeWidth('dFrame');'></iframe>";
-// 	})
-// 	var sell = document.getElementById("sell");
-// 	sell.addEventListener("click", function() {
-<%-- 			document.location='<%=request.getContextPath()%>/ProductServlet.do?action=getOneByMemId&memId=${LoginOK.mem_id}'; --%>
-// 		})
+		document.getElementById("right").innerHTML="<iframe src='<c:url value='/g05_customer/ProdOrderHis.do?memId=${LoginOK.mem_id}'/>' scrolling='no' frameborder='0' height='100%' id='historyFrame' width='100%' onload='IFrameReSize('historyFrame');IFrameReSizeWidth('historyFrame');'></iframe>";
+	}
+	//<c:url value='/g05_customer/ProdOrderHis.do?memId=${LoginOK.mem_id}'/>	
 
-//新增商品
-	var newPro = document.getElementById("newPro");
-	newPro.addEventListener("click", function() {
-		if(document.getElementById("mainFrame")!=null){
-			
-		document.getElementById("mainFrame").style.display="none";
-		}
-		document.getElementById("right").innerHTML="<iframe src='<c:url value='/g03_product/ProductServlet.con?action=getOneByMemId&memId=10'/>' scrolling='no' frameborder='0' height='100%' id='newProFrame' width='100%' onload='IFrameReSize('newProFrame');IFrameReSizeWidth('newProFrame');'></iframe>";
-	})	
+	//新增商品
+
 
 </script>
 
@@ -252,6 +257,7 @@
 	<script type="text/javascript">
 		var registerForm = document.getElementById("registerForm");
 		var loginForm = document.getElementById("loginForm");
+		var forgetPwdForm = document.getElementById("forgetPwdForm");
 		document.getElementById("register").addEventListener("click",
 				function() {
 					document.getElementById("mail").value = "";
@@ -265,8 +271,9 @@
 					document.getElementById("female").checked = false;
 					loginForm.style.display = "none";
 					registerForm.style.display = "inline";
+					forgetPwdForm.style.display = "none";
 				})
-		document.getElementById("login").addEventListener("click", function() {
+		function login() {
 			document.getElementById("mail").value = "";
 			document.getElementById("pwd").value = "";
 			document.getElementById("errorMail").innerHTML = "";
@@ -274,6 +281,13 @@
 			document.getElementById("loginError").innerHTML = "";
 			loginForm.style.display = "inline";
 			registerForm.style.display = "none";
+			forgetPwdForm.style.display = "none";
+		}
+		document.getElementById("forgetPwd").addEventListener("click",function(){
+			document.getElementById("mail").value = "";
+			loginForm.style.display = "none";
+			registerForm.style.display = "none";
+			forgetPwdForm.style.display = "inline";
 		})
 	</script>
 	<!-- 驗證登入帳號 -->

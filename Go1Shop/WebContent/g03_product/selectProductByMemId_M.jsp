@@ -53,10 +53,10 @@ $(document).ready(function() {
 	<!-- /.modal -->
 
 
-	<%@ include file="../_files/nav.file"%>
+	
 
 	<div class="container-fluid">
-		<%@ include file="../_files/sideBar.file"%>
+		
 		<div class="row">
 			<div class="col-md-offset-2">
 				<div class="col-md-8">
@@ -108,9 +108,9 @@ $(document).ready(function() {
 										<td>${productVO.launchDate}</td>
 										<td>${productVO.note}</td>
 										<td><a class="btn btn-default"
-											href="<%=request.getContextPath()%>/ProductServlet.do?action=deleteByProdId&prodId=${productVO.prodId}&memId=${productVO.memId}">刪除</a></td>
+											href="<%=request.getContextPath()%>/g03_product/ProductServlet.con?action=deleteByProdId&prodId=${productVO.prodId}&memId=${productVO.memId}">刪除</a></td>
 										<td><a class="btn btn-default"
-											href="<%=request.getContextPath()%>/ProductServlet.do?action=goToUpdatePage&prodId=${productVO.prodId}&memId=${productVO.memId}">修改</a></td>
+											href="<%=request.getContextPath()%>/g03_product/ProductServlet.con?action=goToUpdatePage&prodId=${productVO.prodId}&memId=${productVO.memId}">修改</a></td>
 										<td><a href="#" data-toggle="modal"
 											data-target="#imgModal" id="img-${productVO.prodId}"
 											class="btn btn-default btImg">觀看圖片</a></td>

@@ -14,7 +14,7 @@
 	<!--[if IE]>
 		<script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
 	<![endif]-->
-<script language="javascript">
+<script type="text/javascript">
 		function reSize(){
 		　　//parent.document.all.frameid.height=document.body.scrollHeight; 
 		　　parent.document.getElementById("mainFrame").height=document.body.scrollHeight;
@@ -56,7 +56,7 @@
 	</article>
 	
 	<script src="http://libs.useso.com/js/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
-	<script>window.jQuery || document.write('<script src='<%=request.getContextPath()%>/_js/jquery-2.1.1.min.js'><\/script>')</script>
+	<script>window.jQuery || document.write("<script src='<%=request.getContextPath()%>/_js/jquery-2.1.1.min.js'><\/script>")</script>
 	<script src="<%=request.getContextPath()%>/_dist/slippry.min.js"></script>
 	<script>
 		$(function() {

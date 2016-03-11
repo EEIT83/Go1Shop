@@ -16,8 +16,8 @@ public class ProdOrderBean {
 	private int zip_code_sen;
 	private int sender_phone;
 	private String payment;
-	//private String payment_status;
-	//private java.util.Date ord_date;
+	private String payment_status;
+	private java.util.Date ord_date;
 	private int total;
 	private int total_point;
 
@@ -99,21 +99,21 @@ public class ProdOrderBean {
 		this.payment = payment;
 	}
 
-//	public String getPayment_status() {
-//		return payment_status;
-//	}
-//
-//	public void setPayment_status(String payment_status) {
-//		this.payment_status = payment_status;
-//	}
-//
-//	public java.util.Date getOrd_date() {
-//		return ord_date;
-//	}
-//
-//	public void setOrd_date(java.util.Date ord_date) {
-//		this.ord_date = ord_date;
-//	}
+	public String getPayment_status() {
+		return payment_status;
+	}
+
+	public void setPayment_status(String payment_status) {
+		this.payment_status = payment_status;
+	}
+
+	public java.util.Date getOrd_date() {
+		return ord_date;
+	}
+
+	public void setOrd_date(java.util.Date ord_date) {
+		this.ord_date = ord_date;
+	}
 
 	public int getTotal() {
 		return total;

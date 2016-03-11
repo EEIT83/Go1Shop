@@ -46,7 +46,7 @@ public class ModifyServlet extends HttpServlet {
 		try {
 			if (StringUtils.isNotEmpty(mail) && mail != null) {
 				if ("save".equals(pageStatus)) {
-					bean.setMail(request.getParameter("mail"));
+					bean.setMail(mail);
 					bean.setMem_name(request.getParameter("mem_name"));
 					bean.setNickName(request.getParameter("nickName"));
 					bean.setGender(request.getParameter("gender"));

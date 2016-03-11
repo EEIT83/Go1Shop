@@ -69,14 +69,16 @@
 						<div id="div_out" >
 							<c:url value="/g05_customer/shoppingCar/show.jsp" var="path">
 								<c:param name="id" value="${bean.prod_id}" />
+								<c:param name="memid" value="${bean.mem_id}" />
 							</c:url>
 							<a href="${path}">
 							<img id="img1" class="img-responsive" style="width:300px;height:300px" 
 							src='<c:url value="/pages/showImg.controller?prod_id="/>${bean.prod_id}'>
 							
 							</a>
-							<h3 id="h3txt">					
-							<a>${bean.prod_id}</a><br>	
+							<h3 id="h3txt" align="center">					
+<%-- 							<a>${bean.prod_id}</a><br>	 --%>
+								<a>memid=${bean.mem_id}</a><br>
 								<a>${bean.prod_name}</a><br>
 								<a>金額:${bean.price}</a>						
 							</h3>

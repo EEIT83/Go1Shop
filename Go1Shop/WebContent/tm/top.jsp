@@ -19,13 +19,13 @@
 			<div class="address-bar" style="color:black;text-shadow:5px 5px 5px #5B5B5B;font-size:8px;">Enjoy Your Life&nbsp;●&nbsp;Chase Love．Brave Dream</div>
 			</div>
 			<ul class="nav navbar-nav"  >
-				<li><a href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=F&change=true' />">WOMEN</a></li>
+				<li><a href="<c:url value="/g03_product/ProductGenderServlet.controller?gender=F&change=true"/>">WOMEN</a></li>
 				<li><a href="<c:url value='/g03_product/ProductGenderServlet.controller?gender=M&change=true' />">MEN</a></li>
 				<li><a href="<%=request.getContextPath()%>/p_KIDS/K_index.jsp">KIDS</a></li>
-				<li><a href="<%=request.getContextPath()%>/p_SOPRTS/S_index.jsp">SOPRTS</a></li>
+				<li><a href="<%=request.getContextPath()%>/p_SOPRTS/S_index.jsp">SPORTS</a></li>
 				<li><a href="<%=request.getContextPath()%>/p_BABIES/B_index.jsp">BABIES</a></li>
 			<c:if test="${empty LoginOK}">
-				<li><a rel="leanModal" name="signup" href="#signup" id="login">			
+				<li><a rel="leanModal" name="signup" href="#signup" id="login" onclick="login()">			
 				<i class="glyphicon glyphicon-user leftNavIcon"></i>會員登入</a></li>
 			</c:if>
 			<c:if test="${!empty LoginOK}">

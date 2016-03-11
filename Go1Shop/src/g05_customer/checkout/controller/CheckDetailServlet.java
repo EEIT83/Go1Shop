@@ -105,6 +105,8 @@ public class CheckDetailServlet extends ActionSupport implements SessionAware{
 		orderBean.setZip_code(zip_code);
 		orderBean.setSender_address(sender_address);
 		orderBean.setZip_code_sen(zip_code_sen);
+		orderBean.setOrd_date(new java.util.Date());
+		orderBean.setPayment_status("處理中");
 		//System.out.println("CheckDetailServlet:before");
 		service.insertOrder(memBean , shopcar , orderBean);
 		session.remove("shopcar");

@@ -1,5 +1,6 @@
 package g01_login.model;
 
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,22 +18,19 @@ public class MemberDAO implements MemberFace {
 	private String SELECT_ALL = "select * from member ";
 	private String INSERT = "insert into member (mail, pwd, mem_name, nickname, gender, bdate) values (?, ?, ?, ?, ?, ?)";
 	private StringBuilder UPDATE;
-	//private DataSource db = ConnDB.getConnDB();
 	SQLserver ds;
 	QueryRunner runner;
 
-	public MemberDAO() throws Exception{
+	public MemberDAO() throws Exception {
 		ds = new SQLserver();
 		runner = new QueryRunner();
 	}
-	
+
 	public MemberBean selectId(String mail) throws Exception {
 		try {
-			ResultSetHandler<List<MemberBean>> rsh = new BeanListHandler<MemberBean>(
-					MemberBean.class);
+			ResultSetHandler<List<MemberBean>> rsh = new BeanListHandler<MemberBean>(MemberBean.class);
 			Object params[] = { mail };
-			List<MemberBean> result = runner.query(ds.getConn(), SELECT_ID,
-					rsh, params);
+			List<MemberBean> result = runner.query(ds.getConn(), SELECT_ID, rsh, params);
 			if (result.size() <= 0) {
 				return null;
 			} else {
@@ -45,10 +43,8 @@ public class MemberDAO implements MemberFace {
 
 	public List<MemberBean> selectAll() throws Exception {
 		try {
-			ResultSetHandler<List<MemberBean>> rsh = new BeanListHandler<MemberBean>(
-					MemberBean.class);
-			List<MemberBean> result = runner.query(ds.getConn(), SELECT_ALL,
-					rsh);
+			ResultSetHandler<List<MemberBean>> rsh = new BeanListHandler<MemberBean>(MemberBean.class);
+			List<MemberBean> result = runner.query(ds.getConn(), SELECT_ALL, rsh);
 			if (result.size() <= 0) {
 				return null;
 			} else {
@@ -62,16 +58,16 @@ public class MemberDAO implements MemberFace {
 	public void insert(MemberBean memVo) throws Exception {
 		try {
 			if (memVo != null) {
-				Object params[] = { memVo.getMail(), memVo.getPwd(),
-						memVo.getMem_name(), memVo.getNickName(),
+				Object params[] = { memVo.getMail(), memVo.getPwd(), memVo.getMem_name(), memVo.getNickName(),
 						memVo.getGender(), memVo.getBdate() };
 				runner.update(ds.getConn(), INSERT, params);
 			}
 		} catch (SQLException e) {
-			throw new Exception("新增資料有誤:" + e.getMessage());
+			e.printStackTrace();
+			throw new Exception("1");
 		}
 	}
-
+	
 	public void update(MemberBean memVo) throws Exception {
 		UPDATE = new StringBuilder("update member set ");
 		List<Object> pList = new ArrayList<Object>();
@@ -104,8 +100,7 @@ public class MemberDAO implements MemberFace {
 		UPDATE.append(" where mail=? ");
 		pList.add(memVo.getMail());
 
-		int count = runner.update(ds.getConn(), UPDATE.toString(),
-				pList.toArray());
+		int count = runner.update(ds.getConn(), UPDATE.toString(), pList.toArray());
 		if (count <= 0) {
 			throw new Exception("Update 失敗");
 		}
@@ -115,8 +110,7 @@ public class MemberDAO implements MemberFace {
 	public int delete(MemberBean memVo) throws Exception {
 
 		List<Object> params = new ArrayList<Object>();
-		StringBuilder DEL_SQL = new StringBuilder(
-				"delete from member where 1=1 ");
+		StringBuilder DEL_SQL = new StringBuilder("delete from member where 1=1 ");
 		if (memVo.getMem_id() > 0) {
 			DEL_SQL.append(" AND mem_id = ?");
 			params.add(memVo.getMem_id());
@@ -126,16 +120,14 @@ public class MemberDAO implements MemberFace {
 			params.add(memVo.getMail());
 		}
 		try {
-			return runner.update(ds.getConn(), DEL_SQL.toString(),
-					params.toArray());
+			return runner.update(ds.getConn(), DEL_SQL.toString(), params.toArray());
 		} catch (SQLException e) {
 			throw new Exception("刪除資料有誤:" + e.getMessage());
 		}
 	}
 
 	public List<MemberBean> getByProperty(MemberBean memVo) throws Exception {
-		ResultSetHandler<List<MemberBean>> rsh = new BeanListHandler<MemberBean>(
-				MemberBean.class);
+		ResultSetHandler<List<MemberBean>> rsh = new BeanListHandler<MemberBean>(MemberBean.class);
 		List<Object> params = new ArrayList<Object>();
 		StringBuilder sb = new StringBuilder("select * from member where 1=1");
 		if (StringUtils.isNotEmpty(memVo.getMail())) {
@@ -159,8 +151,7 @@ public class MemberDAO implements MemberFace {
 			params.add(memVo.getStatus());
 		}
 		try {
-			return runner.query(ds.getConn(), sb.toString(), rsh,
-					params.toArray());
+			return runner.query(ds.getConn(), sb.toString(), rsh, params.toArray());
 		} catch (SQLException e) {
 			throw new Exception("查尋失敗" + e.getMessage());
 		}
@@ -169,18 +160,18 @@ public class MemberDAO implements MemberFace {
 	public static void main(String[] args) throws Exception {
 		MemberDAO dao = new MemberDAO();
 		MemberBean vo = new MemberBean();
-		//vo.setBdate(java.sql.Date.valueOf("1992-08-08"));
-		//vo.setGender("woman");
-		//vo.setIdentification("C987654321");
-		//vo.setMail("eeit000@gmail.com");
-		//vo.setMem_name("Marry");
-		//vo.setPwd("Marry123");
-		//vo.setStatus("S");
+		// vo.setBdate(java.sql.Date.valueOf("1992-08-08"));
+		// vo.setGender("woman");
+		// vo.setIdentification("C987654321");
+		// vo.setMail("eeit000@gmail.com");
+		// vo.setMem_name("Marry");
+		// vo.setPwd("Marry123");
+		// vo.setStatus("S");
 		// vo.setMem_id(7);
 		// dao.update(vo);
 		// dao.delete(vo);
 		// dao.insert(vo);
-		//List<MemberBean> results = dao.selectAll();
+		// List<MemberBean> results = dao.selectAll();
 		List<MemberBean> results = dao.selectAll();
 		for (MemberBean result : results) {
 			System.out.println(result);

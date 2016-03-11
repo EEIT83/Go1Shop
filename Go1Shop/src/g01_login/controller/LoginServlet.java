@@ -28,8 +28,8 @@ public class LoginServlet extends HttpServlet {
 	private HttpSession session;
 
 	@Override
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -38,8 +38,7 @@ public class LoginServlet extends HttpServlet {
 		accountStatus = request.getParameter("accountStatus");
 
 		if (StringUtils.isEmpty(accountStatus)) {
-			request.getRequestDispatcher("/g01_login/Login.jsp").forward(
-					request, response);
+			request.getRequestDispatcher("/g01_login/Login.jsp").forward(request, response);
 		} else {
 			String mail = request.getParameter("mail");
 			String pwd = request.getParameter("pwd");
@@ -60,13 +59,10 @@ public class LoginServlet extends HttpServlet {
 			}
 			if (error.size() > 0) {
 				if (accountStatus.equals("login")) {
-					request.getRequestDispatcher("/g01_login/Login.jsp")
-							.forward(request, response);
+					request.getRequestDispatcher("/g01_login/Login.jsp").forward(request, response);
 				}
 				if (accountStatus.equals("backLogin")) {
 					response.sendRedirect("/Go1Shop/backLogin.jsp");
-					// request.getRequestDispatcher("/backLogin.jsp").forward(request,
-					// response);
 					return;
 				}
 			}
@@ -75,28 +71,23 @@ public class LoginServlet extends HttpServlet {
 				AdminService adService = new AdminService();
 
 				StoreService_M storeSrv = new StoreService_M();
-				
-				if (memService.Login(mail, pwd) != null && accountStatus.equals("login")) {					
-					memBean = memService.Login(mail, pwd);					
+
+				if (memService.Login(mail, pwd) != null && accountStatus.equals("login")) {
+					memBean = memService.Login(mail, pwd);
 					StoreVO_M storeVO = storeSrv.getOneByMemId(memBean.getMem_id());
 					session.setAttribute("StoreVO", storeVO);
 
 					session.setAttribute("LoginOK", memBean);
 					session.setAttribute("mail", memBean.getMail());
-
-					response.getWriter()
-							.write("<script>charset='UTF-8'; alert('Success!');parent.window.location.replace('/Go1Shop/index.jsp');</script>");
-				} else if (adService.Login(mail, pwd) != null
-						&& accountStatus.equals("backLogin")) {
+					response.getWriter().write(
+							"<script src='//code.jquery.com/jquery-1.12.0.min.js'></script><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css'><script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js'></script><script src='/Go1Shop/_js/sweet-alert.js'></script><link href='/Go1Shop/_css/sweet-alert.css' rel='stylesheet'><script>charset='UTF-8';window.onload=function(){$(function() {	swal({ title: '登入成功!',  type: 'success', confirmButtonClass: 'btn-primary', confirmButtonText: '確定!',  closeOnConfirm: false,},function(isConfirm) {  if (isConfirm) {parent.window.location.replace('/Go1Shop/index.jsp'); } });})}</script>");
+				} else if (adService.Login(mail, pwd) != null && accountStatus.equals("backLogin")) {
 
 					adBean = adService.Login(mail, pwd);
 					session.setAttribute("bLoginOK", adBean);
 					session.setAttribute("mail", adBean.getAd_mail());
 					response.sendRedirect("/Go1Shop/gb04_marketing/backMarketing.jsp");
 
-					// response.sendRedirect("/Go1Shop/backLogin.jsp");
-					// request.getRequestDispatcher("/backLogin.jsp").forward(request,
-					// response);
 					return;
 				} else {
 					throw new Exception("1");
@@ -105,14 +96,13 @@ public class LoginServlet extends HttpServlet {
 				e.printStackTrace();
 				if (accountStatus.equals("login")) {
 					if ("1".equals(e.getMessage())) {
-						response.getWriter()
-								.write("<script>alert('無此帳號密碼!'); parent.window.location.replace('/Go1Shop/index.jsp');</script>");
-						return;
+						response.getWriter().write(
+								"<script src='//code.jquery.com/jquery-1.12.0.min.js'></script><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css'><script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js'></script><script src='/Go1Shop/_js/sweet-alert.js'></script><link href='/Go1Shop/_css/sweet-alert.css' rel='stylesheet'><script>charset='UTF-8';window.onload=function(){$(function() {	swal({ title: '無此帳號密碼!',  type: 'error', confirmButtonClass: 'btn-primary', confirmButtonText: '確定!',  closeOnConfirm: false,},function(isConfirm) {  if (isConfirm) {parent.window.location.replace('/Go1Shop/index.jsp'); } });})}</script>");
+
 					}
 					if ("2".equals(e.getMessage())) {
-						response.getWriter()
-								.write("<script>alert('你已被停權!');parent.window.location.replace('/Go1Shop/index.jsp');</script>");
-						return;
+						response.getWriter().write(
+								"<script src='//code.jquery.com/jquery-1.12.0.min.js'></script><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css'><script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js'></script><script src='/Go1Shop/_js/sweet-alert.js'></script><link href='/Go1Shop/_css/sweet-alert.css' rel='stylesheet'><script>charset='UTF-8';window.onload=function(){$(function() {	swal({ title: '你已被停權!',  type: 'error', confirmButtonClass: 'btn-primary', confirmButtonText: '確定!',  closeOnConfirm: false,},function(isConfirm) {  if (isConfirm) {parent.window.location.replace('/Go1Shop/index.jsp'); } });})}</script>");
 					}
 				} else if (accountStatus.equals("backLogin")) {
 					response.sendRedirect("/Go1Shop/backLogin.jsp");
@@ -127,8 +117,8 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		this.doGet(request, response);
 	}
 
