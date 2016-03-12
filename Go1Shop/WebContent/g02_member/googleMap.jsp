@@ -4,14 +4,10 @@
 <html>
 <head runat="server">
 <title>Geocoding Test</title>
-<script type='text/javascript'
-	src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.js'></script>
-<script src="https://maps.google.com/maps/api/js?sensor=true"></script>
-<link
-	href="http://code.jquery.com/ui/1.11.3/themes/hot-sneaks/jquery-ui.css"
-	rel="stylesheet">
-<script src="http://code.jquery.com/jquery-1.11.2.js"></script>
+<script type='text/javascript' src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.js'></script>
+<link href="http://code.jquery.com/ui/1.11.3/themes/hot-sneaks/jquery-ui.css" rel="stylesheet">
 <script src="http://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.2.js"></script>
 <script src="https://maps.google.com/maps/api/js?sensor=false&language=zh-TW"></script>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 <style>
@@ -27,18 +23,21 @@
 	<script>
 		var addr;
 		$(function() {
-
 			$.ajax({
 				'type' : 'get',
 				'url' : '/Go1Shop/XMLServlet.do',
 				'dataType' : 'xml',
 				'data' : {},
 				'success' : function(data) {
-					$(data).find('address').each(function() {
-						console.log($(this).children('address').text());
-						addr = $(this).children('address').text();
+					$(data).find('Store_address').each(function() {
+						alert(213);
+						console.log($(this).children('store_address').text());
+						addr = $(this).children('store_address').text();
 						loadMap();
 					})
+				},
+				'error':function(data){
+					alert(123);
 				}
 			});
 		});

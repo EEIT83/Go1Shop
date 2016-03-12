@@ -11,6 +11,7 @@ import javax.sql.DataSource;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
+import g01_login.controller.MemberBean;
 import g99_Connection.ConnDB;
 
 public class XMLService {
@@ -21,19 +22,21 @@ public class XMLService {
 	
 	public static void main(String[] args){
 		XMLService se = new XMLService();
-		se.select();
+//		se.select();
 	}
 	
-	public Document select(){
+	public Document select(MemberBean bean){
 		
 
 		try (//Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 			Connection conn = ds.getConnection();	
-			PreparedStatement ps = conn.prepareStatement("select store_address from store");
+			PreparedStatement ps = conn.prepareStatement("select store_address from store where mem_id=?");
 				){
+			ps.setInt(1, bean.getMem_id());
 			ResultSet rs = ps.executeQuery();
+			
 			Document document = new Document();
-			Element root = new Element("store_address");
+			Element root = new Element("Store_address");
 			document.addContent(root);
 			while(rs.next()){
 				Element e = new Element("store_address");

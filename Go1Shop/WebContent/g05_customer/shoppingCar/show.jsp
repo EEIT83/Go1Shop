@@ -123,16 +123,6 @@
 	
 	<script>
 
-	function content2(data){
-		
-		$('#content').append("<iframe width='100%' height='1000 px' id='imgif'>");
-		$('#imgif').attr("src" , "/g05_customer/ShowProdImg.con?imgId="+data.imgid[1]);
-// 		$('#imgif').append("<img id='img3' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[2]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
-// 		$('#imgif').append("<img id='img4' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[3]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
-// 		$('#imgif').append("<img id='img5' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[4]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
-		$('#content').append("</iframe>");
-		
-	}
 	function msgboard(){
 		//document.getElementById("content").innerHTML="";
  		document.getElementById("content").innerHTML="<iframe width='100%' height='1000 px' src='/Go1Shop/g07_msgboard/comments.do'></iframe>";
@@ -146,8 +136,6 @@
 	
 	function showImg(){
 		document.getElementById("content").innerHTML="";
-	//	document.getElementById("content").innerHTML="<img id='img2' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[1]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>";
-		//$('#content').append("<iframe width='100%' height='1000 px' src='/Go1Shop/t11111.jsp'></iframe>");
 // 			找出產品圖片
 			$.ajax({
 				'type':'POST',
@@ -164,45 +152,14 @@
 	
 
 	</script>
-<%-- 	<c:forEach var="imgid" begin="1" end="${fn:length(imgId)}" varStatus="r"> --%>
-<%-- 		<c:set var='x' value="${imgid}" /> --%>
-<%-- 		<img  src="<c:url value='/g05_customer/ShowProdImg.con?imgId=${x}'/>" style="width: 40%"> --%>
-<%-- 	</c:forEach> --%>
 	
 
 <!-- 下邊	--------------------------------------------------------------------------------- -->	
 	<div id="bottom" style="clear:left;width:100%;position:relative;bottom:0;left:0;">
 		<jsp:include page="/tm/bottom.jsp" />	
 	</div>
-<%-- <script src="<%=request.getContextPath()%>/_js/jquery.ssd-vertical-navigation.js"></script> --%>
-<%-- <script src="<%=request.getContextPath()%>/_js/app.js"></script> --%>
-<!-- <table> -->
-<!-- 	<tr> -->
-<!-- 		<th>price</th> -->
-<!-- 		<th>product</th>		 -->
-<!-- 		<th>count</th> -->
-<!-- 		<th>subtotal</th> -->
-<!-- 	</tr> -->
-<%-- 	<c:forEach var="result" items="${result}"> --%>
-<!-- 		<tr> -->
-<%-- 			<td>${result.productName}</td> --%>
-<%-- 			<td>${result.brand}</td> --%>
-<%-- 			<td>${result.price}</td>		 --%>
-<%-- 			<td>${result.note}</td> --%>
-<!-- 		<td>						 -->
-<%-- 			<form action='<c:url value="/g05_customer/shoppingCar/controller/BuyProServlet.con"/>' method="post" > --%>
-<%-- 				<input type="hidden" name="id" value="${result.prodId}"> --%>
-<%-- 				<input type="hidden" name="product" value="${result.productName}"> --%>
-<%-- 				<input type="hidden" name="brand" value="${result.brand}"> --%>
-<%-- 				<input type="hidden" name="price" value="${result.price}"> --%>
-<!-- 				<input type="hidden" name="count" value="1"> -->
-<!-- 				<input type="submit" name="car" class="button orange addcar" value="加入購物車"> -->
-<%-- 				${error.exist} --%>
-<!-- 			</form> -->
-<!-- 		</td> -->
-<!-- 		</tr> -->
-<%-- 	</c:forEach> --%>
-<!-- </table> -->
+	
+<!-- 購物車	 -->
 <div class="m-sidebar"> 
     <div class="cart"> 
         <i id="end"></i> 
