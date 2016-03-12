@@ -54,7 +54,10 @@ public class MailServlet extends HttpServlet {
 		//System.out.println(i);
 		//show view
 		//String location = "/GoEshop/gb05_mail/sendSuccess.jsp";
-		resp.sendRedirect(req.getContextPath()+"/gb05_mail/sendSuccess.jsp");
+		resp.getWriter().write(
+				"<script src='//code.jquery.com/jquery-1.12.0.min.js'></script><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css'><script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js'></script><script src='/Go1Shop/_js/sweet-alert.js'></script><link href='/Go1Shop/_css/sweet-alert.css' rel='stylesheet'><script>charset='UTF-8';window.onload=function(){$(function() {	swal({ title: '信件已成功寄出!',  type: 'success', confirmButtonClass: 'btn-primary', confirmButtonText: '確定',  closeOnConfirm: false,},function(isConfirm) {  if (isConfirm) {window.location.replace('/Go1Shop/gb05_mail/send.jsp'); } });})}</script>");
+
+		//resp.sendRedirect(req.getContextPath()+"/gb05_mail/sendSuccess.jsp");
 		
 	}
 	

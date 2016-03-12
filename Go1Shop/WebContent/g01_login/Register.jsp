@@ -14,8 +14,14 @@
    <span id="errorMail">${error.mail }</span>
    <br>
    <label>Password</label>
-   <input type="text" name="pwd" />  
+   <input type="password" name="pwd" />  
    <span id="errorPwd">${error.pwd }</span> 
+   
+   <br>
+   <label>Check Password</label>
+   <input type="password" name="pwd" />  
+   <span id="errorPwd">${error.pwd }</span>
+   
    <br>
    <label>Name</label>
    <input type="text" name="mem_name" id="mem_name" />

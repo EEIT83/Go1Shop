@@ -36,7 +36,7 @@ public class AdminRegisterServlet extends HttpServlet {
 						bean.setAd_pwd(ad_mail);
 						bean.setCompetence(2);
 						adminDAO.insert(bean);
-						returnMessage = "新增成功";
+						//returnMessage = "新增成功";
 					} else {
 						StringBuilder sbBuilder = new StringBuilder("請輸入");
 						if (StringUtils.isEmpty(ad_mail)) {
@@ -58,7 +58,13 @@ public class AdminRegisterServlet extends HttpServlet {
 		}
 		request.setAttribute("returnStatus", returnStatus);
 		request.setAttribute("returnMessage", returnMessage);
-		request.getRequestDispatcher("/gb02_member/Register.jsp").forward(request, response);
+		
+		//jump Success!
+		response.getWriter().write(
+				"<script src='//code.jquery.com/jquery-1.12.0.min.js'></script><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css'><script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js'></script><script src='/Go1Shop/_js/sweet-alert.js'></script><link href='/Go1Shop/_css/sweet-alert.css' rel='stylesheet'><script>charset='UTF-8';window.onload=function(){$(function() {	swal({ title: '新增成功!',  type: 'success', confirmButtonClass: 'btn-primary', confirmButtonText: '確定',  closeOnConfirm: false,},function(isConfirm) {  if (isConfirm) {window.location.replace('/Go1Shop/gb02_member/Register.jsp'); } });})}</script>");
+
+		
+		//request.getRequestDispatcher("/gb02_member/Register.jsp").forward(request, response);
 	}
 
 	@Override

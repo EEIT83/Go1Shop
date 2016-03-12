@@ -69,15 +69,14 @@ margin-left:30px;
 
 <%-- <form action="<c:url value="/Admin/ChangePwd.controller"/>?pageStatus=Ad_available" method="post" id="form"> --%>
 <form action="<c:url value="/Admin/ChangePwd.controller"/>?pageStatus=Ad_available" method="post" id="form">
-
 		<label>OldPwd</label> 
-		<input type="text" name="oldPwd" id="oldPwd" />
+		<input type="password" name="oldPwd" id="oldPwd" />
 		<span id="errorOldPwd"></span> 
 		<span><label>NewPwd</label> 
-		<input type="text" name="newPwd" id="newPwd" />
+		<input type="password" name="newPwd" id="newPwd" />
 		<span id="errorNewPwd"></span></span>
 		<span><label>CheckNewPwd</label> 
-		<input type="text" name="checkNewPwd" id="checkNewPwd" />
+		<input type="password" name="checkNewPwd" id="checkNewPwd" />
 		<span id="errorCheckNewPwd"></span></span>
 		<span style="margin-left:30px;"><input type="submit" id="submit" value="確認修改"></span>
 <!-- 		<input type="button" value="Submit" id="submit"> -->
