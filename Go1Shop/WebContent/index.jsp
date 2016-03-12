@@ -42,10 +42,10 @@ request.setAttribute("select", result);
   
     display:inline-block;
  	float:left;
-    margin-left: 10px;
+    margin-left: 3%;
     margin-top: 10px; 
  } 
-#div_out:nth-child(3n+1){
+#div_out:nth-child(4n+1){
  clear: both;
  }
  

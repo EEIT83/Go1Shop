@@ -74,7 +74,14 @@ public class FilterBackLogin implements Filter {
 				//resp.getWriter().write("<script>charset='UTF-8'; alert('請先登入!') ; location.href='/Go1Shop/backLogin.jsp'; </script>");
 				
 				resp.setCharacterEncoding("UTF-8");
-				resp.getWriter().write("<script>charset='UTF-8'; alert('請先登入!') ; location.href='/Go1Shop/backLogin.jsp'; </script>");
+				
+				//jQuery jump
+				resp.getWriter().write(
+						"<script src='//code.jquery.com/jquery-1.12.0.min.js'></script><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css'><script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js'></script><script src='/Go1Shop/_js/sweet-alert.js'></script><link href='/Go1Shop/_css/sweet-alert.css' rel='stylesheet'><script>charset='UTF-8';window.onload=function(){$(function() {	swal({ title: '請先登入!',  type: 'error', confirmButtonClass: 'btn-primary', confirmButtonText: '確定',  closeOnConfirm: false,},function(isConfirm) {  if (isConfirm) {window.location.replace('/Go1Shop/backLogin.jsp'); } });})}</script>");
+
+				
+				//alert
+				//resp.getWriter().write("<script>charset='UTF-8'; alert('請先登入!') ; location.href='/Go1Shop/backLogin.jsp'; </script>");
 
 				
 //				resp.sendRedirect(contextPath + "/backLogin.jsp");

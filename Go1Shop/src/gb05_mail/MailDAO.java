@@ -40,6 +40,7 @@ public class MailDAO {
 	}
 	
 	
+
 	private final String SELECT="select * from mail where address_memId = ?";
 	public List<MailVO> select(String mail){
 		List<MailVO> list = new ArrayList<>();

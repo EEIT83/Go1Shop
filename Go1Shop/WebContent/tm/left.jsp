@@ -163,8 +163,12 @@
 						<span id="errorMail"></span>
 					</div>
 					<div class="txt-fld">
-						<label>密碼：</label> <input type="text" name="pwd"
+						<label>密碼：</label> <input type="password" name="pwd"
 							class="input" id="pwd" /> <span id="errorPwd"></span>
+					</div>
+					<div class="txt-fld">
+						<label>確認密碼：</label> <input type="password" name="checkpwd"
+							class="input" id="checkpwd" /> <span id="errorPwd"></span>
 					</div>
 					<div class="txt-fld">
 						<label>姓名：</label> <input type="text" name="mem_name"
