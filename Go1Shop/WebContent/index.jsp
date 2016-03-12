@@ -57,6 +57,20 @@ request.setAttribute("select", result);
 
 
 </head>
+
+<c:if test="${!empty LoginOK}">
+<script>
+	var o = new XMLHttpRequest();					
+	o.addEventListener("readystatechange", callback);
+	o.open("get","/Go1Shop/MailStatus.do", true);
+	o.send();
+	
+function callback() {}
+
+</script>
+</c:if>
+
+
 <body>
 <div style="width: 100%;height: 100%;">
 <!-- 上邊	--------------------------------------------------------------------------------- -->

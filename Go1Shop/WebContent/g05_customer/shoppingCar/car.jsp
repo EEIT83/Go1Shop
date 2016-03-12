@@ -59,43 +59,25 @@
 				<td style="width: 15%;">
 					<c:choose>
 			            <c:when test="${countError.count != null}">
-				            <form>
+				            <form name="del">
 								<input type="hidden" name="id" value="${cars.value.prod_Id}">
 								<input type="hidden" name="status" value="刪除">
 								<span style="color:red;">
-								<li class="glyphicon glyphicon-trash" id="delete"></li>
+								<li class="glyphicon glyphicon-trash"  ></li>
 								${countError.count}</span>
 							</form>
 			            </c:when>
 			            <c:otherwise>
-			                 <form>
+			                 <form action="<c:url value='/g05_customer/shoppingCar/controller/carEdit/UpdateCarServlet.do'/>" method="get">
 								<input type="hidden" name="id" value="${cars.value.prod_Id}">
 								<input type="hidden" name="status" value="刪除">
 								<span style="color:black;">
-									<li class="glyphicon glyphicon-trash" id="delete"></li>
+									<button type="submit" style="text-align: center;" class="btn btn-primary	 glyphicon glyphicon-trash"></button>
 								</span>
 							</form>
 			            </c:otherwise>
         			</c:choose>
 				
-				
-					
-<%-- 					<c:if test="${countError.count != null}"> --%>
-<!-- 						<form> -->
-<%-- 						<input type="hidden" name="id" value="${cars.value.prod_Id}"> --%>
-<!-- 						<input type="hidden" name="status" value="刪除"> -->
-<!-- 						<span style="color:red;"> -->
-<!-- 						<li class="glyphicon glyphicon-trash" id="delete"></li> -->
-<%-- 						${countError.count}</span> --%>
-<!-- 						</form> -->
-<%-- 					</c:if> --%>
-<!-- 						<form> -->
-<%-- 						<input type="hidden" name="id" value="${cars.value.prod_Id}"> --%>
-<!-- 						<input type="hidden" name="status" value="刪除"> -->
-<!-- 						<span style="color:black;"> -->
-<!-- 						<li class="glyphicon glyphicon-trash" id="delete"></li> -->
-<!-- 						</span> -->
-<!-- 					</form> -->
 				 </td>
 				</tr>
 				</c:forEach>
@@ -118,15 +100,17 @@
 
 
 <script>
-	window.onload = function () {
-		document.getElementById("delete").onclick=dsubmit;
-	}
+//	window.onload = function () {
 
-	function dsubmit(){
-		document.forms[1].action="<c:url value='/g05_customer/shoppingCar/controller/carEdit/UpdateCarServlet.do'/>";
-		document.forms[1].method="get";
-		document.forms[1].submit();		
-	}
+// 		document.getElementById("delete").onclick=dsubmit;
+//	}
+
+// 	function dsubmit(){
+		
+// 		document.forms[2].action="<c:url value='/g05_customer/shoppingCar/controller/carEdit/UpdateCarServlet.do'/>";
+// 		document.forms[2].method="get";
+// 		document.forms[2].submit();		
+// 	}
 	
 
 </script>

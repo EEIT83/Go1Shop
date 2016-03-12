@@ -18,6 +18,19 @@
 <script src="<%=request.getContextPath()%>/_js/jQuery-TWzipcode-master/jQuery-TWzipcode-master/jquery.twzipcode.js"></script>
 <link href="<%=request.getContextPath()%>/_css/page.css" rel="stylesheet">
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script language="javascript">
 		function reSize(){
 // 		　　parent.document.all.frameid.height=document.body.scrollHeight; 
@@ -50,10 +63,11 @@ table, th, td {
 					<th>主旨</th>
 					<th>寄件者</th>
 					<th>日期</th>
+					<th>狀態</th>
 			</tr>
 			<c:forEach var="mail" items="${mails}">
 			
-				<c:url value="path" var="/Go1Shop/gb05_mail/mailDetail.jsp">
+				<c:url value="/gb05_mail/mailDetail.jsp" var="path">
 					<c:param name="mailId">${mail.mailId}</c:param>
 					<c:param name="sender">${mail.sender}</c:param>
 					<c:param name="title">${mail.title}</c:param>
@@ -67,7 +81,18 @@ table, th, td {
 				<td><a href="${path }" >${mail.title}</a></td>
 					<td>${mail.sender}</td>
 					<td>${mail.date}</td>
-					               
+					
+					
+					
+					<c:choose>
+						<c:when test="${mail.status==1}">
+							<td>已讀</td>
+						</c:when>
+						<c:otherwise>
+							<td><span style="color:red;">未讀</span></td>  
+						</c:otherwise>
+					</c:choose>	
+					            
 				</tr>
 			</c:forEach>
 		</table>

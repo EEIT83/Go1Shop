@@ -23,10 +23,10 @@ public class UpdateCarServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse respone)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-
+//	System.out.println("wer");
 		String id = request.getParameter("id");
 		String status = request.getParameter("status");
-		//System.out.println("status=" + status);
+//		System.out.println("status=" + status);
 		HttpSession session = request.getSession();
 		ShoppingCar shopcar = (ShoppingCar) session.getAttribute("shopcar");
 		MemberBean mb = (MemberBean)session.getAttribute("LoginOK");
@@ -36,7 +36,7 @@ public class UpdateCarServlet extends HttpServlet {
 		}
 		Map<String , CarDetailBean> carMap = shopcar.getCar();
 		UpdateCarService service = new UpdateCarService();
-		if(status.equals("刪除")){
+		if("刪除".equals(status)){
 			service.delete(carMap.get(id));
 			carMap.remove(id);
 		}

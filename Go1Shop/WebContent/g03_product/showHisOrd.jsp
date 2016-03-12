@@ -22,7 +22,7 @@
 </script>
 </head>
 <body>
-<table class="table table-condensed">
+<table class="table table-condensed table-hover">
 	<tr>
 		<th>訂單編號</th>
 		<th>訂單日期</th>

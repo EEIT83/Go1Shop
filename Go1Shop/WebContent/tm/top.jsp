@@ -15,20 +15,7 @@
 <link href='<%=request.getContextPath()%>/_css/sweet-alert.css' rel='stylesheet'>
 
 
-<c:if test="${!empty LoginOK}">
-<script>
-	var o = new XMLHttpRequest();					
-	o.addEventListener("readystatechange", callback);
-	o.open("get","/Go1Shop/MailStatus.do", true);
-	o.send();
-	
-function callback() {}
 
-
-
-
-</script>
-</c:if>
 
 
 

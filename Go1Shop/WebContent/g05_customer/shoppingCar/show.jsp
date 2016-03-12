@@ -10,11 +10,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-<script src="<%=request.getContextPath()%>/_js/car/jquery.fly.min.js"></script>
 <title>Insert title here</title>
 <link href="<%=request.getContextPath()%>/_css/page.css" rel="stylesheet">
 <script src="<%=request.getContextPath()%>/_js/sweet-alert.js"></script>
 <link href="<%=request.getContextPath()%>/_css/sweet-alert.css" rel="stylesheet">
+
 <style>
 /* -------------------商品頁-------------------------- */
 .titleClass:after, .titleClass:before{
@@ -94,7 +94,7 @@
 				</c:if>
 				<c:if test="${!empty LoginOK}">
 					<form>
-					<div style="width:100%;margin:100% 0 0 0;text-align:center;" id="box"><input type="button" class="button addcar btn btn-primary" value="加入購物車" /></div>
+					<div style="width:100%;margin:100% 0 0 0;text-align:center;" id="box"><input id="subbt" type="button" class="button addcar btn btn-primary" value="加入購物車" /></div>
 					<input type="hidden" value="15" name="prodId">
 					</form>
 				</c:if>
@@ -167,6 +167,7 @@
     </div> 
 </div> 
 <div id="msg">已成功加入購物車！</div> 
+<script src="<%=request.getContextPath()%>/_js/car/jquery.fly.min.js"></script>
 <script type="text/javascript">
 $(function() {
 		$("#noLogin").click(function(event){
@@ -175,6 +176,12 @@ $(function() {
 	
 	
 	
+		
+		
+		
+		
+		
+	var offset = $("#end").offset(); 
 	//加入購物車
 		$(".addcar").click(function(event){
 			
@@ -195,16 +202,6 @@ $(function() {
 				
 			});
 			
-			
-// 			<div class="m-sidebar"> 
-	// 		    <div class="cart"> 
-	// 		        <i id="end"></i> 
-	// 		        <span><a style="" id="carurl" href="<c:url value="/g05_customer/shoppingCar/car.jsp" />">購物車</a></span> 
-	// 		    </div> 
-// 			</div> 
-			
-			
-			var offset = $("#end").offset(); 
 	        var addcar = $(this); 
 	        var img = $('#PtitleImg').find('img').attr('src'); 
 	        var flyer = $('<img class="u-flyer" src="'+img+'">'); 
@@ -260,6 +257,11 @@ $(function() {
 		$('#Pnote').append("<p style='font-size:10px;'>"+Prod.note+"</p>");
 		$('#content').append("<img id='img2' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[1]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
 		$('#content').append("<img id='img3' src='<c:url value='/g05_customer/ShowProdImg.con?imgId="+data.imgid[2]+"'/>' style='width: 100%;text-align: center;' /><div style='font-size:20px;background-color:#BEBEBE;height: 2px;margin: 20px 0 20px 0;'></div>");
+			console.log("ctr= " +Prod.ctr);
+			if(Prod.ctr == 2){
+				$("#subbt").css("cursor","default").removeClass('btn-primary').unbind('click');
+				$("#subbt").val("補貨中")
+			}
 			}
 		});
 	}

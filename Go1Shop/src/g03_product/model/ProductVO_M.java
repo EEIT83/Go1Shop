@@ -21,6 +21,8 @@ public class ProductVO_M implements Serializable {
 	
 	private Date launchDate;
 	private String note;
+	
+	private Integer ctr;
 
 	public Integer getProdId() {
 		return prodId;
@@ -118,4 +120,13 @@ public class ProductVO_M implements Serializable {
 		this.note = note;
 	}
 
+	public Integer getCtr() {
+		return ctr;
+	}
+
+	public void setCtr(Integer ctr) {
+		this.ctr = ctr;
+	}
+
+	
 }

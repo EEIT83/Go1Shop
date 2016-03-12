@@ -57,7 +57,7 @@ $(document).ready(function() {
 					<form action="<%=request.getContextPath()%>/g03_product/ProductServlet.con" method="post" class="form-horizontal" enctype="multipart/form-data">
 						<div class="col-md-6">
 						<div class="form-group">
-								<label for="img">note</label> <input type="file" name="img"
+								<label for="img">商品圖片</label> <input type="file" name="img"
 									class="form-control" id="img" placeholder="img" />
 							</div>
 							<img id="infoPicResult"  class="img-responsive img-thumbnail" />
@@ -67,7 +67,7 @@ $(document).ready(function() {
 						<div class="col-md-4">
 						
 						<div class="form-group">
-							<label for="prodName">prodName</label> <input type="text" name="prodName"
+							<label for="prodName">商品名稱</label> <input type="text" name="prodName"
 								class="form-control" id="prodName" placeholder="prodName" value="${productVO.prodName}" />
 						</div>
 
@@ -77,37 +77,38 @@ $(document).ready(function() {
 						</div>
 
 						<div class="form-group">
-							<label for="color">color</label> <input type="text" name="color"
+							<label for="color">顏色</label> <input type="text" name="color"
 								class="form-control" id="color" placeholder="color" value="${productVO.color}" />
 						</div>
 
 						<div class="form-group">
-							<label for="Count">Count</label> <input type="text" name="count"
+							<label for="Count">總數</label> <input type="text" name="count"
 								class="form-control" id="Count" placeholder="Count" value="${productVO.count}" />
 						</div>
 
 						<div class="form-group">
-							<label for="price">price</label> <input type="text" name="price"
+							<label for="price">價錢</label> <input type="text" name="price"
 								class="form-control" id="price" placeholder="price" value="${productVO.price}" />
 						</div>
 
 						<div class="form-group">
-							<label for="brand">brand</label> <input type="text" name="brand"
+							<label for="brand">品牌</label> <input type="text" name="brand"
 								class="form-control" id="brand" placeholder="brand" value="${productVO.brand}" />
 						</div>
 
 						<div class="form-group">
-							<label for="gender">gender</label> <input type="text" name="gender"
-								class="form-control" id="gender" placeholder="gender" value="${productVO.gender}" />
+							<label for="gender">性別</label> <input type="text" value="${productVO.gender}"
+									list="genderlist" name="gender" class="form-control"
+									id="gender" placeholder="性別" autocomplete="off" pattern="[MF]{1}"/>
 						</div>
 
 						<div class="form-group">
-							<label for="part">part</label> <input type="text" name="part"
+							<label for="part">部位</label> <input type="text" name="part"
 								class="form-control" id="part" placeholder="part" value="${productVO.part}" />
 						</div>
 
 						<div class="form-group">
-							<label for="note">note</label> <input type="text" name="note"
+							<label for="note">註記</label> <input type="text" name="note"
 								class="form-control" id="note" placeholder="note" value="${productVO.note}" />
 						</div>
 						<input type="hidden" name="memId" value="${productVO.memId}" />
@@ -118,6 +119,10 @@ $(document).ready(function() {
 						
 						</div>
 					</form>
+					<datalist id="genderlist">
+						<option label="Male" value="M"></option>
+						<option label="Female" value="F"></option>
+					</datalist>
 				</div>
 			</div>
 		</div>

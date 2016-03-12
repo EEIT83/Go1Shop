@@ -135,12 +135,13 @@ public class ProductServlet_M extends HttpServlet {
 				int count1 = prodsvc.addProd(productVO, prodimgList);
 
 
-				// 3.轉交資料
-				String url = "/g03_product/addNewProduct_M.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交
-																				// listAllEmp.jsp
-				successView.forward(req, resp);
+				List<ProductVO_M> list = prodsvc.getOneByMemId(memId);
 
+				// 3.結果傳送到顯示的View
+				req.setAttribute("productVOList", list);
+				String url = "/g03_product/selectProductByMemId_M.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(url);
+				successView.forward(req, resp);
 				// 其他可能的錯誤處理
 			} catch (Exception e) {
 				errorMsgs.add(e.getMessage());
@@ -204,7 +205,7 @@ public class ProductServlet_M extends HttpServlet {
 				}
 				// 2.查詢資料(透過svc進行資料處理)
 				ProductService_M srv = new ProductService_M();
-				srv.delete(prodId); // 刪除
+				srv.updateCtr(prodId, 0); // 刪除
 				List<ProductVO_M> list = srv.getOneByMemId(memId); // 再次查詢該會員
 
 				// 3.結果傳送到顯示的View
@@ -327,9 +328,7 @@ public class ProductServlet_M extends HttpServlet {
 				InputStream inputStream = imgPart.getInputStream();
 				byte[] data = new byte[inputStream.available()];
 				inputStream.read(data);
-				if(data.length==0){
-					errorMsgs.add("請上傳圖片");
-				}
+				
 
 				ProductVO_M productVO = new ProductVO_M();
 				productVO.setProdId(prodId);
@@ -347,7 +346,9 @@ public class ProductServlet_M extends HttpServlet {
 				List<Prodimg> prodimgList = new ArrayList<Prodimg>();
 				ProdimgService prodimgService = new ProdimgService();
 				Prodimg prodimg =  prodimgService.getOneByProdId(prodId);
-				prodimg.setImg(data);			
+				if(data.length!=0){
+					prodimg.setImg(data);			
+				}				
 				prodimgList.add(prodimg);
 
 				if (!errorMsgs.isEmpty()) {					
@@ -376,6 +377,47 @@ public class ProductServlet_M extends HttpServlet {
 			} catch (Exception e) {
 				errorMsgs.add(e.getMessage());
 				RequestDispatcher failureView = req.getRequestDispatcher("/g03_product/updateProductByProductId_M.jsp");
+				failureView.forward(req, resp);
+			}
+		}
+		
+		if("updateCtr".equals(action)){
+			List<String> errorMsgs = new LinkedList<String>();
+			req.setAttribute("errorMsgs", errorMsgs);
+
+			try{
+				
+				int prodId = Integer.valueOf(req.getParameter("prodId"));
+				int ctr = Integer.valueOf(req.getParameter("ctr"));
+				int memId = Integer.valueOf(req.getParameter("memId"));
+				ProductService_M prodsvc = new ProductService_M();
+				if (!errorMsgs.isEmpty()) {	
+					List<ProductVO_M> list = prodsvc.getOneByMemId(memId);
+					req.setAttribute("productVOList", list);
+					String url = "/g03_product/selectProductByMemId_M.jsp";
+					RequestDispatcher failureView = req.getRequestDispatcher(url);
+					failureView.forward(req, resp);
+					return;
+				}
+				
+				
+				if(ctr == 1 ){
+					ctr = 2;
+				}else if(ctr == 2){
+					ctr = 1;
+				}
+				
+				int count = prodsvc.updateCtr(prodId, ctr);
+
+				// 3.結果傳送到顯示的View
+				List<ProductVO_M> list = prodsvc.getOneByMemId(memId);
+				req.setAttribute("productVOList", list);
+				String url = "/g03_product/selectProductByMemId_M.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(url);
+				successView.forward(req, resp);
+			}catch(Exception e){
+				errorMsgs.add(e.getMessage());
+				RequestDispatcher failureView = req.getRequestDispatcher("/g03_product/selectProductByMemId_M.jsp");
 				failureView.forward(req, resp);
 			}
 		}

@@ -22,4 +22,6 @@ public interface ProductDAO_M {
 	
 	public int updateWithImg(ProductVO_M productVO,List<Prodimg> prodimgList);
 	
+	public int updateCtr(Integer prodId,Integer ctr);
+	
 }

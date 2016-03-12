@@ -87,6 +87,7 @@ $(document).ready(function() {
 									<th>部位</th>
 									<th>產品上架時間</th>
 									<th>註記</th>
+									<th>商品狀態</th>
 									<th></th>
 									<th></th>
 									<th></th>
@@ -107,6 +108,11 @@ $(document).ready(function() {
 										<td>${productVO.part}</td>
 										<td>${productVO.launchDate}</td>
 										<td>${productVO.note}</td>
+										<td>
+											<a class="btn ${productVO.ctr eq 2?"btn-success":"btn-danger"}" 
+											href="<%=request.getContextPath()%>/g03_product/ProductServlet.con?action=updateCtr&prodId=${productVO.prodId}&ctr=${productVO.ctr}&memId=${productVO.memId}">
+											${ProductCtrMap[productVO.ctr]}</a>
+										</td>
 										<td><a class="btn btn-default"
 											href="<%=request.getContextPath()%>/g03_product/ProductServlet.con?action=deleteByProdId&prodId=${productVO.prodId}&memId=${productVO.memId}">刪除</a></td>
 										<td><a class="btn btn-default"
