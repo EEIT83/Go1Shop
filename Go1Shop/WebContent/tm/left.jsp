@@ -78,7 +78,7 @@
 					class="glyphicon glyphicon-comment leftNavIcon"></i>訊息
 			</a>
 				<ul>
-					<li><a href='#' id="mail">收信</a></li>
+					<li><a href='#' id="mail">信箱</a></li>
 					<li><a href='#' id="sendmail">寫信</a></li>
 				</ul></li>
 		</c:if>

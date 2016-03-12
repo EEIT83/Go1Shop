@@ -48,6 +48,10 @@ request.setAttribute("select", result);
 #div_out:nth-child(3n+1){
  clear: both;
  }
+ 
+ 
+
+ 
 /* ------------------------------------------------ */
 </style>
 
@@ -137,20 +141,17 @@ request.setAttribute("select", result);
 					</c:forEach>
 				</div>
 			</div>
-	</div>
+				</div>
 <!-- 下邊	--------------------------------------------------------------------------------- -->	
-	<div id="bottom" style="clear:left;width:100%;position:fixed;bottom:0;left:0;">
+	<div id="bottom" style="clear:left;width:100%;bottom:0;left:0;position:fixed;">
 		<jsp:include page="/tm/bottom.jsp" />	
 	</div>
 <!-------------------------------------------------------------------------------------- -->
 </div>
 
-<%-- <c:if test="${init == '0'}"> --%>
-<%-- <jsp:forward page="/g03_product/ProductGenderServlet.controller?init=1" /> --%>
-<%-- <c:set var="init" value="0" scope="session"></c:set> --%>
-<%-- </c:if> --%>
 
-<%-- <jsp:include page="/g05_customer/shoppingCar/shopcar.jsp" />	 --%>
+
+
 </body>
 
 </html>

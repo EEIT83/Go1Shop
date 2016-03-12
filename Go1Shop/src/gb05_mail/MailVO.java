@@ -6,6 +6,8 @@ public class MailVO {
 	private String addressee;
 	private String title;
 	private String content;
+	private java.util.Date date;
+	private int status;
 	
 	public int getMailId() {
 		return mailId;
@@ -36,6 +38,18 @@ public class MailVO {
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
+	public java.util.Date getDate() {
+		return date;
+	}
+	public void setDate(java.util.Date date) {
+		this.date = date;
 	}
 	
 	

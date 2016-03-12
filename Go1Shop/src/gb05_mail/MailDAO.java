@@ -58,6 +58,8 @@ public class MailDAO {
 				mvo.setAddressee(rs.getString(3));
 				mvo.setTitle(rs.getString(4));
 				mvo.setContent(rs.getString(5));
+				mvo.setDate(rs.getDate(6));
+				mvo.setStatus(rs.getInt(7));
 				list.add(mvo);
 			}
 			
@@ -77,7 +79,7 @@ public class MailDAO {
 		return list;
 	}
 	
-	private final String INSERT="insert into mail(sender_memId,address_memId,title,article) values(?,?,?,?)";
+	private final String INSERT="insert into mail(sender_memId,address_memId,title,article,status) values(?,?,?,?,?)";
 	public int insert(String sender,String addressee, String title, String content){
 		int i=0;
 		try (
@@ -89,9 +91,10 @@ public class MailDAO {
 			ps.setString(2, addressee);
 			ps.setString(3, title);
 			ps.setString(4, content);
+			ps.setInt(5, 0);
 			
 			i=ps.executeUpdate();
-			
+			System.out.println("i=" + i);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
