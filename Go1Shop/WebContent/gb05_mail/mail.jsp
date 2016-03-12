@@ -18,6 +18,19 @@
 <script src="<%=request.getContextPath()%>/_js/jQuery-TWzipcode-master/jQuery-TWzipcode-master/jquery.twzipcode.js"></script>
 <link href="<%=request.getContextPath()%>/_css/page.css" rel="stylesheet">
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script language="javascript">
 		function reSize(){
 // 		　　parent.document.all.frameid.height=document.body.scrollHeight; 
@@ -53,7 +66,7 @@ table, th, td {
 			</tr>
 			<c:forEach var="mail" items="${mails}">
 			
-				<c:url value="path" var="/Go1Shop/gb05_mail/mailDetail.jsp">
+				<c:url value="/gb05_mail/mailDetail.jsp" var="path">
 					<c:param name="mailId">${mail.mailId}</c:param>
 					<c:param name="sender">${mail.sender}</c:param>
 					<c:param name="title">${mail.title}</c:param>
