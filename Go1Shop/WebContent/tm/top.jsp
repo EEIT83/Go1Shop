@@ -4,12 +4,36 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src='//code.jquery.com/jquery-1.12.0.min.js'></script>
 <link href="<%=request.getContextPath()%>/_css/app.css" rel="stylesheet" type="text/css">
 <link href="<%=request.getContextPath()%>/_css/bootstrap.min.css" rel="stylesheet">
 <link href="<%=request.getContextPath()%>/_css/business-casual1.css" rel="stylesheet">
 <script src="<%=request.getContextPath()%>/_js/bootstrap.min.js"></script>
+<script src='<%=request.getContextPath()%>/_js/sweet-alert.js'></script>
+<link href='<%=request.getContextPath()%>/_css/sweet-alert.css' rel='stylesheet'>
+
+
+<c:if test="${!empty LoginOK}">
+<script>
+	var o = new XMLHttpRequest();					
+	o.addEventListener("readystatechange", callback);
+	o.open("get","/Go1Shop/MailStatus.do", true);
+	o.send();
+	
+function callback() {}
+
+
+
+
+</script>
+</c:if>
+
+
+
 </head>
+
 <body>
 <nav class="navbar navbar-default" role="navigation">
 	<div class="container"  style="width:100%;background-color:#DDDDDD">
@@ -24,15 +48,26 @@
 				<li><a href="<%=request.getContextPath()%>/p_KIDS/K_index.jsp">KIDS</a></li>
 				<li><a href="<%=request.getContextPath()%>/p_SOPRTS/S_index.jsp">SPORTS</a></li>
 				<li><a href="<%=request.getContextPath()%>/p_BABIES/B_index.jsp">BABIES</a></li>
+			
+			
+			
+			
+			
 			<c:if test="${empty LoginOK}">
 				<li><a rel="leanModal" name="signup" href="#signup" id="login" onclick="login()">			
 				<i class="glyphicon glyphicon-user leftNavIcon"></i>會員登入</a></li>
+				
 			</c:if>
 			<c:if test="${!empty LoginOK}">
 				<li><a href='<c:url value="/Logout.do"></c:url>' id="logout">			
-					<i class="glyphicon glyphicon-user leftNavIcon"></i>登出</a></li>
+					<i class="glyphicon glyphicon-user leftNavIcon"></i>登出</a>
+					<ul>
+						<li><span style="text-transform:lowercase;color:black;">${LoginOK.mail}<c:if test="${status == 1}"><span style="color:red">您有未讀取信件</span></c:if></span></li>
+					</ul>	
+				</li>
 				<li><a href='<c:url value="/g05_customer/shoppingCar/car.jsp" />'>			
 					<i class="glyphicon glyphicon-shopping-cart leftNavIcon"></i>購物車</a></li>
+				
 			</c:if>
 			</ul>
 		</div>

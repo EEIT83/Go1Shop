@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import g01_login.controller.MemberBean;
+import g01_login.model.MemberDAO;
 import g03_product.model.StoreDAOImpl;
 import g03_product.model.StoreVO_M;
 import g05_customer.checkout.model.OrdDetailDAO;
@@ -14,6 +15,7 @@ import g05_customer.shoppingCar.controller.ShoppingCarBean;
 import g05_customer.shoppingCar.model.CarDetailDAO;
 import g05_customer.shoppingCar.model.ShoppingCarDAO;
 import g05_customer.shoppingCar.model.ShowProDAO;
+import gb05_mail.MailDAO;
 
 public class CheckDetailService {
 	
@@ -61,6 +63,23 @@ public class CheckDetailService {
 			ordDetailBean.setSubtotal(sellerBean.getSubtotal());
 			prDetailDAO.insert(ordDetailBean);
 			proDAO.update(sellerBean.getProd_Id(), sellerBean.getCount());
+			MailDAO mail = new MailDAO();
+			String title = "新通知!!";
+			String content = "您的商品：" + sellerBean.getProd_Name() + "已被" + memBean.getMail() + "購買";
+			try {
+				MemberDAO memberDAO = new MemberDAO();
+				System.out.println("sellerBean.getSeller_Id()= " + String.valueOf(sellerBean.getSeller_Id()));
+				MemberBean memberBean = memberDAO.selectMail(String.valueOf(sellerBean.getSeller_Id()));
+				System.out.println("memberBean= " +memberBean);
+				System.out.println("memBean.getMail()=" + memBean.getMail());
+				System.out.println("memberBean.getMail()=" + memberBean.getMail());
+				System.out.println("title=" + title);
+				System.out.println("content=" + content);
+				mail.insert(memBean.getMail(), memberBean.getMail() ,title , content);
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+			}
             //System.out.println(key + " : " + carmap.get(key));
 			//System.out.println(ordDetailBean);
         }
@@ -95,6 +114,11 @@ public class CheckDetailService {
 		public StoreVO_M selectMem_id(int prodId){
 			StoreDAOImpl DAO = new StoreDAOImpl();
 			return DAO.getOneProd(prodId);
+		}
+		
+		
+		public void  SendProdMail(){
+			
 		}
 		
 }

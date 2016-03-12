@@ -47,18 +47,26 @@ table, th, td {
 		<table class="table table-hover"style="margin-top: 1%;">
 			<tr>	
 					<th>勾選</th>
-			   		<th>編號</th>
 					<th>主旨</th>
-					<th>內容</th>
 					<th>寄件者</th>
+					<th>日期</th>
 			</tr>
 			<c:forEach var="mail" items="${mails}">
+			
+				<c:url value="path" var="/Go1Shop/gb05_mail/mailDetail.jsp">
+					<c:param name="mailId">${mail.mailId}</c:param>
+					<c:param name="sender">${mail.sender}</c:param>
+					<c:param name="title">${mail.title}</c:param>
+					<c:param name="content">${mail.content}</c:param>
+					<c:param name="date">${mail.date}</c:param>
+				</c:url>
+			
 				<tr>
+				
 					<td><input type="checkbox"></td>
-					<td>${mail.mailId}</td>
-					<td>${mail.title}</td>
-					<td>${mail.content}</td>
+				<td><a href="${path }" >${mail.title}</a></td>
 					<td>${mail.sender}</td>
+					<td>${mail.date}</td>
 					               
 				</tr>
 			</c:forEach>
@@ -67,7 +75,7 @@ table, th, td {
 	</div>
 
 
-<script src="js/jquery-2.2.0.min.js"></script>
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <script type="text/javascript">
 	
 	

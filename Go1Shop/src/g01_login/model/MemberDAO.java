@@ -15,6 +15,7 @@ import g01_login.controller.MemberFace;
 
 public class MemberDAO implements MemberFace {
 	private String SELECT_ID = "select * from member where mail=?";
+	private String SELECT_MAIL = "select * from member where mem_Id=?";
 	private String SELECT_ALL = "select * from member ";
 	private String INSERT = "insert into member (mail, pwd, mem_name, nickname, gender, bdate) values (?, ?, ?, ?, ?, ?)";
 	private StringBuilder UPDATE;
@@ -40,6 +41,23 @@ public class MemberDAO implements MemberFace {
 			return null;
 		}
 	}
+	
+	
+	public MemberBean selectMail(String memId) throws Exception {
+		try {
+			ResultSetHandler<List<MemberBean>> rsh = new BeanListHandler<MemberBean>(MemberBean.class);
+			Object params[] = { memId };
+			List<MemberBean> result = runner.query(ds.getConn(), SELECT_MAIL, rsh, params);
+			if (result.size() <= 0) {
+				return null;
+			} else {
+				return result.get(0);
+			}
+		} catch (SQLException e) {
+			return null;
+		}
+	}
+	
 
 	public List<MemberBean> selectAll() throws Exception {
 		try {

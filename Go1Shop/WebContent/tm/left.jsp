@@ -78,7 +78,7 @@
 					class="glyphicon glyphicon-comment leftNavIcon"></i>訊息
 			</a>
 				<ul>
-					<li><a href='#' id="mail">收信</a></li>
+					<li><a href='#' id="mail">信箱</a></li>
 					<li><a href='#' id="sendmail">寫信</a></li>
 				</ul></li>
 		</c:if>
@@ -163,8 +163,12 @@
 						<span id="errorMail"></span>
 					</div>
 					<div class="txt-fld">
-						<label>密碼：</label> <input type="text" name="pwd"
+						<label>密碼：</label> <input type="password" name="pwd"
 							class="input" id="pwd" /> <span id="errorPwd"></span>
+					</div>
+					<div class="txt-fld">
+						<label>確認密碼：</label> <input type="password" name="checkpwd"
+							class="input" id="checkpwd" /> <span id="errorPwd"></span>
 					</div>
 					<div class="txt-fld">
 						<label>姓名：</label> <input type="text" name="mem_name"
