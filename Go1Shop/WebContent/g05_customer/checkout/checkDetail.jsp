@@ -461,12 +461,11 @@
 				document.getElementById("sender_phone").parentNode.style.height ="79px";
 			}
 		}
-		
 		function checkAddressSen(){
 			var theAddress=document.getElementById("sender_address").value;
 			var re=/^[\u4E00-\u9FFF]+$/;
 			console.log("district=" + district_sen + "  county=" + county_sen +"  zipcode=" + zipcode_sen + +"theAddress=" + theAddress);
-			if(re.test(theAddress) & district_sen != null & county_sen != null & zipcode_sen != null){
+			if(re.test(theAddress) && district_sen != "" && county_sen != "" && zipcode_sen != ""){
 				//alert("成功");
 				var x = document.getElementById("sender_address");
 				x.parentNode.removeChild(x.nextSibling);				
