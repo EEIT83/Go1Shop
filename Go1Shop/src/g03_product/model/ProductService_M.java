@@ -46,6 +46,10 @@ public class ProductService_M {
 		return dao.delete(prodId);
 	}
 	
+	public int updateCtr(Integer prodId,Integer ctr){
+		return dao.updateCtr(prodId, ctr);
+	}
+	
 	public int updateProdByProdId(Integer prodId,Integer memId,String prodName,String size,String color,int count,int price,String brand,String gender,String part,String note){
 		ProductVO_M productVO  = new ProductVO_M();
 		

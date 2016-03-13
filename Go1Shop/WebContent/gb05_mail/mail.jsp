@@ -63,6 +63,7 @@ table, th, td {
 					<th>主旨</th>
 					<th>寄件者</th>
 					<th>日期</th>
+					<th>狀態</th>
 			</tr>
 			<c:forEach var="mail" items="${mails}">
 			
@@ -80,7 +81,18 @@ table, th, td {
 				<td><a href="${path }" >${mail.title}</a></td>
 					<td>${mail.sender}</td>
 					<td>${mail.date}</td>
-					               
+					
+					
+					
+					<c:choose>
+						<c:when test="${mail.status==1}">
+							<td>已讀</td>
+						</c:when>
+						<c:otherwise>
+							<td><span style="color:red;">未讀</span></td>  
+						</c:otherwise>
+					</c:choose>	
+					            
 				</tr>
 			</c:forEach>
 		</table>

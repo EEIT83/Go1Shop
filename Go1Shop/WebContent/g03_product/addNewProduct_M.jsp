@@ -65,7 +65,7 @@
 							<div class="form-group">
 								<label for="prodName">商品名稱</label> <input type="text"
 									name="prodName" class="form-control" id="商品名稱"
-									placeholder="prodName" />
+									placeholder="商品名稱" />
 							</div>
 
 							<div class="form-group">
@@ -97,7 +97,7 @@
 							<div class="form-group">
 								<label for="gender">性別</label> <input type="text"
 									list="genderlist" name="gender" class="form-control"
-									id="gender" placeholder="性別" autocomplete="off"/>
+									id="gender" placeholder="性別" autocomplete="off" pattern="[MF]{1}"/>
 							</div>
 
 							<div class="form-group">
@@ -107,7 +107,7 @@
 
 							<div class="form-group">
 								<label for="note">註記</label> <input type="text" name="note"
-									class="form-control" id="note" placeholder="NOTE" />
+									class="form-control" id="note" placeholder="註記" />
 							</div>
 							<input type="hidden" name="action" value="insert" /><br /> <input
 								type="hidden" name="memId" value="${LoginOK.mem_id}" /><br />

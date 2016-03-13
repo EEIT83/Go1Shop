@@ -21,13 +21,10 @@ public class MailStatus extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		MemberBean mb = (MemberBean)req.getSession().getAttribute("LoginOK");
 		MailDAO mdao = new MailDAO();
-		System.out.println(mb.getMail());
 		List<MailVO> list = mdao.select(mb.getMail());
-		System.out.println("list=" + list);
 		int Status=0;
 		for(MailVO a:list){
 			if(a.getStatus()==0){
-				System.out.println("!23");
 				Status=1;
 				
 			}

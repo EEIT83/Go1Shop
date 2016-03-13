@@ -2,6 +2,7 @@ package g01_login.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -17,6 +18,8 @@ import g03_product.model.StoreService_M;
 import g03_product.model.StoreVO_M;
 import gb01_login.controller.AdminBean;
 import gb01_login.controller.AdminService;
+import gb05_mail.MailDAO;
+import gb05_mail.MailVO;
 
 @WebServlet(urlPatterns = { "/Account/Login.controller" })
 public class LoginServlet extends HttpServlet {
@@ -81,6 +84,23 @@ public class LoginServlet extends HttpServlet {
 					session.setAttribute("mail", memBean.getMail());
 					response.getWriter().write(
 							"<script src='//code.jquery.com/jquery-1.12.0.min.js'></script><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css'><script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js'></script><script src='/Go1Shop/_js/sweet-alert.js'></script><link href='/Go1Shop/_css/sweet-alert.css' rel='stylesheet'><script>charset='UTF-8';window.onload=function(){$(function() {	swal({ title: '登入成功!',  type: 'success', confirmButtonClass: 'btn-primary', confirmButtonText: '確定!',  closeOnConfirm: false,},function(isConfirm) {  if (isConfirm) {parent.window.location.replace('/Go1Shop/index.jsp'); } });})}</script>");
+					MailDAO mdao = new MailDAO();
+					List<MailVO> list = mdao.select(memBean.getMail());
+					int Status=0;
+					for(MailVO a:list){
+						if(a.getStatus()==0){
+							Status=1;
+							
+						}
+					}
+					
+					if(Status==1){
+						request.getSession().setAttribute("status", Status);
+					}else{
+						request.getSession().removeAttribute("status");
+					}
+					
+					
 				} else if (adService.Login(mail, pwd) != null && accountStatus.equals("backLogin")) {
 
 					adBean = adService.Login(mail, pwd);

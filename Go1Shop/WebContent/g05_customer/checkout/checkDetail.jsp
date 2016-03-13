@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
 <!-- 最新編譯和最佳化的 JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-<script src="<%=request.getContextPath()%>/_js/jQuery-TWzipcode-master/jQuery-TWzipcode-master/jquery.twzipcode.js"></script>
+
 <%-- <link href="<%=request.getContextPath()%>/_css/page.css" rel="stylesheet"> --%>
 
 
@@ -187,10 +187,11 @@
 </div>
 </div>
 <!-- 下邊	--------------------------------------------------------------------------------- -->	
-	<div id="bottom" style="clear:left;width:100%;position:fixed;bottom:0;left:0;">
-		<jsp:include page="/tm/bottom.jsp" />	
-	</div>
+<!-- 	<div id="bottom" style="clear:left;width:100%;bottom:0;left:0;position:relative;"> -->
+<%-- 		<jsp:include page="/tm/bottom.jsp" />	 --%>
+<!-- 	</div> -->
 <!-------------------------------------------------------------------------------------- -->
+<script src="<%=request.getContextPath()%>/_js/jQuery-TWzipcode-master/jQuery-TWzipcode-master/jquery.twzipcode.js"></script>
 	<SCRIPT>
 		$('#twzipcode').twzipcode({
 			// 依序套用至縣市、鄉鎮市區及郵遞區號框
@@ -397,12 +398,12 @@
 				document.getElementById("phone").parentNode.style.height ="79px";
 			}
 		}
-		
+				 
 		function checkAddress(){
 			var theAddress=document.getElementById("address").value;
 			var re=/^[\u4E00-\u9FFF]{2,}$/;
 			console.log("district=" + district +"  county="+county +"  zipcode="+zipcode +"theAddress=" + theAddress);
-			if(re.test(theAddress) & district != null & county != null & zipcode != null){
+			if(re.test(theAddress) && district !="" && county !="" && zipcode !=""){
 				//alert("成功");
 				var x = document.getElementById("address");
 				x.parentNode.removeChild(x.nextSibling);				

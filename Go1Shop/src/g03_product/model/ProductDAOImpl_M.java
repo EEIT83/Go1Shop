@@ -23,12 +23,13 @@ public class ProductDAOImpl_M implements ProductDAO_M {
 	// private static final String USER = "sa";
 	// private static final String PASSWARD = "sa123456";
 	private DataSource ds = ConnDB.getConnDB();
-	private static final String GET_ONE = "select * from product where prod_id = ?";
-	private static final String INSERT_STMT = "INSERT INTO product (mem_id,prod_name,size,color,count,price,brand,gender,part,launch_date,note) VALUES(?,?,?,?,?,?,?,?,?,GETDATE(),?)";
+	private static final String GET_ONE = "select * from product where prod_id = ? and ctr in (1,2)";
+	private static final String INSERT_STMT = "INSERT INTO product (mem_id,prod_name,size,color,count,price,brand,gender,part,launch_date,note,ctr) VALUES(?,?,?,?,?,?,?,?,?,GETDATE(),?,1)";
 	private static final String UPDATE = "UPDATE product set mem_id=?,prod_name=?,size=?,color=?,count=?,price=?,brand=?,gender=?,part=?,note=? where prod_id=?";
+	private static final String UPDATE_CTR = "UPDATE product set ctr=? where prod_id = ?";
 	private static final String GET_ALL = "select * from product order by prod_id";
 	private static final String DELETE = "DELETE from product where prod_id = ?";
-	private static final String GET_ALL_BY_MEMID = "select * from product where mem_id = ?";
+	private static final String GET_ALL_BY_MEMID = "select * from product where mem_id = ? and ctr in (1,2)";
 
 	@Override
 	public int insert(ProductVO_M productVO) {
@@ -166,6 +167,7 @@ public class ProductDAOImpl_M implements ProductDAO_M {
 				product.setPart(rs.getString(10));
 				product.setLaunchDate(rs.getDate(11));
 				product.setNote(rs.getString(12));
+				product.setCtr(rs.getInt(13));
 			}
 		} catch (SQLException se) {
 			se.printStackTrace();
@@ -211,6 +213,7 @@ public class ProductDAOImpl_M implements ProductDAO_M {
 				product.setPart(rs.getString(10));
 				product.setLaunchDate(rs.getDate(11));
 				product.setNote(rs.getString(12));
+				product.setCtr(rs.getInt(13));
 				list.add(product);
 			}
 
@@ -229,98 +232,7 @@ public class ProductDAOImpl_M implements ProductDAO_M {
 		return list;
 	}
 
-	public static void main(String[] args) {
-
-		ProductDAOImpl_M dao = new ProductDAOImpl_M();
-		// query
-		// ProductVO productVO = dao.getOne(1);
-		// System.out.print(productVO.getProdName()+" ");
-		// System.out.print(productVO.getSize()+" ");
-		// System.out.print(productVO.getColor()+" ");
-		// System.out.print(productVO.getCount()+"件 ");
-		// System.out.print(productVO.getPrice()+" ");
-		// System.out.print(productVO.getBrand()+" ");
-		// System.out.print(productVO.getGender()+" ");
-		// System.out.print(productVO.getPart()+" ");
-		// System.out.print(productVO.getLaunchDate()+" ");
-		// System.out.print(productVO.getNote()+" ");
-
-		// insert
-		// ProductVO productVO = new ProductVO();
-		// productVO.setMemId(1);
-		// productVO.setProdName("阿罵的內褲");
-		// productVO.setSize("s");
-		// productVO.setColor("黃");
-		// productVO.setCount(6);
-		// productVO.setPrice(720000);
-		// productVO.setBrand("志明與春嬌系列");
-		// productVO.setGender("女 ");
-		// productVO.setPart("內褲");
-		// productVO.setLaunchDate(java.sql.Date.valueOf("2015-01-01"));
-		// productVO.setNote("原汁原味");
-		// int upCount = dao.insert(productVO);
-		// System.out.println("���蕭謚渲雓���蕭"+upCount+"嚙踝蕭豯歹蕭��嚙踝���");
-
-		// update
-		// ProductVO productVO = new ProductVO();
-		// productVO.setMemId(1);
-		// productVO.setProdName("���蕭��嚙踝����嚙踝蕭��嚙踝�蕭嚙踝xo");
-		// productVO.setSize("XL");
-		// productVO.setColor("嚙踝蕭謚喉蕭����蕭");
-		// productVO.setCount(6);
-		// productVO.setPrice(720000);
-		// productVO.setBrand("嚙踝蕭賹���");
-		// productVO.setGender("���蕭嚙�");
-		// productVO.setPart("��������蕭");
-		// productVO.setLaunchDate(java.sql.Date.valueOf("2015-01-01"));
-		// productVO.setNote("嚙踝蕭謕蕭豲��蕭");
-		// productVO.setProdId(4);
-		// int upCount = dao.update(productVO);
-		// System.out.println("���蕭謚渲雓���蕭"+upCount+"嚙踝蕭豯歹蕭��嚙踝���");
-
-		// delete
-		// int prod_id = 1;
-		// int updateCount_delete = dao.delete(prod_id);
-		// System.out.println("���蕭��雓�嚙踐郁���頩都嚙踝����" + prod_id
-		// +"�����"+ updateCount_delete + "嚙踝蕭��" );
-		//
-		// getall
-		// List<ProductVO> list = dao.getAll();
-		// for (ProductVO p : list) {
-		// System.out.print(p.getProdId()+ " ");
-		// System.out.print(p.getMemId()+ " ");
-		// System.out.print(p.getProdName() + " ");
-		// System.out.print(p.getSize() + " ");
-		// System.out.print(p.getColor() + " ");
-		// System.out.print(p.getCount() + "��蕭 ");
-		// System.out.print(p.getPrice() + " ");
-		// System.out.print(p.getBrand() + " ");
-		// System.out.print(p.getGender() + " ");
-		// System.out.print(p.getPart() + " ");
-		// System.out.print(p.getLaunchDate() + " ");
-		// System.out.print(p.getNote() + " ");
-		// System.out.println();
-		// }
-
-		// /get_all_by_memid
-		List<ProductVO_M> list2 = dao.getAllByMemId(1);
-		for (ProductVO_M p : list2) {
-			System.out.print(p.getProdId() + " ");
-			System.out.print(p.getMemId() + " ");
-			System.out.print(p.getProdName() + " ");
-			System.out.print(p.getSize() + " ");
-			System.out.print(p.getColor() + " ");
-			System.out.print(p.getCount() + " 件");
-			System.out.print(p.getPrice() + " ");
-			System.out.print(p.getBrand() + " ");
-			System.out.print(p.getGender() + " ");
-			System.out.print(p.getPart() + " ");
-			System.out.print(p.getLaunchDate() + " ");
-			System.out.print(p.getNote() + " ");
-			System.out.println();
-		}
-
-	}
+	
 
 	@Override
 	public List<ProductVO_M> getAllByMemId(Integer memId) {
@@ -355,6 +267,7 @@ public class ProductDAOImpl_M implements ProductDAO_M {
 				product.setPart(rs.getString(10));
 				product.setLaunchDate(rs.getDate(11));
 				product.setNote(rs.getString(12));
+				product.setCtr(rs.getInt(13));
 				list.add(product);
 			}
 
@@ -473,6 +386,35 @@ public class ProductDAOImpl_M implements ProductDAO_M {
 					e.printStackTrace();
 				}
 			}
+			se.printStackTrace();
+		} finally {
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException se) {
+					se.printStackTrace();
+				}
+			}
+		}
+
+		return updateCount;
+	}
+
+	@Override
+	public int updateCtr(Integer prodId, Integer ctr) {
+		int updateCount = 0;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(UPDATE_CTR);			
+			pstmt.setInt(1, ctr);	
+			pstmt.setInt(2,prodId);
+			updateCount = pstmt.executeUpdate();
+
+		} catch (SQLException se) {
 			se.printStackTrace();
 		} finally {
 			if (con != null) {

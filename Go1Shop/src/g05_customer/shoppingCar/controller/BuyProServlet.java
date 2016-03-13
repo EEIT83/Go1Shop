@@ -28,7 +28,7 @@ public class BuyProServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String id = request.getParameter("prodId");
-		System.out.println("Buy Prod id= "  + id);
+	//	System.out.println("Buy Prod id= "  + id);
 //		String product = request.getParameter("product");
 //		String brand = request.getParameter("brand");
 //		String price = request.getParameter("price");
