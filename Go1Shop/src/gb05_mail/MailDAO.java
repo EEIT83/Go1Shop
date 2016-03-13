@@ -103,6 +103,24 @@ public class MailDAO {
 		return i;
 	}
 	
+	private final String updata = "update mail set status = 1 where mailId = ?";
+	public int updata(int mailId){
+		int i=0;
+		try (
+				Connection conn = ds.getConnection();
+				PreparedStatement ps = conn.prepareStatement(updata);
+				){
+
+			ps.setInt(1, mailId);
+					
+			i=ps.executeUpdate();
+			System.out.println("i=" + i);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return i;
+	}
 }
 
 

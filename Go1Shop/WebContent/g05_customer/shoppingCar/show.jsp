@@ -10,11 +10,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-<script src="<%=request.getContextPath()%>/_js/car/jquery.fly.min.js"></script>
 <title>Insert title here</title>
 <link href="<%=request.getContextPath()%>/_css/page.css" rel="stylesheet">
 <script src="<%=request.getContextPath()%>/_js/sweet-alert.js"></script>
 <link href="<%=request.getContextPath()%>/_css/sweet-alert.css" rel="stylesheet">
+<script src="<%=request.getContextPath()%>/_js/car/jquery.fly.min.js"></script>
 <style>
 /* -------------------商品頁-------------------------- */
 .titleClass:after, .titleClass:before{
@@ -175,6 +175,12 @@ $(function() {
 	
 	
 	
+		
+		
+		
+		
+		
+	var offset = $("#end").offset(); 
 	//加入購物車
 		$(".addcar").click(function(event){
 			
@@ -195,16 +201,6 @@ $(function() {
 				
 			});
 			
-			
-// 			<div class="m-sidebar"> 
-	// 		    <div class="cart"> 
-	// 		        <i id="end"></i> 
-	// 		        <span><a style="" id="carurl" href="<c:url value="/g05_customer/shoppingCar/car.jsp" />">購物車</a></span> 
-	// 		    </div> 
-// 			</div> 
-			
-			
-			var offset = $("#end").offset(); 
 	        var addcar = $(this); 
 	        var img = $('#PtitleImg').find('img').attr('src'); 
 	        var flyer = $('<img class="u-flyer" src="'+img+'">'); 
