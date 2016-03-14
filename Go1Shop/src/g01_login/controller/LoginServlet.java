@@ -45,8 +45,6 @@ public class LoginServlet extends HttpServlet {
 			String mail = request.getParameter("mail");
 			String pwd = request.getParameter("pwd");
 
-			session.setAttribute("bmail", mail);
-			session.setAttribute("bpwd", pwd);
 
 			Map<String, String> error = new HashMap<>();
 			session.setAttribute("error", error);
@@ -105,6 +103,8 @@ public class LoginServlet extends HttpServlet {
 					adBean = adService.Login(mail, pwd);
 					session.setAttribute("bLoginOK", adBean);
 					session.setAttribute("mail", adBean.getAd_mail());
+					session.setAttribute("bmail", mail);
+					session.setAttribute("bpwd", pwd);
 					response.sendRedirect("/Go1Shop/gb04_marketing/backMarketing.jsp");
 
 					return;
