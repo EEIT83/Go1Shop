@@ -41,7 +41,7 @@ public class MailDAO {
 	
 	
 
-	private final String SELECT="select * from mail where address_memId = ?";
+	private final String SELECT="select * from mail where address_memId = ? order by mailId desc";
 	public List<MailVO> select(String mail){
 		List<MailVO> list = new ArrayList<>();
 		ResultSet rs=null;

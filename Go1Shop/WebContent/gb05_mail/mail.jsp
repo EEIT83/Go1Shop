@@ -21,8 +21,14 @@
 
 
 
+<style>
 
+.hide{
 
+visibility: hidden
+
+}
+</style>
 
 
 
@@ -78,7 +84,8 @@ table, th, td {
 				<tr>
 				
 					<td><input type="checkbox"></td>
-				<td><a href="${path }" >${mail.title}</a></td>
+					<td class="hide">${mail.mailId}</td>
+				    <td><a href="${path }" >${mail.title}</a></td>
 					<td>${mail.sender}</td>
 					<td>${mail.date}</td>
 					

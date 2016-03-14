@@ -20,8 +20,14 @@ public class deleteMailServlet extends HttpServlet {
 		
 		req.setCharacterEncoding("UTF-8");
 
+		//System.out.println(88);
+		
+		
 		String ids = req.getParameter("id");
+		System.out.println(ids);
+		
 		String mail = req.getParameter("mail");
+		System.out.println(mail);
 		
 		List<Integer> prodIds = new ArrayList<Integer>() ;
 		if (ids != null) {
