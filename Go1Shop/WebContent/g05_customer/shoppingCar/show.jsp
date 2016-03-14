@@ -34,7 +34,7 @@
 .box h4 span{font-size:20px} 
 .u-flyer{display: block;width: 50px;height: 50px;border-radius: 50px;position: fixed;z-index: 9999;} 
  
-.m-sidebar{position: fixed;top: 40%;right: 0;background: #000;z-index: 2000;width: 35px;height: 10%;font-size: 12px;color: #fff;} 
+.m-sidebar{position: fixed;top: 40%;right: 0;background: #000;z-index: 2000;width: 35px;height: 15%;font-size: 12px;color: #fff;} 
 .cart{color: #fff;text-align:center;} 
 .cart span{display:block;width:20px;margin:auto auto;} 
 .cart i{width:35px;height:35px;display:block; background:url(/Go1Shop/_img/car.png) no-repeat;} 

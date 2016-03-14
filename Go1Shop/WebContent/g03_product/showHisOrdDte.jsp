@@ -44,6 +44,6 @@
 <hr>
 <%-- 		<p>收件人：${addressee}</p> --%>
 <%-- 		<p>寄件人：${sender}</p> --%>
-		<P style="margin: 1% 0 0 2%;">總金額：${total}</P>
+		<h1 style="margin: 1% 0 0 2%;"><span style="color:black;">總金額：${total}</span></h1>
 </body>
 </html>
