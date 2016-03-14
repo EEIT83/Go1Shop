@@ -72,6 +72,7 @@
 							<c:url value="/g05_customer/shoppingCar/show.jsp" var="path">
 								<c:param name="id" value="${bean.prod_id}" />
 								<c:param name="memid" value="${bean.mem_id}" />
+								<c:param name="launchdate" value="${bean.launch_date}" />
 							</c:url>
 							<a href="${path}">
 							<img id="img1" class="img-responsive" style="width:300px;height:300px" 

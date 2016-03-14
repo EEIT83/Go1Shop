@@ -70,6 +70,9 @@
 				<div id="Sellername" style="width:100%;height:50%;margin:4% 0 0 4%;font-size:20px;text-align:left;"></div>
 <!------------------品名---------------- -->
 				<div id="Pname" style="width:100%;height:50%;margin:4% 0 0 4%;font-size:20px;text-align:left;"></div>
+<!------------------上架日(YOGA)---------------- -->
+<div id="launchdate" style="width:100%;height:50%;margin:4% 0 0 4%;font-size:20px;text-align:left;"></div>
+
 <!------------------大小---------------- -->
 					<div style="width:28%;margin:5% 0 0 4%;font-weight: bold;float:left;"><p style='font-size:25px;'>尺寸 ：</p></div>
 				<div id="Psize" style="width:11%;margin:3% 0 0 0%;font-weight: bold;text-align:left;float:left;" ></div>
@@ -281,6 +284,10 @@ $(function() {
 		          console.log('failed.');
 		      }
 		});
+	
+		$('#launchdate').append("上架日期: "+'${param.launchdate}'+"</p>");
+
+	
 // yoga   
 
 }); 
