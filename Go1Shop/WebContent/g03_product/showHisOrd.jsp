@@ -22,7 +22,7 @@
 </script>
 </head>
 <body>
-<table class="table table-condensed table-hover">
+<table class="table table-hover" style="margin: 5% 0 0 2%;">
 	<tr>
 		<th>訂單編號</th>
 		<th>訂單日期</th>
@@ -41,7 +41,7 @@
 			<c:param name=""></c:param>
 		</c:url>
 		
-		<td><a href="<c:url value='/OrdDetail.do?memId=${LoginOK.mem_id}&ordId=${order[i].ord_id}&addressee=${order[i].addressee}&sender=${order[i].sender}&total=${order[i].total}' />"><fmt:formatDate value="${order[i].ord_date}" pattern="yyyyMMdd"/>0000${order[i].ord_id}</a></td>
+		<td><a href="<c:url value='/OrdDetail.do?memId=${LoginOK.mem_id}&ordId=${order[i].ord_id}&addressee=${order[i].addressee}&sender=${order[i].sender}&total=${order[i].total}' />" style="text-decoration: none;text-align: center;"><fmt:formatDate value="${order[i].ord_date}" pattern="yyyyMMdd"/>0000${order[i].ord_id}</a></td>
 		<td><fmt:formatDate value="${order[i].ord_date}" pattern="yyyyMMdd"/></td>
 		<td>${order[i].total}</td>
 		<td>${order[i].payment}</td>

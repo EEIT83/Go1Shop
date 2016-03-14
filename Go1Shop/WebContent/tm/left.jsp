@@ -53,7 +53,7 @@
 							data-shop-id="queryProductFrame">商品查詢</a></li>
 					<li><a  href="#"
 							class="shopButton"
-							data-shop-url="<%=request.getContextPath()%>/g03_product/addNewProduct_M.jsp"
+							data-shop-url="<%=request.getContextPath()%>/g00_product/addNewProduct_M.jsp"
 							data-shop-id="insertProductFrame">新增商品</a></li>
 					<li><a  href="#"
 							class="shopButton"

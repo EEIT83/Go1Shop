@@ -40,10 +40,10 @@
 							<p>商店描述:${StoreVO.note}</p>
 						</div>
 					</div>
-					<div id="address" style=""></div>
+					<div id="address" class="panel panel-default"></div>
 					<div id="lat"></div>
 					<div id="lng"></div>
-					<div id="canvas" style="width: 800px; height: 525px"></div>
+					<div id="canvas" style="width: 900px; height: 500px;"></div>
 					</main>
 				</c:if>
 			</div>

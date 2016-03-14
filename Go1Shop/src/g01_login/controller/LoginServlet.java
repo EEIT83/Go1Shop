@@ -20,7 +20,6 @@ import gb01_login.controller.AdminBean;
 import gb01_login.controller.AdminService;
 import gb05_mail.MailDAO;
 import gb05_mail.MailVO;
-
 @WebServlet(urlPatterns = { "/Account/Login.controller" })
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = -595078994078999385L;

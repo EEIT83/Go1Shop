@@ -20,7 +20,7 @@
 
 
 </script>
-<table class="table table-condensed">
+<table class="table table-condensed" style="margin: 5% 0 0 2%;">
 	<tr>
 		
 		<th>商品名稱</th>
@@ -44,6 +44,6 @@
 <hr>
 <%-- 		<p>收件人：${addressee}</p> --%>
 <%-- 		<p>寄件人：${sender}</p> --%>
-		<P>總計：${total}</P>
+		<P style="margin: 1% 0 0 2%;">總金額：${total}</P>
 </body>
 </html>
