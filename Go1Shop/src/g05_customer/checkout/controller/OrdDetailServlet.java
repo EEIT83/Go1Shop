@@ -23,6 +23,7 @@ public class OrdDetailServlet extends HttpServlet {
 		String addressee = req.getParameter("addressee").trim();
 		String sender = req.getParameter("sender").trim();
 		String total = req.getParameter("total").trim();
+		System.out.println("total="+total);
 		String memId = req.getParameter("memId").trim();
 		String ordId = req.getParameter("ordId").trim();
 		ProdOrderBean bean = new ProdOrderBean();
