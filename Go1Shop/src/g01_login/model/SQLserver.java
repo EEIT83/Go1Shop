@@ -11,6 +11,7 @@ public class SQLserver {
 	private Connection conn ;
 	private static final String className = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 	private static final String url ="jdbc:sqlserver://localhost:1433;databaseName=Project";
+//	private static final String url ="jdbc:sqlserver://wlgfm7oxcs.database.windows.net:1433;database=Project";
 	
 	public SQLserver() throws SQLException{
 		DbUtils.loadDriver(className);
